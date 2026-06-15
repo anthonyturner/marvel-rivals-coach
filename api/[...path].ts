@@ -17,17 +17,12 @@ type VercelRequest = IncomingMessage & {
   };
 };
 
-type JsonResponse = ServerResponse & {
-  status?: (statusCode: number) => JsonResponse;
-  json?: (body: unknown) => void;
-};
-
 const jsonHeaders = {
   'content-type': 'application/json; charset=utf-8',
   'cache-control': 's-maxage=300, stale-while-revalidate=3600',
 };
 
-export default async function handler(req: VercelRequest, res: JsonResponse) {
+export default async function handler(req: VercelRequest, res: ServerResponse) {
   if (req.method && req.method !== 'GET') {
     sendJson(res, 405, { error: 'Method not allowed' });
     return;
@@ -95,12 +90,7 @@ function normalizePath(path: string | string[] | undefined): string {
   return path ?? '';
 }
 
-function sendJson(res: JsonResponse, statusCode: number, body: unknown): void {
-  if (res.status && res.json) {
-    res.status(statusCode).json(body);
-    return;
-  }
-
+function sendJson(res: ServerResponse, statusCode: number, body: unknown): void {
   res.writeHead(statusCode, jsonHeaders);
   res.end(JSON.stringify(body));
 }

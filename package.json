@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && npm run typecheck:api",
+    "typecheck:api": "tsc -p tsconfig.api.json --noEmit",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "db:seed": "node scripts/seed-sqlite.mjs",
