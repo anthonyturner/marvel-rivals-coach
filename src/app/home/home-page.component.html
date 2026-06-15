@@ -1,0 +1,108 @@
+<section class="home-page">
+  <header class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Marvel Rivals Coach</p>
+      <h1>Strategy hub for sharper fights, cleaner reviews, and smarter queues.</h1>
+      <p class="lede">
+        Browse heroes, learn map-control fundamentals, watch curated tutorials, and turn transcript
+        notes into practical drills for your next ranked block.
+      </p>
+      <div class="hero-actions">
+        <a routerLink="/watch-next">Find what to watch</a>
+        <a routerLink="/techniques">Browse techniques</a>
+      </div>
+    </div>
+
+    <aside class="season-card" aria-label="Current Marvel Rivals season news">
+      <span>Current Focus</span>
+      <h2>{{ content().currentFocusTitle }}</h2>
+      <p>{{ content().currentFocusDescription }}</p>
+      <div class="season-list">
+        @for (item of content().quickLinks; track item.label) {
+          <div>
+            <small>{{ item.label }}</small>
+            <strong>{{ item.value }}</strong>
+          </div>
+        }
+      </div>
+      <p class="source-status">
+        {{ content().sourceMode === 'live' ? 'Checked live through the Fandom API' : 'Using curated fallback data' }}
+        - {{ content().lastChecked }}
+      </p>
+    </aside>
+  </header>
+
+  <section class="stats" aria-label="Site stats">
+    @for (stat of content().heroStats; track stat.label) {
+      <article>
+        <strong>{{ stat.value }}</strong>
+        <span>{{ stat.label }}</span>
+      </article>
+    }
+  </section>
+
+  <section class="portal-section" aria-labelledby="portal-title">
+    <div class="section-heading">
+      <p class="eyebrow">Explore</p>
+      <h2 id="portal-title">Coach wiki portals</h2>
+    </div>
+
+    <div class="portal-grid">
+      @for (portal of content().portals; track portal.title) {
+        <a class="portal-card" [routerLink]="portal.path">
+          <img [src]="portal.image" [alt]="portal.title" loading="lazy" />
+          <div>
+            <h3>{{ portal.title }}</h3>
+            <p>{{ portal.description }}</p>
+          </div>
+        </a>
+      }
+    </div>
+  </section>
+
+  <section class="main-grid">
+    <div class="news-panel" aria-labelledby="news-title">
+      <div class="section-heading">
+        <p class="eyebrow">Latest News</p>
+        <h2 id="news-title">Season and BattlePass notes</h2>
+      </div>
+
+      <div class="news-list">
+        @for (item of content().latestNews; track item.title) {
+          <article>
+            <img
+              class="news-thumbnail"
+              [src]="item.thumbnailUrl"
+              [alt]="item.thumbnailAlt"
+              loading="lazy"
+              (error)="onNewsImageError($event)"
+            />
+            <div class="news-copy">
+              <span>{{ item.label }}</span>
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
+              <a [href]="item.sourceUrl" target="_blank" rel="noopener">Source</a>
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+
+    <aside class="guide-panel" aria-labelledby="featured-title">
+      <div class="section-heading">
+        <p class="eyebrow">Featured Guides</p>
+        <h2 id="featured-title">Start here</h2>
+      </div>
+
+      <div class="guide-list">
+        @for (guide of content().featuredGuides; track guide.title) {
+          <a [routerLink]="guide.path">
+            <span>{{ guide.tag }}</span>
+            <h3>{{ guide.title }}</h3>
+            <p>{{ guide.description }}</p>
+          </a>
+        }
+      </div>
+    </aside>
+  </section>
+</section>

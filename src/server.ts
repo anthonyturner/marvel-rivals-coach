@@ -7,22 +7,58 @@ import {
 import express from 'express';
 import { join } from 'node:path';
 
+import {
+  getContentStatusFromDatabase,
+  getExternalSourceFromDatabase,
+  getGlossaryTermsFromDatabase,
+  getHeroFromDatabase,
+  getHeroesFromDatabase,
+} from './content-database';
+
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
-/**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/{*splat}', (req, res) => {
- *   // Handle API request
- * });
- * ```
- */
+app.get('/api/content/status', (_req, res) => {
+  handleApiResponse(res, () => getContentStatusFromDatabase());
+});
+
+app.get('/api/heroes', (_req, res) => {
+  handleApiResponse(res, () => getHeroesFromDatabase());
+});
+
+app.get('/api/heroes/:id', (req, res) => {
+  handleApiResponse(res, () => {
+    const hero = getHeroFromDatabase(req.params.id);
+
+    if (!hero) {
+      res.status(404);
+
+      return { message: `Hero not found: ${req.params.id}` };
+    }
+
+    return hero;
+  });
+});
+
+app.get('/api/glossary', (_req, res) => {
+  handleApiResponse(res, () => getGlossaryTermsFromDatabase());
+});
+
+app.get('/api/external-sources/:sourceKey', (req, res) => {
+  handleApiResponse(res, () => {
+    const source = getExternalSourceFromDatabase(req.params.sourceKey);
+
+    if (!source) {
+      res.status(404);
+
+      return { message: `External source not found: ${req.params.sourceKey}` };
+    }
+
+    return source;
+  });
+});
 
 /**
  * Serve static files from /browser
@@ -66,3 +102,13 @@ if (isMainModule(import.meta.url) || process.env['pm_id']) {
  * Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
  */
 export const reqHandler = createNodeRequestHandler(app);
+
+function handleApiResponse<T>(res: express.Response, getBody: () => T): void {
+  try {
+    res.json(getBody());
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Unexpected API error';
+
+    res.status(500).json({ message });
+  }
+}

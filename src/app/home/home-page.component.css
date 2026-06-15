@@ -1,0 +1,369 @@
+:host {
+  display: block;
+}
+
+.home-page {
+  min-height: 100%;
+  padding: 32px;
+}
+
+.hero,
+.stats,
+.portal-section,
+.main-grid {
+  width: min(1220px, 100%);
+  margin: 0 auto;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.58fr);
+  gap: 20px;
+  align-items: stretch;
+  padding: 18px 0 16px;
+}
+
+.hero-copy,
+.season-card,
+.stats article,
+.portal-card,
+.news-list article,
+.guide-panel,
+.guide-list a {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-panel);
+}
+
+.hero-copy {
+  display: grid;
+  align-content: center;
+  min-height: 300px;
+  padding: 26px;
+  background: var(--bg-panel);
+}
+
+.eyebrow,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.eyebrow {
+  margin-bottom: 7px;
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1 {
+  max-width: 620px;
+  color: var(--text);
+  font-size: clamp(1.85rem, 3vw, 2.8rem);
+  line-height: 1.08;
+  font-weight: 760;
+}
+
+.lede {
+  max-width: 640px;
+  margin-top: 12px;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.hero-actions a,
+.news-list a {
+  display: inline-grid;
+  min-height: 42px;
+  place-items: center;
+  padding: 0 13px;
+  border: 1px solid rgba(224, 169, 0, 0.42);
+  border-radius: 6px;
+  color: var(--accent-strong);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.hero-actions a:first-child {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.hero-actions a:hover,
+.news-list a:hover {
+  background: rgba(224, 169, 0, 0.1);
+}
+
+.season-card {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  padding: 24px;
+}
+
+.season-card > span,
+.news-list span,
+.guide-list span {
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.season-card h2 {
+  color: var(--text);
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  line-height: 1.08;
+  font-weight: 760;
+}
+
+.season-card p,
+.portal-card p,
+.news-list p,
+.guide-list p {
+  color: var(--text-soft);
+  line-height: 1.58;
+}
+
+.season-card .source-status {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.season-list {
+  display: grid;
+  gap: 10px;
+}
+
+.season-list div {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.season-list small {
+  color: var(--text-muted);
+  font-weight: 650;
+  text-transform: uppercase;
+}
+
+.season-list strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  padding: 2px 0 26px;
+}
+
+.stats article {
+  padding: 16px;
+}
+
+.stats strong {
+  display: block;
+  color: var(--text);
+  font-size: 1.65rem;
+  font-weight: 760;
+}
+
+.stats span {
+  color: var(--text-muted);
+  font-weight: 650;
+  text-transform: uppercase;
+}
+
+.section-heading {
+  margin-bottom: 14px;
+}
+
+.section-heading h2 {
+  color: var(--text);
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  font-weight: 760;
+  line-height: 1.12;
+}
+
+.portal-section {
+  padding-bottom: 28px;
+}
+
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.portal-card {
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  min-height: 134px;
+  padding: 14px;
+  color: inherit;
+  text-decoration: none;
+  background: var(--bg-elevated);
+}
+
+.portal-card:hover,
+.guide-list a:hover {
+  border-color: rgba(3, 159, 159, 0.42);
+  background: #f7fbfd;
+}
+
+.portal-card img {
+  width: 82px;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: top center;
+  background: var(--surface);
+}
+
+.portal-card h3,
+.news-list h3,
+.guide-list h3 {
+  color: var(--text);
+}
+
+.portal-card h3 {
+  margin-bottom: 7px;
+  font-size: 1.08rem;
+  font-weight: 730;
+  line-height: 1.2;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.42fr);
+  gap: 16px;
+  padding-bottom: 42px;
+}
+
+.news-list,
+.guide-list {
+  display: grid;
+  gap: 12px;
+}
+
+.news-list article {
+  display: grid;
+  grid-template-columns: 168px minmax(0, 1fr);
+  gap: 14px;
+  align-items: stretch;
+  min-height: 142px;
+  padding: 12px;
+  overflow: hidden;
+}
+
+.news-thumbnail {
+  width: 100%;
+  height: 100%;
+  min-height: 118px;
+  border-radius: 6px;
+  object-fit: cover;
+  object-position: center;
+  background: var(--surface);
+}
+
+.news-copy {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.news-list h3 {
+  font-size: 1.08rem;
+  font-weight: 730;
+  line-height: 1.22;
+}
+
+.news-list a {
+  width: fit-content;
+  min-height: 36px;
+  font-size: 0.82rem;
+}
+
+.guide-panel {
+  padding: 16px;
+}
+
+.guide-list a {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (max-width: 980px) {
+  .home-page {
+    padding: 20px;
+  }
+
+  .hero,
+  .main-grid,
+  .portal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 620px) {
+  .home-page {
+    padding: 14px;
+  }
+
+  .hero-copy,
+  .season-card,
+  .guide-panel {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: clamp(1.75rem, 10vw, 2.4rem);
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .portal-card {
+    grid-template-columns: 1fr;
+  }
+
+  .news-list article {
+    grid-template-columns: 1fr;
+  }
+
+  .news-thumbnail {
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+}
+
+
+
+
