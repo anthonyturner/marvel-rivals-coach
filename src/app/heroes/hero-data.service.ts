@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
 
-import { Hero } from './hero.model';
+import { Hero, HeroVideo } from './hero.model';
 
 @Injectable({ providedIn: 'root' })
 export class HeroDataService {
@@ -10,6 +10,12 @@ export class HeroDataService {
 
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>('/api/heroes').pipe(
+      catchError(() => of([])),
+    );
+  }
+
+  getHeroVideos(): Observable<HeroVideo[]> {
+    return this.http.get<HeroVideo[]>('/api/hero-videos').pipe(
       catchError(() => of([])),
     );
   }

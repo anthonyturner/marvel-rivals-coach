@@ -18,6 +18,16 @@ export interface HeroRoleAbilityKit {
   abilities: HeroAbility[];
 }
 
+export type HeroVideoType = 'paz-gameplay' | 'paz-counters-combos';
+
+export interface HeroVideo {
+  heroId: string | null;
+  role?: HeroRole;
+  videoType: HeroVideoType;
+  youtubeId: string;
+  title: string;
+}
+
 export interface Hero {
   id: string;
   name: string;

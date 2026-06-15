@@ -32,6 +32,18 @@ CREATE TABLE IF NOT EXISTS hero_abilities (
   sort_order INTEGER NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS hero_videos (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  hero_id TEXT,
+  role TEXT,
+  video_type TEXT NOT NULL,
+  youtube_id TEXT NOT NULL,
+  title TEXT NOT NULL,
+  sort_order INTEGER NOT NULL,
+  raw_json TEXT NOT NULL,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE IF NOT EXISTS glossary_terms (
   id TEXT PRIMARY KEY,
   term TEXT NOT NULL,
@@ -67,5 +79,8 @@ CREATE TABLE IF NOT EXISTS sync_runs (
 
 CREATE INDEX IF NOT EXISTS idx_hero_list_items_hero_id ON hero_list_items(hero_id);
 CREATE INDEX IF NOT EXISTS idx_hero_abilities_hero_id ON hero_abilities(hero_id);
+CREATE INDEX IF NOT EXISTS idx_hero_videos_hero_id ON hero_videos(hero_id);
+CREATE INDEX IF NOT EXISTS idx_hero_videos_role ON hero_videos(role);
+CREATE INDEX IF NOT EXISTS idx_hero_videos_type ON hero_videos(video_type);
 CREATE INDEX IF NOT EXISTS idx_glossary_terms_category ON glossary_terms(category);
 CREATE INDEX IF NOT EXISTS idx_sync_runs_source_key ON sync_runs(source_key);

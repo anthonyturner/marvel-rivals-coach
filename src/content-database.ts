@@ -1,7 +1,7 @@
 import { createClient, type Client } from '@tursodatabase/serverless/compat';
 
 import { GlossaryTerm } from './app/glossary/glossary.model';
-import { Hero } from './app/heroes/hero.model';
+import { Hero, HeroVideo } from './app/heroes/hero.model';
 
 const nodeProcess = process as typeof process & {
   loadEnvFile?: (path?: string) => void;
@@ -20,6 +20,7 @@ type ContentStatus = {
   heroes: number;
   glossaryTerms: number;
   externalSources: number;
+  heroVideos: number;
 };
 
 let client: Client | undefined;
@@ -37,6 +38,28 @@ export async function getHeroFromDatabase(id: string): Promise<Hero | undefined>
   );
 
   return row ? JSON.parse(row.raw_json) as Hero : undefined;
+}
+
+export async function getHeroVideosFromDatabase(): Promise<HeroVideo[]> {
+  const rows = await queryRows<{
+    hero_id: string | null;
+    role: HeroVideo['role'];
+    video_type: HeroVideo['videoType'];
+    youtube_id: string;
+    title: string;
+  }>(
+    `SELECT hero_id, role, video_type, youtube_id, title
+    FROM hero_videos
+    ORDER BY sort_order, title COLLATE NOCASE`,
+  );
+
+  return rows.map((row) => ({
+    heroId: row.hero_id,
+    role: row.role,
+    videoType: row.video_type,
+    youtubeId: row.youtube_id,
+    title: row.title,
+  }));
 }
 
 export async function getGlossaryTermsFromDatabase(): Promise<GlossaryTerm[]> {
@@ -62,6 +85,7 @@ export async function getContentStatusFromDatabase(): Promise<ContentStatus> {
     heroes: await getCount('heroes'),
     glossaryTerms: await getCount('glossary_terms'),
     externalSources: await getCount('external_sources'),
+    heroVideos: await getCount('hero_videos'),
   };
 }
 

@@ -40,5 +40,5 @@ export interface HomeContent {
   currentFocusTitle: string;
   currentFocusDescription: string;
   lastChecked: string;
-  sourceMode: 'live' | 'fallback';
+  sourceMode: 'database' | 'fallback';
 }

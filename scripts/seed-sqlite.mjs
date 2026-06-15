@@ -10,11 +10,13 @@ const projectRoot = join(__dirname, '..');
 const schemaPath = join(__dirname, 'sqlite-schema.sql');
 const heroesPath = join(projectRoot, 'src', 'app', 'data', 'heroes.mock.json');
 const glossaryPath = join(projectRoot, 'src', 'app', 'data', 'glossary.mock.json');
+const heroVideosPath = join(projectRoot, 'src', 'app', 'data', 'hero-videos.mock.json');
 
 const db = createTursoClient();
 const schema = readFileSync(schemaPath, 'utf8');
 const heroes = JSON.parse(readFileSync(heroesPath, 'utf8'));
 const glossaryTerms = JSON.parse(readFileSync(glossaryPath, 'utf8'));
+const heroVideos = JSON.parse(readFileSync(heroVideosPath, 'utf8'));
 
 await executeSchema(db, schema);
 await migrateAbilityTechnicalDetails();
@@ -23,17 +25,20 @@ await seed();
 const heroCount = await getCount('heroes');
 const glossaryCount = await getCount('glossary_terms');
 const abilityCount = await getCount('hero_abilities');
+const videoCount = await getCount('hero_videos');
 
 db.close();
 
 console.log('Seeded Turso database.');
 console.log(`Heroes: ${heroCount}`);
 console.log(`Hero abilities: ${abilityCount}`);
+console.log(`Hero videos: ${videoCount}`);
 console.log(`Glossary terms: ${glossaryCount}`);
 
 async function seed() {
   await db.execute('DELETE FROM hero_abilities');
   await db.execute('DELETE FROM hero_list_items');
+  await db.execute('DELETE FROM hero_videos');
   await db.execute('DELETE FROM heroes');
   await db.execute('DELETE FROM glossary_terms');
 
@@ -89,6 +94,24 @@ async function seed() {
         term.sourceName,
         term.sourceUrl,
         JSON.stringify(term),
+      ],
+    );
+  }
+
+  for (const [index, video] of heroVideos.entries()) {
+    await db.execute(
+      `INSERT INTO hero_videos (
+        hero_id, role, video_type, youtube_id, title, sort_order, raw_json, updated_at
+      )
+      VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)`,
+      [
+        video.heroId ?? null,
+        video.role ?? null,
+        video.videoType,
+        video.id,
+        video.title,
+        index,
+        JSON.stringify(video),
       ],
     );
   }

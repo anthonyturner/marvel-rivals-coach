@@ -1,6 +1,5 @@
-import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 
 import { HomeContent, NewsItem, QuickLink } from './home-content.model';
@@ -22,10 +21,7 @@ interface BattlePassSnapshot {
 @Injectable({ providedIn: 'root' })
 export class HomeContentService {
   private readonly http = inject(HttpClient);
-  private readonly platformId = inject(PLATFORM_ID);
-
-  private readonly battlePassApiUrl =
-    'https://marvelrivals.fandom.com/api.php?action=parse&page=BattlePasses&prop=wikitext&format=json&origin=*';
+  private readonly battlePassSourceUrl = '/api/external-sources/fandom-battlepasses';
 
   readonly fallbackContent: HomeContent = {
     heroStats: [
@@ -148,22 +144,18 @@ export class HomeContentService {
     sourceMode: 'fallback',
   };
 
-  /** Loads landing-page content, using live BattlePass data in the browser and fallback data during SSR or failures. */
+  /** Loads landing-page content from the cached BattlePass payload stored in the content database. */
   getHomeContent(): Observable<HomeContent> {
-    if (!isPlatformBrowser(this.platformId)) {
-      return of(this.fallbackContent);
-    }
-
-    return this.http.get<FandomParseResponse>(this.battlePassApiUrl).pipe(
+    return this.http.get<FandomParseResponse>(this.battlePassSourceUrl).pipe(
       map((response) => {
         const snapshot = this.parseBattlePassSnapshot(response.parse?.wikitext?.['*'] ?? '');
 
         return {
           ...this.fallbackContent,
-          latestNews: this.withLiveBattlePassNews(this.fallbackContent.latestNews, snapshot),
-          quickLinks: this.withLiveQuickLinks(this.fallbackContent.quickLinks, snapshot),
+          latestNews: this.withDatabaseBattlePassNews(this.fallbackContent.latestNews, snapshot),
+          quickLinks: this.withDatabaseQuickLinks(this.fallbackContent.quickLinks, snapshot),
           lastChecked: new Date().toISOString().slice(0, 10),
-          sourceMode: 'live' as const,
+          sourceMode: 'database' as const,
         };
       }),
       catchError(() => of(this.fallbackContent)),
@@ -186,8 +178,8 @@ export class HomeContentService {
     };
   }
 
-  /** Replaces the season and BattlePass quick-link values with the latest live API snapshot. */
-  private withLiveQuickLinks(quickLinks: QuickLink[], snapshot: BattlePassSnapshot): QuickLink[] {
+  /** Replaces the season and BattlePass quick-link values with the cached database snapshot. */
+  private withDatabaseQuickLinks(quickLinks: QuickLink[], snapshot: BattlePassSnapshot): QuickLink[] {
     return quickLinks.map((item) => {
       if (item.label === 'Current Season') {
         return { ...item, value: snapshot.currentSeason };
@@ -201,8 +193,8 @@ export class HomeContentService {
     });
   }
 
-  /** Updates the Battle Pass news card so it reflects the season and pass found by the live check. */
-  private withLiveBattlePassNews(newsItems: NewsItem[], snapshot: BattlePassSnapshot): NewsItem[] {
+  /** Updates the Battle Pass news card so it reflects the cached database snapshot. */
+  private withDatabaseBattlePassNews(newsItems: NewsItem[], snapshot: BattlePassSnapshot): NewsItem[] {
     return newsItems.map((item) => {
       if (item.label !== 'Battle Pass') {
         return item;
@@ -211,7 +203,7 @@ export class HomeContentService {
       return {
         ...item,
         title: `${snapshot.battlePass} is the current ${snapshot.currentSeason} BattlePass`,
-        description: `The Marvel Rivals Wiki BattlePass API currently resolves ${snapshot.currentSeason} to ${snapshot.battlePass}.`,
+        description: `The cached Marvel Rivals Wiki BattlePass data currently resolves ${snapshot.currentSeason} to ${snapshot.battlePass}.`,
       };
     });
   }

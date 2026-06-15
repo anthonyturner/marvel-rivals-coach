@@ -103,6 +103,23 @@ sequenceDiagram
   Service-->>Page: Render heroes
 ```
 
+For hero videos:
+
+```mermaid
+sequenceDiagram
+  participant Page as Heroes Page
+  participant Service as HeroDataService
+  participant Api as /api/hero-videos
+  participant DB as Turso
+
+  Page->>Service: Need hero video mappings
+  Service->>Api: GET /api/hero-videos
+  Api->>DB: Read hero_videos
+  DB-->>Api: Video rows
+  Api-->>Service: Hero/role video mappings
+  Service-->>Page: Render PAZ embeds
+```
+
 For glossary:
 
 ```mermaid
@@ -140,6 +157,7 @@ The Express server exposes database data through routes:
 ```text
 GET /api/heroes
 GET /api/heroes/:id
+GET /api/hero-videos
 GET /api/glossary
 GET /api/external-sources/:sourceKey
 GET /api/content/status

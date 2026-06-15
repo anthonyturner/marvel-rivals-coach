@@ -12,6 +12,7 @@ import {
   getExternalSourceFromDatabase,
   getGlossaryTermsFromDatabase,
   getHeroFromDatabase,
+  getHeroVideosFromDatabase,
   getHeroesFromDatabase,
 } from './content-database';
 
@@ -40,6 +41,10 @@ app.get('/api/heroes/:id', (req, res) => {
 
     return hero;
   });
+});
+
+app.get('/api/hero-videos', (_req, res) => {
+  handleApiResponse(res, () => getHeroVideosFromDatabase());
 });
 
 app.get('/api/glossary', (_req, res) => {

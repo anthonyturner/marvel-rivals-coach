@@ -26,7 +26,7 @@
         }
       </div>
       <p class="source-status">
-        {{ content().sourceMode === 'live' ? 'Checked live through the Fandom API' : 'Using curated fallback data' }}
+        {{ content().sourceMode === 'database' ? 'Loaded from the Turso content database' : 'Using curated fallback data' }}
         - {{ content().lastChecked }}
       </p>
     </aside>

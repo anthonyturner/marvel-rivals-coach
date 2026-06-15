@@ -51,6 +51,11 @@ Stores repeated hero values:
 
 Stores hero abilities. Default abilities use empty `kit_role` and `kit_label`; role-specific kits, such as Deadpool's Vanguard/Duelist/Strategist pools, set those fields.
 
+### `hero_videos`
+
+Stores hero-specific and role-fallback YouTube video mappings used by the Heroes page.
+PAZ gameplay and counters/combos videos are seeded here so the page does not carry those mappings in component code.
+
 ### `glossary_terms`
 
 Stores the glossary content and keeps the full source object in `raw_json`.
@@ -70,6 +75,7 @@ The Express SSR server exposes read-only routes:
 - `GET /api/content/status`
 - `GET /api/heroes`
 - `GET /api/heroes/:id`
+- `GET /api/hero-videos`
 - `GET /api/glossary`
 - `GET /api/external-sources/:sourceKey`
 
