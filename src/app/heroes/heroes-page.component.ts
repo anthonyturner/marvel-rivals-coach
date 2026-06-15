@@ -102,7 +102,6 @@ export class HeroesPageComponent implements OnInit {
   readonly selectedHeroYoutubeUrl = computed(() =>
     this.youtubeSearchUrl(`Marvel Rivals ${this.selectedHero()?.name ?? ''}`),
   );
-
   ngOnInit(): void {
     this.heroDataService.getHeroes().subscribe((heroes) => {
       this.heroes.set(heroes);

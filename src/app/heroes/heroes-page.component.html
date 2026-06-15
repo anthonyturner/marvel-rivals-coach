@@ -1,14 +1,24 @@
 <section class="heroes-page">
   <header class="page-header">
-    <div>
-      <p class="eyebrow">Hero Encyclopedia</p>
-      <h1>Marvel Rivals Coach</h1>
+    <div class="header-copy">
+      <div class="hero-kicker">
+        <span>{{ selectedHero()?.role ?? 'Hero' }}</span>
+      </div>
+      <h1>{{ selectedHero()?.name ?? 'Roster Lab' }}</h1>
       <p class="lede">
-        Compare roles, strengths, counters, synergies, and ability notes before you lock in.
+        {{ selectedHero()?.summary ?? 'Compare roles, strengths, counters, synergies, ability notes, and curated video guides before you lock in.' }}
       </p>
+      <div class="hero-meta-row" aria-label="Selected hero quick stats">
+        <span class="hero-rating" [attr.aria-label]="'Difficulty ' + (selectedHero()?.difficulty ?? 0) + ' out of 5'">
+          Difficulty: 
+          @for (pip of [1, 2, 3, 4, 5]; track pip) {
+            <span [class.filled]="pip <= (selectedHero()?.difficulty ?? 0)">★</span>
+          }
+        </span>
+      </div>
     </div>
 
-    <div class="header-stat" aria-label="Mock hero count">
+    <div class="header-stat" aria-label="Visible hero count">
       <span>{{ filteredHeroes().length }}</span>
       <small>Heroes</small>
     </div>
@@ -175,13 +185,6 @@
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen
                   ></iframe>
-                } @else {
-                  <a class="video-search-card" [href]="video.url" target="_blank" rel="noopener noreferrer">
-                    <span class="video-thumb" aria-hidden="true">
-                      <span></span>
-                    </span>
-                    <span>Search YouTube for this topic</span>
-                  </a>
                 }
                 <span class="video-copy">
                   <strong>{{ video.label }}</strong>

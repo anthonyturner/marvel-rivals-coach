@@ -24,6 +24,7 @@ There are three separate jobs in the content system.
 | --- | --- | --- |
 | Seed | Copies local JSON data into SQLite | `scripts/seed-sqlite.mjs` |
 | Sync | Fetches outside data from Fandom/wiki APIs | `scripts/sync-external-sources.mjs` |
+| Hero Sync | Finds current Fandom heroes and updates SQLite heroes | `scripts/sync-heroes.mjs` |
 | Read | Lets Angular pages get data from SQLite | `src/server.ts`, `src/content-database.ts` |
 
 ## 1. Seed Data
@@ -182,11 +183,34 @@ Use this when you want to refresh external wiki/API data:
 npm run db:sync
 ```
 
+Use this when new heroes are released or hero pages change:
+
+```bash
+npm run sync:heroes
+```
+
 Use this when you want to do both:
 
 ```bash
 npm run content:update
 ```
+
+`content:update` now runs seed, external sync, and hero sync.
+
+## New Hero Flow
+
+When a new hero appears on Fandom:
+
+```mermaid
+flowchart LR
+  FandomHeroes["Fandom Category:Heroes"] --> HeroSync["npm run sync:heroes"]
+  HeroSync --> NewHero["New/updated hero row"]
+  NewHero --> DB["SQLite"]
+  DB --> Api["/api/heroes"]
+  Api --> Page["Heroes Page"]
+```
+
+If the new hero does not have a local portrait yet, the site uses `default-hero.png` until you add an image.
 
 ## Current Status
 

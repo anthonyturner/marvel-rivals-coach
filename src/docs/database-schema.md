@@ -9,6 +9,7 @@ The mock JSON files under `src/app/data` are seed inputs only; runtime pages rea
 - Schema: `scripts/sqlite-schema.sql`
 - Seed script: `scripts/seed-sqlite.mjs`
 - External sync script: `scripts/sync-external-sources.mjs`
+- Hero wiki sync script: `scripts/sync-heroes.mjs`
 
 The generated `.db` file is ignored by git. Recreate it with:
 
@@ -20,6 +21,12 @@ Refresh seeded data and external source payloads with:
 
 ```bash
 npm run content:update
+```
+
+Discover new Fandom heroes and upsert hero profile data with:
+
+```bash
+npm run sync:heroes
 ```
 
 ## Tables
@@ -68,4 +75,22 @@ The Express SSR server exposes read-only routes:
 1. Update curated JSON files or generator scripts.
 2. Run `npm run db:seed` to rebuild local content tables.
 3. Run `npm run db:sync` to refresh external source payloads.
-4. Run `npm run build` to verify the app still compiles.
+4. Run `npm run sync:heroes` to discover and upsert current Fandom heroes.
+5. Run `npm run build` to verify the app still compiles.
+
+`npm run content:update` runs steps 2 through 4.
+
+## Hero Sync Notes
+
+The hero sync script:
+
+- Reads `Category:Heroes` from Fandom.
+- Fetches each hero page's wikitext.
+- Skips pages that do not expose a valid hero role.
+- Parses role, difficulty, official summary, strengths, weaknesses, synergies, and a compact ability list.
+- Inserts new heroes into SQLite.
+- Updates existing heroes in SQLite.
+- Preserves curated fields that are hard to reconstruct automatically, such as Deadpool's role-specific ability kits and existing local image paths.
+- Preserves existing counter arrays. If a brand-new hero has no curated counters yet, it receives broad role-based fallback counters until better matchup data is added.
+
+New heroes without a local portrait use `/images/heroes/default-hero.png` until an image is added.
