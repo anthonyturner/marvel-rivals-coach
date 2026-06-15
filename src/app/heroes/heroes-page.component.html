@@ -41,10 +41,8 @@
 
   <main class="heroes-layout">
     <!-- Selected Hero details -->
-    @switch (selectedHero().id) {
-      @case (selectedHeroId()) {
-        @if (selectedHero(); as hero) {
-          <aside class="hero-detail" [@fadeIn] [class]="roleClass(hero.role)" aria-label="Selected hero details">
+    @if (selectedHero(); as hero) {
+      <aside class="hero-detail" [@fadeIn] [class]="roleClass(hero.role)" aria-label="Selected hero details">
         <div class="detail-hero">
           <img class="hero-image large" [src]="hero.imageUrl" [alt]="hero.name" />
           <div>
@@ -127,15 +125,13 @@
           }
         </section>
       </aside>
-        }
-      }
     }
     <section class="hero-grid" aria-label="Hero list">
       @for (hero of filteredHeroes(); track hero.id) {
         <button
           class="hero-card"
           type="button"
-          [class.selected]="selectedHero().id === hero.id"
+          [class.selected]="selectedHero()?.id === hero.id"
           (click)="selectHero(hero.id)"
         >
           <img class="hero-image" [src]="hero.imageUrl" [alt]="hero.name" />
@@ -174,7 +170,7 @@
                   <iframe
                     class="video-embed"
                     [src]="video.embedUrl"
-                    [title]="selectedHero().name + ' ' + video.label"
+                    [title]="(selectedHero()?.name ?? 'Selected hero') + ' ' + video.label"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen

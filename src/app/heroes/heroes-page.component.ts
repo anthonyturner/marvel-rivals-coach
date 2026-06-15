@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   inject,
+  OnInit,
   signal,
 } from '@angular/core';
 import {
@@ -45,10 +46,10 @@ interface HeroVideoSearch {
     ]),
   ],
 })
-export class HeroesPageComponent {
+export class HeroesPageComponent implements OnInit {
   private readonly heroDataService = inject(HeroDataService);
   private readonly sanitizer = inject(DomSanitizer);
-  private readonly heroes = signal<Hero[]>(this.heroDataService.getHeroes());
+  private readonly heroes = signal<Hero[]>([]);
 
   readonly roles: HeroRoleFilter[] = ['All', 'Vanguard', 'Duelist', 'Strategist'];
   readonly selectedRole = signal<HeroRoleFilter>('All');
@@ -72,7 +73,7 @@ export class HeroesPageComponent {
     });
   });
 
-  readonly selectedHero = computed(() => {
+  readonly selectedHero = computed<Hero | undefined>(() => {
     const visibleHeroes = this.filteredHeroes();
     const selectedHero = visibleHeroes.find((hero) => hero.id === this.selectedHeroId());
 
@@ -82,6 +83,11 @@ export class HeroesPageComponent {
 
   readonly selectedHeroVideos = computed<HeroVideoSearch[]>(() => {
     const hero = this.selectedHero();
+
+    if (!hero) {
+      return [];
+    }
+
     const guide = this.gefestRoleGuide(hero.role);
     const gameplay = this.pazGameplayVideo(hero);
     const countersAndCombos = this.pazCountersCombosVideo(hero);
@@ -94,8 +100,15 @@ export class HeroesPageComponent {
   });
 
   readonly selectedHeroYoutubeUrl = computed(() =>
-    this.youtubeSearchUrl(`Marvel Rivals ${this.selectedHero().name}`),
+    this.youtubeSearchUrl(`Marvel Rivals ${this.selectedHero()?.name ?? ''}`),
   );
+
+  ngOnInit(): void {
+    this.heroDataService.getHeroes().subscribe((heroes) => {
+      this.heroes.set(heroes);
+      this.selectedHeroId.set(heroes[0]?.id ?? '');
+    });
+  }
 
   selectRole(role: HeroRoleFilter): void {
     this.selectedRole.set(role);

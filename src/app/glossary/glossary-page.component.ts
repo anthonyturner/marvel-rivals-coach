@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 
 import { GlossaryDataService } from './glossary-data.service';
+import { GlossaryTerm } from './glossary.model';
 
 @Component({
   selector: 'app-glossary-page',
@@ -9,9 +10,9 @@ import { GlossaryDataService } from './glossary-data.service';
   templateUrl: './glossary-page.component.html',
   styleUrl: './glossary-page.component.css',
 })
-export class GlossaryPageComponent {
+export class GlossaryPageComponent implements OnInit {
   private readonly glossaryData = inject(GlossaryDataService);
-  private readonly terms = signal(this.glossaryData.getTerms());
+  private readonly terms = signal<GlossaryTerm[]>([]);
 
   readonly selectedCategory = signal('All');
   readonly searchTerm = signal('');
@@ -35,6 +36,12 @@ export class GlossaryPageComponent {
       return matchesCategory && matchesSearch;
     });
   });
+
+  ngOnInit(): void {
+    this.glossaryData.getTerms().subscribe((terms) => {
+      this.terms.set(terms);
+    });
+  }
 
   selectCategory(category: string): void {
     this.selectedCategory.set(category);

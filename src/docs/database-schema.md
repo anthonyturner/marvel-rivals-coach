@@ -1,6 +1,7 @@
 # SQLite Content Database
 
 The app uses a local SQLite database for curated content and cached external API payloads.
+The mock JSON files under `src/app/data` are seed inputs only; runtime pages read from the Express API backed by SQLite.
 
 ## Location
 

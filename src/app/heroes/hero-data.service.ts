@@ -1,11 +1,16 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { catchError, Observable, of } from 'rxjs';
 
-import heroes from '../data/heroes.mock.json';
 import { Hero } from './hero.model';
 
 @Injectable({ providedIn: 'root' })
 export class HeroDataService {
-  getHeroes(): Hero[] {
-    return heroes as Hero[];
+  private readonly http = inject(HttpClient);
+
+  getHeroes(): Observable<Hero[]> {
+    return this.http.get<Hero[]>('/api/heroes').pipe(
+      catchError(() => of([])),
+    );
   }
 }

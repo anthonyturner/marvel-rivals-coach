@@ -1,11 +1,16 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { catchError, Observable, of } from 'rxjs';
 
-import glossaryTerms from '../data/glossary.mock.json';
 import { GlossaryTerm } from './glossary.model';
 
 @Injectable({ providedIn: 'root' })
 export class GlossaryDataService {
-  getTerms(): GlossaryTerm[] {
-    return glossaryTerms as GlossaryTerm[];
+  private readonly http = inject(HttpClient);
+
+  getTerms(): Observable<GlossaryTerm[]> {
+    return this.http.get<GlossaryTerm[]>('/api/glossary').pipe(
+      catchError(() => of([])),
+    );
   }
 }
