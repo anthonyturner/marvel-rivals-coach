@@ -103,9 +103,9 @@ if (isMainModule(import.meta.url) || process.env['pm_id']) {
  */
 export const reqHandler = createNodeRequestHandler(app);
 
-function handleApiResponse<T>(res: express.Response, getBody: () => T): void {
+async function handleApiResponse(res: express.Response, getBody: () => unknown | Promise<unknown>): Promise<void> {
   try {
-    res.json(getBody());
+    res.json(await getBody());
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unexpected API error';
 

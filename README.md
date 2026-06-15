@@ -36,35 +36,37 @@ Marvel Rivals Coach is an Angular companion site for learning heroes, matchups, 
 - TypeScript
 - RxJS
 - Angular Signals
-- SQLite through Node's `node:sqlite`
+- Turso/libSQL through `@tursodatabase/serverless`
 - Fandom/wiki sync scripts for refreshable hero and news data
 
 ## Content Architecture
 
-The site reads runtime content from SQLite through API routes exposed by the SSR server.
+The site reads runtime content from one shared Turso/libSQL database through API routes exposed by the SSR server.
 
 ```text
-Seed JSON + Fandom/wiki APIs -> SQLite -> Express API -> Angular pages
+Seed JSON + Fandom/wiki APIs -> Turso/libSQL -> Express API -> Angular pages
 ```
 
-The generated SQLite database lives at:
+Local development and Vercel production should use the same Turso database credentials:
 
-```text
-data/marvel-rivals-coach.db
+```env
+TURSO_DATABASE_URL=
+TURSO_AUTH_TOKEN=
 ```
 
-That database is intentionally ignored by Git. A fresh clone should recreate it by running the content scripts.
+Keep those values in `.env` locally and in Vercel Project Settings for production. Do not commit real Turso tokens.
 
 Important files:
 
 | File | Purpose |
 | --- | --- |
 | `scripts/sqlite-schema.sql` | SQLite table schema |
-| `scripts/seed-sqlite.mjs` | Seeds SQLite from local mock JSON |
-| `scripts/sync-heroes.mjs` | Fetches and updates hero data from Marvel Rivals Fandom |
-| `scripts/sync-external-sources.mjs` | Caches external source payloads |
-| `scripts/refresh-playstyles.mjs` | Regenerates hero playstyle copy from current DB content |
-| `src/content-database.ts` | Server-side SQLite read helpers |
+| `scripts/seed-sqlite.mjs` | Seeds Turso from local mock JSON |
+| `scripts/sync-heroes.mjs` | Fetches and updates Turso hero data from Marvel Rivals Fandom |
+| `scripts/sync-external-sources.mjs` | Caches external source payloads in Turso |
+| `scripts/refresh-playstyles.mjs` | Regenerates hero playstyle copy from current Turso content |
+| `scripts/turso-client.mjs` | Shared Turso client helper for scripts |
+| `src/content-database.ts` | Server-side Turso read helpers |
 | `src/server.ts` | Express API and SSR server |
 
 Available API routes include:
@@ -91,7 +93,14 @@ Create a local environment file from the safe example:
 Copy-Item .env.example .env
 ```
 
-Create or refresh the SQLite content database:
+Fill in `.env` with your Turso credentials:
+
+```env
+TURSO_DATABASE_URL=libsql://your-database-your-org.turso.io
+TURSO_AUTH_TOKEN=your-token
+```
+
+Create or refresh the shared Turso content database:
 
 ```powershell
 npm.cmd run content:update
@@ -117,25 +126,25 @@ Run these commands from the project folder:
 cd e:\repos\angular\marvel-rivals-coach\marvel-rivals-coach
 ```
 
-Rebuild the SQLite database from local mock JSON seed files:
+Rebuild the Turso database from local mock JSON seed files:
 
 ```powershell
 npm.cmd run db:seed
 ```
 
-Pull current external source data into SQLite:
+Pull current external source data into Turso:
 
 ```powershell
 npm.cmd run db:sync
 ```
 
-Pull current hero data and ability details from Fandom into SQLite:
+Pull current hero data and ability details from Fandom into Turso:
 
 ```powershell
 npm.cmd run sync:heroes
 ```
 
-Refresh generated hero playstyle text from current SQLite data:
+Refresh generated hero playstyle text from current Turso data:
 
 ```powershell
 npm.cmd run refresh:playstyles
@@ -154,11 +163,65 @@ npm.cmd run sync:heroes
 npm.cmd run refresh:playstyles
 ```
 
-Restart the dev server after updating the database so the app reads the latest `.db` content.
+Restart the dev server after updating the database if you already had it running.
+
+## Turso Setup
+
+Install the Turso CLI. On Windows, Turso recommends using WSL:
+
+```powershell
+wsl
+curl -sSfL https://get.tur.so/install.sh | bash
+```
+
+Authenticate:
+
+```bash
+turso auth login
+```
+
+Create the shared database:
+
+```bash
+turso db create marvel-rivals-coach
+```
+
+Get the database URL:
+
+```bash
+turso db show --url marvel-rivals-coach
+```
+
+Create an auth token:
+
+```bash
+turso db tokens create marvel-rivals-coach
+```
+
+Put those values into local `.env`:
+
+```env
+TURSO_DATABASE_URL=libsql://...
+TURSO_AUTH_TOKEN=...
+```
+
+Seed and sync the database:
+
+```powershell
+npm.cmd run content:update
+npm.cmd run refresh:playstyles
+```
+
+For Vercel, add the same two variables in Project Settings -> Environment Variables:
+
+```text
+TURSO_DATABASE_URL
+TURSO_AUTH_TOKEN
+```
 
 ## Database And GitHub Safety
 
-The SQLite database is generated content and should not be committed:
+Local database exports/backups should not be committed:
 
 ```text
 data/*.db
@@ -216,7 +279,7 @@ npm.cmd test
 
 ## Notes
 
-- The app depends on the local SQLite database for most runtime content.
-- If `/api/content/status` reports that the database is missing, run `npm.cmd run content:update`.
+- The app depends on Turso for runtime content.
+- If `/api/content/status` reports that Turso is not configured, set `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN`.
+- If the Turso database is empty, run `npm.cmd run content:update`.
 - The Fandom sync scripts require internet access.
-- Node may print an experimental warning for `node:sqlite`; that is expected with the current implementation.

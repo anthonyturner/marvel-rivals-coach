@@ -1,17 +1,20 @@
-# SQLite Content Database
+# Turso Content Database
 
-The app uses a local SQLite database for curated content and cached external API payloads.
-The mock JSON files under `src/app/data` are seed inputs only; runtime pages read from the Express API backed by SQLite.
+The app uses one shared Turso/libSQL database for curated content and cached external API payloads.
+The mock JSON files under `src/app/data` are seed inputs only; runtime pages read from the Express API backed by Turso.
 
-## Location
+## Connection
 
-- Generated database: `data/marvel-rivals-coach.db`
+- Database URL: `TURSO_DATABASE_URL`
+- Database token: `TURSO_AUTH_TOKEN`
 - Schema: `scripts/sqlite-schema.sql`
 - Seed script: `scripts/seed-sqlite.mjs`
 - External sync script: `scripts/sync-external-sources.mjs`
 - Hero wiki sync script: `scripts/sync-heroes.mjs`
 
-The generated `.db` file is ignored by git. Recreate it with:
+Credentials are stored in `.env` locally and in Vercel environment variables for production.
+
+Rebuild seeded content with:
 
 ```bash
 npm run db:seed
@@ -54,7 +57,7 @@ Stores the glossary content and keeps the full source object in `raw_json`.
 
 ### `external_sources`
 
-Stores cached payloads from external APIs such as Fandom. This lets the app read stable local data while still giving us a refresh path.
+Stores cached payloads from external APIs such as Fandom. This lets the app read stable database-backed data while still giving us a refresh path.
 
 ### `sync_runs`
 
@@ -73,7 +76,7 @@ The Express SSR server exposes read-only routes:
 ## Update Flow
 
 1. Update curated JSON files or generator scripts.
-2. Run `npm run db:seed` to rebuild local content tables.
+2. Run `npm run db:seed` to rebuild Turso content tables.
 3. Run `npm run db:sync` to refresh external source payloads.
 4. Run `npm run sync:heroes` to discover and upsert current Fandom heroes.
 5. Run `npm run build` to verify the app still compiles.
@@ -88,8 +91,8 @@ The hero sync script:
 - Fetches each hero page's wikitext.
 - Skips pages that do not expose a valid hero role.
 - Parses role, difficulty, official summary, strengths, weaknesses, synergies, and a compact ability list.
-- Inserts new heroes into SQLite.
-- Updates existing heroes in SQLite.
+- Inserts new heroes into Turso.
+- Updates existing heroes in Turso.
 - Preserves curated fields that are hard to reconstruct automatically, such as Deadpool's role-specific ability kits and existing local image paths.
 - Preserves existing counter arrays. If a brand-new hero has no curated counters yet, it receives broad role-based fallback counters until better matchup data is added.
 

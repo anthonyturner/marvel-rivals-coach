@@ -4,11 +4,11 @@ This page explains where the site content comes from, where it is stored, and ho
 
 ## Short Version
 
-The website should read content from the SQLite database.
+The website should read content from the shared Turso/libSQL database.
 
 ```mermaid
 flowchart LR
-  Database["SQLite Database"] --> Api["Express API"]
+  Database["Turso/libSQL Database"] --> Api["Express API"]
   Api --> Angular["Angular Website"]
 ```
 
@@ -22,10 +22,10 @@ There are three separate jobs in the content system.
 
 | Job | What It Does | Main Files |
 | --- | --- | --- |
-| Seed | Copies local JSON data into SQLite | `scripts/seed-sqlite.mjs` |
+| Seed | Copies local JSON data into Turso | `scripts/seed-sqlite.mjs` |
 | Sync | Fetches outside data from Fandom/wiki APIs | `scripts/sync-external-sources.mjs` |
-| Hero Sync | Finds current Fandom heroes and updates SQLite heroes | `scripts/sync-heroes.mjs` |
-| Read | Lets Angular pages get data from SQLite | `src/server.ts`, `src/content-database.ts` |
+| Hero Sync | Finds current Fandom heroes and updates Turso heroes | `scripts/sync-heroes.mjs` |
+| Read | Lets Angular pages get data from Turso | `src/server.ts`, `src/content-database.ts` |
 
 ## 1. Seed Data
 
@@ -44,16 +44,16 @@ When you run:
 npm run db:seed
 ```
 
-the seed script copies those JSON files into SQLite.
+the seed script copies those JSON files into Turso.
 
 ```mermaid
 flowchart LR
   HeroesJson["heroes.mock.json"] --> SeedScript["npm run db:seed"]
   GlossaryJson["glossary.mock.json"] --> SeedScript
-  SeedScript --> Database["SQLite Database"]
+  SeedScript --> Database["Turso/libSQL Database"]
 ```
 
-After that, the website reads from SQLite, not directly from those JSON files.
+After that, the website reads from Turso, not directly from those JSON files.
 
 ## 2. Wiki/API Sync
 
@@ -65,7 +65,7 @@ When you run:
 npm run db:sync
 ```
 
-the sync script fetches external data and saves the raw response in SQLite.
+the sync script fetches external data and saves the raw response in Turso.
 
 ```mermaid
 flowchart LR
@@ -93,7 +93,7 @@ sequenceDiagram
   participant Page as Heroes Page
   participant Service as HeroDataService
   participant Api as /api/heroes
-  participant DB as SQLite
+  participant DB as Turso
 
   Page->>Service: Need hero data
   Service->>Api: GET /api/heroes
@@ -110,7 +110,7 @@ sequenceDiagram
   participant Page as Glossary Page
   participant Service as GlossaryDataService
   participant Api as /api/glossary
-  participant DB as SQLite
+  participant DB as Turso
 
   Page->>Service: Need glossary terms
   Service->>Api: GET /api/glossary
@@ -122,12 +122,13 @@ sequenceDiagram
 
 ## What Each Piece Means
 
-### SQLite Database
+### Turso Database
 
-The local content database is:
+The shared content database is configured with:
 
 ```text
-data/marvel-rivals-coach.db
+TURSO_DATABASE_URL
+TURSO_AUTH_TOKEN
 ```
 
 It stores heroes, abilities, glossary terms, and cached external API responses.
@@ -158,7 +159,7 @@ src/content-database.ts
 
 ### Angular Services
 
-Angular pages should not read SQLite directly.
+Angular pages should not read Turso directly.
 
 They use services:
 
@@ -205,7 +206,7 @@ When a new hero appears on Fandom:
 flowchart LR
   FandomHeroes["Fandom Category:Heroes"] --> HeroSync["npm run sync:heroes"]
   HeroSync --> NewHero["New/updated hero row"]
-  NewHero --> DB["SQLite"]
+  NewHero --> DB["Turso/libSQL"]
   DB --> Api["/api/heroes"]
   Api --> Page["Heroes Page"]
 ```
@@ -229,7 +230,7 @@ The home page still has a direct Fandom call in `HomeContentService`. The cleane
 flowchart LR
   HomePage["Home Page"] --> HomeService["HomeContentService"]
   HomeService --> Api["/api/external-sources/fandom-battlepasses"]
-  Api --> DB["SQLite cached Fandom response"]
+  Api --> DB["Turso cached Fandom response"]
 ```
 
 That would make the home page use the same database-backed flow as the rest of the site.
@@ -239,13 +240,13 @@ That would make the home page use the same database-backed flow as the rest of t
 Think of it like this:
 
 ```text
-JSON files and wiki APIs fill the database.
-The database feeds the API.
+JSON files and wiki APIs fill Turso.
+Turso feeds the API.
 The API feeds the Angular pages.
 ```
 
 Or shorter:
 
 ```text
-Sources -> SQLite -> API -> Website
+Sources -> Turso -> API -> Website
 ```
