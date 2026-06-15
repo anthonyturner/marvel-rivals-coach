@@ -28,7 +28,7 @@ export default async function handler(req: VercelRequest, res: ServerResponse) {
     return;
   }
 
-  const route = normalizePath(req.query?.path);
+  const route = getApiRoute(req);
 
   try {
     if (route === 'content/status') {
@@ -82,12 +82,26 @@ export default async function handler(req: VercelRequest, res: ServerResponse) {
   }
 }
 
-function normalizePath(path: string | string[] | undefined): string {
-  if (Array.isArray(path)) {
-    return path.join('/');
+function getApiRoute(req: VercelRequest): string {
+  const queryPath = normalizePath(req.query?.path);
+
+  if (queryPath) {
+    return queryPath;
   }
 
-  return path ?? '';
+  const pathname = new URL(req.url ?? '/', 'https://local.invalid').pathname;
+
+  return pathname
+    .replace(/^\/api\/?/, '')
+    .replace(/^\/+|\/+$/g, '');
+}
+
+function normalizePath(path: string | string[] | undefined): string {
+  if (!path) {
+    return '';
+  }
+
+  return Array.isArray(path) ? path.join('/') : path;
 }
 
 function sendJson(res: ServerResponse, statusCode: number, body: unknown): void {

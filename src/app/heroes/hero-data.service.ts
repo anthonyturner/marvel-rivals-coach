@@ -10,13 +10,21 @@ export class HeroDataService {
 
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>('/api/heroes').pipe(
-      catchError(() => of([])),
+      catchError((error) => {
+        console.error('Failed to load hero data from /api/heroes', error);
+
+        return of([]);
+      }),
     );
   }
 
   getHeroVideos(): Observable<HeroVideo[]> {
     return this.http.get<HeroVideo[]>('/api/hero-videos').pipe(
-      catchError(() => of([])),
+      catchError((error) => {
+        console.error('Failed to load hero videos from /api/hero-videos', error);
+
+        return of([]);
+      }),
     );
   }
 }
