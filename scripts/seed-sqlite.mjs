@@ -21,6 +21,7 @@ const glossaryTerms = JSON.parse(readFileSync(glossaryPath, 'utf8'));
 
 db.exec(schema);
 db.exec('PRAGMA foreign_keys = ON;');
+migrateAbilityTechnicalDetails();
 
 const insertHero = db.prepare(`
   INSERT INTO heroes (
@@ -34,9 +35,9 @@ const insertHeroListItem = db.prepare(`
 `);
 const insertHeroAbility = db.prepare(`
   INSERT INTO hero_abilities (
-    hero_id, kit_role, kit_label, name, ability_type, description, sort_order
+    hero_id, kit_role, kit_label, name, ability_type, description, technical_details_json, sort_order
   )
-  VALUES (?, ?, ?, ?, ?, ?, ?)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?)
 `);
 const insertGlossaryTerm = db.prepare(`
   INSERT INTO glossary_terms (
@@ -122,9 +123,19 @@ function insertAbilities(heroId, kitRole, kitLabel, abilities = []) {
       ability.name,
       ability.type,
       ability.description,
+      JSON.stringify(ability.technicalDetails ?? []),
       index,
     );
   });
+}
+
+function migrateAbilityTechnicalDetails() {
+  const columns = db.prepare('PRAGMA table_info(hero_abilities)').all();
+  const hasTechnicalDetails = columns.some((column) => column.name === 'technical_details_json');
+
+  if (!hasTechnicalDetails) {
+    db.exec("ALTER TABLE hero_abilities ADD COLUMN technical_details_json TEXT NOT NULL DEFAULT '[]';");
+  }
 }
 
 seed();

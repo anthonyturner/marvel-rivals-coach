@@ -1,9 +1,15 @@
 export type HeroRole = 'Vanguard' | 'Duelist' | 'Strategist' | 'Multi-Role';
 
+export interface HeroAbilityTechnicalDetail {
+  label: string;
+  value: string;
+}
+
 export interface HeroAbility {
   name: string;
   type: string;
   description: string;
+  technicalDetails?: HeroAbilityTechnicalDetail[];
 }
 
 export interface HeroRoleAbilityKit {

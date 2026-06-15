@@ -13,7 +13,7 @@ import {
   style,
   animate,
 } from '@angular/animations';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 
 import { HeroDataService } from './hero-data.service';
 import { Hero, HeroAbility, HeroRole, HeroRoleAbilityKit } from './hero.model';
@@ -76,6 +76,7 @@ export class HeroesPageComponent implements OnInit {
   readonly selectedHeroId = signal(this.heroes()[0]?.id ?? '');
   readonly selectedAbilityKitRole = signal<HeroRole>('Vanguard');
   readonly isHeroDetailModalOpen = signal(false);
+  readonly activeAbilityAnchorId = signal('');
 
   readonly filteredHeroes = computed(() => {
     const role = this.selectedRole();
@@ -185,6 +186,29 @@ export class HeroesPageComponent implements OnInit {
     this.closeHeroDetailModal();
   }
 
+  @HostListener('click', ['$event'])
+  handleAbilityLinkClick(event: MouseEvent): void {
+    const link = (event.target as Element).closest<HTMLAnchorElement>('[data-ability-target]');
+
+    if (!link) {
+      return;
+    }
+
+    event.preventDefault();
+    const targetId = link.dataset['abilityTarget'] ?? '';
+    const target = document.getElementById(targetId);
+
+    if (!target) {
+      return;
+    }
+
+    this.activeAbilityAnchorId.set(targetId);
+    target.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+    });
+  }
+
   roleAbilityKits(hero: Hero): HeroRoleAbilityKit[] {
     return hero.roleAbilityKits ?? [];
   }
@@ -209,6 +233,37 @@ export class HeroesPageComponent implements OnInit {
     return hero.playstyle;
   }
 
+  highlightedAbilityText(hero: Hero, text: string): SafeHtml {
+    const abilities = [...this.displayedAbilities(hero)].sort((a, b) => b.name.length - a.name.length);
+    const html = this.escapeHtml(text);
+
+    if (abilities.length === 0) {
+      return this.sanitizer.bypassSecurityTrustHtml(html);
+    }
+
+    const abilityLookup = new Map(abilities.map((ability) => [this.escapeHtml(ability.name).toLowerCase(), ability]));
+    const names = abilities.map((ability) => this.escapeRegExp(this.escapeHtml(ability.name)));
+    const pattern = new RegExp(`(^|[^a-zA-Z0-9])(${names.join('|')})(?=[^a-zA-Z0-9]|$)`, 'gi');
+
+    const linkedHtml = html.replace(pattern, (match, prefix: string, abilityName: string) => {
+      const ability = abilityLookup.get(abilityName.toLowerCase());
+
+      if (!ability) {
+        return match;
+      }
+
+      const anchor = this.abilityAnchorId(hero, ability);
+
+      return `${prefix}<a class="ability-text-link" href="#${anchor}" data-ability-target="${anchor}">${abilityName}</a>`;
+    });
+
+    return this.sanitizer.bypassSecurityTrustHtml(linkedHtml);
+  }
+
+  abilityAnchorId(hero: Hero, ability: HeroAbility): string {
+    return `ability-${hero.id}-${this.slugify(ability.name)}`;
+  }
+
   heroRoleLabel(hero: Hero): HeroRole {
     const role = this.selectedRole();
 
@@ -219,9 +274,33 @@ export class HeroesPageComponent implements OnInit {
     return hero.role === role || this.roleAbilityKits(hero).some((kit) => kit.role === role);
   }
 
+  private escapeHtml(value: string): string {
+    return value
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  private escapeRegExp(value: string): string {
+    return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  private slugify(value: string): string {
+    return value
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+  }
+
   private buildPlaystyle(hero: Hero, role: HeroRole, abilities: HeroAbility[]): string {
     const primary = abilities[0]?.name ?? hero.name;
-    const utility = abilities.find((ability) => ability.type !== 'Normal Attack')?.name ?? abilities[1]?.name ?? primary;
+    const utility =
+      abilities.find((ability) => ability.type === 'Ability')?.name ??
+      abilities.find((ability) => ability.type !== 'Normal Attack' && ability.type !== 'Ultimate')?.name ??
+      abilities[1]?.name ??
+      primary;
     const weakness = hero.weaknesses[0]?.replace(/\.$/, '').toLowerCase();
 
     switch (role) {

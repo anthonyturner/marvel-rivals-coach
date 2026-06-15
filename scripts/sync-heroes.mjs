@@ -23,6 +23,7 @@ mkdirSync(dirname(databasePath), { recursive: true });
 const db = new DatabaseSync(databasePath);
 db.exec(readFileSync(schemaPath, 'utf8'));
 db.exec('PRAGMA foreign_keys = ON;');
+migrateAbilityTechnicalDetails();
 
 const getExistingHero = db.prepare('SELECT raw_json FROM heroes WHERE id = ?');
 const upsertHero = db.prepare(`
@@ -48,9 +49,9 @@ const insertHeroListItem = db.prepare(`
 `);
 const insertHeroAbility = db.prepare(`
   INSERT INTO hero_abilities (
-    hero_id, kit_role, kit_label, name, ability_type, description, sort_order
+    hero_id, kit_role, kit_label, name, ability_type, description, technical_details_json, sort_order
   )
-  VALUES (?, ?, ?, ?, ?, ?, ?)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?)
 `);
 const insertSyncRun = db.prepare(`
   INSERT INTO sync_runs (source_key, status, message, started_at)
@@ -183,6 +184,10 @@ async function buildHero(pageTitle) {
   const synergies = getSynergies(text);
   const abilities = await getAbilities(pageTitle);
 
+  const roleAbilityKits = id === 'deadpool' && existingHero?.roleAbilityKits
+    ? await enrichDeadpoolRoleAbilityKits(existingHero.roleAbilityKits)
+    : existingHero?.roleAbilityKits;
+
   const syncedHero = {
     id,
     name: pageTitle,
@@ -194,6 +199,7 @@ async function buildHero(pageTitle) {
     counters: existingHero?.counters?.length > 0 ? existingHero.counters : getFallbackCounters(role),
     synergies: synergies.length > 0 ? synergies : fallbackSynergies(role),
     abilities: abilities.length > 0 ? abilities : existingHero?.abilities ?? [],
+    roleAbilityKits,
     imageUrl: getImageUrl(id, existingHero?.imageUrl),
   };
 
@@ -211,7 +217,7 @@ function mergeHero(existingHero, syncedHero) {
   return {
     ...existingHero,
     ...syncedHero,
-    roleAbilityKits: existingHero.roleAbilityKits,
+    roleAbilityKits: syncedHero.roleAbilityKits ?? existingHero.roleAbilityKits,
     imageUrl: existingHero.imageUrl && !existingHero.imageUrl.includes('default-hero')
       ? existingHero.imageUrl
       : syncedHero.imageUrl,
@@ -266,6 +272,7 @@ function insertAbilities(heroId, kitRole, kitLabel, abilities = []) {
       ability.name,
       ability.type,
       ability.description,
+      JSON.stringify(ability.technicalDetails ?? []),
       index,
     );
   });
@@ -360,7 +367,7 @@ async function getAbilities(pageTitle) {
   if (references.length > 0 && !/^\s*\|name\s*=/m.test(templateText)) {
     const merged = [];
 
-    for (const reference of references.slice(0, 3)) {
+    for (const reference of references) {
       const target = reference[1].trim();
       const targetText = await getWikiText(`Template:${target}`);
 
@@ -376,24 +383,121 @@ async function getAbilities(pageTitle) {
 
   const abilities = parseAbilities(templateText);
 
-  return pickAbilities(abilities);
+  return abilities;
+}
+
+async function enrichDeadpoolRoleAbilityKits(roleAbilityKits) {
+  const roleAbilities = await getDeadpoolRoleAbilities();
+
+  return roleAbilityKits.map((kit) => ({
+    ...kit,
+    abilities: kit.abilities.map((ability) => {
+      const details = findDeadpoolTechnicalDetails(roleAbilities.get(kit.role) ?? [], ability.name);
+
+      return details.length > 0
+        ? {
+            ...ability,
+            technicalDetails: details,
+          }
+        : ability;
+    }),
+  }));
+}
+
+async function getDeadpoolRoleAbilities() {
+  const templateText = await getWikiText('Template:Abilities/Deadpool');
+  const references = [...templateText.matchAll(/SkillTable\|(?:1=)?([^}|]+)/g)]
+    .map((reference) => reference[1].trim())
+    .filter((reference) => /Abilities\/Deadpool\//.test(reference));
+  const roleAbilities = new Map();
+
+  for (const reference of references) {
+    const role = reference.match(/Abilities\/Deadpool\/([^/]+)/)?.[1];
+    const targetText = await getWikiText(`Template:${reference}`);
+
+    if (!role || !targetText) {
+      continue;
+    }
+
+    roleAbilities.set(role, [...(roleAbilities.get(role) ?? []), ...parseAbilities(targetText)]);
+  }
+
+  return roleAbilities;
+}
+
+function findDeadpoolTechnicalDetails(roleAbilities, kitAbilityName) {
+  const normalizedKitName = normalizeDeadpoolAbilityName(kitAbilityName);
+  const exact = roleAbilities.find((ability) => normalizeDeadpoolAbilityName(ability.name) === normalizedKitName);
+
+  if (exact?.technicalDetails?.length > 0) {
+    return exact.technicalDetails;
+  }
+
+  const partial = roleAbilities.find((ability) => {
+    const normalizedAbilityName = normalizeDeadpoolAbilityName(ability.name);
+
+    return normalizedAbilityName.includes(normalizedKitName) || normalizedKitName.includes(normalizedAbilityName);
+  });
+
+  return partial?.technicalDetails ?? [];
+}
+
+function normalizeDeadpoolAbilityName(value) {
+  return removeWikiMarkup(value)
+    .toLowerCase()
+    .replace(/\bhijinks\b/g, 'hijinx')
+    .replace(/\bkatana\b/g, 'katanas')
+    .replace(/\s+-\s+(vanguard|duelist|strategist)(\s+upgraded)?$/i, '')
+    .replace(/\s+-\s+upgraded$/i, '')
+    .replace(/\bupgraded\b/g, '')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 function parseAbilities(templateText) {
   let currentType = 'Ability';
   const abilities = [];
+  let readingDescription = false;
+  let descriptionLines = [];
+
+  function finishDescription() {
+    if (!readingDescription || abilities.length === 0) {
+      return;
+    }
+
+    const ability = abilities[abilities.length - 1];
+    const parsedDescription = splitAbilityDescription(descriptionLines.join('\n'));
+
+    ability.description = parsedDescription.summary;
+    ability.technicalDetails = parsedDescription.technicalDetails;
+    readingDescription = false;
+    descriptionLines = [];
+  }
 
   for (const line of templateText.split('\n')) {
+    if (readingDescription) {
+      if (/^\s*\}\}/.test(line)) {
+        finishDescription();
+        continue;
+      }
+
+      descriptionLines.push(line);
+      continue;
+    }
+
     const title = line.match(/\{\{Skill\/Title\|([^}]+)\}\}/);
 
     if (title) {
-      currentType = removeWikiMarkup(title[1]);
+      finishDescription();
+      currentType = normalizeAbilitySection(removeWikiMarkup(title[1]));
       continue;
     }
 
     const name = line.match(/^\s*\|name\s*=\s*(.+)$/);
 
     if (name) {
+      finishDescription();
       const cleanName = removeWikiMarkup(name[1]);
 
       if (cleanName) {
@@ -401,45 +505,112 @@ function parseAbilities(templateText) {
           name: cleanName,
           type: currentType,
           description: '',
+          technicalDetails: [],
+          key: '',
         });
       }
 
       continue;
     }
 
+    const key = line.match(/^\s*\|key\s*=\s*(.+)$/);
+
+    if (key && abilities.length > 0) {
+      const ability = abilities[abilities.length - 1];
+      ability.key = removeWikiMarkup(key[1]);
+      ability.type = normalizeAbilityType(currentType, ability.key);
+      continue;
+    }
+
     const description = line.match(/^\s*\|description\s*=\s*(.+)$/);
 
     if (description && abilities.length > 0) {
-      abilities[abilities.length - 1].description = truncate(removeWikiMarkup(description[1]), 180);
+      readingDescription = true;
+      descriptionLines = [description[1]];
     }
   }
 
-  return abilities;
+  finishDescription();
+
+  return abilities.map(({ key, ...ability }) => ability);
 }
 
-function pickAbilities(abilities) {
-  const picked = [];
-  const normal = abilities.find((ability) => ability.type === 'Normal Attack');
-  const ultimate = abilities.find((ability) => ability.type === 'Abilities' && /ultimate|Energy Cost|taunt|challenge/i.test(ability.description));
-  const utility = abilities.find((ability) => ability.type === 'Abilities' && ability.name !== ultimate?.name);
+function splitAbilityDescription(descriptionBlock) {
+  const sections = descriptionBlock.split(/\n\s*----\s*\n/g);
+  const summary = removeWikiMarkup(sections[0]);
+  const technicalDetails = sections
+    .slice(1)
+    .map(parseTechnicalDetail)
+    .filter(Boolean);
 
-  for (const ability of [normal, ultimate, utility]) {
-    if (ability && !picked.some((pickedAbility) => pickedAbility.name === ability.name)) {
-      picked.push(ability);
-    }
+  return {
+    summary,
+    technicalDetails,
+  };
+}
+
+function parseTechnicalDetail(section) {
+  const cleaned = removeWikiMarkup(section)
+    .replace(/^[\s-]+/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const match = cleaned.match(/^(.+?)\s*[-–]\s*(.+)$/);
+
+  if (!match) {
+    return undefined;
   }
 
-  for (const ability of abilities) {
-    if (picked.length >= 3) {
-      break;
-    }
+  const label = toTitleCase(match[1].replace(/[:：]+$/g, '').trim());
+  const value = match[2].trim();
 
-    if (!picked.some((pickedAbility) => pickedAbility.name === ability.name)) {
-      picked.push(ability);
-    }
+  return label && value ? { label, value } : undefined;
+}
+
+function toTitleCase(value) {
+  return value
+    .toLowerCase()
+    .replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
+}
+
+function migrateAbilityTechnicalDetails() {
+  const columns = db.prepare('PRAGMA table_info(hero_abilities)').all();
+  const hasTechnicalDetails = columns.some((column) => column.name === 'technical_details_json');
+
+  if (!hasTechnicalDetails) {
+    db.exec("ALTER TABLE hero_abilities ADD COLUMN technical_details_json TEXT NOT NULL DEFAULT '[]';");
+  }
+}
+
+function normalizeAbilitySection(value) {
+  if (/normal attack/i.test(value)) {
+    return 'Normal Attack';
   }
 
-  return picked.slice(0, 3);
+  if (/team-up/i.test(value)) {
+    return 'Team-Up Ability';
+  }
+
+  if (/ultimate/i.test(value)) {
+    return 'Ultimate';
+  }
+
+  return 'Ability';
+}
+
+function normalizeAbilityType(sectionType, key = '') {
+  if (sectionType === 'Team-Up Ability' || sectionType === 'Normal Attack' || sectionType === 'Ultimate') {
+    return sectionType;
+  }
+
+  if (/\bq\b|l3\s*\+\s*r3/i.test(key)) {
+    return 'Ultimate';
+  }
+
+  if (/passive/i.test(key)) {
+    return 'Passive';
+  }
+
+  return 'Ability';
 }
 
 function getSynergies(text) {

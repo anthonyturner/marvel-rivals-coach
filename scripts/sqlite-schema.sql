@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS hero_abilities (
   name TEXT NOT NULL,
   ability_type TEXT NOT NULL,
   description TEXT NOT NULL,
+  technical_details_json TEXT NOT NULL DEFAULT '[]',
   sort_order INTEGER NOT NULL
 );
 

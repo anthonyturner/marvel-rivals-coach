@@ -10,7 +10,8 @@ export function buildHeroPlaystyle(hero) {
   const primary = abilities.find((ability) => ability.type === 'Normal Attack')?.name
     ?? abilities[0]?.name
     ?? hero.name;
-  const utility = abilities.find((ability) => ability.type !== 'Normal Attack')?.name
+  const utility = abilities.find((ability) => ability.type === 'Ability')?.name
+    ?? abilities.find((ability) => ability.type !== 'Normal Attack' && ability.type !== 'Ultimate')?.name
     ?? abilities[1]?.name
     ?? primary;
   const weakness = normalizeCaution(cleanFragment(hero.weaknesses?.[0]));
