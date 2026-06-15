@@ -36,6 +36,47 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
+## Content Update Scripts
+
+Run these commands from this project folder:
+
+```powershell
+cd e:\repos\angular\marvel-rivals-coach\marvel-rivals-coach
+```
+
+Refresh generated hero playstyle text from the current SQLite data:
+
+```powershell
+npm.cmd run refresh:playstyles
+```
+
+Pull current hero data from Fandom into SQLite:
+
+```powershell
+npm.cmd run sync:heroes
+```
+
+Rebuild the SQLite database from local mock JSON seed files:
+
+```powershell
+npm.cmd run db:seed
+```
+
+Run the full content refresh pipeline:
+
+```powershell
+npm.cmd run content:update
+```
+
+Typical hero-content refresh:
+
+```powershell
+npm.cmd run sync:heroes
+npm.cmd run refresh:playstyles
+```
+
+Restart the dev server after updating the database so the app reads the latest `.db` content.
+
 ## Running unit tests
 
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:

@@ -3,6 +3,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { DatabaseSync } from 'node:sqlite';
 
+import { buildHeroPlaystyle, isGenericPlaystyle } from './playstyle-utils.mjs';
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const projectRoot = join(__dirname, '..');
 const databasePath = join(projectRoot, 'data', 'marvel-rivals-coach.db');
@@ -56,26 +58,31 @@ function seed() {
   `);
 
   for (const hero of heroes) {
+    const seededHero = {
+      ...hero,
+      playstyle: isGenericPlaystyle(hero.playstyle) ? buildHeroPlaystyle(hero) : hero.playstyle,
+    };
+
     insertHero.run(
-      hero.id,
-      hero.name,
-      hero.role,
-      hero.difficulty,
-      hero.summary,
-      hero.playstyle,
-      hero.imageUrl,
-      JSON.stringify(hero),
+      seededHero.id,
+      seededHero.name,
+      seededHero.role,
+      seededHero.difficulty,
+      seededHero.summary,
+      seededHero.playstyle,
+      seededHero.imageUrl,
+      JSON.stringify(seededHero),
     );
 
-    insertListItems(hero.id, 'strength', hero.strengths);
-    insertListItems(hero.id, 'weakness', hero.weaknesses);
-    insertListItems(hero.id, 'counter', hero.counters);
-    insertListItems(hero.id, 'synergy', hero.synergies);
+    insertListItems(seededHero.id, 'strength', seededHero.strengths);
+    insertListItems(seededHero.id, 'weakness', seededHero.weaknesses);
+    insertListItems(seededHero.id, 'counter', seededHero.counters);
+    insertListItems(seededHero.id, 'synergy', seededHero.synergies);
 
-    insertAbilities(hero.id, null, null, hero.abilities);
+    insertAbilities(seededHero.id, null, null, seededHero.abilities);
 
-    for (const kit of hero.roleAbilityKits ?? []) {
-      insertAbilities(hero.id, kit.role, kit.label, kit.abilities);
+    for (const kit of seededHero.roleAbilityKits ?? []) {
+      insertAbilities(seededHero.id, kit.role, kit.label, kit.abilities);
     }
   }
 

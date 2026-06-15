@@ -29,8 +29,7 @@
   background-image: url('/images/site/heroes-fandom-background.png');
   background-repeat: no-repeat;
   background-size: auto;
-  background-position-x: center;
-  background-position-y: top 25%;
+  background-position: center top 25%;
   box-shadow: 0 22px 46px rgba(16, 24, 40, 0.22), inset 0 1px rgba(255, 255, 255, 0.22);
   transform: perspective(1200px) rotateX(1deg);
 }
@@ -124,7 +123,6 @@ h1 {
 
 .header-stat small {
   color: rgba(255, 255, 255, 0.8);
-  font-weight: 700;
 }
 
 .toolbar {
@@ -198,6 +196,16 @@ h1 {
   gap: 20px;
   align-items: start;
   padding: 20px 0 40px;
+  transition: grid-template-columns 280ms ease;
+}
+
+.heroes-layout.detail-modal-open {
+  grid-template-columns: minmax(460px, 1fr) minmax(300px, 520px);
+}
+
+.heroes-layout.detail-modal-open .hero-grid,
+.heroes-layout.detail-modal-open>.hero-detail:last-child {
+  animation: slide-left 280ms ease both;
 }
 
 .hero-grid {
@@ -293,12 +301,59 @@ h1 {
   gap: 20px;
   max-height: calc(100dvh - 98px);
   overflow-y: auto;
-  overscroll-behavior: contain;
   padding: 20px;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--bg-elevated);
-  scrollbar-gutter: stable;
+}
+
+.detail-pop-button,
+.modal-close-button {
+  width: fit-content;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid rgba(3, 159, 159, 0.28);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.62);
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.detail-pop-button:hover,
+.modal-close-button:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.hero-detail-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(10, 18, 32, 0.18);
+  backdrop-filter: blur(6px);
+}
+
+.hero-detail.hero-detail-modal {
+  position: relative;
+  top: auto;
+  width: min(980px, 100%);
+  max-height: min(88dvh, 920px);
+  overflow-y: auto;
+  background: transparent;
+  backdrop-filter: blur(18px) saturate(145%);
+  box-shadow: 0 30px 90px rgba(16, 24, 40, 0.38), inset 0 1px rgba(255, 255, 255, 0.82);
+}
+
+.modal-close-button {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  justify-self: end;
 }
 
 .detail-hero {
@@ -307,15 +362,15 @@ h1 {
   align-items: center;
 }
 
-h2 {
+.hero-detail h2 {
   color: var(--text);
   font-size: 1.55rem;
   line-height: 1.05;
 }
 
-h3 {
+.hero-detail h3 {
   color: var(--text);
-  font-size: 0.88rem;
+  font-size: .78rem;
   text-transform: uppercase;
 }
 
@@ -337,7 +392,7 @@ h3 {
 }
 
 .playstyle {
-  color: var(--text-soft);
+  color: var(--text);
   font-size: 1rem;
   line-height: 1.65;
 }
@@ -353,9 +408,9 @@ h3 {
 .matchup-row section,
 .abilities article {
   padding: 14px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(3, 159, 159, 0.18);
   border-radius: 8px;
-  background: var(--surface);
+  background: rgba(255, 255, 255, 0.72);
 }
 
 ul {
@@ -363,7 +418,7 @@ ul {
   gap: 8px;
   margin: 12px 0 0;
   padding-left: 18px;
-  color: var(--text-soft);
+  color: var(--text);
 }
 
 .tag-list {
@@ -377,8 +432,8 @@ ul {
   padding: 7px 9px;
   border: 1px solid var(--border);
   border-radius: 999px;
-  color: var(--text-soft);
-  background: var(--bg-panel-soft);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.76);
   font-size: 0.84rem;
   font-weight: 700;
 }
@@ -478,7 +533,7 @@ ul {
 }
 
 .abilities article p {
-  color: var(--text-muted);
+  color: var(--text);
   line-height: 1.5;
 }
 
@@ -566,6 +621,10 @@ ul {
     grid-template-columns: minmax(300px, 360px) minmax(420px, 1fr);
   }
 
+  .heroes-layout.detail-modal-open {
+    grid-template-columns: minmax(420px, 1fr);
+  }
+
   .heroes-layout>.hero-detail:last-child {
     grid-column: 1 / -1;
   }
@@ -608,12 +667,29 @@ ul {
     overflow: visible;
   }
 
+  .hero-detail-modal {
+    max-height: calc(100dvh - 40px);
+    overflow-y: auto;
+  }
+
   .heroes-layout>.hero-detail:last-child {
     grid-column: auto;
   }
 
   .heroes-layout>.hero-detail:last-child .video-list {
     grid-template-columns: 1fr;
+  }
+}
+
+@keyframes slide-left {
+  from {
+    opacity: 0.76;
+    transform: translateX(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 

@@ -10,6 +10,7 @@
     "db:seed": "node scripts/seed-sqlite.mjs",
     "db:sync": "node scripts/sync-external-sources.mjs",
     "sync:heroes": "node scripts/sync-heroes.mjs",
+    "refresh:playstyles": "node scripts/refresh-playstyles.mjs",
     "content:update": "npm run db:seed && npm run db:sync && npm run sync:heroes",
     "serve:ssr:marvel-rivals-coach": "node dist/marvel-rivals-coach/server/server.mjs"
   },

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import {
   Component,
   computed,
+  HostListener,
   inject,
   OnInit,
   signal,
@@ -44,6 +45,24 @@ interface HeroVideoSearch {
         })),
       ]),
     ]),
+    trigger('modalZoom', [
+      transition(':enter', [
+        style({
+          opacity: 0,
+          transform: 'translateY(24px) scale(0.92)',
+        }),
+        animate('260ms cubic-bezier(0.2, 0.8, 0.2, 1)', style({
+          opacity: 1,
+          transform: 'translateY(0) scale(1)',
+        })),
+      ]),
+      transition(':leave', [
+        animate('180ms ease-in', style({
+          opacity: 0,
+          transform: 'translateY(18px) scale(0.96)',
+        })),
+      ]),
+    ]),
   ],
 })
 export class HeroesPageComponent implements OnInit {
@@ -56,13 +75,14 @@ export class HeroesPageComponent implements OnInit {
   readonly searchTerm = signal('');
   readonly selectedHeroId = signal(this.heroes()[0]?.id ?? '');
   readonly selectedAbilityKitRole = signal<HeroRole>('Vanguard');
+  readonly isHeroDetailModalOpen = signal(false);
 
   readonly filteredHeroes = computed(() => {
     const role = this.selectedRole();
     const searchTerm = this.searchTerm().trim().toLowerCase();
 
     return this.heroes().filter((hero) => {
-      const matchesRole = role === 'All' || hero.role === role;
+      const matchesRole = role === 'All' || this.heroMatchesRole(hero, role);
       const matchesSearch =
         searchTerm.length === 0 ||
         hero.name.toLowerCase().includes(searchTerm) ||
@@ -88,7 +108,7 @@ export class HeroesPageComponent implements OnInit {
       return [];
     }
 
-    const guide = this.gefestRoleGuide(hero.role);
+    const guide = this.gefestRoleGuide(this.heroRoleLabel(hero));
     const gameplay = this.pazGameplayVideo(hero);
     const countersAndCombos = this.pazCountersCombosVideo(hero);
 
@@ -112,18 +132,26 @@ export class HeroesPageComponent implements OnInit {
   selectRole(role: HeroRoleFilter): void {
     this.selectedRole.set(role);
     this.selectedHeroId.set(this.filteredHeroes()[0]?.id ?? '');
-    this.selectedAbilityKitRole.set('Vanguard');
+    this.selectedAbilityKitRole.set(role === 'All' ? 'Vanguard' : role);
+    this.closeHeroDetailModal();
   }
 
   selectHero(heroId: string): void {
     this.selectedHeroId.set(heroId);
-    this.selectedAbilityKitRole.set('Vanguard');
+    const role = this.selectedRole();
+
+    if (role !== 'All') {
+      this.selectedAbilityKitRole.set(role);
+    }
+
+    this.openHeroDetailModal();
   }
 
   updateSearch(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.searchTerm.set(input.value);
     this.selectedHeroId.set(this.filteredHeroes()[0]?.id ?? '');
+    this.closeHeroDetailModal();
   }
 
   roleClass(role: HeroRole): string {
@@ -142,6 +170,21 @@ export class HeroesPageComponent implements OnInit {
     this.selectedAbilityKitRole.set(role);
   }
 
+  openHeroDetailModal(): void {
+    if (this.selectedHero()) {
+      this.isHeroDetailModalOpen.set(true);
+    }
+  }
+
+  closeHeroDetailModal(): void {
+    this.isHeroDetailModalOpen.set(false);
+  }
+
+  @HostListener('document:keydown.escape')
+  closeHeroDetailModalOnEscape(): void {
+    this.closeHeroDetailModal();
+  }
+
   roleAbilityKits(hero: Hero): HeroRoleAbilityKit[] {
     return hero.roleAbilityKits ?? [];
   }
@@ -154,6 +197,43 @@ export class HeroesPageComponent implements OnInit {
 
   displayedAbilities(hero: Hero): HeroAbility[] {
     return this.selectedAbilityKit(hero)?.abilities ?? hero.abilities;
+  }
+
+  displayedPlaystyle(hero: Hero): string {
+    const kit = this.selectedAbilityKit(hero);
+
+    if (kit) {
+      return this.buildPlaystyle(hero, kit.role, kit.abilities);
+    }
+
+    return hero.playstyle;
+  }
+
+  heroRoleLabel(hero: Hero): HeroRole {
+    const role = this.selectedRole();
+
+    return role !== 'All' && this.heroMatchesRole(hero, role) ? role : hero.role;
+  }
+
+  private heroMatchesRole(hero: Hero, role: HeroRole): boolean {
+    return hero.role === role || this.roleAbilityKits(hero).some((kit) => kit.role === role);
+  }
+
+  private buildPlaystyle(hero: Hero, role: HeroRole, abilities: HeroAbility[]): string {
+    const primary = abilities[0]?.name ?? hero.name;
+    const utility = abilities.find((ability) => ability.type !== 'Normal Attack')?.name ?? abilities[1]?.name ?? primary;
+    const weakness = hero.weaknesses[0]?.replace(/\.$/, '').toLowerCase();
+
+    switch (role) {
+      case 'Vanguard':
+        return `Anchor space with ${utility}, then use ${primary} to pressure targets that overcommit. Respect ${weakness ?? 'cooldown windows'} before taking extended trades.`;
+      case 'Strategist':
+        return `Play near cover and keep allies in your line of sight while cycling ${primary} and ${utility}. Save your escape or sustain tools for dive pressure instead of spending them early.`;
+      case 'Duelist':
+        return `Look for off-angles where ${primary} can pressure exposed targets, then commit with ${utility} after enemy peel is forced. Reset to cover before cooldowns are punished.`;
+      default:
+        return `Flex your role around the selected kit: use ${primary} for baseline pressure and ${utility} to swing the fight when enemies are already committed.`;
+    }
   }
 
   private youtubeSearchUrl(query: string): string {

@@ -3,6 +3,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { DatabaseSync } from 'node:sqlite';
 
+import { buildHeroPlaystyle } from './playstyle-utils.mjs';
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const projectRoot = join(__dirname, '..');
 const databasePath = join(projectRoot, 'data', 'marvel-rivals-coach.db');
@@ -181,19 +183,23 @@ async function buildHero(pageTitle) {
   const synergies = getSynergies(text);
   const abilities = await getAbilities(pageTitle);
 
-  return mergeHero(existingHero, {
+  const syncedHero = {
     id,
     name: pageTitle,
     role,
     difficulty,
     summary: getOfficialSummary(text, pageTitle, role),
-    playstyle: `Use ${pageTitle} as a ${role} around cover, cooldown timing, and team follow-up.`,
     strengths: strengths.length > 0 ? strengths : fallbackStrengths(role),
     weaknesses: weaknesses.length > 0 ? weaknesses : fallbackWeaknesses(role),
     counters: existingHero?.counters?.length > 0 ? existingHero.counters : getFallbackCounters(role),
     synergies: synergies.length > 0 ? synergies : fallbackSynergies(role),
     abilities: abilities.length > 0 ? abilities : existingHero?.abilities ?? [],
     imageUrl: getImageUrl(id, existingHero?.imageUrl),
+  };
+
+  return mergeHero(existingHero, {
+    ...syncedHero,
+    playstyle: buildHeroPlaystyle(syncedHero),
   });
 }
 
