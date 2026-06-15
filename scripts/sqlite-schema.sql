@@ -44,6 +44,23 @@ CREATE TABLE IF NOT EXISTS hero_videos (
   updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS home_portals (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT NOT NULL,
+  description TEXT NOT NULL,
+  path TEXT NOT NULL,
+  image TEXT NOT NULL,
+  sort_order INTEGER NOT NULL,
+  raw_json TEXT NOT NULL,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS home_content_blocks (
+  content_key TEXT PRIMARY KEY,
+  payload_json TEXT NOT NULL,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE IF NOT EXISTS glossary_terms (
   id TEXT PRIMARY KEY,
   term TEXT NOT NULL,
@@ -82,5 +99,6 @@ CREATE INDEX IF NOT EXISTS idx_hero_abilities_hero_id ON hero_abilities(hero_id)
 CREATE INDEX IF NOT EXISTS idx_hero_videos_hero_id ON hero_videos(hero_id);
 CREATE INDEX IF NOT EXISTS idx_hero_videos_role ON hero_videos(role);
 CREATE INDEX IF NOT EXISTS idx_hero_videos_type ON hero_videos(video_type);
+CREATE INDEX IF NOT EXISTS idx_home_portals_sort_order ON home_portals(sort_order);
 CREATE INDEX IF NOT EXISTS idx_glossary_terms_category ON glossary_terms(category);
 CREATE INDEX IF NOT EXISTS idx_sync_runs_source_key ON sync_runs(source_key);

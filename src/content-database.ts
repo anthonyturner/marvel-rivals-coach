@@ -1,6 +1,7 @@
 import { createClient, type Client } from '@tursodatabase/serverless/compat';
 
 import { GlossaryTerm } from './app/glossary/glossary.model';
+import { HomeContent, PortalCard } from './app/home/home-content.model';
 import { Hero, HeroVideo } from './app/heroes/hero.model';
 
 const nodeProcess = process as typeof process & {
@@ -21,6 +22,8 @@ type ContentStatus = {
   glossaryTerms: number;
   externalSources: number;
   heroVideos: number;
+  homePortals: number;
+  homeContentBlocks: number;
 };
 
 let client: Client | undefined;
@@ -62,6 +65,23 @@ export async function getHeroVideosFromDatabase(): Promise<HeroVideo[]> {
   }));
 }
 
+export async function getHomePortalsFromDatabase(): Promise<PortalCard[]> {
+  return queryRows<{ raw_json: string }>(
+    'SELECT raw_json FROM home_portals ORDER BY sort_order, title COLLATE NOCASE',
+  ).then((rows) => rows.map((row) => JSON.parse(row.raw_json) as PortalCard));
+}
+
+export async function getHomeContentBlocksFromDatabase(): Promise<Partial<HomeContent>> {
+  const rows = await queryRows<{ content_key: keyof HomeContent; payload_json: string }>(
+    'SELECT content_key, payload_json FROM home_content_blocks',
+  );
+
+  return rows.reduce<Partial<HomeContent>>((content, row) => ({
+    ...content,
+    [row.content_key]: JSON.parse(row.payload_json),
+  }), {});
+}
+
 export async function getGlossaryTermsFromDatabase(): Promise<GlossaryTerm[]> {
   return queryRows<{ raw_json: string }>(
     'SELECT raw_json FROM glossary_terms ORDER BY term COLLATE NOCASE',
@@ -86,6 +106,8 @@ export async function getContentStatusFromDatabase(): Promise<ContentStatus> {
     glossaryTerms: await getCount('glossary_terms'),
     externalSources: await getCount('external_sources'),
     heroVideos: await getCount('hero_videos'),
+    homePortals: await getCount('home_portals'),
+    homeContentBlocks: await getCount('home_content_blocks'),
   };
 }
 

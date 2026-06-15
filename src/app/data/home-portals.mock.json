@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Heroes",
+    "description": "Browse roles, abilities, strengths, counters, and video searches for the roster.",
+    "path": "/heroes",
+    "image": "/images/heroes/phoenix.png"
+  },
+  {
+    "title": "Techniques",
+    "description": "Study core fundamentals like cover, high ground, power positions, timing, and lane control.",
+    "path": "/techniques",
+    "image": "/images/heroes/doctor-strange.png"
+  },
+  {
+    "title": "Media Tutorials",
+    "description": "Watch embedded tutorials and jump into matching transcript guides where available.",
+    "path": "/media-tutorials",
+    "image": "/images/heroes/magneto.png"
+  },
+  {
+    "title": "Learning Paths",
+    "description": "Follow role-based watch orders and practice drills for focused improvement blocks.",
+    "path": "/learning-paths",
+    "image": "/images/heroes/star-lord.png"
+  },
+  {
+    "title": "Watch Next Quiz",
+    "description": "Answer three questions and get a recommended watch list plus a matching drill.",
+    "path": "/watch-next",
+    "image": "/images/heroes/luna-snow.png"
+  },
+  {
+    "title": "Glossary",
+    "description": "Decode coach language: power positions, one-angle rule, cooldown trade, and more.",
+    "path": "/glossary",
+    "image": "/images/heroes/rocket-raccoon.png"
+  }
+]

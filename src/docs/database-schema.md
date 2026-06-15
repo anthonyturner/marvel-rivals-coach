@@ -56,6 +56,14 @@ Stores hero abilities. Default abilities use empty `kit_role` and `kit_label`; r
 Stores hero-specific and role-fallback YouTube video mappings used by the Heroes page.
 PAZ gameplay and counters/combos videos are seeded here so the page does not carry those mappings in component code.
 
+### `home_portals`
+
+Stores the home page portal cards.
+
+### `home_content_blocks`
+
+Stores the remaining home page content blocks by key, including stats, news cards, featured guides, quick links, and current focus copy.
+
 ### `glossary_terms`
 
 Stores the glossary content and keeps the full source object in `raw_json`.
@@ -76,6 +84,8 @@ The Express SSR server exposes read-only routes:
 - `GET /api/heroes`
 - `GET /api/heroes/:id`
 - `GET /api/hero-videos`
+- `GET /api/home/content`
+- `GET /api/home/portals`
 - `GET /api/glossary`
 - `GET /api/external-sources/:sourceKey`
 

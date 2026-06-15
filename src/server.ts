@@ -14,6 +14,8 @@ import {
   getHeroFromDatabase,
   getHeroVideosFromDatabase,
   getHeroesFromDatabase,
+  getHomeContentBlocksFromDatabase,
+  getHomePortalsFromDatabase,
 } from './content-database';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
@@ -45,6 +47,14 @@ app.get('/api/heroes/:id', (req, res) => {
 
 app.get('/api/hero-videos', (_req, res) => {
   handleApiResponse(res, () => getHeroVideosFromDatabase());
+});
+
+app.get('/api/home/portals', (_req, res) => {
+  handleApiResponse(res, () => getHomePortalsFromDatabase());
+});
+
+app.get('/api/home/content', (_req, res) => {
+  handleApiResponse(res, () => getHomeContentBlocksFromDatabase());
 });
 
 app.get('/api/glossary', (_req, res) => {

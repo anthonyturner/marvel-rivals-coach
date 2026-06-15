@@ -158,6 +158,8 @@ The Express server exposes database data through routes:
 GET /api/heroes
 GET /api/heroes/:id
 GET /api/hero-videos
+GET /api/home/content
+GET /api/home/portals
 GET /api/glossary
 GET /api/external-sources/:sourceKey
 GET /api/content/status

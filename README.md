@@ -5,6 +5,7 @@ Marvel Rivals Coach is an Angular companion site for learning heroes, matchups, 
 ## What The App Includes
 
 - A landing page with current Marvel Rivals news and battle pass content.
+- Database-backed home page content blocks for stats, news cards, portal cards, featured guides, quick links, and current focus copy.
 - A hero encyclopedia with role filters, search, row/thumb layouts, hero detail modals, video embeds, counters, synergies, strengths, weaknesses, playstyle notes, and full ability kits.
 - Database-backed hero video mappings for PAZ gameplay and counters/combos embeds.
 - Ability cards with technical details such as energy cost, cooldown, damage, range, projectile speed, duration, healing, and other parsed stat rows.
@@ -67,6 +68,8 @@ Important files:
 | `scripts/sync-external-sources.mjs` | Caches external source payloads in Turso |
 | `scripts/refresh-playstyles.mjs` | Regenerates hero playstyle copy from current Turso content |
 | `src/app/data/hero-videos.mock.json` | Seed data for hero-specific and role-fallback video embeds |
+| `src/app/data/home-content.mock.json` | Seed data for home stats, news, guides, quick links, and focus copy |
+| `src/app/data/home-portals.mock.json` | Seed data for home portal cards |
 | `scripts/turso-client.mjs` | Shared Turso client helper for scripts |
 | `src/content-database.ts` | Server-side Turso read helpers |
 | `src/server.ts` | Express API and SSR server |
@@ -77,6 +80,8 @@ Available API routes include:
 GET /api/heroes
 GET /api/heroes/:id
 GET /api/hero-videos
+GET /api/home/content
+GET /api/home/portals
 GET /api/glossary
 GET /api/external-sources/:sourceKey
 GET /api/content/status
