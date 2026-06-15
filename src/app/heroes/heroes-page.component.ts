@@ -19,6 +19,7 @@ import { HeroDataService } from './hero-data.service';
 import { Hero, HeroAbility, HeroRole, HeroRoleAbilityKit } from './hero.model';
 
 type HeroRoleFilter = HeroRole | 'All';
+type HeroGridMode = 'rows' | 'thumbs';
 
 interface HeroVideoSearch {
   label: string;
@@ -72,6 +73,7 @@ export class HeroesPageComponent implements OnInit {
 
   readonly roles: HeroRoleFilter[] = ['All', 'Vanguard', 'Duelist', 'Strategist'];
   readonly selectedRole = signal<HeroRoleFilter>('All');
+  readonly heroGridMode = signal<HeroGridMode>('rows');
   readonly searchTerm = signal('');
   readonly selectedHeroId = signal(this.heroes()[0]?.id ?? '');
   readonly selectedAbilityKitRole = signal<HeroRole>('Vanguard');
@@ -135,6 +137,10 @@ export class HeroesPageComponent implements OnInit {
     this.selectedHeroId.set(this.filteredHeroes()[0]?.id ?? '');
     this.selectedAbilityKitRole.set(role === 'All' ? 'Vanguard' : role);
     this.closeHeroDetailModal();
+  }
+
+  selectHeroGridMode(mode: HeroGridMode): void {
+    this.heroGridMode.set(mode);
   }
 
   selectHero(heroId: string): void {

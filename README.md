@@ -36,6 +36,50 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
+## GitHub Setup
+
+After cloning the repository, install dependencies:
+
+```powershell
+npm.cmd install
+```
+
+Create a local environment file from the safe example:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+The `.env` file is ignored by Git and should contain only local or deployment-specific values. Do not commit real API keys, tokens, passwords, or private deployment settings.
+
+The SQLite database is also ignored by Git. Recreate it locally after cloning:
+
+```powershell
+npm.cmd run content:update
+```
+
+For normal development:
+
+```powershell
+npm.cmd start
+```
+
+For a production build:
+
+```powershell
+npm.cmd run build
+```
+
+Files that should stay out of GitHub include:
+
+- `.env` and `.env.*`
+- `data/*.db`
+- `node_modules/`
+- `dist/`
+- `.angular/`
+- `tmp-*`
+- local dev logs
+
 ## Content Update Scripts
 
 Run these commands from this project folder:

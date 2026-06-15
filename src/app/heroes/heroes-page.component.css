@@ -127,7 +127,7 @@ h1 {
 
 .toolbar {
   display: grid;
-  grid-template-columns: minmax(240px, 420px) 1fr;
+  grid-template-columns: minmax(240px, 420px) 1fr auto;
   gap: 16px;
   align-items: end;
   margin-top: 18px;
@@ -165,14 +165,16 @@ h1 {
   box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
-.role-tabs {
+.role-tabs,
+.view-toggle {
   display: flex;
   flex-wrap: wrap;
   justify-content: end;
   gap: 8px;
 }
 
-.role-tabs button {
+.role-tabs button,
+.view-toggle button {
   min-height: 42px;
   padding: 0 14px;
   border: 1px solid var(--border);
@@ -184,7 +186,9 @@ h1 {
 }
 
 .role-tabs button.active,
-.role-tabs button:hover {
+.role-tabs button:hover,
+.view-toggle button.active,
+.view-toggle button:hover {
   border-color: rgba(3, 159, 159, 0.42);
   background: var(--accent);
   color: var(--accent-ink);
@@ -211,6 +215,11 @@ h1 {
 .hero-grid {
   display: grid;
   gap: 12px;
+}
+
+.hero-grid.thumb-grid {
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  align-items: stretch;
 }
 
 .hero-card {
@@ -257,6 +266,19 @@ h1 {
   line-height: 1.45;
 }
 
+.thumb-grid .hero-card {
+  grid-template-columns: 1fr;
+}
+
+.thumb-grid .hero-image {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+}
+
+.thumb-grid .hero-card-copy>span:last-child {
+  display: none;
+}
+
 .hero-image {
   width: 74px;
   aspect-ratio: 1;
@@ -271,27 +293,43 @@ h1 {
 }
 
 .vanguard {
-  background-color: var(--blue);
+  --role-color: var(--blue);
 }
 
 .duelist {
-  background-color: var(--danger);
+  --role-color: var(--danger);
 }
 
 .strategist {
-  background-color: var(--teal);
+  --role-color: var(--teal);
 }
 
 .multi-role {
-  background-color: var(--purple);
+  --role-color: var(--purple);
 }
 
 .role-pill {
-  padding: 5px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 7px 3px 6px;
+  border: 1px solid color-mix(in srgb, var(--role-color, var(--accent)) 34%, transparent);
   border-radius: 999px;
-  color: var(--text);
-  font-size: 0.72rem;
-  font-weight: 750;
+  background: color-mix(in srgb, var(--role-color, var(--accent)) 10%, #ffffff);
+  color: color-mix(in srgb, var(--role-color, var(--accent)) 68%, var(--text));
+  font-size: 0.66rem;
+  font-weight: 850;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.role-pill::before {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--role-color, var(--accent));
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--role-color, var(--accent)) 16%, transparent);
+  content: '';
 }
 
 .hero-detail {

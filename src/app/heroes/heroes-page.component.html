@@ -46,6 +46,23 @@
         </button>
       }
     </div>
+
+    <div class="view-toggle" aria-label="Hero card layout">
+      <button
+        type="button"
+        [class.active]="heroGridMode() === 'rows'"
+        (click)="selectHeroGridMode('rows')"
+      >
+        Rows
+      </button>
+      <button
+        type="button"
+        [class.active]="heroGridMode() === 'thumbs'"
+        (click)="selectHeroGridMode('thumbs')"
+      >
+        Thumbs
+      </button>
+    </div>
   </section>
   
 
@@ -59,7 +76,7 @@
         </aside>
       }
     }
-    <section class="hero-grid" aria-label="Hero list">
+    <section class="hero-grid" [class.thumb-grid]="heroGridMode() === 'thumbs'" aria-label="Hero list">
       @for (hero of filteredHeroes(); track hero.id) {
         <button
           class="hero-card"
