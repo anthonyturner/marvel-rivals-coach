@@ -3,6 +3,7 @@
     <div class="header-copy">
       <div class="hero-kicker">
         <span>{{ selectedHero()?.role ?? 'Hero' }}</span>
+        <small>Roster intelligence</small>
       </div>
       <h1>{{ selectedHero()?.name ?? 'Roster Lab' }}</h1>
       <p class="lede">
@@ -11,7 +12,6 @@
       </p>
       <div class="hero-meta-row" aria-label="Selected hero quick stats">
         <span class="hero-rating" [attr.aria-label]="'Difficulty ' + (selectedHero()?.difficulty ?? 0) + ' out of 5'">
-          Difficulty:
           @for (pip of [1, 2, 3, 4, 5]; track pip) {
           <span [class.filled]="pip <= (selectedHero()?.difficulty ?? 0)">★</span>
           }
@@ -20,8 +20,9 @@
     </div>
 
     <div class="header-stat" aria-label="Visible hero count">
+      <small>Showing</small>
       <span>{{ filteredHeroes().length }}</span>
-      <small>Heroes</small>
+      <small>{{ selectedRole() === 'All' ? 'heroes' : selectedRole() }}</small>
     </div>
   </header>
 

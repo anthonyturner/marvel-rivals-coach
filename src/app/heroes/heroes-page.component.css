@@ -3,7 +3,7 @@
   --modal-gold: #ffd866;
   --heroes-box-shadow: inset 1px 0 var(--modal-gold), inset 0 1px rgba(255, 255, 255, 0.14);
 }
-s
+
 .heroes-page {
   --heroes-glass: rgba(83, 82, 1, 0.336);
   --heroes-glass-soft: rgba(255, 234, 116, 0.12);
@@ -23,48 +23,66 @@ s
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   justify-content: space-between;
-  gap: 28px;
+  gap: 24px;
   align-items: end;
   min-height: 320px;
-  padding: 32px;
+  padding: 34px;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background-image: url('/images/site/heroes-fandom-background.png');
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background-image: url('/images/site/heroes-page-banner.jpg');
   background-repeat: no-repeat;
-  background-size: auto;
-  background-position: center top 25%;
-  box-shadow: 0 22px 46px rgba(16, 24, 40, 0.22), inset 0 1px rgba(255, 255, 255, 0.22);
-  transform: perspective(1200px) rotateX(1deg);
+  background-size: cover;
+  background-position: center top 44%;
+  box-shadow: 0 22px 46px rgba(16, 24, 40, 0.2), inset 0 1px rgba(255, 255, 255, 0.22);
 }
 
 .page-header::before {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: rgba(7, 11, 21, 0.5);
+  background: linear-gradient(90deg, rgba(7, 11, 21, 0.86), rgba(7, 11, 21, 0.5) 52%, rgba(7, 11, 21, 0.18));
   content: '';
 }
 
 .header-copy {
   display: grid;
-  max-width: 680px;
-  gap: 14px;
+  max-width: 720px;
+  gap: 12px;
 }
 
 .hero-kicker {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
-  gap: 10px;
+  width: fit-content;
+  gap: 8px;
   align-items: center;
 }
 
-.hero-kicker span {
+.hero-kicker span,
+.hero-kicker small {
   color: #f8d36b;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 850;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero-kicker small {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.hero-meta-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: fit-content;
+  gap: 10px;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.78rem;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
@@ -96,38 +114,44 @@ p {
 h1 {
   max-width: 720px;
   color: #ffffff;
-  font-size: clamp(2.2rem, 4.8vw, 4.4rem);
-  line-height: 0.98;
+  font-size: clamp(2rem, 4.2vw, 3.8rem);
+  line-height: 1;
   font-weight: 850;
+  text-shadow: 0 14px 26px rgba(0, 0, 0, 0.34);
 }
 
 .lede {
   max-width: 640px;
   margin-top: 0;
-  color: rgba(255, 255, 255, 0.86);
-  font-size: clamp(0.98rem, 1.4vw, 1.08rem);
-  line-height: 1.58;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(0.94rem, 1.2vw, 1.02rem);
+  line-height: 1.55;
 }
 
 .header-stat {
-  min-width: 148px;
-  padding: 18px;
+  min-width: 122px;
+  padding: 14px 16px;
+  border: 1px solid rgba(248, 211, 107, 0.26);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.16);
-  box-shadow: 0 14px 0 rgba(0, 0, 0, 0.18);
+  background: rgba(7, 11, 21, 0.46);
   text-align: right;
-  transform: translateY(-4px);
 }
 
 .header-stat span {
   display: block;
-  color: #ffffff;
-  font-size: 2rem;
-  font-weight: 750;
+  color: #f8d36b;
+  font-size: 2.05rem;
+  font-weight: 850;
+  line-height: 1;
 }
 
 .header-stat small {
-  color: rgba(255, 255, 255, 0.8);
+  display: block;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .toolbar {
@@ -214,7 +238,7 @@ h1 {
   grid-template-columns: minmax(460px, 1fr) minmax(300px, 520px);
 }
 
-.detail-hero-container{
+.detail-hero-container {
   padding: 1rem;
   box-shadow: var(--heroes-box-shadow);
   display: flex;

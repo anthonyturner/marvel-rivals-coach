@@ -36,7 +36,7 @@ interface UltimateStrategy {
 }
 
 interface DeadpoolUpgradeStep {
-  rank: number;
+  rank: number | string;
   name: string;
   reason: string;
   note: string;
@@ -98,77 +98,89 @@ export class HeroesPageComponent implements OnInit {
     Vanguard: [
       {
         rank: 1,
+        name: 'Dual Desert Eagles',
+        reason: 'Adds ranged pressure and Boom Emoji explosive value to your baseline weapon loop.',
+        note: 'Take after core space tools unless you need safer poke early.',
+      },
+      {
+        rank: 4,
+        name: 'Hazardous Hijinks',
+        reason: 'Hit-refresh bounce adds engage, chase, and escape options.',
+        note: 'Move up on maps with strong vertical routes.',
+      },
+      {
+        rank: 5,
         name: 'Deadpool In Your Area',
         reason: 'Best early space tool: 12s cooldown, AoE vision disruption, attack speed, and ally damage reduction.',
         note: 'Take first when you need to walk space.',
       },
       {
         rank: 2,
+        name: 'Kick@$$ Katana',
+        reason: 'Improves close-range brawl pressure and follow-up after Bunny Bounce.',
+        note: 'Move up when you are consistently fighting in melee range.',
+      },
+      {
+        rank: 3,
         name: 'Magical Unicorn Shield!',
         reason: 'Adds a 400-health shield on a 12s cooldown for crosses, holds, and resets.',
         note: 'Swap to first if your team is being burst early.',
       },
       {
-        rank: 3,
-        name: 'Hazardous Hijinks',
-        reason: 'Hit-refresh bounce adds engage, chase, and escape options.',
-        note: 'Move up on maps with strong vertical routes.',
-      },
-      {
-        rank: 4,
+        rank: 7,
         name: 'The Big Test',
         reason: 'Teamfight swing with bonus health, healing, speed, and challenge payoff.',
         note: 'Best before planned objective fights.',
       },
       {
-        rank: 5,
+        rank: 6,
         name: 'The Ban Hammer',
         reason: 'Single-target taunt upgrade with sustain and missed-ability punishment.',
         note: 'Move up into ability-spam matchups.',
       },
-      {
-        rank: 6,
-        name: 'Normal Attack upgrade',
-        reason: 'Adds pressure, but space tools matter more early.',
-        note: 'Pick guns for range or Katana for brawl.',
-      },
     ],
     Duelist: [
       {
-        rank: 1,
+        rank: 3,
         name: 'Headshot!',
         reason: 'High-frequency 10s damage tool with repeat throws and third-toss explosion.',
         note: 'Cleanest first pick for poke and picks.',
       },
       {
-        rank: 2,
+        rank: 5,
         name: 'Deadpool In Your Area',
         reason: 'Adds AoE disruption, 30/s field damage, self damage reduction, and attack speed.',
         note: 'Move first for tight rooms or objective brawls.',
       },
       {
-        rank: 3,
+        rank: 4,
         name: 'Hazardous Hijinks',
         reason: 'Improves chase and resets with two charges and hit refresh.',
         note: 'Take earlier for flank or dive pressure.',
       },
       {
-        rank: 4,
+        rank: 7,
         name: 'Pop Quiz!',
         reason: 'Snowballs fights with speed, healing, damage boost, and cooldown refresh.',
         note: 'Best when you reliably complete the challenge.',
       },
       {
-        rank: 5,
+        rank: 6,
         name: 'Skill Issue',
         reason: 'Adds 25/s damage over time and Vulnerability stacks to the taunt.',
         note: 'Move up into ability-heavy duelists.',
       },
       {
-        rank: 6,
-        name: 'Normal Attack upgrade',
-        reason: 'Good baseline damage after repeatable cooldowns are online.',
-        note: 'Guns for poke; Katana for Bunny Hop confirms.',
+        rank: 1,
+        name: 'Dual Desert Eagles',
+        reason: 'Adds ranged poke and Boom Emoji explosive damage to the baseline DPS loop.',
+        note: 'Take after core pick tools unless you need safer ranged pressure early.',
+      },
+      {
+        rank: 2,
+        name: 'Kick@$$ Katana',
+        reason: 'Improves close-range confirm damage and Bunny Hop follow-up pressure.',
+        note: 'Move up when you are reliably finishing fights in brawl range.',
       },
     ],
     Strategist: [
