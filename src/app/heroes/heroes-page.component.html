@@ -147,6 +147,20 @@
       <p class="playstyle" [innerHTML]="highlightedAbilityText(hero, displayedPlaystyle(hero))"></p>
     </div>
 
+    @if (roleAbilityKits(hero).length > 0) {
+    <section class="role-pool-switcher" aria-label="Ability role pool">
+      <span>Role pool</span>
+      <div class="ability-role-tabs">
+        @for (kit of roleAbilityKits(hero); track kit.role) {
+        <button type="button" [class.active]="selectedAbilityKit(hero)?.role === kit.role"
+          (click)="selectAbilityKit(kit.role)">
+          {{ kit.label }}
+        </button>
+        }
+      </div>
+    </section>
+    }
+
     @if (ultimateStrategies(hero).length > 0) {
     <section class="ultimate-strategies" aria-label="Ultimate strategies">
       <div class="section-heading">
@@ -267,16 +281,6 @@
     <section class="abilities">
       <div class="section-heading ability-heading">
         <h3>Abilities</h3>
-        @if (roleAbilityKits(hero).length > 0) {
-        <div class="ability-role-tabs" aria-label="Ability role pool">
-          @for (kit of roleAbilityKits(hero); track kit.role) {
-          <button type="button" [class.active]="selectedAbilityKit(hero)?.role === kit.role"
-            (click)="selectAbilityKit(kit.role)">
-            {{ kit.label }}
-          </button>
-          }
-        </div>
-        }
       </div>
 
       @for (ability of activeAbilities(hero); track ability.name) {
