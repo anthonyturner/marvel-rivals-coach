@@ -29,6 +29,19 @@ interface HeroVideoSearch {
   embedUrl?: SafeResourceUrl;
 }
 
+interface UltimateStrategy {
+  ability: HeroAbility;
+  sourceDescription: string;
+  strategy: string;
+}
+
+interface DeadpoolUpgradeStep {
+  rank: number;
+  name: string;
+  reason: string;
+  note: string;
+}
+
 @Component({
   selector: 'app-heroes-page',
   imports: [CommonModule],
@@ -81,6 +94,128 @@ export class HeroesPageComponent implements OnInit {
   readonly selectedAbilityKitRole = signal<HeroRole>('Vanguard');
   readonly isHeroDetailModalOpen = signal(false);
   readonly activeAbilityAnchorId = signal('');
+  readonly deadpoolUpgradeOrders: Record<Exclude<HeroRole, 'Multi-Role'>, DeadpoolUpgradeStep[]> = {
+    Vanguard: [
+      {
+        rank: 1,
+        name: 'Deadpool In Your Area',
+        reason: 'Best early space tool: 12s cooldown, AoE vision disruption, attack speed, and ally damage reduction.',
+        note: 'Take first when you need to walk space.',
+      },
+      {
+        rank: 2,
+        name: 'Magical Unicorn Shield!',
+        reason: 'Adds a 400-health shield on a 12s cooldown for crosses, holds, and resets.',
+        note: 'Swap to first if your team is being burst early.',
+      },
+      {
+        rank: 3,
+        name: 'Hazardous Hijinks',
+        reason: 'Hit-refresh bounce adds engage, chase, and escape options.',
+        note: 'Move up on maps with strong vertical routes.',
+      },
+      {
+        rank: 4,
+        name: 'The Big Test',
+        reason: 'Teamfight swing with bonus health, healing, speed, and challenge payoff.',
+        note: 'Best before planned objective fights.',
+      },
+      {
+        rank: 5,
+        name: 'The Ban Hammer',
+        reason: 'Single-target taunt upgrade with sustain and missed-ability punishment.',
+        note: 'Move up into ability-spam matchups.',
+      },
+      {
+        rank: 6,
+        name: 'Normal Attack upgrade',
+        reason: 'Adds pressure, but space tools matter more early.',
+        note: 'Pick guns for range or Katana for brawl.',
+      },
+    ],
+    Duelist: [
+      {
+        rank: 1,
+        name: 'Headshot!',
+        reason: 'High-frequency 10s damage tool with repeat throws and third-toss explosion.',
+        note: 'Cleanest first pick for poke and picks.',
+      },
+      {
+        rank: 2,
+        name: 'Deadpool In Your Area',
+        reason: 'Adds AoE disruption, 30/s field damage, self damage reduction, and attack speed.',
+        note: 'Move first for tight rooms or objective brawls.',
+      },
+      {
+        rank: 3,
+        name: 'Hazardous Hijinks',
+        reason: 'Improves chase and resets with two charges and hit refresh.',
+        note: 'Take earlier for flank or dive pressure.',
+      },
+      {
+        rank: 4,
+        name: 'Pop Quiz!',
+        reason: 'Snowballs fights with speed, healing, damage boost, and cooldown refresh.',
+        note: 'Best when you reliably complete the challenge.',
+      },
+      {
+        rank: 5,
+        name: 'Skill Issue',
+        reason: 'Adds 25/s damage over time and Vulnerability stacks to the taunt.',
+        note: 'Move up into ability-heavy duelists.',
+      },
+      {
+        rank: 6,
+        name: 'Normal Attack upgrade',
+        reason: 'Good baseline damage after repeatable cooldowns are online.',
+        note: 'Guns for poke; Katana for Bunny Hop confirms.',
+      },
+    ],
+    Strategist: [
+      {
+        rank: 3,
+        name: 'Bouncing Bobblehead',
+        reason: 'Repeatable 8s damage and healing with return throws and stronger third toss.',
+        note: 'Best first for steady healing between fights.',
+      },
+      {
+        rank: 7,
+        name: 'Final Exam',
+        reason: 'Huge teamfight swing: 80/s healing, 120/s completed healing, and 3000 bonus health.',
+        note: 'Strong when completion is realistic.',
+      },
+      {
+        rank: 5,
+        name: 'Deadpool In Your Area',
+        reason: 'Adds 70/s field healing, 30/s field damage, damage boost, and disruption.',
+        note: 'Excellent for grouped brawl comps.',
+      },
+      {
+        rank: 4,
+        name: 'Healing Hijinks',
+        reason: 'Adds 55 healing in an 8m field while keeping dash refresh.',
+        note: 'Strong when healing while moving matters.',
+      },
+      {
+        rank: 1,
+        name: 'Dual Desert Eagles',
+        reason: 'Adds safer ranged damage and healing throughput to your basic pressure loop.',
+        note: 'Take after the core support cooldown upgrades.',
+      },
+      {
+        rank: 2,
+        name: 'Kick@$$ Katana',
+        reason: 'Adds close-range pressure and Healing Hop follow-up value.',
+        note: 'Best when you can safely play in brawl range.',
+      },
+      {
+        rank: 6,
+        name: 'Pwnage Pound',
+        reason: 'Taunt upgrade that turns missed enemy abilities into ally healing.',
+        note: 'Move up against heavy dive pressure.',
+      },
+    ],
+  };
 
   readonly filteredHeroes = computed(() => {
     const role = this.selectedRole();
@@ -235,6 +370,14 @@ export class HeroesPageComponent implements OnInit {
     return this.selectedAbilityKit(hero)?.abilities ?? hero.abilities;
   }
 
+  activeAbilities(hero: Hero): HeroAbility[] {
+    return this.displayedAbilities(hero).filter((ability) => !this.isPassiveAbility(ability));
+  }
+
+  passiveAbilities(hero: Hero): HeroAbility[] {
+    return this.displayedAbilities(hero).filter((ability) => this.isPassiveAbility(ability));
+  }
+
   displayedPlaystyle(hero: Hero): string {
     const kit = this.selectedAbilityKit(hero);
 
@@ -243,6 +386,41 @@ export class HeroesPageComponent implements OnInit {
     }
 
     return hero.playstyle;
+  }
+
+  ultimateStrategies(hero: Hero): UltimateStrategy[] {
+    const abilities = this.displayedAbilities(hero);
+    const role = this.selectedAbilityKit(hero)?.role ?? this.heroRoleLabel(hero);
+    const hasExplicitUltimate = abilities.some((ability) => this.hasUltimateSignal(ability));
+    const ultimate = this.findPrimaryUltimate(abilities, hasExplicitUltimate);
+
+    if (!ultimate) {
+      return [];
+    }
+
+    return [{
+      ability: ultimate,
+      sourceDescription: this.cleanAbilityDescription(ultimate.description),
+      strategy: this.buildUltimateStrategy(hero, role, ultimate),
+    }];
+  }
+
+  deadpoolUpgradeOrder(hero: Hero): DeadpoolUpgradeStep[] {
+    if (hero.id !== 'deadpool') {
+      return [];
+    }
+
+    const role = this.selectedAbilityKit(hero)?.role;
+
+    if (!role || role === 'Multi-Role') {
+      return this.deadpoolUpgradeOrders['Vanguard'];
+    }
+
+    return this.deadpoolUpgradeOrders[role];
+  }
+
+  deadpoolUpgradeRole(hero: Hero): HeroRole {
+    return this.selectedAbilityKit(hero)?.role ?? 'Vanguard';
   }
 
   highlightedAbilityText(hero: Hero, text: string): SafeHtml {
@@ -276,6 +454,55 @@ export class HeroesPageComponent implements OnInit {
     return `ability-${hero.id}-${this.slugify(ability.name)}`;
   }
 
+  technicalDetailType(label: string): string {
+    const normalized = label.toLowerCase();
+
+    if (/damage|critical|vulnerability|boost/.test(normalized)) {
+      return 'damage';
+    }
+
+    if (/cooldown|recharge|interval|rate/.test(normalized)) {
+      return 'cooldown';
+    }
+
+    if (/duration|time/.test(normalized)) {
+      return 'duration';
+    }
+
+    if (/heal|health|bonus health/.test(normalized)) {
+      return 'healing';
+    }
+
+    if (/range|radius|distance|field|width|height/.test(normalized)) {
+      return 'range';
+    }
+
+    if (/speed|movement|dash|projectile/.test(normalized)) {
+      return 'speed';
+    }
+
+    if (/ammo|charge|energy|cost/.test(normalized)) {
+      return 'resource';
+    }
+
+    return 'stat';
+  }
+
+  technicalDetailIcon(label: string): string {
+    const iconClasses: Record<string, string> = {
+      damage: 'fa-solid fa-burst',
+      cooldown: 'fa-solid fa-clock-rotate-left',
+      duration: 'fa-regular fa-hourglass-half',
+      healing: 'fa-solid fa-heart-pulse',
+      range: 'fa-solid fa-crosshairs',
+      speed: 'fa-solid fa-gauge-high',
+      resource: 'fa-solid fa-battery-half',
+      stat: 'fa-solid fa-chart-simple',
+    };
+
+    return iconClasses[this.technicalDetailType(label)] ?? iconClasses['stat'];
+  }
+
   heroRoleLabel(hero: Hero): HeroRole {
     const role = this.selectedRole();
 
@@ -284,6 +511,10 @@ export class HeroesPageComponent implements OnInit {
 
   private heroMatchesRole(hero: Hero, role: HeroRole): boolean {
     return hero.role === role || this.roleAbilityKits(hero).some((kit) => kit.role === role);
+  }
+
+  private isPassiveAbility(ability: HeroAbility): boolean {
+    return ability.type === 'Passive';
   }
 
   private escapeHtml(value: string): string {
@@ -325,6 +556,104 @@ export class HeroesPageComponent implements OnInit {
       default:
         return `Flex your role around the selected kit: use ${primary} for baseline pressure and ${utility} to swing the fight when enemies are already committed.`;
     }
+  }
+
+  private findPrimaryUltimate(
+    abilities: HeroAbility[],
+    hasExplicitUltimate: boolean,
+  ): HeroAbility | undefined {
+    const explicitUltimate = abilities.find((ability) => /ultimate/i.test(ability.type));
+
+    if (explicitUltimate) {
+      return explicitUltimate;
+    }
+
+    const energyCostUltimate = abilities.find((ability) => this.hasUltimateSignal(ability));
+
+    if (energyCostUltimate) {
+      return energyCostUltimate;
+    }
+
+    if (hasExplicitUltimate) {
+      return undefined;
+    }
+
+    return abilities.find((ability) =>
+      ability.type !== 'Normal Attack' &&
+      ability.type !== 'Mobility' &&
+      ability.type !== 'Team-Up Ability' &&
+      ability.type !== 'Passive',
+    );
+  }
+
+  private hasUltimateSignal(ability: HeroAbility): boolean {
+    const technicalDetails = ability.technicalDetails ?? [];
+
+    return /ultimate/i.test(ability.type) ||
+      /ultimate/i.test(ability.description) ||
+      technicalDetails.some((detail) => /energy cost/i.test(detail.label));
+  }
+
+  private buildUltimateStrategy(hero: Hero, role: HeroRole, ability: HeroAbility): string {
+    const description = this.cleanAbilityDescription(ability.description);
+    const lowerText = `${ability.name} ${description}`.toLowerCase();
+    const useCase = this.ultimateUseCaseLine(lowerText, ability.name);
+    const timing = this.ultimateTimingLine(role, ability.name);
+
+    return `${timing} ${useCase}`;
+  }
+
+  private cleanAbilityDescription(description: string): string {
+    return description.replace(/\s+/g, ' ').trim();
+  }
+
+  private ultimateTimingLine(role: HeroRole, ultimateName: string): string {
+    switch (role) {
+      case 'Vanguard':
+        return `Use ${ultimateName} as your team crosses space or when enemies commit into your frontline.`;
+      case 'Strategist':
+        return `Hold ${ultimateName} for the enemy engage, a teammate-saving swing, or the fight your team has already chosen to take.`;
+      case 'Duelist':
+        return `Look for ${ultimateName} after enemy mobility, shields, or defensive cooldowns are forced.`;
+      default:
+        return `Use ${ultimateName} only after choosing the role job you need to solve in the fight.`;
+    }
+  }
+
+  private ultimateUseCaseLine(text: string, ultimateName: string): string {
+    if (/revival|revive|resurrect/.test(text)) {
+      return 'Stay alive before casting, catch multiple fallen allies in range, then call the re-engage as they return.';
+    }
+
+    if (/heal|healing|restore|sustain/.test(text)) {
+      return 'Start it as burst damage begins, not after allies are already split, and keep cover close while the sustain value builds.';
+    }
+
+    if (/shield|barrier|boundary|aegis|protect/.test(text)) {
+      return 'Place it to block the strongest enemy angle so your team can cross, stabilize, or finish a target.';
+    }
+
+    if (/stun|disable|prison|snare|taunt|seduction|control/.test(text)) {
+      return 'Aim it at committed enemies or priority targets with limited escape routes so your team can collapse immediately.';
+    }
+
+    if (/transform|darkchild|goddess|legend|living chi|god of thunder|unleashed/.test(text)) {
+      return 'Activate before the hard commit, then spend the empowered window aggressively while keeping one exit path.';
+    }
+
+    if (/zone|storm|hurricane|inferno|tsunami|rampage|spin|prison/.test(text)) {
+      return 'Use the area pressure to split the enemy team, deny a doorway, or force them off the objective.';
+    }
+
+    if (/challenge|jackpot|taunt/.test(text)) {
+      return 'Choose a target that must fight you or give space, then commit only when your movement route is planned.';
+    }
+
+    if (/damage|explode|blast|cannon|impact|meteor|judgement|erasure/.test(text)) {
+      return 'Pair it with an off-angle, teammate crowd control, or a forced defensive cooldown so the burst lands before enemies spread.';
+    }
+
+    return `Set up the angle first, confirm your team can follow, then commit while enemy answers are limited.`;
   }
 
   private youtubeSearchUrl(query: string): string {

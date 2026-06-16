@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 
+import { BuildTheoryPageComponent } from './build-theory/build-theory-page.component';
 import { GlossaryPageComponent } from './glossary/glossary-page.component';
 import { HeroesPageComponent } from './heroes/heroes-page.component';
 import { HomePageComponent } from './home/home-page.component';
@@ -26,6 +27,10 @@ export const routes: Routes = [
   {
     path: 'techniques',
     component: TechniquesPageComponent,
+  },
+  {
+    path: 'build-theory',
+    component: BuildTheoryPageComponent,
   },
   {
     path: 'power-positions',

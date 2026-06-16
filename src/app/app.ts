@@ -12,6 +12,7 @@ export class App {
     { label: 'Home', path: '/', enabled: true },
     { label: 'Heroes', path: '/heroes', enabled: true },
     { label: 'Techniques', path: '/techniques', enabled: true },
+    { label: 'Builds', path: '/build-theory', enabled: true },
     { label: 'Paths', path: '/learning-paths', enabled: true },
     { label: 'Media', path: '/media-tutorials', enabled: true },
     { label: 'Quiz', path: '/watch-next', enabled: true },

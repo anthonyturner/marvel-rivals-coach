@@ -372,5 +372,71 @@
     "relatedTerms": ["Engage", "Scouting", "Cooldown Trade", "Dive"],
     "sourceName": "Coach definition from tutorial library",
     "sourceUrl": "/techniques"
+  },
+  {
+    "id": "hero-build",
+    "term": "Hero Build",
+    "category": "Build Theory",
+    "definition": "A plan for emphasizing one part of a hero's kit through team composition, playstyle, cooldown priority, positioning, and fight timing.",
+    "coachNote": "Marvel Rivals does not use item builds like a MOBA. A build is usually a coaching plan: what ability gets protected, what cooldown starts fights, what stat matters, and what teammates make that plan stronger.",
+    "example": "Building Rocket Raccoon around revive, armor packs, and lane support is different from building him around damage uptime.",
+    "relatedTerms": ["Utility Build", "Damage Build", "Sustain Build", "Mobility Build", "Ultimate Build"],
+    "sourceName": "Coach definition for Marvel Rivals build planning",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "utility-build",
+    "term": "Utility Build",
+    "category": "Build Theory",
+    "definition": "A build plan that prioritizes a hero's non-damage fight tools: crowd control, revive, shields, walls, cleanse-like saves, scouting, disruption, damage boosts, or cooldown denial.",
+    "coachNote": "A utility build asks, 'What tool wins the fight if I keep it for the right moment?' You play around timing, line of sight, and cooldown discipline instead of spending every ability for raw damage.",
+    "example": "An Adam Warlock utility build protects Karmic Revival and Soul Bond timing so the team can survive burst and re-engage.",
+    "relatedTerms": ["Hero Build", "Cooldown Trade", "Peeling", "Crowd Control", "Sustain Build"],
+    "sourceName": "Coach definition for Marvel Rivals build planning",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "damage-build",
+    "term": "Damage Build",
+    "category": "Build Theory",
+    "definition": "A build plan centered on maximizing damage uptime, burst windows, target pressure, and finishing power.",
+    "coachNote": "Damage builds still need setup. The mistake is treating damage as constant spam instead of pairing it with angles, forced cooldowns, and target priority.",
+    "example": "A Hela damage build plays for clean sightlines, off-angles, and burst timing after enemy defensive tools are spent.",
+    "relatedTerms": ["Hero Build", "Target Priority", "Off-Angle", "Poke", "Cooldown Trade"],
+    "sourceName": "Coach definition for Marvel Rivals build planning",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "sustain-build",
+    "term": "Sustain Build",
+    "category": "Build Theory",
+    "definition": "A build plan that emphasizes staying power through healing, shields, armor, damage reduction, revive value, or repeated defensive resources.",
+    "coachNote": "Sustain builds are strongest when they help your team hold or retake space. They lose value if the team only survives without creating pressure.",
+    "example": "A Groot sustain build focuses on walls, body blocking, and cover cycling so allies can stabilize and keep fighting.",
+    "relatedTerms": ["Hero Build", "Sustain", "Brawl", "Frontline", "Utility Build"],
+    "sourceName": "Coach definition for Marvel Rivals build planning",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "mobility-build",
+    "term": "Mobility Build",
+    "category": "Build Theory",
+    "definition": "A build plan centered on movement tools, rotations, chase routes, escape paths, vertical access, and fast target swaps.",
+    "coachNote": "Mobility builds are not just about moving more. They are about arriving first, leaving safely, and forcing enemies to turn at the wrong time.",
+    "example": "A Spider-Man mobility build uses web movement to scout, isolate a backline target, and reset before peel arrives.",
+    "relatedTerms": ["Hero Build", "Dive", "Flanking", "Scouting", "Engage"],
+    "sourceName": "Coach definition for Marvel Rivals build planning",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "ultimate-build",
+    "term": "Ultimate Build",
+    "category": "Build Theory",
+    "definition": "A build plan focused on charging, protecting, and converting a hero's ultimate into a fight-winning timing window.",
+    "coachNote": "Ultimate builds should not hold the whole team hostage. Use regular cooldowns to force enemy answers first, then spend the ultimate when follow-up is ready.",
+    "example": "A Luna Snow ultimate build plays safe before the enemy engage, then uses Fate of Both Worlds to swing the committed fight.",
+    "relatedTerms": ["Hero Build", "Engage", "Cooldown Trade", "Sustain Build", "Utility Build"],
+    "sourceName": "Coach definition for Marvel Rivals build planning",
+    "sourceUrl": "/glossary"
   }
 ]

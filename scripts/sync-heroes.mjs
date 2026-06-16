@@ -397,17 +397,33 @@ async function enrichDeadpoolRoleAbilityKits(roleAbilityKits) {
 
   return roleAbilityKits.map((kit) => ({
     ...kit,
-    abilities: kit.abilities.map((ability) => {
-      const details = findDeadpoolTechnicalDetails(roleAbilities.get(kit.role) ?? [], ability.name);
-
-      return details.length > 0
-        ? {
-            ...ability,
-            technicalDetails: details,
-          }
-        : ability;
-    }),
+    abilities: mergeDeadpoolRoleKitAbilities(kit.abilities, roleAbilities.get(kit.role) ?? []),
   }));
+}
+
+function mergeDeadpoolRoleKitAbilities(kitAbilities, fandomAbilities) {
+  const mergedAbilities = uniqueAbilitiesByName(kitAbilities.map((ability) => {
+    const fandomAbility = findDeadpoolAbility(fandomAbilities, ability.name);
+
+    return fandomAbility
+      ? {
+          ...ability,
+          description: fandomAbility.description || ability.description,
+          technicalDetails: fandomAbility.technicalDetails ?? ability.technicalDetails ?? [],
+        }
+      : ability;
+  }));
+  const missingPassives = uniqueAbilitiesByName(fandomAbilities).filter((ability) =>
+    ability.type === 'Passive' &&
+    !mergedAbilities.some((mergedAbility) =>
+      normalizeDeadpoolAbilityName(mergedAbility.name) === normalizeDeadpoolAbilityName(ability.name),
+    ),
+  );
+
+  return [
+    ...mergedAbilities,
+    ...missingPassives,
+  ];
 }
 
 async function getDeadpoolRoleAbilities() {
@@ -431,21 +447,125 @@ async function getDeadpoolRoleAbilities() {
   return roleAbilities;
 }
 
-function findDeadpoolTechnicalDetails(roleAbilities, kitAbilityName) {
-  const normalizedKitName = normalizeDeadpoolAbilityName(kitAbilityName);
-  const exact = roleAbilities.find((ability) => normalizeDeadpoolAbilityName(ability.name) === normalizedKitName);
+function uniqueAbilitiesByName(abilities) {
+  const seen = new Set();
+  const unique = [];
 
-  if (exact?.technicalDetails?.length > 0) {
-    return exact.technicalDetails;
+  for (const ability of abilities) {
+    const key = normalizeDeadpoolAbilityName(ability.name);
+
+    if (seen.has(key)) {
+      continue;
+    }
+
+    seen.add(key);
+    unique.push(ability);
   }
 
-  const partial = roleAbilities.find((ability) => {
+  return unique;
+}
+
+function findDeadpoolAbility(roleAbilities, kitAbilityName) {
+  const normalizedKitName = normalizeDeadpoolAbilityName(kitAbilityName);
+  const exactMatches = roleAbilities.filter((ability) => normalizeDeadpoolAbilityName(ability.name) === normalizedKitName);
+
+  if (exactMatches.length > 0) {
+    return mergeDeadpoolAbilityMatches(exactMatches);
+  }
+
+  const partialMatches = roleAbilities.filter((ability) => {
     const normalizedAbilityName = normalizeDeadpoolAbilityName(ability.name);
 
     return normalizedAbilityName.includes(normalizedKitName) || normalizedKitName.includes(normalizedAbilityName);
   });
 
-  return partial?.technicalDetails ?? [];
+  return partialMatches.length > 0 ? mergeDeadpoolAbilityMatches(partialMatches) : undefined;
+}
+
+function mergeDeadpoolAbilityMatches(matches) {
+  const base = matches.find((ability) => !isUpgradedDeadpoolAbility(ability.name)) ?? matches[0];
+  const upgraded = matches.find((ability) => isUpgradedDeadpoolAbility(ability.name));
+
+  if (!upgraded || upgraded === base) {
+    return base;
+  }
+
+  const baseDescription = base.description ?? '';
+  const upgradedDescription = upgraded.description ?? '';
+  const description = upgradedDescription && upgradedDescription !== baseDescription
+    ? mergeDeadpoolAbilityDescriptions(base, upgradedDescription)
+    : baseDescription;
+
+  return {
+    ...base,
+    description,
+    technicalDetails: mergeTechnicalDetails(base.technicalDetails ?? [], upgraded.technicalDetails ?? []),
+  };
+}
+
+function mergeDeadpoolAbilityDescriptions(base, upgradedDescription) {
+  const baseDescription = base.description ?? '';
+  const normalizedName = normalizeDeadpoolAbilityName(base.name);
+
+  if (normalizedName === 'skill issue') {
+    return `${baseDescription} Upgraded: Adds continuous damage during the taunt. If the enemy misses with an ability during the effect, they suffer extra damage and Vulnerability.`;
+  }
+
+  const upgradedDelta = removeRepeatedOpeningClause(baseDescription, upgradedDescription);
+
+  return upgradedDelta
+    ? `${baseDescription} Upgraded: ${upgradedDelta}`
+    : baseDescription;
+}
+
+function removeRepeatedOpeningClause(baseDescription, upgradedDescription) {
+  const baseOpening = baseDescription.split(/[.!?]/)[0]?.trim();
+
+  if (!baseOpening || !upgradedDescription.toLowerCase().startsWith(baseOpening.toLowerCase())) {
+    return upgradedDescription;
+  }
+
+  return upgradedDescription
+    .slice(baseOpening.length)
+    .replace(/^[\s,.;:-]+/, '')
+    .replace(/^[a-z]/, (letter) => letter.toUpperCase())
+    .trim();
+}
+
+function mergeTechnicalDetails(baseDetails, upgradedDetails) {
+  const merged = [];
+
+  for (const detail of baseDetails) {
+    addTechnicalDetail(merged, detail);
+  }
+
+  for (const detail of upgradedDetails) {
+    addTechnicalDetail(merged, detail, 'Upgraded ');
+  }
+
+  return merged;
+}
+
+function addTechnicalDetail(details, detail, conflictPrefix = '') {
+  const existing = details.find((item) => item.label.toLowerCase() === detail.label.toLowerCase());
+
+  if (!existing) {
+    details.push(detail);
+    return;
+  }
+
+  if (existing.value === detail.value) {
+    return;
+  }
+
+  details.push({
+    label: `${conflictPrefix}${detail.label}`,
+    value: detail.value,
+  });
+}
+
+function isUpgradedDeadpoolAbility(value) {
+  return /\bupgraded\b/i.test(value);
 }
 
 function normalizeDeadpoolAbilityName(value) {
@@ -560,6 +680,12 @@ function parseTechnicalDetail(section) {
     .replace(/^[\s-]+/, '')
     .replace(/\s+/g, ' ')
     .trim();
+
+  if (/^special effect\b/i.test(cleaned)) {
+    const value = cleaned.replace(/^special effect\s*/i, '').trim();
+
+    return value ? { label: 'Special Effect', value } : undefined;
+  }
   const match = cleaned.match(/^(.+?)\s*[-–]\s*(.+)$/);
 
   if (!match) {
@@ -568,8 +694,9 @@ function parseTechnicalDetail(section) {
 
   const label = toTitleCase(match[1].replace(/[:：]+$/g, '').trim());
   const value = match[2].trim();
+  const normalizedLabel = label.replace(/\bRation\b/g, 'Ratio');
 
-  return label && value ? { label, value } : undefined;
+  return normalizedLabel && value ? { label: normalizedLabel, value } : undefined;
 }
 
 function toTitleCase(value) {

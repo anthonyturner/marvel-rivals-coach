@@ -146,6 +146,50 @@
       <p class="playstyle" [innerHTML]="highlightedAbilityText(hero, displayedPlaystyle(hero))"></p>
     </div>
 
+    @if (ultimateStrategies(hero).length > 0) {
+    <section class="ultimate-strategies" aria-label="Ultimate strategies">
+      <div class="section-heading">
+        <h3>Ultimate Strategy</h3>
+      </div>
+
+      @for (ultimate of ultimateStrategies(hero); track ultimate.ability.name) {
+      <article>
+        <span>{{ ultimate.ability.name }}</span>
+        <p class="ultimate-source" [innerHTML]="highlightedAbilityText(hero, ultimate.sourceDescription)"></p>
+        <p [innerHTML]="highlightedAbilityText(hero, ultimate.strategy)"></p>
+      </article>
+      }
+    </section>
+    }
+
+    @if (deadpoolUpgradeOrder(hero).length > 0) {
+    <section class="deadpool-upgrades" aria-labelledby="deadpool-upgrade-title">
+      <div class="section-heading">
+        <div>
+          <h3 id="deadpool-upgrade-title">Upgrade Book Order</h3>
+          <p>{{ deadpoolUpgradeRole(hero) }} default priority</p>
+        </div>
+      </div>
+
+      <ol>
+        @for (upgrade of deadpoolUpgradeOrder(hero); track upgrade.name) {
+        <li>
+          <span>{{ upgrade.rank }}</span>
+          <div>
+            <strong>{{ upgrade.name }}</strong>
+            <p>{{ upgrade.reason }}</p>
+            <small>{{ upgrade.note }}</small>
+          </div>
+        </li>
+        }
+      </ol>
+
+      <p class="upgrade-source">
+        Recommended order based on the current Fandom upgrade stats and role win condition.
+      </p>
+    </section>
+    }
+
     <div class="detail-columns">
       <section>
         <h3>Strengths</h3>
@@ -186,6 +230,39 @@
       </section>
     </div>
 
+    @if (passiveAbilities(hero).length > 0) {
+    <section class="abilities passive-abilities">
+      <div class="section-heading ability-heading">
+        <h3>Passive Abilities</h3>
+      </div>
+
+      @for (ability of passiveAbilities(hero); track ability.name) {
+      <article [id]="abilityAnchorId(hero, ability)"
+        [class.highlighted]="activeAbilityAnchorId() === abilityAnchorId(hero, ability)">
+        <span>{{ ability.type }}</span>
+        <strong>{{ ability.name }}</strong>
+        <p [innerHTML]="highlightedAbilityText(hero, ability.description)"></p>
+        @if (ability.technicalDetails?.length) {
+        <h4>Stats & formulas</h4>
+        <dl class="technical-details" aria-label="Passive ability technical details">
+          @for (detail of ability.technicalDetails; track detail.label + detail.value) {
+          <div [class]="'stat-card stat-' + technicalDetailType(detail.label)">
+            <span class="stat-icon" aria-hidden="true">
+              <i [class]="technicalDetailIcon(detail.label)"></i>
+            </span>
+            <div class="stat-copy">
+              <dt>{{ detail.label }}</dt>
+              <dd>{{ detail.value }}</dd>
+            </div>
+          </div>
+          }
+        </dl>
+        }
+      </article>
+      }
+    </section>
+    }
+
     <section class="abilities">
       <div class="section-heading ability-heading">
         <h3>Abilities</h3>
@@ -201,18 +278,24 @@
         }
       </div>
 
-      @for (ability of displayedAbilities(hero); track ability.name) {
+      @for (ability of activeAbilities(hero); track ability.name) {
       <article [id]="abilityAnchorId(hero, ability)"
         [class.highlighted]="activeAbilityAnchorId() === abilityAnchorId(hero, ability)">
         <span>{{ ability.type }}</span>
         <strong>{{ ability.name }}</strong>
         <p [innerHTML]="highlightedAbilityText(hero, ability.description)"></p>
         @if (ability.technicalDetails?.length) {
+        <h4>Stats & formulas</h4>
         <dl class="technical-details" aria-label="Ability technical details">
           @for (detail of ability.technicalDetails; track detail.label + detail.value) {
-          <div>
-            <dt>{{ detail.label }}</dt>
-            <dd>{{ detail.value }}</dd>
+          <div [class]="'stat-card stat-' + technicalDetailType(detail.label)">
+            <span class="stat-icon" aria-hidden="true">
+              <i [class]="technicalDetailIcon(detail.label)"></i>
+            </span>
+            <div class="stat-copy">
+              <dt>{{ detail.label }}</dt>
+              <dd>{{ detail.value }}</dd>
+            </div>
           </div>
           }
         </dl>
