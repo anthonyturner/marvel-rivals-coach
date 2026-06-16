@@ -6,13 +6,14 @@
       </div>
       <h1>{{ selectedHero()?.name ?? 'Roster Lab' }}</h1>
       <p class="lede">
-        {{ selectedHero()?.summary ?? 'Compare roles, strengths, counters, synergies, ability notes, and curated video guides before you lock in.' }}
+        {{ selectedHero()?.summary ?? 'Compare roles, strengths, counters, synergies, ability notes, and curated video
+        guides before you lock in.' }}
       </p>
       <div class="hero-meta-row" aria-label="Selected hero quick stats">
         <span class="hero-rating" [attr.aria-label]="'Difficulty ' + (selectedHero()?.difficulty ?? 0) + ' out of 5'">
-          Difficulty: 
+          Difficulty:
           @for (pip of [1, 2, 3, 4, 5]; track pip) {
-            <span [class.filled]="pip <= (selectedHero()?.difficulty ?? 0)">★</span>
+          <span [class.filled]="pip <= (selectedHero()?.difficulty ?? 0)">★</span>
           }
         </span>
       </div>
@@ -27,156 +28,130 @@
   <section class="toolbar" aria-label="Hero filters">
     <label class="search-field">
       <span>Search heroes</span>
-      <input
-        type="search"
-        placeholder="Name, strength, or note"
-        [value]="searchTerm()"
-        (input)="updateSearch($event)"
-      />
+      <input type="search" placeholder="Name, strength, or note" [value]="searchTerm()"
+        (input)="updateSearch($event)" />
     </label>
 
     <div class="role-tabs" aria-label="Role filter">
       @for (role of roles; track role) {
-        <button
-          type="button"
-          [class.active]="selectedRole() === role"
-          (click)="selectRole(role)"
-        >
-          {{ role }}
-        </button>
+      <button type="button" [class.active]="selectedRole() === role" (click)="selectRole(role)">
+        {{ role }}
+      </button>
       }
     </div>
 
     <div class="view-toggle" aria-label="Hero card layout">
-      <button
-        type="button"
-        [class.active]="heroGridMode() === 'rows'"
-        (click)="selectHeroGridMode('rows')"
-      >
+      <button type="button" [class.active]="heroGridMode() === 'rows'" (click)="selectHeroGridMode('rows')">
         Rows
       </button>
-      <button
-        type="button"
-        [class.active]="heroGridMode() === 'thumbs'"
-        (click)="selectHeroGridMode('thumbs')"
-      >
+      <button type="button" [class.active]="heroGridMode() === 'thumbs'" (click)="selectHeroGridMode('thumbs')">
         Thumbs
       </button>
     </div>
   </section>
-  
+
 
   <main class="heroes-layout" [class.detail-modal-open]="isHeroDetailModalOpen()">
     <!-- Selected Hero details -->
     @if (selectedHero(); as hero) {
-      @if (!isHeroDetailModalOpen()) {
-        <aside class="hero-detail hero-detail-panel" [@fadeIn] [ngClass]="roleClass(heroRoleLabel(hero))" aria-label="Selected hero details">
-          <button class="detail-pop-button" type="button" (click)="openHeroDetailModal()">Open profile</button>
-          <ng-container [ngTemplateOutlet]="heroDetailsTemplate" [ngTemplateOutletContext]="{ $implicit: hero }"></ng-container>
-        </aside>
-      }
+    @if (!isHeroDetailModalOpen()) {
+    <aside class="hero-detail hero-detail-panel" [@fadeIn] [ngClass]="roleClass(heroRoleLabel(hero))"
+      aria-label="Selected hero details">
+      <button class="detail-pop-button" type="button" (click)="openHeroDetailModal()">Open profile</button>
+      <ng-container [ngTemplateOutlet]="heroDetailsTemplate"
+        [ngTemplateOutletContext]="{ $implicit: hero }"></ng-container>
+    </aside>
+    }
     }
     <section class="hero-grid" [class.thumb-grid]="heroGridMode() === 'thumbs'" aria-label="Hero list">
       @for (hero of filteredHeroes(); track hero.id) {
-        <button
-          class="hero-card"
-          type="button"
-          [class.selected]="selectedHero()?.id === hero.id"
-          (click)="selectHero(hero.id)"
-        >
-          <img class="hero-image" [src]="hero.imageUrl" [alt]="hero.name" />
-          <span class="hero-card-copy">
-            <span class="hero-card-topline">
-              <strong>{{ hero.name }}</strong>
-              <span class="role-pill" [class]="roleClass(heroRoleLabel(hero))">{{ heroRoleLabel(hero) }}</span>
-            </span>
-            <span>{{ hero.summary }}</span>
+      <button class="hero-card" type="button" [class.selected]="selectedHero()?.id === hero.id"
+        (click)="selectHero(hero.id)">
+        <img class="hero-image" [src]="hero.imageUrl" [alt]="hero.name" />
+        <span class="hero-card-copy">
+          <span class="hero-card-topline">
+            <strong>{{ hero.name }}</strong>
+            <span class="role-pill" [class]="roleClass(heroRoleLabel(hero))">{{ heroRoleLabel(hero) }}</span>
           </span>
-        </button>
+          <span>{{ hero.summary }}</span>
+        </span>
+      </button>
       } @empty {
-        <div class="empty-state">
-          <strong>No heroes found</strong>
-          <span>Try a different search or role filter.</span>
-        </div>
+      <div class="empty-state">
+        <strong>No heroes found</strong>
+        <span>Try a different search or role filter.</span>
+      </div>
       }
     </section>
     <aside class="hero-detail">
-        <section class="video-searches" aria-label="YouTube videos for selected hero">
-          <div class="section-heading">
-            <h3>YouTube Videos</h3>
-            <a
-              [href]="selectedHeroYoutubeUrl()"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View all
-            </a>
-          </div>
+      <section class="video-searches" aria-label="YouTube videos for selected hero">
+        <div class="section-heading">
+          <h3>YouTube Videos</h3>
+          <a [href]="selectedHeroYoutubeUrl()" target="_blank" rel="noopener noreferrer">
+            View all
+          </a>
+        </div>
 
-          <div class="video-list">
-            @for (video of selectedHeroVideos(); track video.label) {
-              <article class="video-card">
-                @if (video.embedUrl) {
-                  <iframe
-                    class="video-embed"
-                    [src]="video.embedUrl"
-                    [title]="(selectedHero()?.name ?? 'Selected hero') + ' ' + video.label"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
-                  ></iframe>
-                }
-                <span class="video-copy">
-                  <strong>{{ video.label }}</strong>
-                  <small>{{ video.query }}</small>
-                  <a [href]="video.url" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
-                </span>
-              </article>
+        <div class="video-list">
+          @for (video of selectedHeroVideos(); track video.label) {
+          <article class="video-card">
+            @if (video.embedUrl) {
+            <iframe class="video-embed" [src]="video.embedUrl"
+              [title]="(selectedHero()?.name ?? 'Selected hero') + ' ' + video.label" loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
             }
-          </div>
-        </section>
-    </aside>
-  </main>
-
-  @if (isHeroDetailModalOpen() && selectedHero(); as hero) {
-    <div class="hero-detail-backdrop" (click)="closeHeroDetailModal()">
-      <aside
-        class="hero-detail hero-detail-modal"
-        [@modalZoom]
-        [ngClass]="roleClass(heroRoleLabel(hero))"
-        aria-modal="true"
-        role="dialog"
-        [attr.aria-label]="hero.name + ' hero details'"
-        (click)="handleAbilityLinkClick($event); $event.stopPropagation()"
-      >
-        <button class="modal-close-button" type="button" aria-label="Close hero details" (click)="closeHeroDetailModal()">Close</button>
-        <ng-container [ngTemplateOutlet]="heroDetailsTemplate" [ngTemplateOutletContext]="{ $implicit: hero }"></ng-container>
-      </aside>
-    </div>
-  }
-
-  <ng-template #heroDetailsTemplate let-hero>
-    <div class="detail-hero">
-      <img class="hero-image large" [src]="hero.imageUrl" [alt]="hero.name" />
-      <div>
-        <p class="eyebrow">{{ heroRoleLabel(hero) }} Profile</p>
-        <h2>{{ hero.name }}</h2>
-        <div class="difficulty" [attr.aria-label]="'Difficulty ' + hero.difficulty + ' out of 5'">
-          @for (pip of [1, 2, 3, 4, 5]; track pip) {
-            <span [class.filled]="pip <= hero.difficulty"></span>
+            <span class="video-copy">
+              <strong>{{ video.label }}</strong>
+              <small>{{ video.query }}</small>
+              <a [href]="video.url" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
+            </span>
+          </article>
           }
         </div>
-      </div>
-    </div>
+      </section>
+    </aside>
+  </main>
+  <!-- Modal -->
+  @if (isHeroDetailModalOpen() && selectedHero(); as hero) {
+  <div class="hero-detail-backdrop" (click)="closeHeroDetailModal()">
+    <aside class="hero-detail hero-detail-modal" [@modalZoom] [ngClass]="roleClass(heroRoleLabel(hero))"
+      aria-modal="true" role="dialog" [attr.aria-label]="hero.name + ' hero details'"
+      (click)="handleAbilityLinkClick($event); $event.stopPropagation()">
+      <button class="modal-close-button" type="button" aria-label="Close hero details"
+        (click)="closeHeroDetailModal()">Close</button>
+      <ng-container [ngTemplateOutlet]="heroDetailsTemplate"
+        [ngTemplateOutletContext]="{ $implicit: hero }"></ng-container>
+    </aside>
+  </div>
+  }
 
-    <p class="playstyle" [innerHTML]="highlightedAbilityText(hero, displayedPlaystyle(hero))"></p>
+  <!-- Heroes detail (name, playstyle) -->
+  <ng-template #heroDetailsTemplate let-hero>
+
+    <div class="detail-hero-container">
+      <div class="detail-hero">
+        <img class="hero-image large" [src]="hero.imageUrl" [alt]="hero.name" />
+        <div>
+          <p class="eyebrow">{{ heroRoleLabel(hero) }} Profile</p>
+          <h2>{{ hero.name }}</h2>
+          <div class="difficulty" [attr.aria-label]="'Difficulty ' + hero.difficulty + ' out of 5'">
+            @for (pip of [1, 2, 3, 4, 5]; track pip) {
+            <span [class.filled]="pip <= hero.difficulty"></span>
+            }
+          </div>
+        </div>
+      </div>
+
+      <p class="playstyle" [innerHTML]="highlightedAbilityText(hero, displayedPlaystyle(hero))"></p>
+    </div>
 
     <div class="detail-columns">
       <section>
         <h3>Strengths</h3>
         <ul>
           @for (strength of hero.strengths; track strength) {
-            <li>{{ strength }}</li>
+          <li>{{ strength }}</li>
           }
         </ul>
       </section>
@@ -185,7 +160,7 @@
         <h3>Weaknesses</h3>
         <ul>
           @for (weakness of hero.weaknesses; track weakness) {
-            <li>{{ weakness }}</li>
+          <li>{{ weakness }}</li>
           }
         </ul>
       </section>
@@ -196,7 +171,7 @@
         <h3>Counters</h3>
         <div class="tag-list">
           @for (counter of hero.counters; track counter) {
-            <span>{{ counter }}</span>
+          <span>{{ counter }}</span>
           }
         </div>
       </section>
@@ -205,7 +180,7 @@
         <h3>Synergies</h3>
         <div class="tag-list">
           @for (synergy of hero.synergies; track synergy) {
-            <span>{{ synergy }}</span>
+          <span>{{ synergy }}</span>
           }
         </div>
       </section>
@@ -215,39 +190,34 @@
       <div class="section-heading ability-heading">
         <h3>Abilities</h3>
         @if (roleAbilityKits(hero).length > 0) {
-          <div class="ability-role-tabs" aria-label="Ability role pool">
-            @for (kit of roleAbilityKits(hero); track kit.role) {
-              <button
-                type="button"
-                [class.active]="selectedAbilityKit(hero)?.role === kit.role"
-                (click)="selectAbilityKit(kit.role)"
-              >
-                {{ kit.label }}
-              </button>
-            }
-          </div>
+        <div class="ability-role-tabs" aria-label="Ability role pool">
+          @for (kit of roleAbilityKits(hero); track kit.role) {
+          <button type="button" [class.active]="selectedAbilityKit(hero)?.role === kit.role"
+            (click)="selectAbilityKit(kit.role)">
+            {{ kit.label }}
+          </button>
+          }
+        </div>
         }
       </div>
 
       @for (ability of displayedAbilities(hero); track ability.name) {
-        <article
-          [id]="abilityAnchorId(hero, ability)"
-          [class.highlighted]="activeAbilityAnchorId() === abilityAnchorId(hero, ability)"
-        >
-          <span>{{ ability.type }}</span>
-          <strong>{{ ability.name }}</strong>
-          <p [innerHTML]="highlightedAbilityText(hero, ability.description)"></p>
-          @if (ability.technicalDetails?.length) {
-            <dl class="technical-details" aria-label="Ability technical details">
-              @for (detail of ability.technicalDetails; track detail.label + detail.value) {
-                <div>
-                  <dt>{{ detail.label }}</dt>
-                  <dd>{{ detail.value }}</dd>
-                </div>
-              }
-            </dl>
+      <article [id]="abilityAnchorId(hero, ability)"
+        [class.highlighted]="activeAbilityAnchorId() === abilityAnchorId(hero, ability)">
+        <span>{{ ability.type }}</span>
+        <strong>{{ ability.name }}</strong>
+        <p [innerHTML]="highlightedAbilityText(hero, ability.description)"></p>
+        @if (ability.technicalDetails?.length) {
+        <dl class="technical-details" aria-label="Ability technical details">
+          @for (detail of ability.technicalDetails; track detail.label + detail.value) {
+          <div>
+            <dt>{{ detail.label }}</dt>
+            <dd>{{ detail.value }}</dd>
+          </div>
           }
-        </article>
+        </dl>
+        }
+      </article>
       }
     </section>
   </ng-template>

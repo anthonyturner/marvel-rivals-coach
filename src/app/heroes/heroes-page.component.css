@@ -1,8 +1,13 @@
 :host {
   display: block;
+  --modal-gold: #ffd866;
+  --heroes-box-shadow: inset 1px 0 var(--modal-gold), inset 0 1px rgba(255, 255, 255, 0.14);
 }
-
+s
 .heroes-page {
+  --heroes-glass: rgba(83, 82, 1, 0.336);
+  --heroes-glass-soft: rgba(255, 234, 116, 0.12);
+  --heroes-glass-strong: rgba(44, 45, 8, 0.18);
   min-height: 100%;
   padding: 32px;
 }
@@ -132,9 +137,11 @@ h1 {
   align-items: end;
   margin-top: 18px;
   padding: 16px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(83, 82, 1, 0.18);
   border-radius: 8px;
-  background: var(--bg-panel);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px) saturate(130%);
+  box-shadow: 0 16px 34px rgba(83, 82, 1, 0.1), inset 0 1px rgba(255, 255, 255, 0.78);
 }
 
 .search-field {
@@ -207,6 +214,15 @@ h1 {
   grid-template-columns: minmax(460px, 1fr) minmax(300px, 520px);
 }
 
+.detail-hero-container{
+  padding: 1rem;
+  box-shadow: var(--heroes-box-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+}
+
 .heroes-layout.detail-modal-open .hero-grid,
 .heroes-layout.detail-modal-open>.hero-detail:last-child {
   animation: slide-left 280ms ease both;
@@ -229,9 +245,10 @@ h1 {
   align-items: center;
   min-height: 116px;
   padding: 14px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(83, 82, 1, 0.14);
   border-radius: 8px;
-  background: var(--bg-panel-soft);
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: 0 12px 24px rgba(83, 82, 1, 0.08);
   color: inherit;
   text-align: left;
   cursor: pointer;
@@ -240,7 +257,7 @@ h1 {
 .hero-card:hover,
 .hero-card.selected {
   border-color: rgba(224, 169, 0, 0.42);
-  background: #f7fbfd;
+  background: rgba(255, 248, 203, 0.74);
 }
 
 .hero-card-copy {
@@ -340,9 +357,11 @@ h1 {
   max-height: calc(100dvh - 98px);
   overflow-y: auto;
   padding: 20px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(83, 82, 1, 0.18);
   border-radius: 8px;
-  background: var(--bg-elevated);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px) saturate(130%);
+  box-shadow: 0 18px 36px rgba(83, 82, 1, 0.1), inset 0 1px rgba(255, 255, 255, 0.78);
 }
 
 .detail-pop-button,
@@ -352,8 +371,8 @@ h1 {
   padding: 0 12px;
   border: 1px solid rgba(3, 159, 159, 0.28);
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.62);
-  color: var(--text);
+  background: rgb(0 0 0 / 0%);
+  color: #ffffff;
   font-size: 0.78rem;
   font-weight: 800;
   cursor: pointer;
@@ -377,14 +396,26 @@ h1 {
 }
 
 .hero-detail.hero-detail-modal {
+  --modal-text: #1d220b;
+  --modal-text-soft: #41451b;
+  --modal-text-muted: #6d6724;
+  --modal-gold: #8a6200;
+  --modal-gold-soft: rgba(138, 98, 0, 0.16);
+  --modal-panel: rgba(255, 248, 203, 0.74);
+  --modal-panel-strong: rgba(255, 244, 174, 0.86);
+  --modal-border: rgba(138, 98, 0, 0.24);
   position: relative;
   top: auto;
   width: min(980px, 100%);
   max-height: min(88dvh, 920px);
   overflow-y: auto;
-  background: transparent;
+  border-color: var(--modal-border);
+  background: rgba(255, 248, 203, 0.74);
   backdrop-filter: blur(18px) saturate(145%);
-  box-shadow: 0 30px 90px rgba(16, 24, 40, 0.38), inset 0 1px rgba(255, 255, 255, 0.82);
+  box-shadow:
+    0 30px 90px rgba(83, 82, 1, 0.22),
+    inset 0 1px rgba(255, 255, 255, 0.72),
+    inset 0 0 0 1px rgba(138, 98, 0, 0.08);
 }
 
 .modal-close-button {
@@ -406,10 +437,42 @@ h1 {
   line-height: 1.05;
 }
 
+.hero-detail.hero-detail-modal h2 {
+  color: var(--modal-gold);
+  font-size: clamp(1.8rem, 3vw, 2.55rem);
+  line-height: 0.98;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.72);
+}
+
+.hero-detail.hero-detail-modal p,
+.hero-detail.hero-detail-modal li {
+  color: var(--modal-text);
+}
+
 .hero-detail h3 {
   color: var(--text);
   font-size: .78rem;
   text-transform: uppercase;
+}
+
+.hero-detail.hero-detail-modal h3 {
+  color: var(--modal-gold);
+  letter-spacing: 0.08em;
+}
+
+.hero-detail.hero-detail-modal .eyebrow {
+  color: var(--modal-text-soft);
+  font-weight: 850;
+  letter-spacing: 0.12em;
+}
+
+.hero-detail.hero-detail-modal .playstyle {
+  color: var(--modal-text);
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--modal-border);
+  background: rgba(255, 255, 255, 0.46);
+  box-shadow: var(--heroes-box-shadow);
 }
 
 .difficulty {
@@ -435,6 +498,8 @@ h1 {
   line-height: 1.65;
 }
 
+.detail-columns{
+}
 .detail-columns,
 .matchup-row {
   display: grid;
@@ -448,7 +513,18 @@ h1 {
   padding: 14px;
   border: 1px solid rgba(3, 159, 159, 0.18);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(224, 169, 0, 0.42);
+  background: rgba(255, 248, 203, 0.74);
+  box-shadow: var(--heroes-box-shadow);
+}
+
+
+.hero-detail.hero-detail-modal .detail-columns section,
+.hero-detail.hero-detail-modal .matchup-row section {
+
+  border-color: var(--modal-border);
+  background: var(--modal-panel);
+  box-shadow: var(--heroes-box-shadow);
 }
 
 ul {
@@ -476,15 +552,28 @@ ul {
   font-weight: 700;
 }
 
+.hero-detail.hero-detail-modal .tag-list span {
+  border-color: rgba(138, 98, 0, 0.24);
+  background: rgba(255, 255, 255, 0.48);
+  color: var(--modal-text);
+}
+
 .abilities {
   display: grid;
   gap: 10px;
   padding: 12px;
   border: 1px solid rgba(14, 116, 144, 0.18);
   border-radius: 8px;
-  background: linear-gradient(135deg, rgba(240, 253, 250, 0.64), rgba(239, 246, 255, 0.34));
   backdrop-filter: blur(14px) saturate(130%);
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.78), 0 18px 36px rgba(15, 23, 42, 0.08);
+  box-shadow: var(--heroes-box-shadow);
+}
+
+.hero-detail.hero-detail-modal .abilities {
+  border-color: var(--modal-border);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.52), rgba(255, 232, 130, 0.18)),
+    rgba(255, 248, 203, 0.5);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.76), 0 18px 38px rgba(83, 82, 1, 0.1);
 }
 
 .ability-heading {
@@ -543,13 +632,20 @@ ul {
   display: grid;
   overflow: hidden;
   gap: 7px;
-  border-color: rgba(14, 116, 144, 0.2);
-  background:
-    linear-gradient(90deg, rgba(20, 184, 166, 0.16), transparent 44%),
-    rgba(248, 253, 255, 0.68);
-  box-shadow: inset 3px 0 #0f9fba, inset 0 1px rgba(255, 255, 255, 0.9);
+  border-color: rgba(224, 169, 0, 0.42);
+  background: rgba(255, 248, 203, 0.74);
+  box-shadow: var(--heroes-box-shadow);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   scroll-margin-top: 90px;
+}
+
+.hero-detail.hero-detail-modal .abilities article {
+  border-color: rgba(138, 98, 0, 0.22);
+  background:
+    linear-gradient(110deg, rgba(138, 98, 0, 0.12), transparent 46%),
+    var(--modal-panel-strong);
+  box-shadow: var(--heroes-box-shadow);
 }
 
 .abilities article:target,
@@ -562,11 +658,20 @@ ul {
   animation: ability-focus 900ms ease-out;
 }
 
+.hero-detail.hero-detail-modal .abilities article:target,
+.hero-detail.hero-detail-modal .abilities article.highlighted {
+  border-color: rgba(138, 98, 0, 0.58);
+  background:
+    linear-gradient(120deg, rgba(255, 216, 102, 0.42), rgba(255, 255, 255, 0.26)),
+    rgba(255, 248, 203, 0.9);
+  box-shadow: inset 5px 0 var(--modal-gold), 0 0 0 3px rgba(138, 98, 0, 0.14), 0 18px 34px rgba(83, 82, 1, 0.16);
+}
+
 :host ::ng-deep .ability-text-link {
   padding: 1px 4px;
   border-radius: 4px;
-  background: rgba(20, 184, 166, 0.18);
-  color: #0f5866;
+  background: rgb(0 0 0 / 33%);
+  color: #f9ff00;
   font-weight: 800;
   text-decoration: none;
 }
@@ -585,19 +690,31 @@ ul {
 }
 
 .abilities article span {
-  color: #0f9fba;
+  color: #000000;
   font-size: 0.72rem;
   font-weight: 750;
   text-transform: uppercase;
+}
+
+.hero-detail.hero-detail-modal .abilities article span {
+  color: var(--modal-text-muted);
 }
 
 .abilities article strong {
   color: var(--text);
 }
 
+.hero-detail.hero-detail-modal .abilities article strong {
+  color: #151806;
+}
+
 .abilities article p {
   color: var(--text);
   line-height: 1.5;
+}
+
+.hero-detail.hero-detail-modal .abilities article p {
+  color: var(--modal-text);
 }
 
 .technical-details {
@@ -615,11 +732,20 @@ ul {
   background: rgba(255, 255, 255, 0.7);
 }
 
+.hero-detail.hero-detail-modal .technical-details div {
+  border-color: rgba(138, 98, 0, 0.18);
+  background: rgba(255, 255, 255, 0.48);
+}
+
 .technical-details dt {
   color: #0f7182;
   font-size: 0.66rem;
   font-weight: 850;
   text-transform: uppercase;
+}
+
+.hero-detail.hero-detail-modal .technical-details dt {
+  color: var(--modal-gold);
 }
 
 .technical-details dd {
@@ -628,6 +754,10 @@ ul {
   font-size: 0.86rem;
   font-weight: 700;
   line-height: 1.3;
+}
+
+.hero-detail.hero-detail-modal .technical-details dd {
+  color: var(--modal-text);
 }
 
 .video-searches {
@@ -761,6 +891,7 @@ ul {
   }
 
   .hero-detail-modal {
+
     max-height: calc(100dvh - 40px);
     overflow-y: auto;
   }
