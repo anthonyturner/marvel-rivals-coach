@@ -9,7 +9,7 @@ import {
   getHeroesFromDatabase,
   getHomeContentBlocksFromDatabase,
   getHomePortalsFromDatabase,
-} from '../src/content-database';
+} from '../src/content-database.js';
 
 type VercelRequest = IncomingMessage & {
   query?: {

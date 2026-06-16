@@ -1,7 +1,7 @@
 import type { IncomingMessage, ServerResponse } from 'http';
 
-import { getHeroesFromDatabase } from '../src/content-database';
-import { handleJsonRequest } from '../src/vercel-api';
+import { getHeroesFromDatabase } from '../src/content-database.js';
+import { handleJsonRequest } from '../src/vercel-api.js';
 
 export default function handler(req: IncomingMessage, res: ServerResponse) {
   console.log("api heroes hit", req)
