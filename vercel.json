@@ -2,13 +2,10 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "dist/marvel-rivals-coach/browser",
-  "routes": [
+  "rewrites": [
     {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/.*",
-      "dest": "/index.csr.html"
+      "source": "/((?!api/).*)",
+      "destination": "/index.csr.html"
     }
   ]
 }
