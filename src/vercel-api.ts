@@ -1,4 +1,4 @@
-import type { IncomingMessage, ServerResponse } from 'node:http';
+import type { IncomingMessage, ServerResponse } from 'http';
 
 const jsonHeaders = {
   'content-type': 'application/json; charset=utf-8',

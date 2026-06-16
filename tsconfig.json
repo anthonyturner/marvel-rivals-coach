@@ -30,6 +30,9 @@
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./tsconfig.api.json"
     }
   ]
 }

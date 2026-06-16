@@ -1,4 +1,4 @@
-import type { IncomingMessage, ServerResponse } from 'node:http';
+import type { IncomingMessage, ServerResponse } from 'http';
 
 import { getGlossaryTermsFromDatabase } from '../src/content-database';
 import { handleJsonRequest } from '../src/vercel-api';
