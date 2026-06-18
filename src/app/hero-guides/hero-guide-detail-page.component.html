@@ -1,0 +1,139 @@
+@if (guide(); as guide) {
+  <section class="guide-detail-page">
+    <a class="back-link" routerLink="/hero-guides">Back to hero guides</a>
+
+    <header class="detail-hero">
+      <div>
+        <p class="kicker">{{ guide.role }} Guide</p>
+        <h1>{{ guide.heroName }}</h1>
+        <p class="lede">{{ guide.summary }}</p>
+      </div>
+
+      <img [src]="guide.image" [alt]="guide.heroName" />
+    </header>
+
+    <section class="quick-read" aria-label="Guide quick read">
+      <article>
+        <span>Pool job</span>
+        <p>{{ guide.poolJob }}</p>
+      </article>
+      <article>
+        <span>Pick when</span>
+        <p>{{ guide.pickWhen }}</p>
+      </article>
+    </section>
+
+    <section class="source-panel" aria-label="Original guide source">
+      <div>
+        <span>Original source</span>
+        <p>This guide is translated and structured from the linked video transcript.</p>
+      </div>
+      @if (guide.sourceUrl) {
+        <a [href]="guide.sourceUrl" target="_blank" rel="noopener noreferrer">{{ guide.sourceLabel }}</a>
+      } @else {
+        <strong>{{ guide.sourceLabel }}</strong>
+      }
+    </section>
+
+    @if (sourceEmbedUrl(); as embedUrl) {
+      <section class="video-embed" aria-label="Original guide video">
+        <iframe
+          [src]="embedUrl"
+          [title]="guide.heroName + ' guide video'"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </section>
+    }
+
+    <main class="guide-sections" aria-label="Hero guide sections">
+      @for (section of guide.sections; track section.title; let index = $index) {
+        <article
+          [class.featured-section]="index < 3"
+          tabindex="0"
+          role="button"
+          [attr.aria-label]="'Open ' + section.title + ' guide section'"
+          (click)="openSectionModal(section, index)"
+          (keydown.enter)="openSectionModal(section, index)"
+          (keydown.space)="openSectionModal(section, index); $event.preventDefault()"
+        >
+          <div class="guide-section-heading">
+            <span>{{ index + 1 }}</span>
+            <h2>{{ section.title }}</h2>
+          </div>
+          <p class="section-preview">{{ section.points[0] }}</p>
+          <button class="open-section-button" type="button" tabindex="-1">Open section</button>
+        </article>
+      }
+    </main>
+
+    @if (guide.ultimates.length > 0) {
+    <section class="ultimate-section" aria-labelledby="ultimate-title">
+      <div class="ultimate-heading">
+        <p class="kicker">Ultimate And Key Matchups</p>
+        <h2 id="ultimate-title">Who the transcript says to use them against</h2>
+      </div>
+
+      @for (ultimate of guide.ultimates; track ultimate.name) {
+        <article class="ultimate-card">
+          <div>
+            <h3>{{ ultimate.name }}</h3>
+            <p>{{ ultimate.plan }}</p>
+          </div>
+
+          <div class="matchup-grid">
+            <section>
+              <h4>Good against</h4>
+              <div>
+                @for (item of ultimate.goodAgainst; track item) {
+                  <span>{{ item }}</span>
+                }
+              </div>
+            </section>
+
+            <section>
+              <h4>Be careful into</h4>
+              <div>
+                @for (item of ultimate.avoidInto; track item) {
+                  <span>{{ item }}</span>
+                }
+              </div>
+            </section>
+          </div>
+        </article>
+      }
+    </section>
+    }
+
+    @if (selectedSection(); as section) {
+      <div class="section-modal-backdrop" (click)="closeSectionModal()">
+        <article
+          class="section-modal"
+          role="dialog"
+          aria-modal="true"
+          [attr.aria-label]="section.title"
+          (click)="$event.stopPropagation()"
+        >
+          <button class="modal-close-button" type="button" aria-label="Close guide section" (click)="closeSectionModal()">
+            Close
+          </button>
+
+          <div class="modal-heading">
+            <span>{{ selectedSectionIndex() + 1 }}</span>
+            <div>
+              <p class="kicker">{{ guide.heroName }} Guide</p>
+              <h2>{{ section.title }}</h2>
+            </div>
+          </div>
+
+          <ul>
+            @for (point of section.points; track point; let pointIndex = $index) {
+              <li [class.lead-point]="pointIndex === 0">{{ point }}</li>
+            }
+          </ul>
+        </article>
+      </div>
+    }
+  </section>
+}

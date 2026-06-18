@@ -9,9 +9,10 @@
     </a>
 
     <nav aria-label="Primary navigation">
-      @for (item of navItems; track item.label) {
+      @for (item of primaryNavItems; track item.label) {
         @if (item.enabled) {
           <a
+            class="nav-link"
             [routerLink]="item.path"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: item.path === '/' }"
@@ -21,6 +22,30 @@
         } @else {
           <span class="disabled">{{ item.label }}</span>
         }
+      }
+
+      @for (group of navGroups; track group.label) {
+        <div class="nav-group">
+          <button class="nav-group-trigger" type="button" [attr.aria-label]="group.label + ' menu'">
+            {{ group.label }}
+            <span aria-hidden="true">▾</span>
+          </button>
+
+          <div class="nav-menu">
+            @for (item of group.items; track item.label) {
+              @if (item.enabled) {
+                <a
+                  [routerLink]="item.path"
+                  routerLinkActive="active"
+                >
+                  {{ item.label }}
+                </a>
+              } @else {
+                <span class="disabled">{{ item.label }}</span>
+              }
+            }
+          </div>
+        </div>
       }
     </nav>
   </header>

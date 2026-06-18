@@ -1,7 +1,9 @@
 import { Routes } from '@angular/router';
 
 import { BuildTheoryPageComponent } from './build-theory/build-theory-page.component';
+import { HeroGuideDetailPageComponent } from './hero-guides/hero-guide-detail-page.component';
 import { GlossaryPageComponent } from './glossary/glossary-page.component';
+import { HeroGuidesPageComponent } from './hero-guides/hero-guides-page.component';
 import { HeroesPageComponent } from './heroes/heroes-page.component';
 import { HomePageComponent } from './home/home-page.component';
 import { LearningPathsPageComponent } from './learning-paths/learning-paths-page.component';
@@ -19,6 +21,14 @@ export const routes: Routes = [
   {
     path: 'heroes',
     component: HeroesPageComponent,
+  },
+  {
+    path: 'hero-guides',
+    component: HeroGuidesPageComponent,
+  },
+  {
+    path: 'hero-guides/:heroId',
+    component: HeroGuideDetailPageComponent,
   },
   {
     path: 'glossary',

@@ -550,6 +550,10 @@ export class HeroesPageComponent implements OnInit {
   }
 
   private buildPlaystyle(hero: Hero, role: HeroRole, abilities: HeroAbility[]): string {
+    if (hero.id === 'deadpool' && role === 'Vanguard') {
+      return 'Force attention, make the enemy team uncomfortable, build style points, and cycle in and out of pressure without exploding.';
+    }
+
     const primary = abilities[0]?.name ?? hero.name;
     const utility =
       abilities.find((ability) => ability.type === 'Ability')?.name ??

@@ -1,0 +1,56 @@
+<section class="guides-page">
+  <header class="guides-hero">
+    <div>
+      <p class="kicker">Hero & Fundamentals Guides</p>
+      <h1>Choose a guide and open the full coaching page.</h1>
+      <p class="lede">
+        Open hero-specific guides or fundamentals tutorials,
+        with role jobs, playstyle priorities, matchup notes, and embedded source videos.
+      </p>
+    </div>
+  </header>
+
+  <main class="guide-groups" aria-label="Guide library">
+    <section class="guide-group" aria-labelledby="hero-guides-title">
+      <div class="group-heading">
+        <p class="kicker">Hero Guides</p>
+        <h2 id="hero-guides-title">Character-specific coaching</h2>
+        <p>Hero kits, matchup notes, upgrade discipline, and role-specific game plans.</p>
+      </div>
+
+      <div class="guide-grid">
+        @for (guide of heroGuides; track guide.heroId) {
+          <a class="guide-card" [routerLink]="['/hero-guides', guide.heroId]">
+            <img [src]="guide.image" [alt]="guide.heroName" loading="lazy" />
+            <span>
+              <small>{{ guide.role }}</small>
+              <strong>{{ guide.heroName }}</strong>
+              <em>{{ guide.poolJob }}</em>
+            </span>
+          </a>
+        }
+      </div>
+    </section>
+
+    <section class="guide-group" aria-labelledby="discipline-guides-title">
+      <div class="group-heading">
+        <p class="kicker">Discipline Tutorials</p>
+        <h2 id="discipline-guides-title">Fundamentals that carry across heroes</h2>
+        <p>Decision-making lessons for survival, engagement timing, poke pressure, and fight pacing.</p>
+      </div>
+
+      <div class="guide-grid">
+        @for (guide of fundamentalsGuides; track guide.heroId) {
+          <a class="guide-card" [routerLink]="['/hero-guides', guide.heroId]">
+            <img [src]="guide.image" [alt]="guide.heroName" loading="lazy" />
+            <span>
+              <small>{{ guide.role }}</small>
+              <strong>{{ guide.heroName }}</strong>
+              <em>{{ guide.poolJob }}</em>
+            </span>
+          </a>
+        }
+      </div>
+    </section>
+  </main>
+</section>
