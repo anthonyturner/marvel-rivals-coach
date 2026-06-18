@@ -532,6 +532,61 @@ h1 {
   line-height: 1.65;
 }
 
+.hero-build-profile {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid rgba(3, 159, 159, 0.22);
+  border-radius: 8px;
+  background: rgba(232, 247, 251, 0.62);
+  box-shadow: var(--heroes-box-shadow);
+}
+
+.hero-build-profile .section-heading {
+  margin: 0;
+}
+
+.hero-build-profile .section-heading p {
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.build-profile-bars {
+  display: grid;
+  gap: 8px;
+}
+
+.build-profile-bars div {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) 24px;
+  gap: 8px;
+  align-items: center;
+}
+
+.build-profile-bars span,
+.build-profile-bars strong {
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+
+.build-profile-bars meter {
+  width: 100%;
+  height: 11px;
+}
+
+.hero-detail.hero-detail-modal .hero-build-profile {
+  border-color: var(--modal-border);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.hero-detail.hero-detail-modal .hero-build-profile .section-heading p,
+.hero-detail.hero-detail-modal .build-profile-bars span,
+.hero-detail.hero-detail-modal .build-profile-bars strong {
+  color: var(--modal-text);
+}
+
 .ultimate-strategies {
   display: grid;
   gap: 10px;

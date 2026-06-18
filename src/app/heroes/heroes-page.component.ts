@@ -17,6 +17,7 @@ import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-brows
 import { forkJoin } from 'rxjs';
 
 import { HeroDataService } from './hero-data.service';
+import { computeHeroBuildProfile, heroBuildTypes, HeroBuildType } from './hero-build-profile';
 import { Hero, HeroAbility, HeroRole, HeroRoleAbilityKit, HeroVideo, HeroVideoType } from './hero.model';
 
 type HeroRoleFilter = HeroRole | 'All';
@@ -94,6 +95,7 @@ export class HeroesPageComponent implements OnInit {
   readonly selectedAbilityKitRole = signal<HeroRole>('Vanguard');
   readonly isHeroDetailModalOpen = signal(false);
   readonly activeAbilityAnchorId = signal('');
+  readonly buildTypes = heroBuildTypes();
   readonly deadpoolUpgradeOrders: Record<Exclude<HeroRole, 'Multi-Role'>, DeadpoolUpgradeStep[]> = {
     Vanguard: [
       {
@@ -279,7 +281,10 @@ export class HeroesPageComponent implements OnInit {
       heroes: this.heroDataService.getHeroes(),
       heroVideos: this.heroDataService.getHeroVideos(),
     }).subscribe(({ heroes, heroVideos }) => {
-      this.heroes.set(heroes);
+      this.heroes.set(heroes.map((hero) => ({
+        ...hero,
+        buildProfile: hero.buildProfile ?? computeHeroBuildProfile(hero),
+      })));
       this.heroVideos.set(heroVideos);
       this.selectedHeroId.set(heroes[0]?.id ?? '');
     });
@@ -519,6 +524,24 @@ export class HeroesPageComponent implements OnInit {
     const role = this.selectedRole();
 
     return role !== 'All' && this.heroMatchesRole(hero, role) ? role : hero.role;
+  }
+
+  heroBuildValue(hero: Hero, type: HeroBuildType): number {
+    return (hero.buildProfile ?? computeHeroBuildProfile(hero))[type];
+  }
+
+  scoreTone(value: number, max = 10): string {
+    const ratio = max > 0 ? value / max : 0;
+
+    if (ratio >= 0.7) {
+      return 'score-high';
+    }
+
+    if (ratio >= 0.4) {
+      return 'score-mid';
+    }
+
+    return 'score-low';
   }
 
   private heroMatchesRole(hero: Hero, role: HeroRole): boolean {

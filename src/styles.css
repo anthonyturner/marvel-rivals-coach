@@ -57,3 +57,45 @@ h3,
 p {
   margin-block: 0;
 }
+
+.score-low {
+  --score-color: #d93d5c;
+  --score-text: #9f1f38;
+}
+
+.score-mid {
+  --score-color: #e0a900;
+  --score-text: #7a5200;
+}
+
+.score-high {
+  --score-color: #16a05d;
+  --score-text: #0f6f43;
+}
+
+.score-low span,
+.score-low strong,
+.score-mid span,
+.score-mid strong,
+.score-high span,
+.score-high strong {
+  color: var(--score-text);
+}
+
+meter::-webkit-meter-bar {
+  border: 0;
+  border-radius: 999px;
+  background: rgba(16, 32, 51, 0.12);
+}
+
+meter::-webkit-meter-optimum-value,
+meter::-webkit-meter-suboptimum-value,
+meter::-webkit-meter-even-less-good-value {
+  border-radius: 999px;
+  background: var(--score-color, #e0a900);
+}
+
+meter::-moz-meter-bar {
+  border-radius: 999px;
+  background: var(--score-color, #e0a900);
+}

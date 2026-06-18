@@ -37,7 +37,7 @@ export class App {
       items: [
         { label: 'Watch Next Quiz', path: '/watch-next', enabled: true },
         { label: 'Counters', path: '/counters', enabled: false },
-        { label: 'Team Builder', path: '/team-builder', enabled: false },
+        { label: 'Team Builder', path: '/team-builder', enabled: true },
         { label: 'AI Coach', path: '/ai-coach', enabled: false },
       ],
     },

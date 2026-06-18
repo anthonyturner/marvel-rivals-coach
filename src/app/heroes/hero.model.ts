@@ -18,6 +18,14 @@ export interface HeroRoleAbilityKit {
   abilities: HeroAbility[];
 }
 
+export interface HeroBuildProfile {
+  Utility: number;
+  Damage: number;
+  Sustain: number;
+  Mobility: number;
+  Ultimate: number;
+}
+
 export type HeroVideoType = 'paz-gameplay' | 'paz-counters-combos';
 
 export interface HeroVideo {
@@ -41,5 +49,6 @@ export interface Hero {
   synergies: string[];
   abilities: HeroAbility[];
   roleAbilityKits?: HeroRoleAbilityKit[];
+  buildProfile?: HeroBuildProfile;
   imageUrl: string;
 }

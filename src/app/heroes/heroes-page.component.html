@@ -145,6 +145,23 @@
       </div>
 
       <p class="playstyle" [innerHTML]="highlightedAbilityText(hero, displayedPlaystyle(hero))"></p>
+
+      <section class="hero-build-profile" aria-label="Hero build theory profile">
+        <div class="section-heading">
+          <h3>Build Profile</h3>
+          <p>0-10 coach rating by fight-plan value</p>
+        </div>
+
+        <div class="build-profile-bars">
+          @for (type of buildTypes; track type) {
+          <div [class]="scoreTone(heroBuildValue(hero, type))">
+            <span>{{ type }}</span>
+            <meter min="0" max="10" [value]="heroBuildValue(hero, type)"></meter>
+            <strong>{{ heroBuildValue(hero, type) }}</strong>
+          </div>
+          }
+        </div>
+      </section>
     </div>
 
     @if (roleAbilityKits(hero).length > 0) {

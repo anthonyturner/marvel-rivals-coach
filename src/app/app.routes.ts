@@ -10,6 +10,7 @@ import { LearningPathsPageComponent } from './learning-paths/learning-paths-page
 import { MediaTutorialsPageComponent } from './media-tutorials/media-tutorials-page.component';
 import { PowerPositionsPageComponent } from './power-positions/power-positions-page.component';
 import { StrategicCoverPageComponent } from './strategic-cover/strategic-cover-page.component';
+import { TeamBuilderPageComponent } from './team-builder/team-builder-page.component';
 import { TechniquesPageComponent } from './techniques/techniques-page.component';
 import { WatchNextPageComponent } from './watch-next/watch-next-page.component';
 
@@ -61,6 +62,10 @@ export const routes: Routes = [
   {
     path: 'watch-next',
     component: WatchNextPageComponent,
+  },
+  {
+    path: 'team-builder',
+    component: TeamBuilderPageComponent,
   },
   {
     path: '**',
