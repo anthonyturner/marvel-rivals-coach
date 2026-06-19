@@ -26,6 +26,31 @@ export interface HeroBuildProfile {
   Ultimate: number;
 }
 
+export interface HeroBuildProfileRationale {
+  source: {
+    label: string;
+    url: string;
+  };
+  reason: string;
+  strongestSignals: string[];
+}
+
+export interface HeroPlaystyleGuide {
+  id: string;
+  role?: HeroRole;
+  title: string;
+  sourceTitle?: string;
+  sourceUrl?: string;
+  summary: string;
+  whenToUse: string;
+  coreIdeas: {
+    label: string;
+    description: string;
+  }[];
+  upgradeNotes: string[];
+  ultimateNotes: string[];
+}
+
 export type HeroVideoType = 'paz-gameplay' | 'paz-counters-combos';
 
 export interface HeroVideo {
@@ -49,6 +74,8 @@ export interface Hero {
   synergies: string[];
   abilities: HeroAbility[];
   roleAbilityKits?: HeroRoleAbilityKit[];
+  playstyles?: HeroPlaystyleGuide[];
   buildProfile?: HeroBuildProfile;
+  buildProfileRationale?: HeroBuildProfileRationale;
   imageUrl: string;
 }

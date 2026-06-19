@@ -14,6 +14,7 @@
     "sync:glossary": "node scripts/sync-glossary.mjs",
     "sync:heroes": "node scripts/sync-heroes.mjs",
     "refresh:playstyles": "node scripts/refresh-playstyles.mjs",
+    "refresh:build-profiles": "node scripts/refresh-build-profiles.mjs",
     "content:update": "npm run db:seed && npm run db:sync && npm run sync:heroes",
     "serve:ssr:marvel-rivals-coach": "node dist/marvel-rivals-coach/server/server.mjs"
   },

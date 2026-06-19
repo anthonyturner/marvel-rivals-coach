@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { buildHeroBuildProfile, buildProfileRationale } from './hero-build-profile-utils.mjs';
 import { buildHeroPlaystyle } from './playstyle-utils.mjs';
 import { columnExists, createTursoClient, executeSchema } from './turso-client.mjs';
 
@@ -169,18 +170,30 @@ function mergeHero(existingHero, syncedHero) {
 }
 
 async function saveHero(hero) {
-  await upsertHero(hero);
+  const heroWithBuildProfile = withBuildProfile(hero);
+
+  await upsertHero(heroWithBuildProfile);
   await db.execute('DELETE FROM hero_list_items WHERE hero_id = ?', [hero.id]);
   await db.execute('DELETE FROM hero_abilities WHERE hero_id = ?', [hero.id]);
-  await insertListItems(hero.id, 'strength', hero.strengths);
-  await insertListItems(hero.id, 'weakness', hero.weaknesses);
-  await insertListItems(hero.id, 'counter', hero.counters);
-  await insertListItems(hero.id, 'synergy', hero.synergies);
-  await insertAbilities(hero.id, null, null, hero.abilities);
+  await insertListItems(heroWithBuildProfile.id, 'strength', heroWithBuildProfile.strengths);
+  await insertListItems(heroWithBuildProfile.id, 'weakness', heroWithBuildProfile.weaknesses);
+  await insertListItems(heroWithBuildProfile.id, 'counter', heroWithBuildProfile.counters);
+  await insertListItems(heroWithBuildProfile.id, 'synergy', heroWithBuildProfile.synergies);
+  await insertAbilities(heroWithBuildProfile.id, null, null, heroWithBuildProfile.abilities);
 
-  for (const kit of hero.roleAbilityKits ?? []) {
-    await insertAbilities(hero.id, kit.role, kit.label, kit.abilities);
+  for (const kit of heroWithBuildProfile.roleAbilityKits ?? []) {
+    await insertAbilities(heroWithBuildProfile.id, kit.role, kit.label, kit.abilities);
   }
+}
+
+function withBuildProfile(hero) {
+  const buildProfile = buildHeroBuildProfile(hero);
+
+  return {
+    ...hero,
+    buildProfile,
+    buildProfileRationale: buildProfileRationale(hero, buildProfile),
+  };
 }
 
 async function getExistingHero(heroId) {

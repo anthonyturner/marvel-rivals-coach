@@ -29,6 +29,7 @@ export class App {
       label: 'Resources',
       items: [
         { label: 'Media Tutorials', path: '/media-tutorials', enabled: true },
+        { label: 'Game Stats', path: '/game-stats', enabled: true },
         { label: 'Glossary', path: '/glossary', enabled: true },
       ],
     },

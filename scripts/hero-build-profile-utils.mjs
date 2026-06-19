@@ -1,20 +1,11 @@
-import { Hero, HeroAbility, HeroBuildProfileRationale, HeroRole } from './hero.model';
-
-export type HeroBuildType = 'Utility' | 'Damage' | 'Sustain' | 'Mobility' | 'Ultimate';
-
-export type HeroBuildProfile = Record<HeroBuildType, number>;
-
-type ScoreProfile = Record<HeroBuildType, number>;
-type SignalRule = [RegExp, number];
-
 export const buildProfileSource = {
   label: 'Marvel Rivals Wiki hero and ability descriptions',
   url: 'https://marvelrivals.fandom.com/wiki/Category:Heroes',
 };
 
-const buildTypes: HeroBuildType[] = ['Utility', 'Damage', 'Sustain', 'Mobility', 'Ultimate'];
+const buildTypes = ['Utility', 'Damage', 'Sustain', 'Mobility', 'Ultimate'];
 
-const signalRules: Record<HeroBuildType, SignalRule[]> = {
+const signalRules = {
   Utility: [
     [/\b(shield|barrier|wall|field|zone|construct|turret|trap|mine|portal|web|smoke)\b/gi, 1.1],
     [/\b(revive|resurrect|cocoon|invincib|immune|cleanse|save|protect|damage reduction)\b/gi, 1.7],
@@ -44,21 +35,21 @@ const signalRules: Record<HeroBuildType, SignalRule[]> = {
   ],
 };
 
-const roleBase: Record<HeroRole, ScoreProfile> = {
+const roleBase = {
   Vanguard: { Utility: 2.2, Damage: 0.8, Sustain: 2.8, Mobility: 0.9, Ultimate: 0.7 },
   Duelist: { Utility: 0.8, Damage: 3.4, Sustain: 0.5, Mobility: 1.4, Ultimate: 0.7 },
   Strategist: { Utility: 2.6, Damage: 0.8, Sustain: 3.2, Mobility: 0.8, Ultimate: 0.8 },
   'Multi-Role': { Utility: 2.2, Damage: 2.2, Sustain: 2.2, Mobility: 1.6, Ultimate: 0.8 },
 };
 
-const roleWeights: Record<HeroRole, ScoreProfile> = {
+const roleWeights = {
   Vanguard: { Utility: 1.05, Damage: 0.6, Sustain: 1.18, Mobility: 1, Ultimate: 1 },
   Duelist: { Utility: 0.82, Damage: 1.08, Sustain: 0.72, Mobility: 1.08, Ultimate: 1 },
   Strategist: { Utility: 1.12, Damage: 0.64, Sustain: 1.22, Mobility: 0.92, Ultimate: 1 },
   'Multi-Role': { Utility: 1.08, Damage: 1.08, Sustain: 1.08, Mobility: 1.08, Ultimate: 1.08 },
 };
 
-const normalizers: ScoreProfile = {
+const normalizers = {
   Utility: 24,
   Damage: 30,
   Sustain: 17,
@@ -66,43 +57,37 @@ const normalizers: ScoreProfile = {
   Ultimate: 14,
 };
 
-export function heroBuildTypes(): HeroBuildType[] {
-  return [...buildTypes];
-}
+export function buildHeroBuildProfile(hero) {
+  const scores = emptyProfile();
+  addProfile(scores, roleBase[hero.role] ?? roleBase.Duelist);
 
-export function computeHeroBuildProfile(hero: Hero): HeroBuildProfile {
-  const scores = emptyScoreProfile();
-  addScores(scores, roleBase[hero.role]);
-
-  scoreText(scores, [
+  const abilityTexts = collectAbilities(hero).map((ability) => abilityText(ability));
+  const overviewText = [
     hero.summary,
     hero.playstyle,
-    ...hero.strengths,
-    ...hero.weaknesses,
-    ...hero.counters,
-    ...hero.synergies,
-  ].join(' '), 0.8, 3);
+    ...(hero.strengths ?? []),
+    ...(hero.weaknesses ?? []),
+    ...(hero.counters ?? []),
+    ...(hero.synergies ?? []),
+  ].join(' ');
 
-  const abilities = collectAbilities(hero);
+  scoreText(scores, overviewText, 0.8, 3);
 
-  for (const ability of abilities) {
+  for (const ability of collectAbilities(hero)) {
     scoreAbility(scores, ability);
   }
 
-  applyAbilityMixBonuses(scores, abilities.map(abilityText).join(' ').toLowerCase());
+  applyAbilityMixBonuses(scores, abilityTexts);
   applyRoleWeights(scores, hero.role);
 
   return normalizeProfile(scores);
 }
 
-export function buildHeroBuildProfileRationale(
-  hero: Hero,
-  profile = computeHeroBuildProfile(hero),
-): HeroBuildProfileRationale {
+export function buildProfileRationale(hero, profile = buildHeroBuildProfile(hero)) {
   const abilities = collectAbilities(hero);
-  const technicalDetails = abilities.flatMap((ability) => ability.technicalDetails ?? []);
-  const ultimateCount = abilities.filter(isUltimateAbility).length;
+  const ultimateCount = abilities.filter((ability) => isUltimateAbility(ability)).length;
   const passiveCount = abilities.filter((ability) => /passive/i.test(ability.type)).length;
+  const technicalDetails = abilities.flatMap((ability) => ability.technicalDetails ?? []);
 
   return {
     source: buildProfileSource,
@@ -115,11 +100,7 @@ export function buildHeroBuildProfileRationale(
   };
 }
 
-export function emptyHeroBuildProfile(): HeroBuildProfile {
-  return { Utility: 0, Damage: 0, Sustain: 0, Mobility: 0, Ultimate: 0 };
-}
-
-function scoreAbility(scores: ScoreProfile, ability: HeroAbility): void {
+function scoreAbility(scores, ability) {
   const text = abilityText(ability);
   const type = ability.type ?? '';
   const details = ability.technicalDetails ?? [];
@@ -165,101 +146,101 @@ function scoreAbility(scores: ScoreProfile, ability: HeroAbility): void {
   }
 
   for (const detail of details) {
-    scoreTechnicalDetail(scores, `${detail.label ?? ''} ${detail.value ?? ''}`.toLowerCase());
+    scoreTechnicalDetail(scores, detail);
   }
 }
 
-function scoreTechnicalDetail(scores: ScoreProfile, text: string): void {
-  const numericValue = Number(text.match(/\d+(?:\.\d+)?/)?.[0] ?? 0);
+function scoreTechnicalDetail(scores, detail) {
+  const label = `${detail.label ?? ''} ${detail.value ?? ''}`.toLowerCase();
+  const numericValue = extractNumber(label);
 
-  if (/damage|critical|vulnerability|bonus damage/.test(text)) {
+  if (/damage|critical|vulnerability|bonus damage/.test(label)) {
     scores.Damage += numericValue >= 200 ? 0.6 : 0.35;
   }
 
-  if (/heal|healing|health|bonus health|shield|damage reduction/.test(text)) {
+  if (/heal|healing|health|bonus health|shield|damage reduction/.test(label)) {
     scores.Sustain += numericValue >= 200 ? 0.65 : 0.4;
   }
 
-  if (/special effect|field/.test(text)) {
+  if (/special effect|field/.test(label)) {
     scores.Utility += 0.2;
-  } else if (/duration|range|radius|width|height/.test(text)) {
+  } else if (/duration|range|radius|width|height/.test(label)) {
     scores.Utility += 0.05;
   }
 
-  if (/speed|movement|dash|distance|flight/.test(text)) {
+  if (/speed|movement|dash|distance|flight/.test(label)) {
     scores.Mobility += 0.35;
   }
 
-  if (/energy cost|ultimate/.test(text)) {
+  if (/energy cost|ultimate/.test(label)) {
     scores.Ultimate += 0.55;
   }
 }
 
-function scoreText(
-  scores: ScoreProfile,
-  text: string,
-  multiplier: number,
-  maxMatchesPerRule: number,
-): void {
-  for (const [type, rules] of Object.entries(signalRules) as [HeroBuildType, SignalRule[]][]) {
+function scoreText(scores, text, multiplier, maxMatchesPerRule) {
+  for (const [type, rules] of Object.entries(signalRules)) {
     for (const [pattern, weight] of rules) {
-      scores[type] += Math.min(text.match(pattern)?.length ?? 0, maxMatchesPerRule) * weight * multiplier;
+      const matches = Math.min(text.match(pattern)?.length ?? 0, maxMatchesPerRule);
+      scores[type] += matches * weight * multiplier;
     }
   }
 }
 
-function applyAbilityMixBonuses(scores: ScoreProfile, text: string): void {
-  if (/revive|resurrect|invincib|damage reduction|shield/.test(text)) {
+function applyAbilityMixBonuses(scores, abilityTexts) {
+  const allText = abilityTexts.join(' ').toLowerCase();
+
+  if (/revive|resurrect|invincib|damage reduction|shield/.test(allText)) {
     scores.Utility += 1.1;
     scores.Sustain += 1.1;
   }
 
-  if (/dash|leap|fly|flight|swing|teleport|speed/.test(text) && /damage|strike|shot|slash|blast/.test(text)) {
+  if (/dash|leap|fly|flight|swing|teleport|speed/.test(allText) && /damage|strike|shot|slash|blast/.test(allText)) {
     scores.Mobility += 1;
     scores.Damage += 0.6;
   }
 
-  if (/stun|freeze|slow|taunt|pull|knock|blind|root/.test(text) && /damage|vulnerability|boost/.test(text)) {
+  if (/stun|freeze|slow|taunt|pull|knock|blind|root/.test(allText) && /damage|vulnerability|boost/.test(allText)) {
     scores.Utility += 1;
     scores.Damage += 0.7;
   }
 }
 
-function applyRoleWeights(scores: ScoreProfile, role: HeroRole): void {
-  const weights = roleWeights[role];
+function applyRoleWeights(scores, role) {
+  const weights = roleWeights[role] ?? roleWeights.Duelist;
 
   for (const type of buildTypes) {
     scores[type] *= weights[type];
   }
 }
 
-function normalizeProfile(scores: ScoreProfile): HeroBuildProfile {
+function normalizeProfile(scores) {
   return Object.fromEntries(buildTypes.map((type) => [
     type,
     clamp(Math.round((scores[type] / normalizers[type]) * 10), 1, 10),
-  ])) as HeroBuildProfile;
+  ]));
 }
 
-function collectAbilities(hero: Hero): HeroAbility[] {
-  const seen = new Set<string>();
-  const abilities: HeroAbility[] = [];
+function collectAbilities(hero) {
+  const baseAbilities = hero.abilities ?? [];
+  const kitAbilities = (hero.roleAbilityKits ?? []).flatMap((kit) => kit.abilities ?? []);
+  const seen = new Set();
+  const abilities = [];
 
-  for (const ability of [
-    ...hero.abilities,
-    ...(hero.roleAbilityKits ?? []).flatMap((kit) => kit.abilities),
-  ]) {
+  for (const ability of [...baseAbilities, ...kitAbilities]) {
     const key = `${ability.name}|${ability.type}|${ability.description}`;
 
-    if (!seen.has(key)) {
-      seen.add(key);
-      abilities.push(ability);
+    if (seen.has(key)) {
+      continue;
     }
+
+    seen.add(key);
+    abilities.push(ability);
   }
 
   return abilities;
 }
 
-function abilityText(ability: HeroAbility): string {
+function abilityText(ability) {
   return [
     ability.name,
     ability.type,
@@ -268,21 +249,27 @@ function abilityText(ability: HeroAbility): string {
   ].join(' ');
 }
 
-function isUltimateAbility(ability: HeroAbility): boolean {
+function isUltimateAbility(ability) {
   return /ultimate/i.test(ability.type) ||
     (ability.technicalDetails ?? []).some((detail) => /energy cost/i.test(detail.label));
 }
 
-function emptyScoreProfile(): ScoreProfile {
+function extractNumber(value) {
+  const match = value.match(/\d+(?:\.\d+)?/);
+
+  return match ? Number(match[0]) : 0;
+}
+
+function emptyProfile() {
   return { Utility: 0, Damage: 0, Sustain: 0, Mobility: 0, Ultimate: 0 };
 }
 
-function addScores(target: ScoreProfile, source: ScoreProfile): void {
+function addProfile(target, source) {
   for (const type of buildTypes) {
-    target[type] += source[type];
+    target[type] += source[type] ?? 0;
   }
 }
 
-function clamp(value: number, min: number, max: number): number {
+function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }

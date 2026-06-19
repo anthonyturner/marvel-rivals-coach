@@ -71,7 +71,7 @@ export const HERO_GUIDES: HeroGuide[] = [
           'Take pictures whenever you get a kill.',
           'Close-range pictures give more style points; ranged pictures give fewer points, but both are useful.',
           'Taking a picture also provides an invincibility frame, so there is no reason to skip it after a kill.',
-          'The transcript recommends Ban Hammer first because it adds damage even when enemies are not missing.',
+          'The guide recommends Ban Hammer first because it adds damage even when enemies are not missing.',
           'The E upgrade gives more attack speed with guns or swords, makes allies take less damage, and taunts enemies.',
           'The dash upgrade is valuable because it lets you dash twice instead of once.',
           'Gun upgrades are excellent because they add more damage.',
@@ -97,7 +97,7 @@ export const HERO_GUIDES: HeroGuide[] = [
       {
         title: 'Dash range and sword combo',
         points: [
-          'The dash radius shown in the transcript is about 10 meters.',
+          'The dash radius shown in the guide is about 10 meters.',
           'The ideal sword combo is dash, jump, then slash.',
           'The jump matters because no-jump versions are slower and less fluid.',
           'Practice the combo slowly first: dash, jump, slash.',
@@ -111,7 +111,7 @@ export const HERO_GUIDES: HeroGuide[] = [
       {
         title: 'Ban Hammer discipline',
         points: [
-          'Ban Hammer is the transcript author’s favorite part of Tankpool’s kit, but many players misuse it because they do not understand the mechanics.',
+          'Ban Hammer is the guide author’s favorite part of Tankpool’s kit, but many players misuse it because they do not understand the mechanics.',
           'Unupgraded Ban Hammer gives a large burst of survivability when dropped on a target.',
           'It gives instant bonus health and steady healing over time.',
           'It also taunts the target with an icon.',
@@ -121,7 +121,7 @@ export const HERO_GUIDES: HeroGuide[] = [
           'The upgraded version adds heavy damage over time on top of the base effects.',
           'The target takes damage every second even if they do not shoot and do not miss.',
           'If they start missing while upgraded Ban Hammer is active, the damage becomes even worse.',
-          'The transcript heavily favors dropping upgraded Ban Hammer on Strategists because they are the enemy team’s lifeline.',
+          'The guide heavily favors dropping upgraded Ban Hammer on Strategists because they are the enemy team’s lifeline.',
           'When you lock upgraded Ban Hammer onto an enemy support, they are put in a lose-lose situation: they take constant damage, and if they try to heal teammates while missing, they take more.',
           'This melts supports and disrupts their rhythm.',
         ],
@@ -129,7 +129,7 @@ export const HERO_GUIDES: HeroGuide[] = [
       {
         title: 'Sword ultimate usage',
         points: [
-          'The transcript says the sword ultimate is not used as often by the author.',
+          'The guide says the sword ultimate is not used as often by the author.',
           'When you do swap to the katana ultimate, its biggest value is survival.',
           'It gives a movement boost and chunks of healing over time.',
           'Treat it as a defensive tool to buy time, stall point, or stay alive under heavy focus fire.',
@@ -139,7 +139,7 @@ export const HERO_GUIDES: HeroGuide[] = [
       {
         title: 'Plushie Shield discipline',
         points: [
-          'The transcript emphasizes this is Plushie Shield, not Doctor Strange shield.',
+          'The guide emphasizes this is Plushie Shield, not Doctor Strange shield.',
           'Base Plushie Shield has 300 health.',
           'Upgraded Plushie Shield reaches 400 health and gains a little more radius.',
           'The tool is niche, but its utility is very strong when used correctly.',
@@ -167,7 +167,7 @@ export const HERO_GUIDES: HeroGuide[] = [
         title: 'Tank discipline in full fights',
         points: [
           'Tankpool discipline is about knowing your limits, playing your life, and putting your team in a position to win.',
-          'The transcript’s example focuses on surviving and stalling the objective against the odds.',
+          'The guide’s example focuses on surviving and stalling the objective against the odds.',
           'Even when the ending gets messy, surviving long enough can be the reason your team still has a chance to win.',
           'Your job is not always to get the clean finish yourself. Sometimes your job is to keep the fight alive until your team can recover momentum.',
         ],
@@ -272,7 +272,7 @@ export const HERO_GUIDES: HeroGuide[] = [
       {
         title: 'Pressure without the kill',
         points: [
-          'The transcript uses Black Cat as the example: when flanking, the goal is not always to kill someone.',
+          'The guide uses Black Cat as the example: when flanking, the goal is not always to kill someone.',
           'Sometimes the goal is simply to make the enemy support look at you instead of healing their tank.',
           'Sometimes the goal is to force defensive cooldowns.',
           'Sometimes the goal is to create attention and then leave.',
@@ -303,7 +303,7 @@ export const HERO_GUIDES: HeroGuide[] = [
           'One of the hardest things to learn is letting opportunities go.',
           'Let the 10 HP target escape when chasing them would ruin your position or cost your life.',
           'Let the fight breathe instead of forcing the heroic play.',
-          'The transcript uses Star-Lord as the example: chasing a low target into a room where you lose your spacing advantage is usually an ego play.',
+          'The guide uses Star-Lord as the example: chasing a low target into a room where you lose your spacing advantage is usually an ego play.',
           'You do not need that kill if the target is already out of the fight.',
           'A low enemy searching for healing or a health pack is no longer impacting the team fight.',
           'Move on to the next target and keep applying pressure.',
@@ -380,7 +380,7 @@ export const HERO_GUIDES: HeroGuide[] = [
       {
         title: 'Early deaths are usually pacing errors',
         points: [
-          'The transcript opens with a common Marvel Rivals problem: spawn doors open, players walk out, and someone dies within the first 10 seconds before the fight even really starts.',
+          'The guide opens with a common Marvel Rivals problem: spawn doors open, players walk out, and someone dies within the first 10 seconds before the fight even really starts.',
           'Those deaths usually are not caused by a coordinated ultimate or a five-player collapse.',
           'They often happen because someone walked somewhere they had no business being and then explained it as looking, poking, or getting hit by a lucky shot.',
           'As players climb, those excuses matter less because early deaths are usually bad pacing, not bad luck.',
@@ -393,7 +393,7 @@ export const HERO_GUIDES: HeroGuide[] = [
       {
         title: 'Do not treat setup like the fight',
         points: [
-          'The biggest mistake in the transcript is treating the setup phase like the actual fight.',
+          'The biggest mistake in the guide is treating the setup phase like the actual fight.',
           'Players leave spawn, walk straight down main, shoot the first visible target, and hope something happens.',
           'That is not pressure. That is exposure.',
           'Every pointless peek gives the enemy a free opportunity to punish you.',
@@ -408,7 +408,7 @@ export const HERO_GUIDES: HeroGuide[] = [
       {
         title: 'Split every fight into setup and execution',
         points: [
-          'The transcript recommends separating every fight into two parts: setup and execution.',
+          'The guide recommends separating every fight into two parts: setup and execution.',
           'During setup, your goal is not to farm damage.',
           'Your setup goals are to get ready, find your angle, identify targets, see where teammates are positioned, and understand what resources both teams have available.',
           'The most important setup rule is to keep your health bar full.',
@@ -438,7 +438,7 @@ export const HERO_GUIDES: HeroGuide[] = [
       {
         title: 'Ask who can actually die',
         points: [
-          'The transcript says to stop asking, "Who can I shoot?" and start asking, "Who can I actually kill?"',
+          'The guide says to stop asking, "Who can I shoot?" and start asking, "Who can I actually kill?"',
           'Those are completely different questions.',
           'Seeing a target does not mean the target is vulnerable.',
           'Before committing, check whether the target still has cooldowns.',
@@ -455,7 +455,7 @@ export const HERO_GUIDES: HeroGuide[] = [
       {
         title: 'Let the frontline open the fight',
         points: [
-          'The transcript specifically calls out Duelist impatience: it is hard to wait, but squishy characters especially need that patience.',
+          'The guide specifically calls out Duelist impatience: it is hard to wait, but squishy characters especially need that patience.',
           'You do not need to be the first person seen every fight.',
           'Let your Vanguard take space first.',
           'Let the frontline draw attention.',
@@ -515,7 +515,7 @@ export const HERO_GUIDES: HeroGuide[] = [
       {
         title: 'Season 8.5 punishes macro mistakes',
         points: [
-          'The transcript argues that many players are looking at Season 8.5 the wrong way by focusing only on whether heroes like Cyclops or Black Cat are broken, S-tier, or weak.',
+          'The guide argues that many players are looking at Season 8.5 the wrong way by focusing only on whether heroes like Cyclops or Black Cat are broken, S-tier, or weak.',
           'The bigger story is that discipline matters again.',
           'Positioning, timing, resource management, and understanding when to engage all matter more in this patch.',
           'Players who rely on forcing every fight are starting to feel punished.',
@@ -528,12 +528,12 @@ export const HERO_GUIDES: HeroGuide[] = [
       {
         title: 'Cyclops punishes bad habits',
         points: [
-          'The transcript says the most important thing about Cyclops is not simply his damage. It is what he punishes.',
+          'The guide says the most important thing about Cyclops is not simply his damage. It is what he punishes.',
           'Cyclops punishes players who stand in places they should not stand.',
           'He punishes wide peeks, open sightline rotations, and staying visible longer than necessary.',
           'Before this patch, players could sometimes get away with those habits.',
           'Against Cyclops, disrespecting an angle, rotating carelessly through open space, or staying visible too long usually means taking damage.',
-          'The transcript frames that as healthy because positioning should matter.',
+          'The guide frames that as healthy because positioning should matter.',
           'Players with strong fundamentals do not struggle against him as much because they already respect danger.',
           'Players with sloppy positioning can feel like he is impossible because he is exposing problems they already had.',
         ],
@@ -554,7 +554,7 @@ export const HERO_GUIDES: HeroGuide[] = [
       {
         title: 'Adjust to the enemy composition',
         points: [
-          'The transcript warns that players often move the exact same way no matter what they are playing against.',
+          'The guide warns that players often move the exact same way no matter what they are playing against.',
           'When Cyclops appears on the enemy team, your movement around the map should change.',
           'Ask where Cyclops is positioned and what angle he controls.',
           'Ask whether he can see your rotation.',
@@ -569,10 +569,10 @@ export const HERO_GUIDES: HeroGuide[] = [
       {
         title: 'Poke comps win with pressure',
         points: [
-          'The biggest Season 8.5 story in the transcript is how much poke is showing up.',
+          'The biggest Season 8.5 story in the guide is how much poke is showing up.',
           'Phoenix, Hela, Cyclops, and certain support compositions make the game feel more pressure-oriented.',
           'A lot of players misunderstand poke because they think its value is only damage.',
-          'The transcript says poke is really about pressure.',
+          'The guide says poke is really about pressure.',
           'A good poke composition does not need to instantly kill you.',
           'It only needs to make every decision harder.',
           'Every angle, rotation, and mistake becomes dangerous.',
@@ -609,7 +609,7 @@ export const HERO_GUIDES: HeroGuide[] = [
       {
         title: 'Health is a resource',
         points: [
-          'The transcript emphasizes that health is a resource.',
+          'The guide emphasizes that health is a resource.',
           'The fight starts long before the first eliminations happen.',
           'If you enter every fight at half health because you could not stop peeking, you are making the game much harder than necessary.',
           'Supports become more important in a poke-heavy meta because they keep fights stable.',
@@ -654,7 +654,7 @@ export const HERO_GUIDES: HeroGuide[] = [
       {
         title: 'Presence creates value',
         points: [
-          'The short transcript argues that value does not only come from kills.',
+          'The short guide argues that value does not only come from kills.',
           'Your presence alone can create pressure.',
           'If you hold an angle, the enemy has to respect it.',
           'If you threaten a flank, the enemy has to respect it.',

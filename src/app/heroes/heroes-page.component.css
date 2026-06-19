@@ -576,17 +576,10 @@ h1 {
   height: 11px;
 }
 
-.hero-detail.hero-detail-modal .hero-build-profile {
-  border-color: var(--modal-border);
-  background: rgba(255, 255, 255, 0.4);
-}
-
+.hero-detail.hero-detail-modal .hero-build-profile{border-color:var(--modal-border);background:rgba(255,255,255,.4)}
 .hero-detail.hero-detail-modal .hero-build-profile .section-heading p,
 .hero-detail.hero-detail-modal .build-profile-bars span,
-.hero-detail.hero-detail-modal .build-profile-bars strong {
-  color: var(--modal-text);
-}
-
+.hero-detail.hero-detail-modal .build-profile-bars strong{color:var(--modal-text)}
 .ultimate-strategies {
   display: grid;
   gap: 10px;

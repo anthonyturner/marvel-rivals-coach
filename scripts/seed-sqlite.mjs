@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { buildHeroBuildProfile, buildProfileRationale } from './hero-build-profile-utils.mjs';
 import { buildHeroPlaystyle, isGenericPlaystyle } from './playstyle-utils.mjs';
 import { columnExists, createTursoClient, executeSchema } from './turso-client.mjs';
 
@@ -57,6 +58,12 @@ async function seed() {
       ...hero,
       playstyle: isGenericPlaystyle(hero.playstyle) ? buildHeroPlaystyle(hero) : hero.playstyle,
     };
+    const buildProfile = buildHeroBuildProfile(seededHero);
+    const seededHeroWithProfile = {
+      ...seededHero,
+      buildProfile,
+      buildProfileRationale: buildProfileRationale(seededHero, buildProfile),
+    };
 
     await db.execute(
       `INSERT INTO heroes (
@@ -71,7 +78,7 @@ async function seed() {
         seededHero.summary,
         seededHero.playstyle,
         seededHero.imageUrl,
-        JSON.stringify(seededHero),
+        JSON.stringify(seededHeroWithProfile),
       ],
     );
 

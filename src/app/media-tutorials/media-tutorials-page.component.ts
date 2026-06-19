@@ -18,7 +18,7 @@ interface MediaTutorial {
   description: string;
   youtubeId: string;
   sourceUrl: string;
-  transcriptUrl?: string;
+  guideUrl?: string;
   image: string;
   tags: string[];
 }
@@ -57,7 +57,7 @@ export class MediaTutorialsPageComponent {
       description: 'Core cover habits, peeking discipline, and how to trade damage without giving the enemy a free punish.',
       youtubeId: 'rqxP_tKV2vc',
       sourceUrl: 'https://youtu.be/rqxP_tKV2vc?si=9K2auPgj1OXjaD2y',
-      transcriptUrl: '/strategic-cover',
+      guideUrl: '/strategic-cover',
       image: '/images/heroes/doctor-strange.png',
       tags: ['Cover', 'Sightlines', 'Survivability'],
     },
@@ -98,7 +98,7 @@ export class MediaTutorialsPageComponent {
       description: 'How to choose positions that create pressure, protect your exit, and force enemy attention away from your team.',
       youtubeId: 'FmfiDOyZmrQ',
       sourceUrl: 'https://youtu.be/FmfiDOyZmrQ?si=b8gXQdcpU1Y2vqfF',
-      transcriptUrl: '/power-positions',
+      guideUrl: '/power-positions',
       image: '/images/heroes/magneto.png',
       tags: ['Positioning', 'Pressure', 'Map Control'],
     },

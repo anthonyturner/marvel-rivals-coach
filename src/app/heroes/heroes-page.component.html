@@ -146,10 +146,52 @@
 
       <p class="playstyle" [innerHTML]="highlightedAbilityText(hero, displayedPlaystyle(hero))"></p>
 
+      @if (displayedPlaystyleGuides(hero).length > 0) {
+      <section class="deadpool-upgrades" aria-label="Detailed playstyle variants">
+        <div class="section-heading">
+          <div>
+            <h3>Playstyle Variants</h3>
+            <p>{{ heroRoleLabel(hero) }} plans from hero guides</p>
+          </div>
+        </div>
+
+        @for (guide of displayedPlaystyleGuides(hero); track guide.id) {
+        <article>
+          <strong>{{ guide.title }}</strong>
+          <p>{{ guide.whenToUse }}</p>
+
+          <ol>
+            @for (idea of guide.coreIdeas; track idea.label; let index = $index) {
+            <li>
+              <span>{{ index + 1 }}</span>
+              <div>
+                <strong>{{ idea.label }}</strong>
+                <p>{{ idea.description }}</p>
+              </div>
+            </li>
+            }
+          </ol>
+
+          @if (guide.upgradeNotes.length > 0) {
+          <p class="upgrade-source">Upgrade read: {{ guide.upgradeNotes.join(' ') }}</p>
+          }
+
+          @if (guide.ultimateNotes.length > 0) {
+          <p class="upgrade-source">Ultimate read: {{ guide.ultimateNotes.join(' ') }}</p>
+          }
+
+          @if (guide.sourceUrl) {
+          <a [href]="guide.sourceUrl" target="_blank" rel="noopener noreferrer">{{ guide.sourceTitle ?? 'Original source' }}</a>
+          }
+        </article>
+        }
+      </section>
+      }
+
       <section class="hero-build-profile" aria-label="Hero build theory profile">
         <div class="section-heading">
           <h3>Build Profile</h3>
-          <p>0-10 coach rating by fight-plan value</p>
+          <p>0-10 coach rating by fight-plan value, not official stats</p>
         </div>
 
         <div class="build-profile-bars">
@@ -161,6 +203,21 @@
           </div>
           }
         </div>
+
+        <p class="build-profile-note">
+          Ratings combine role, ability text, and guide interpretation. They are meant to explain a hero's fight-plan
+          value, not replace official ability numbers.
+        </p>
+
+        @if (heroBuildProfileRationale(hero); as rationale) {
+        <div class="build-profile-source">
+          <strong>Fandom description analysis</strong>
+          <p>{{ rationale.reason }}</p>
+          <div>
+            <a [href]="rationale.source.url" target="_blank" rel="noopener noreferrer">{{ rationale.source.label }}</a>
+          </div>
+        </div>
+        }
       </section>
     </div>
 

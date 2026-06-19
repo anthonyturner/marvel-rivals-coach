@@ -67,6 +67,9 @@
 
       <article class="score-card">
         <p class="kicker">Build Theory Signals</p>
+        <p class="score-note">
+          Coach ratings aggregate each hero's interpreted fight-plan value. These are not official Marvel Rivals stats.
+        </p>
         <div class="score-list">
           @for (signal of buildSignals; track signal.type) {
             <div [class]="scoreTone(summary.buildScores[signal.type], 60)">

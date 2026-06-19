@@ -227,7 +227,7 @@
     "coachNote": "Do not treat a power position as a fixed camping spot. Use it to create passive pressure, force enemy cooldowns, then rotate or drop when the fight asks for it.",
     "example": "A central high-ground room that sees objective and connects to both side lanes can be a power position.",
     "relatedTerms": ["Lane Control", "High Ground", "Off-Angle", "Choke Point"],
-    "sourceName": "Power Positions transcript guide",
+    "sourceName": "Power Positions guide notes",
     "sourceUrl": "/power-positions"
   },
   {
@@ -238,7 +238,7 @@
     "coachNote": "Think in main lane and side lanes. Strong teams do not only walk the shortest route; they open side pressure and make enemies answer multiple directions.",
     "example": "Taking a power position that sees main and a side doorway gives your team lane control without standing on point.",
     "relatedTerms": ["Power Position", "Off-Angle", "Poke", "Choke Point"],
-    "sourceName": "Power Positions transcript guide",
+    "sourceName": "Power Positions guide notes",
     "sourceUrl": "/power-positions"
   },
   {
@@ -249,7 +249,7 @@
     "coachNote": "Passive pressure is not passive play. You are playing aggressively with position while staying patient with cooldowns and cover.",
     "example": "Rocket Raccoon holding an off-angle can force Luna Snow to panic-use a cooldown before Rocket fully commits.",
     "relatedTerms": ["Power Position", "Off-Angle", "Cooldown Trade", "Scouting"],
-    "sourceName": "Power Positions transcript guide",
+    "sourceName": "Power Positions guide notes",
     "sourceUrl": "/power-positions"
   },
   {
@@ -260,7 +260,7 @@
     "coachNote": "Being near cover is not enough. If your full body is visible, you are giving the enemy too many chances to hit you.",
     "example": "Backing up behind horizontal cover until only your head is visible is hitbox minimization.",
     "relatedTerms": ["Cover", "Peeking", "One-Angle Rule"],
-    "sourceName": "Strategic Cover transcript guide",
+    "sourceName": "Strategic Cover guide notes",
     "sourceUrl": "/strategic-cover"
   },
   {
@@ -271,7 +271,7 @@
     "coachNote": "Small left-right position changes can turn a nearly hidden enemy into a hittable target without making you wide open.",
     "example": "Shifting slightly left around a corner so you can see more of an enemy trying to hide behind cover.",
     "relatedTerms": ["Cover", "Off-Angle", "Sightline"],
-    "sourceName": "Strategic Cover transcript guide",
+    "sourceName": "Strategic Cover guide notes",
     "sourceUrl": "/strategic-cover"
   },
   {
@@ -282,7 +282,7 @@
     "coachNote": "If you are shooting one target, it usually makes no sense to be visible to three other enemies. Reposition until cover blocks the extra angles.",
     "example": "Moving behind a wall so you can shoot the enemy on the right while the enemy on main cannot see you.",
     "relatedTerms": ["Cover", "Peeking", "Choke Point", "Sightline"],
-    "sourceName": "Strategic Cover transcript guide",
+    "sourceName": "Strategic Cover guide notes",
     "sourceUrl": "/strategic-cover"
   },
   {
@@ -293,7 +293,7 @@
     "coachNote": "Scout from safety before you peek or dive. Good scouting makes mechanics easier because you are not surprised by the target's movement.",
     "example": "A Black Widow checking where Spider-Man is moving before charging and peeking for the shot.",
     "relatedTerms": ["Cover", "Power Position", "Target Priority", "Engage"],
-    "sourceName": "Strategic Cover transcript guide",
+    "sourceName": "Strategic Cover guide notes",
     "sourceUrl": "/strategic-cover"
   },
   {
@@ -304,7 +304,7 @@
     "coachNote": "Parallel peeking makes you harder to hit and gives you a cleaner return path back behind cover.",
     "example": "Peeking left from a wall, firing, then strafing back behind the same wall instead of walking toward the enemy.",
     "relatedTerms": ["Cover", "Peeking", "Hitbox Minimization"],
-    "sourceName": "Strategic Cover transcript guide",
+    "sourceName": "Strategic Cover guide notes",
     "sourceUrl": "/strategic-cover"
   },
   {
@@ -315,7 +315,7 @@
     "coachNote": "Power positions are strong because they can make enemies spend resources first. Survive the response, then punish while their tools are missing.",
     "example": "A Strategist angle forces enemy mobility and a defensive cooldown, then your Vanguard engages while those tools are down.",
     "relatedTerms": ["Power Position", "Passive Pressure", "Sustain", "Engage"],
-    "sourceName": "Power Positions transcript guide",
+    "sourceName": "Power Positions guide notes",
     "sourceUrl": "/power-positions"
   },
   {
@@ -326,7 +326,7 @@
     "coachNote": "Cover is your default state, not a panic button. Peek with a purpose, then return before the enemy gets repeated shots.",
     "example": "A wall, payload corner, high-ground ledge, doorway, or box can all function as cover depending on the angle.",
     "relatedTerms": ["Hitbox Minimization", "One-Angle Rule", "Parallel Peek", "Sightline"],
-    "sourceName": "Strategic Cover transcript guide",
+    "sourceName": "Strategic Cover guide notes",
     "sourceUrl": "/strategic-cover"
   },
   {
@@ -337,7 +337,7 @@
     "coachNote": "Control sightlines deliberately. A strong sightline pressures enemies; a careless one exposes you to damage you are not ready to answer.",
     "example": "Holding a balcony that sees the choke creates a sightline enemies must respect before they can reach objective.",
     "relatedTerms": ["Cover", "High Ground", "Off-Angle", "Lane Control"],
-    "sourceName": "Strategic Cover transcript guide",
+    "sourceName": "Strategic Cover guide notes",
     "sourceUrl": "/strategic-cover"
   },
   {
@@ -348,7 +348,7 @@
     "coachNote": "Peek with a purpose. Wide peeking or walking forward into the enemy sightline makes your movement easy to punish.",
     "example": "A player shoulder-peeks from a doorway, fires one shot, then returns behind the wall.",
     "relatedTerms": ["Cover", "Parallel Peek", "Hitbox Minimization", "Scouting"],
-    "sourceName": "Strategic Cover transcript guide",
+    "sourceName": "Strategic Cover guide notes",
     "sourceUrl": "/strategic-cover"
   },
   {
@@ -359,7 +359,7 @@
     "coachNote": "A good engage has a target, a timing trigger, and an exit or follow-up plan. Going in alone is usually not an engage; it is a feed.",
     "example": "Thor jumping the backline as his Duelists open side angles is an engage.",
     "relatedTerms": ["Dive", "Timing", "Target Priority", "Cooldown Trade"],
-    "sourceName": "Power Positions transcript guide",
+    "sourceName": "Power Positions guide notes",
     "sourceUrl": "/power-positions"
   },
   {

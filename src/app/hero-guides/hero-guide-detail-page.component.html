@@ -26,7 +26,7 @@
     <section class="source-panel" aria-label="Original guide source">
       <div>
         <span>Original source</span>
-        <p>This guide is translated and structured from the linked video transcript.</p>
+        <p>This guide is translated and structured from the linked video.</p>
       </div>
       @if (guide.sourceUrl) {
         <a [href]="guide.sourceUrl" target="_blank" rel="noopener noreferrer">{{ guide.sourceLabel }}</a>
@@ -72,7 +72,7 @@
     <section class="ultimate-section" aria-labelledby="ultimate-title">
       <div class="ultimate-heading">
         <p class="kicker">Ultimate And Key Matchups</p>
-        <h2 id="ultimate-title">Who the transcript says to use them against</h2>
+        <h2 id="ultimate-title">Who to use them against</h2>
       </div>
 
       @for (ultimate of guide.ultimates; track ultimate.name) {

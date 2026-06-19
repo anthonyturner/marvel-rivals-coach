@@ -37,8 +37,8 @@
       </div>
       <div class="action-list">
         <a [href]="featuredTutorial.sourceUrl" target="_blank" rel="noopener">Open source video</a>
-        @if (featuredTutorial.transcriptUrl) {
-          <a [href]="featuredTutorial.transcriptUrl">Read transcript guide</a>
+        @if (featuredTutorial.guideUrl) {
+          <a [href]="featuredTutorial.guideUrl">Read guide notes</a>
         }
       </div>
     </div>
@@ -98,8 +98,8 @@
           </div>
           <div class="action-list compact-actions">
             <a [href]="tutorial.sourceUrl" target="_blank" rel="noopener">Open video</a>
-            @if (tutorial.transcriptUrl) {
-              <a [href]="tutorial.transcriptUrl">Transcript guide</a>
+            @if (tutorial.guideUrl) {
+              <a [href]="tutorial.guideUrl">Guide notes</a>
             }
           </div>
         </div>

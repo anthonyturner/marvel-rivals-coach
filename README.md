@@ -1,6 +1,6 @@
 # Marvel Rivals Coach
 
-Marvel Rivals Coach is an Angular companion site for learning heroes, matchups, positioning concepts, media guides, and practice habits for Marvel Rivals. The app is built as a coaching reference instead of a static wiki clone: it combines hero data, ability details, glossary terms, video resources, transcript-based guides, and guided learning paths into one searchable site.
+Marvel Rivals Coach is an Angular companion site for learning heroes, matchups, positioning concepts, media guides, and practice habits for Marvel Rivals. The app is built as a coaching reference instead of a static wiki clone: it combines hero data, ability details, glossary terms, video resources, guide-based lessons, and guided learning paths into one searchable site.
 
 ## What The App Includes
 
@@ -12,8 +12,8 @@ Marvel Rivals Coach is an Angular companion site for learning heroes, matchups, 
 - Multi-role hero support, including Deadpool role pools for Vanguard, Duelist/DPS, and Strategist/Support.
 - A glossary of coaching and Marvel Rivals terms.
 - Technique pages generated from the provided OW2/Marvel Rivals coaching spreadsheet.
-- Transcript-based guide pages for Power Positions and Strategic Cover Usage.
-- Media tutorials with embedded YouTube videos and transcript links.
+- Guide pages for Power Positions and Strategic Cover Usage.
+- Media tutorials with embedded YouTube videos and related guide links.
 - Learning paths, practice-oriented coaching content, and a "What Should I Watch Next?" quiz.
 
 ## Main Pages
@@ -24,10 +24,10 @@ Marvel Rivals Coach is an Angular companion site for learning heroes, matchups, 
 | `/heroes` | Database-backed hero roster, filters, ability details, and video guides |
 | `/glossary` | Coaching and gameplay terminology |
 | `/techniques` | Technique guide content from the coaching materials spreadsheet |
-| `/power-positions` | Extracted guide content from the power positions transcript |
-| `/strategic-cover` | Extracted guide content from the strategic cover transcript |
+| `/power-positions` | Clean guide content for power positions |
+| `/strategic-cover` | Clean guide content for strategic cover usage |
 | `/learning-paths` | Curated learning paths for improving at the game |
-| `/media-tutorials` | Embedded tutorial videos and related transcript links |
+| `/media-tutorials` | Embedded tutorial videos and related guide links |
 | `/watch-next` | Quiz that recommends what to study next |
 
 ## Tech Stack

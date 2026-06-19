@@ -17,8 +17,22 @@ import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-brows
 import { forkJoin } from 'rxjs';
 
 import { HeroDataService } from './hero-data.service';
-import { computeHeroBuildProfile, heroBuildTypes, HeroBuildType } from './hero-build-profile';
-import { Hero, HeroAbility, HeroRole, HeroRoleAbilityKit, HeroVideo, HeroVideoType } from './hero.model';
+import {
+  buildHeroBuildProfileRationale,
+  computeHeroBuildProfile,
+  heroBuildTypes,
+  HeroBuildType,
+} from './hero-build-profile';
+import {
+  Hero,
+  HeroAbility,
+  HeroBuildProfileRationale,
+  HeroPlaystyleGuide,
+  HeroRole,
+  HeroRoleAbilityKit,
+  HeroVideo,
+  HeroVideoType,
+} from './hero.model';
 
 type HeroRoleFilter = HeroRole | 'All';
 type HeroGridMode = 'rows' | 'thumbs';
@@ -397,12 +411,23 @@ export class HeroesPageComponent implements OnInit {
 
   displayedPlaystyle(hero: Hero): string {
     const kit = this.selectedAbilityKit(hero);
+    const guide = this.displayedPlaystyleGuides(hero)[0];
+
+    if (guide) {
+      return guide.summary;
+    }
 
     if (kit) {
       return this.buildPlaystyle(hero, kit.role, kit.abilities);
     }
 
     return hero.playstyle;
+  }
+
+  displayedPlaystyleGuides(hero: Hero): HeroPlaystyleGuide[] {
+    const role = this.selectedAbilityKit(hero)?.role ?? this.heroRoleLabel(hero);
+
+    return (hero.playstyles ?? []).filter((playstyle) => !playstyle.role || playstyle.role === role);
   }
 
   ultimateStrategies(hero: Hero): UltimateStrategy[] {
@@ -528,6 +553,10 @@ export class HeroesPageComponent implements OnInit {
 
   heroBuildValue(hero: Hero, type: HeroBuildType): number {
     return (hero.buildProfile ?? computeHeroBuildProfile(hero))[type];
+  }
+
+  heroBuildProfileRationale(hero: Hero): HeroBuildProfileRationale {
+    return hero.buildProfileRationale ?? buildHeroBuildProfileRationale(hero);
   }
 
   scoreTone(value: number, max = 10): string {

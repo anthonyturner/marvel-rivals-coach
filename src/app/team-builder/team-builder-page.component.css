@@ -272,6 +272,12 @@ small.multi-role {
   padding: 18px;
 }
 
+.score-note {
+  color: var(--text-soft);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
 .score-list {
   display: grid;
   gap: 10px;

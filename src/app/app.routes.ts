@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { BuildTheoryPageComponent } from './build-theory/build-theory-page.component';
+import { GameStatsPageComponent } from './game-stats/game-stats-page.component';
 import { HeroGuideDetailPageComponent } from './hero-guides/hero-guide-detail-page.component';
 import { GlossaryPageComponent } from './glossary/glossary-page.component';
 import { HeroGuidesPageComponent } from './hero-guides/hero-guides-page.component';
@@ -58,6 +59,10 @@ export const routes: Routes = [
   {
     path: 'media-tutorials',
     component: MediaTutorialsPageComponent,
+  },
+  {
+    path: 'game-stats',
+    component: GameStatsPageComponent,
   },
   {
     path: 'watch-next',

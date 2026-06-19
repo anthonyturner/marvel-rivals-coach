@@ -76,7 +76,7 @@ export class TechniquesPageComponent {
       image: '/images/heroes/doctor-strange.png',
       tags: ['Cover', 'Survivability', 'Sightlines'],
       links: [
-        { label: 'Transcript guide', url: '/strategic-cover' },
+        { label: 'Guide notes', url: '/strategic-cover' },
         { label: 'Edited video', url: 'https://youtu.be/rqxP_tKV2vc?si=9K2auPgj1OXjaD2y' },
         { label: 'Full masterclass', url: 'https://www.youtube.com/watch?v=tatptJPB3EQ' },
       ],
@@ -122,7 +122,7 @@ export class TechniquesPageComponent {
       image: '/images/heroes/magneto.png',
       tags: ['Positioning', 'Map Control', 'Pressure'],
       links: [
-        { label: 'Transcript guide', url: '/power-positions' },
+        { label: 'Guide notes', url: '/power-positions' },
         { label: 'Edited video', url: 'https://youtu.be/FmfiDOyZmrQ?si=b8gXQdcpU1Y2vqfF' },
         { label: 'Full masterclass', url: 'https://youtu.be/hnCgeDZCt0I?si=d7wxsqlCxCDMWcwU' },
       ],

@@ -10,6 +10,7 @@ import {
   getHomeContentBlocksFromDatabase,
   getHomePortalsFromDatabase,
 } from '../src/content-database.js';
+import gameStatsHandler from './game-stats.js';
 
 type VercelRequest = IncomingMessage & {
   query?: {
@@ -33,6 +34,11 @@ export default async function handler(req: VercelRequest, res: ServerResponse) {
   try {
     if (route === 'content/status') {
       sendJson(res, 200, await getContentStatusFromDatabase());
+      return;
+    }
+
+    if (route === 'game-stats') {
+      await gameStatsHandler(req, res);
       return;
     }
 
