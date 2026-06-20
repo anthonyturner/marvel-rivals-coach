@@ -11,6 +11,7 @@ import {
   getHomePortalsFromDatabase,
 } from '../src/content-database.js';
 import gameStatsHandler from './game-stats.js';
+import homeNewsSyncHandler from './sync/home-news.js';
 
 type VercelRequest = IncomingMessage & {
   query?: {
@@ -39,6 +40,11 @@ export default async function handler(req: VercelRequest, res: ServerResponse) {
 
     if (route === 'game-stats') {
       await gameStatsHandler(req, res);
+      return;
+    }
+
+    if (route === 'sync/home-news') {
+      await homeNewsSyncHandler(req, res);
       return;
     }
 

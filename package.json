@@ -11,11 +11,12 @@
     "test": "ng test",
     "db:seed": "node scripts/seed-sqlite.mjs",
     "db:sync": "node scripts/sync-external-sources.mjs",
+    "sync:home-news": "node --experimental-strip-types scripts/sync-home-news.mjs",
     "sync:glossary": "node scripts/sync-glossary.mjs",
     "sync:heroes": "node scripts/sync-heroes.mjs",
     "refresh:playstyles": "node scripts/refresh-playstyles.mjs",
     "refresh:build-profiles": "node scripts/refresh-build-profiles.mjs",
-    "content:update": "npm run db:seed && npm run db:sync && npm run sync:heroes",
+    "content:update": "npm run db:seed && npm run db:sync && npm run sync:home-news && npm run sync:heroes",
     "serve:ssr:marvel-rivals-coach": "node dist/marvel-rivals-coach/server/server.mjs"
   },
   "prettier": {

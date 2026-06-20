@@ -39,7 +39,7 @@ Marvel Rivals Coach is an Angular companion site for learning heroes, matchups, 
 - RxJS
 - Angular Signals
 - Turso/libSQL through `@tursodatabase/serverless`
-- Fandom/wiki sync scripts for refreshable hero and news data
+- Steam News and Fandom/wiki sync scripts for refreshable hero and news data
 
 ## Content Architecture
 
@@ -66,6 +66,7 @@ Important files:
 | `scripts/seed-sqlite.mjs` | Seeds Turso from local mock JSON |
 | `scripts/sync-heroes.mjs` | Fetches and updates Turso hero data from Marvel Rivals Fandom |
 | `scripts/sync-external-sources.mjs` | Caches external source payloads in Turso |
+| `scripts/sync-home-news.mjs` | Refreshes home page news cards from Steam News and BattlePass data |
 | `scripts/refresh-playstyles.mjs` | Regenerates hero playstyle copy from current Turso content |
 | `src/app/data/hero-videos.mock.json` | Seed data for hero-specific and role-fallback video embeds |
 | `src/app/data/home-content.mock.json` | Seed data for home stats, news, guides, quick links, and focus copy |
@@ -82,6 +83,7 @@ GET /api/heroes/:id
 GET /api/hero-videos
 GET /api/home/content
 GET /api/home/portals
+GET /api/sync/home-news
 GET /api/glossary
 GET /api/external-sources/:sourceKey
 GET /api/content/status
@@ -146,6 +148,12 @@ Pull current external source data into Turso:
 npm.cmd run db:sync
 ```
 
+Refresh the home page Season and BattlePass notes:
+
+```powershell
+npm.cmd run sync:home-news
+```
+
 Pull current hero data and ability details from Fandom into Turso:
 
 ```powershell
@@ -162,6 +170,34 @@ Run the full content refresh pipeline:
 
 ```powershell
 npm.cmd run content:update
+```
+
+## Home News Updates
+
+The home page `Season and BattlePass notes` section is database-backed. The refresh flow is:
+
+```text
+Steam GetNewsForApp + Marvel Rivals Fandom BattlePasses -> Turso -> /api/home/content -> Angular home page
+```
+
+Steam is used for official announcement cards through `ISteamNews/GetNewsForApp` for app `2767030`. The Fandom BattlePasses page is used for structured season/BattlePass names, with the app keeping a safe fallback if the wiki source lags behind the current site focus.
+
+For production, `vercel.json` includes a cron that calls:
+
+```text
+/api/sync/home-news
+```
+
+The cron runs every six hours and updates the shared Turso database. For a manual production refresh, set a `SYNC_SECRET` environment variable in Vercel and call the endpoint with:
+
+```powershell
+Invoke-RestMethod -Uri "https://your-site.vercel.app/api/sync/home-news" -Headers @{ Authorization = "Bearer YOUR_SYNC_SECRET" }
+```
+
+For local refreshes, run:
+
+```powershell
+npm.cmd run sync:home-news
 ```
 
 Typical hero-content refresh:

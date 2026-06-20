@@ -18,6 +18,12 @@ interface BattlePassSnapshot {
   battlePass: string;
 }
 
+const minimumCurrentSeason = 8;
+const fallbackBattlePassSnapshot: BattlePassSnapshot = {
+  currentSeason: 'Season 8.5',
+  battlePass: 'Project: Heroic Age',
+};
+
 @Injectable({ providedIn: 'root' })
 export class HomeContentService {
   private readonly http = inject(HttpClient);
@@ -41,9 +47,15 @@ export class HomeContentService {
   /** Loads landing-page content from the cached BattlePass payload stored in the content database. */
   getHomeContent(): Observable<HomeContent> {
     return forkJoin({
-      battlePass: this.http.get<FandomParseResponse>(this.battlePassSourceUrl),
-      content: this.http.get<Partial<HomeContent>>(this.contentSourceUrl),
-      portals: this.http.get<PortalCard[]>(this.portalsSourceUrl),
+      battlePass: this.http.get<FandomParseResponse>(this.battlePassSourceUrl).pipe(
+        catchError(() => of({} as FandomParseResponse)),
+      ),
+      content: this.http.get<Partial<HomeContent>>(this.contentSourceUrl).pipe(
+        catchError(() => of({} as Partial<HomeContent>)),
+      ),
+      portals: this.http.get<PortalCard[]>(this.portalsSourceUrl).pipe(
+        catchError(() => of([] as PortalCard[])),
+      ),
     }).pipe(
       map(({ battlePass, content, portals }) => {
         const snapshot = this.parseBattlePassSnapshot(battlePass.parse?.wikitext?.['*'] ?? '');
@@ -68,16 +80,25 @@ export class HomeContentService {
   /** Extracts the latest season and BattlePass pair from the Fandom BattlePasses page wikitext. */
   private parseBattlePassSnapshot(wikitext: string): BattlePassSnapshot {
     const seasonBattlePassMatch = wikitext.match(
-      /\[\[(Season\s+\d+:\s+[^\]|]+)(?:\|[^\]]+)?\]\]\s*-\s*\[\[([^\]|]+)(?:\|[^\]]+)?\]\]/gi,
+      /\[\[(Season\s+\d+(?:\.\d+)?(?::\s+[^\]|]+)?)(?:\|[^\]]+)?\]\]\s*-\s*\[\[([^\]|]+)(?:\|[^\]]+)?\]\]/gi,
     );
-    const latestSeasonBattlePass = seasonBattlePassMatch?.at(-1) ?? '';
-    const parsedMatch = latestSeasonBattlePass.match(
-      /\[\[(Season\s+\d+:\s+[^\]|]+)(?:\|[^\]]+)?\]\]\s*-\s*\[\[([^\]|]+)(?:\|[^\]]+)?\]\]/i,
-    );
+    const snapshots = (seasonBattlePassMatch ?? [])
+      .map((match) => match.match(
+        /\[\[(Season\s+\d+(?:\.\d+)?(?::\s+[^\]|]+)?)(?:\|[^\]]+)?\]\]\s*-\s*\[\[([^\]|]+)(?:\|[^\]]+)?\]\]/i,
+      ))
+      .filter((match): match is RegExpMatchArray => Boolean(match))
+      .map((match) => ({
+        currentSeason: match[1]?.trim() ?? '',
+        battlePass: match[2]?.trim() ?? '',
+      }))
+      .filter((snapshot) => this.seasonNumber(snapshot.currentSeason) >= minimumCurrentSeason)
+      .sort((a, b) => this.seasonNumber(b.currentSeason) - this.seasonNumber(a.currentSeason));
+
+    const parsedSnapshot = snapshots[0];
 
     return {
-      currentSeason: parsedMatch?.[1]?.trim() || 'Season 8: Sins of Alchemax',
-      battlePass: parsedMatch?.[2]?.trim() || 'Project: Heroic Age',
+      currentSeason: parsedSnapshot?.currentSeason || fallbackBattlePassSnapshot.currentSeason,
+      battlePass: parsedSnapshot?.battlePass || fallbackBattlePassSnapshot.battlePass,
     };
   }
 
@@ -109,5 +130,9 @@ export class HomeContentService {
         description: `The cached Marvel Rivals Wiki BattlePass data currently resolves ${snapshot.currentSeason} to ${snapshot.battlePass}.`,
       };
     });
+  }
+
+  private seasonNumber(value: string): number {
+    return Number.parseFloat(value.match(/Season\s+(\d+(?:\.\d+)?)/i)?.[1] ?? '0');
   }
 }

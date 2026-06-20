@@ -17,6 +17,7 @@ import {
   getHomeContentBlocksFromDatabase,
   getHomePortalsFromDatabase,
 } from './content-database';
+import { syncHomeNews } from './home-news-sync';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -55,6 +56,15 @@ app.get('/api/home/portals', (_req, res) => {
 
 app.get('/api/home/content', (_req, res) => {
   handleApiResponse(res, () => getHomeContentBlocksFromDatabase());
+});
+
+app.get('/api/sync/home-news', (req, res) => {
+  if (!isAuthorizedSyncRequest(req)) {
+    res.status(401).json({ message: 'Missing sync authorization' });
+    return;
+  }
+
+  handleApiResponse(res, () => syncHomeNews());
 });
 
 app.get('/api/glossary', (_req, res) => {
@@ -126,4 +136,18 @@ async function handleApiResponse(res: express.Response, getBody: () => unknown |
 
     res.status(500).json({ message });
   }
+}
+
+function isAuthorizedSyncRequest(req: express.Request): boolean {
+  if (req.headers['x-vercel-cron'] === '1') {
+    return true;
+  }
+
+  const syncSecret = process.env['SYNC_SECRET'];
+
+  if (!syncSecret) {
+    return req.hostname === 'localhost' || req.hostname === '127.0.0.1';
+  }
+
+  return req.headers.authorization === `Bearer ${syncSecret}`;
 }
