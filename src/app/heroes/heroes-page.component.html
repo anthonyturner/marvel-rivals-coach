@@ -59,6 +59,18 @@
     <aside class="hero-detail hero-detail-panel" [@fadeIn] [ngClass]="roleClass(heroRoleLabel(hero))"
       aria-label="Selected hero details">
       <button class="detail-pop-button" type="button" (click)="openHeroDetailModal()">Open profile</button>
+      @if (roleAbilityKits(hero).length > 0) {
+    <section class="role-pool-switcher" aria-label="Ability role pool">
+      <div class="ability-role-tabs">
+        @for (kit of roleAbilityKits(hero); track kit.role) {
+        <button type="button" [class.active]="selectedAbilityKit(hero)?.role === kit.role"
+          (click)="selectAbilityKit(kit.role)">
+          {{ kit.label }}
+        </button>
+        }
+      </div>
+    </section>
+    }
       <ng-container [ngTemplateOutlet]="heroDetailsTemplate"
         [ngTemplateOutletContext]="{ $implicit: hero }"></ng-container>
     </aside>
@@ -221,19 +233,6 @@
       </section>
     </div>
 
-    @if (roleAbilityKits(hero).length > 0) {
-    <section class="role-pool-switcher" aria-label="Ability role pool">
-      <span>Role pool</span>
-      <div class="ability-role-tabs">
-        @for (kit of roleAbilityKits(hero); track kit.role) {
-        <button type="button" [class.active]="selectedAbilityKit(hero)?.role === kit.role"
-          (click)="selectAbilityKit(kit.role)">
-          {{ kit.label }}
-        </button>
-        }
-      </div>
-    </section>
-    }
 
     @if (ultimateStrategies(hero).length > 0) {
     <section class="ultimate-strategies" aria-label="Ultimate strategies">
@@ -307,7 +306,13 @@
         </div>
         <div class="tag-list">
           @for (counter of hero.counters; track counter) {
+          @if (heroByName(counter); as counterHero) {
+          <span class="hero-matchup-chip" [title]="counterHero.name">
+            <img [src]="counterHero.imageUrl" [alt]="counterHero.name" />
+          </span>
+          } @else {
           <span>{{ counter }}</span>
+          }
           }
         </div>
       </section>
@@ -316,7 +321,15 @@
         <h3>Synergies</h3>
         <div class="tag-list">
           @for (synergy of hero.synergies; track synergy) {
-          <span>{{ synergy }}</span>
+          @if (heroByName(synergy); as synergyHero) {
+          <span class="hero-matchup-chip" [title]="synergyHero.name">
+            <img [src]="synergyHero.imageUrl" [alt]="synergyHero.name" />
+          </span>
+          } @else {
+          <span class="hero-matchup-chip icon-chip" [title]="synergy" [attr.aria-label]="synergy">
+            <i [class]="synergyIcon(synergy)" aria-hidden="true"></i>
+          </span>
+          }
           }
         </div>
       </section>

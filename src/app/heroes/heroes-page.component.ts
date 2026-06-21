@@ -328,8 +328,6 @@ export class HeroesPageComponent implements OnInit {
     if (role !== 'All') {
       this.selectedAbilityKitRole.set(role);
     }
-
-    this.openHeroDetailModal();
   }
 
   updateSearch(event: Event): void {
@@ -565,6 +563,42 @@ export class HeroesPageComponent implements OnInit {
     return hero.buildProfileRationale ?? buildHeroBuildProfileRationale(hero);
   }
 
+  heroByName(name: string): Hero | undefined {
+    const normalizedName = this.normalizeHeroName(name);
+
+    return this.heroes().find((hero) => this.normalizeHeroName(hero.name) === normalizedName);
+  }
+
+  synergyIcon(synergy: string): string {
+    const normalized = synergy.toLowerCase();
+
+    if (/heal|support|sustain|strategist|restore/.test(normalized)) {
+      return 'fa-solid fa-heart-pulse';
+    }
+
+    if (/shield|barrier|protect|vanguard|tank|frontline/.test(normalized)) {
+      return 'fa-solid fa-shield-halved';
+    }
+
+    if (/damage|duelist|burst|pressure|poke|finisher/.test(normalized)) {
+      return 'fa-solid fa-burst';
+    }
+
+    if (/dive|mobile|mobility|flank|speed|rotation/.test(normalized)) {
+      return 'fa-solid fa-person-running';
+    }
+
+    if (/control|stun|slow|root|trap|zone|setup/.test(normalized)) {
+      return 'fa-solid fa-crosshairs';
+    }
+
+    if (/ultimate|combo|team-up|team up/.test(normalized)) {
+      return 'fa-solid fa-star';
+    }
+
+    return 'fa-solid fa-handshake-angle';
+  }
+
   scoreTone(value: number, max = 10): string {
     const ratio = max > 0 ? value / max : 0;
 
@@ -581,6 +615,10 @@ export class HeroesPageComponent implements OnInit {
 
   private heroMatchesRole(hero: Hero, role: HeroRole): boolean {
     return hero.role === role || this.roleAbilityKits(hero).some((kit) => kit.role === role);
+  }
+
+  private normalizeHeroName(value: string): string {
+    return value.toLowerCase().replace(/[^a-z0-9]+/g, '');
   }
 
   private isPassiveAbility(ability: HeroAbility): boolean {

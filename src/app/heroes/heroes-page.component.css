@@ -444,7 +444,7 @@ h1 {
   max-height: min(88dvh, 920px);
   overflow-y: auto;
   border-color: var(--modal-border);
-  background: rgba(255, 248, 203, 0.74);
+  background: rgb(143 143 142 / 33%);
   backdrop-filter: blur(18px) saturate(145%);
   box-shadow:
     0 30px 90px rgba(83, 82, 1, 0.22),
@@ -462,6 +462,7 @@ h1 {
 .detail-hero {
   display: flex;
   gap: 16px;
+  background: rgb(255 255 255);
   align-items: center;
 }
 
@@ -505,7 +506,7 @@ h1 {
   padding: 14px 16px;
   border-radius: 8px;
   border: 1px solid var(--modal-border);
-  background: rgba(255, 255, 255, 0.46);
+  background: rgb(255 255 255);
   box-shadow: var(--heroes-box-shadow);
 }
 
@@ -576,17 +577,24 @@ h1 {
   height: 11px;
 }
 
-.hero-detail.hero-detail-modal .hero-build-profile{border-color:var(--modal-border);background:rgba(255,255,255,.4)}
+.hero-detail.hero-detail-modal .hero-build-profile {
+  border-color: var(--modal-border);
+  background: rgb(255 255 255);
+}
+
 .hero-detail.hero-detail-modal .hero-build-profile .section-heading p,
 .hero-detail.hero-detail-modal .build-profile-bars span,
-.hero-detail.hero-detail-modal .build-profile-bars strong{color:var(--modal-text)}
+.hero-detail.hero-detail-modal .build-profile-bars strong {
+  color: var(--modal-text)
+}
+
 .ultimate-strategies {
   display: grid;
   gap: 10px;
   padding: 12px;
-  border: 1px solid rgba(224, 169, 0, 0.42);
+  border-color: var(--modal-border);
+  background: rgb(255 255 255);
   border-radius: 8px;
-  background: rgba(255, 248, 203, 0.74);
   box-shadow: var(--heroes-box-shadow);
 }
 
@@ -594,9 +602,9 @@ h1 {
   display: grid;
   gap: 7px;
   padding: 14px;
-  border: 1px solid rgba(138, 98, 0, 0.18);
+  border: 1px solid var(--modal-border);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgb(255 255 255);
   box-shadow: inset 4px 0 var(--accent);
 }
 
@@ -616,15 +624,13 @@ h1 {
 .ultimate-strategies article .ultimate-source {
   padding: 10px 12px;
   border: 1px solid rgba(138, 98, 0, 0.16);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.44);
   color: var(--text-soft);
   font-size: 0.92rem;
 }
 
 .hero-detail.hero-detail-modal .ultimate-strategies {
   border-color: var(--modal-border);
-  background: var(--modal-panel);
+  background: rgb(255 255 255);
 }
 
 .hero-detail.hero-detail-modal .ultimate-strategies article {
@@ -734,7 +740,7 @@ h1 {
   border: 1px solid rgba(3, 159, 159, 0.18);
   border-radius: 8px;
   border-color: rgba(224, 169, 0, 0.42);
-  background: rgba(255, 248, 203, 0.74);
+  background: rgb(255 255 255);
   box-shadow: var(--heroes-box-shadow);
 }
 
@@ -743,7 +749,7 @@ h1 {
 .hero-detail.hero-detail-modal .matchup-row section {
 
   border-color: var(--modal-border);
-  background: var(--modal-panel);
+    background: rgb(255 255 255);
   box-shadow: var(--heroes-box-shadow);
 }
 
@@ -762,17 +768,15 @@ ul {
   margin-top: 12px;
 }
 
-.tag-list span {
-  padding: 7px 9px;
+.tag-list span:not(.hero-matchup-chip) {
+  padding: 2px 2px;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: 20px;
   color: var(--text);
   background: rgba(255, 255, 255, 0.76);
-  font-size: 0.84rem;
-  font-weight: 700;
 }
 
-.hero-detail.hero-detail-modal .tag-list span {
+.hero-detail.hero-detail-modal .tag-list span:not(.hero-matchup-chip) {
   border-color: rgba(138, 98, 0, 0.24);
   background: rgba(255, 255, 255, 0.48);
   color: var(--modal-text);
@@ -791,7 +795,7 @@ ul {
 .hero-detail.hero-detail-modal .abilities {
   border-color: var(--modal-border);
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.52), rgba(255, 232, 130, 0.18)),
+    linear-gradient(135deg,  rgb(255 255 255), rgba(255, 255, 255, 0.18)),
     rgba(255, 248, 203, 0.5);
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.76), 0 18px 38px rgba(83, 82, 1, 0.1);
 }
@@ -820,7 +824,7 @@ ul {
 .ability-role-tabs {
   display: flex;
   flex-wrap: wrap;
-  justify-content: end;
+  justify-content: center;
   gap: 6px;
 }
 
@@ -906,14 +910,14 @@ ul {
 :host ::ng-deep .ability-text-link {
   padding: 1px 4px;
   border-radius: 4px;
-  background: rgb(0 0 0 / 33%);
+  background: rgb(0 0 0 / 73%);
   color: #f9ff00;
   font-weight: 800;
   text-decoration: none;
 }
 
 :host ::ng-deep .ability-text-link:hover {
-  background: #0f9fba;
+  background: #1e1a07;
   color: #ffffff;
 }
 
@@ -1292,6 +1296,7 @@ ul {
 
   .detail-hero {
     display: grid;
+    background: rgb(255 255 255);
   }
 
   .technical-details {

@@ -46,6 +46,31 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.tag-list .hero-matchup-chip {
+  display: grid;
+  width: 46px;
+  aspect-ratio: 1;
+  place-items: center;
+  padding: 0;
+  border-radius: 8px;
+  background: rgba(255, 248, 203, 0.82);
+  cursor: help;
+}
+
+.hero-matchup-chip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.hero-matchup-chip.icon-chip {
+  border: 1px solid rgba(138, 98, 0, 0.22);
+  background: rgba(255, 248, 203, 0.9);
+  color: var(--accent-strong);
+  font-size: 1rem;
+}
+
 button,
 input {
   font: inherit;
