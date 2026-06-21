@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { BuildTheoryPageComponent } from './build-theory/build-theory-page.component';
+import { CountersPageComponent } from './counters/counters-page.component';
 import { GameStatsPageComponent } from './game-stats/game-stats-page.component';
 import { HeroGuideDetailPageComponent } from './hero-guides/hero-guide-detail-page.component';
 import { GlossaryPageComponent } from './glossary/glossary-page.component';
@@ -67,6 +68,10 @@ export const routes: Routes = [
   {
     path: 'watch-next',
     component: WatchNextPageComponent,
+  },
+  {
+    path: 'counters',
+    component: CountersPageComponent,
   },
   {
     path: 'team-builder',

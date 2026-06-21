@@ -67,6 +67,7 @@ Important files:
 | `scripts/sync-heroes.mjs` | Fetches and updates Turso hero data from Marvel Rivals Fandom |
 | `scripts/sync-external-sources.mjs` | Caches external source payloads in Turso |
 | `scripts/sync-home-news.mjs` | Refreshes home page news cards from Steam News and BattlePass data |
+| `scripts/refresh-counter-picks.mjs` | Rebuilds the curated "who stops this hero" counter matrix |
 | `scripts/refresh-playstyles.mjs` | Regenerates hero playstyle copy from current Turso content |
 | `src/app/data/hero-videos.mock.json` | Seed data for hero-specific and role-fallback video embeds |
 | `src/app/data/home-content.mock.json` | Seed data for home stats, news, guides, quick links, and focus copy |
@@ -152,6 +153,12 @@ Refresh the home page Season and BattlePass notes:
 
 ```powershell
 npm.cmd run sync:home-news
+```
+
+Refresh the curated hero counter picks:
+
+```powershell
+npm.cmd run refresh:counters
 ```
 
 Pull current hero data and ability details from Fandom into Turso:

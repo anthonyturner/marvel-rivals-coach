@@ -14,6 +14,7 @@ import {
   animate,
 } from '@angular/animations';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { forkJoin } from 'rxjs';
 
 import { HeroDataService } from './hero-data.service';
@@ -59,7 +60,7 @@ interface DeadpoolUpgradeStep {
 
 @Component({
   selector: 'app-heroes-page',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './heroes-page.component.html',
   styleUrl: './heroes-page.component.css',
   animations: [
@@ -98,6 +99,7 @@ interface DeadpoolUpgradeStep {
 export class HeroesPageComponent implements OnInit {
   private readonly heroDataService = inject(HeroDataService);
   private readonly sanitizer = inject(DomSanitizer);
+  private readonly route = inject(ActivatedRoute);
   private readonly heroes = signal<Hero[]>([]);
   private readonly heroVideos = signal<HeroVideo[]>([]);
 
@@ -295,12 +297,16 @@ export class HeroesPageComponent implements OnInit {
       heroes: this.heroDataService.getHeroes(),
       heroVideos: this.heroDataService.getHeroVideos(),
     }).subscribe(({ heroes, heroVideos }) => {
-      this.heroes.set(heroes.map((hero) => ({
+      const hydratedHeroes = heroes.map((hero) => ({
         ...hero,
         buildProfile: hero.buildProfile ?? computeHeroBuildProfile(hero),
-      })));
+      }));
+      const requestedHeroId = this.route.snapshot.queryParamMap.get('hero') ?? '';
+      const initialHero = hydratedHeroes.find((hero) => hero.id === requestedHeroId) ?? hydratedHeroes[0];
+
+      this.heroes.set(hydratedHeroes);
       this.heroVideos.set(heroVideos);
-      this.selectedHeroId.set(heroes[0]?.id ?? '');
+      this.selectedHeroId.set(initialHero?.id ?? '');
     });
   }
 

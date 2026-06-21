@@ -57,6 +57,218 @@ const normalizers = {
   Ultimate: 14,
 };
 
+const ultimateValueOverrides = {
+  'Adam Warlock': 9,
+  Angela: 7,
+  'Black Cat': 7,
+  'Black Panther': 7,
+  'Black Widow': 6,
+  Blade: 8,
+  Hulk: 7,
+  'Captain America': 6,
+  'Cloak & Dagger': 8,
+  Daredevil: 7,
+  Deadpool: 10,
+  'Devil Dinosaur': 7,
+  'Doctor Strange': 8,
+  'Elsa Bloodstone': 7,
+  'Emma Frost': 8,
+  Gambit: 8,
+  Groot: 7,
+  Hawkeye: 7,
+  Hela: 8,
+  'Human Torch': 8,
+  'Invisible Woman': 10,
+  'Iron Fist': 7,
+  'Iron Man': 8,
+  'Jeff the Land Shark': 8,
+  Loki: 8,
+  'Luna Snow': 9,
+  Magik: 8,
+  Magneto: 8,
+  Mantis: 8,
+  'Mister Fantastic': 7,
+  'Moon Knight': 7,
+  Namor: 7,
+  'Peni Parker': 7,
+  Phoenix: 8,
+  Psylocke: 8,
+  'Rocket Raccoon': 8,
+  Rogue: 8,
+  'Scarlet Witch': 8,
+  'Spider-Man': 7,
+  'Squirrel Girl': 7,
+  'Star-Lord': 8,
+  Storm: 8,
+  'The Punisher': 7,
+  'The Thing': 7,
+  Thor: 8,
+  Ultron: 8,
+  Venom: 8,
+  'White Fox': 8,
+  'Winter Soldier': 7,
+  Wolverine: 8,
+};
+
+const mobilityValueOverrides = {
+  'Adam Warlock': 3,
+  Angela: 9,
+  'Black Cat': 9,
+  'Black Panther': 10,
+  'Black Widow': 4,
+  Blade: 8,
+  Hulk: 9,
+  'Captain America': 8,
+  'Cloak & Dagger': 5,
+  Daredevil: 8,
+  Deadpool: 9,
+  'Devil Dinosaur': 6,
+  'Doctor Strange': 4,
+  'Elsa Bloodstone': 7,
+  'Emma Frost': 4,
+  Gambit: 5,
+  Groot: 2,
+  Hawkeye: 5,
+  Hela: 5,
+  'Human Torch': 9,
+  'Invisible Woman': 5,
+  'Iron Fist': 9,
+  'Iron Man': 9,
+  'Jeff the Land Shark': 6,
+  Loki: 6,
+  'Luna Snow': 8,
+  Magik: 9,
+  Magneto: 4,
+  Mantis: 6,
+  'Mister Fantastic': 6,
+  'Moon Knight': 7,
+  Namor: 4,
+  'Peni Parker': 5,
+  Phoenix: 8,
+  Psylocke: 9,
+  'Rocket Raccoon': 8,
+  Rogue: 8,
+  'Scarlet Witch': 7,
+  'Spider-Man': 10,
+  'Squirrel Girl': 7,
+  'Star-Lord': 9,
+  Storm: 9,
+  'The Punisher': 3,
+  'The Thing': 5,
+  Thor: 8,
+  Ultron: 8,
+  Venom: 9,
+  'White Fox': 5,
+  'Winter Soldier': 6,
+  Wolverine: 8,
+};
+
+const damageValueOverrides = {
+  'Adam Warlock': 4,
+  Angela: 6,
+  'Black Cat': 8,
+  'Black Panther': 8,
+  'Black Widow': 8,
+  Blade: 8,
+  Hulk: 5,
+  'Captain America': 5,
+  'Cloak & Dagger': 4,
+  Daredevil: 8,
+  Deadpool: 9,
+  'Devil Dinosaur': 6,
+  'Doctor Strange': 5,
+  'Elsa Bloodstone': 8,
+  'Emma Frost': 5,
+  Gambit: 5,
+  Groot: 4,
+  Hawkeye: 9,
+  Hela: 9,
+  'Human Torch': 9,
+  'Invisible Woman': 4,
+  'Iron Fist': 8,
+  'Iron Man': 8,
+  'Jeff the Land Shark': 3,
+  Loki: 5,
+  'Luna Snow': 3,
+  Magik: 8,
+  Magneto: 5,
+  Mantis: 3,
+  'Mister Fantastic': 7,
+  'Moon Knight': 8,
+  Namor: 7,
+  'Peni Parker': 5,
+  Phoenix: 9,
+  Psylocke: 9,
+  'Rocket Raccoon': 4,
+  Rogue: 6,
+  'Scarlet Witch': 7,
+  'Spider-Man': 8,
+  'Squirrel Girl': 8,
+  'Star-Lord': 8,
+  Storm: 7,
+  'The Punisher': 9,
+  'The Thing': 5,
+  Thor: 6,
+  Ultron: 4,
+  Venom: 5,
+  'White Fox': 4,
+  'Winter Soldier': 8,
+  Wolverine: 8,
+};
+
+const utilityValueOverrides = {
+  'Adam Warlock': 8,
+  Angela: 5,
+  'Black Cat': 4,
+  'Black Panther': 3,
+  'Black Widow': 4,
+  Blade: 4,
+  Hulk: 6,
+  'Captain America': 6,
+  'Cloak & Dagger': 8,
+  Daredevil: 6,
+  Deadpool: 9,
+  'Devil Dinosaur': 5,
+  'Doctor Strange': 9,
+  'Elsa Bloodstone': 4,
+  'Emma Frost': 7,
+  Gambit: 7,
+  Groot: 9,
+  Hawkeye: 4,
+  Hela: 4,
+  'Human Torch': 7,
+  'Invisible Woman': 10,
+  'Iron Fist': 5,
+  'Iron Man': 4,
+  'Jeff the Land Shark': 7,
+  Loki: 9,
+  'Luna Snow': 8,
+  Magik: 5,
+  Magneto: 8,
+  Mantis: 8,
+  'Mister Fantastic': 5,
+  'Moon Knight': 6,
+  Namor: 8,
+  'Peni Parker': 9,
+  Phoenix: 6,
+  Psylocke: 5,
+  'Rocket Raccoon': 9,
+  Rogue: 7,
+  'Scarlet Witch': 5,
+  'Spider-Man': 5,
+  'Squirrel Girl': 6,
+  'Star-Lord': 4,
+  Storm: 8,
+  'The Punisher': 4,
+  'The Thing': 7,
+  Thor: 6,
+  Ultron: 8,
+  Venom: 6,
+  'White Fox': 8,
+  'Winter Soldier': 5,
+  Wolverine: 4,
+};
+
 export function buildHeroBuildProfile(hero) {
   const scores = emptyProfile();
   addProfile(scores, roleBase[hero.role] ?? roleBase.Duelist);
@@ -80,7 +292,7 @@ export function buildHeroBuildProfile(hero) {
   applyAbilityMixBonuses(scores, abilityTexts);
   applyRoleWeights(scores, hero.role);
 
-  return normalizeProfile(scores);
+  return applyProfileOverrides(hero, normalizeProfile(scores));
 }
 
 export function buildProfileRationale(hero, profile = buildHeroBuildProfile(hero)) {
@@ -218,6 +430,35 @@ function normalizeProfile(scores) {
     type,
     clamp(Math.round((scores[type] / normalizers[type]) * 10), 1, 10),
   ]));
+}
+
+function applyProfileOverrides(hero, profile) {
+  const utilityValue = utilityValueOverrides[hero.name];
+  const damageValue = damageValueOverrides[hero.name];
+  const mobilityValue = mobilityValueOverrides[hero.name];
+  const ultimateValue = ultimateValueOverrides[hero.name];
+
+  const overriddenProfile = {
+    ...profile,
+  };
+
+  if (utilityValue) {
+    overriddenProfile.Utility = utilityValue;
+  }
+
+  if (damageValue) {
+    overriddenProfile.Damage = damageValue;
+  }
+
+  if (mobilityValue) {
+    overriddenProfile.Mobility = mobilityValue;
+  }
+
+  if (ultimateValue) {
+    overriddenProfile.Ultimate = ultimateValue;
+  }
+
+  return overriddenProfile;
 }
 
 function collectAbilities(hero) {

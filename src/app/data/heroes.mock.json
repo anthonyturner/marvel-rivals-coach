@@ -17,9 +17,11 @@
       "Cosmic Cluster shares ammo with Quantum Magic."
     ],
     "counters": [
-      "Dive pressure",
-      "Line-of-sight denial",
-      "Burst focus"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Magik",
+      "Hela"
     ],
     "synergies": [
       "Storm"
@@ -43,11 +45,11 @@
     ],
     "imageUrl": "/images/heroes/adam-warlock.png",
     "buildProfile": {
-      "Utility": 3,
-      "Damage": 1,
+      "Utility": 8,
+      "Damage": 4,
       "Sustain": 4,
-      "Mobility": 1,
-      "Ultimate": 1
+      "Mobility": 3,
+      "Ultimate": 9
     },
     "buildProfileRationale": {
       "source": {
@@ -56,7 +58,7 @@
       },
       "reason": "Adam Warlock was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Strategist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
+        "Ultimate",
         "Utility"
       ]
     }
@@ -79,9 +81,11 @@
       "Spears of Ichor has a low attack speed and requires a more pinpoint accuracy."
     ],
     "counters": [
-      "Long-range poke",
-      "High-mobility duelists",
-      "Sustained anti-shield pressure"
+      "Hela",
+      "Hawkeye",
+      "The Punisher",
+      "Black Widow",
+      "Namor"
     ],
     "synergies": [
       "Strategists",
@@ -107,11 +111,11 @@
     ],
     "imageUrl": "/images/heroes/angela.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 2,
+      "Utility": 5,
+      "Damage": 6,
       "Sustain": 4,
-      "Mobility": 4,
-      "Ultimate": 1
+      "Mobility": 9,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -120,8 +124,8 @@
       },
       "reason": "Angela was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Vanguard role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
-        "Mobility"
+        "Mobility",
+        "Ultimate"
       ]
     }
   },
@@ -143,9 +147,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Namor",
+      "Scarlet Witch",
+      "Peni Parker",
+      "Luna Snow",
+      "The Thing"
     ],
     "synergies": [
       "Vanguards",
@@ -171,11 +177,11 @@
     ],
     "imageUrl": "/images/heroes/black-cat.png",
     "buildProfile": {
-      "Utility": 1,
-      "Damage": 2,
+      "Utility": 4,
+      "Damage": 8,
       "Sustain": 1,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Mobility": 9,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -184,8 +190,8 @@
       },
       "reason": "Black Cat was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Damage",
-        "Mobility"
+        "Mobility",
+        "Damage"
       ]
     }
   },
@@ -207,9 +213,11 @@
       "Relies on quick decision-making, timing, and accuracy to aim Black Panther in the direction of e..."
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Namor",
+      "Scarlet Witch",
+      "Peni Parker",
+      "Luna Snow",
+      "The Thing"
     ],
     "synergies": [
       "Hulk",
@@ -234,11 +242,11 @@
     ],
     "imageUrl": "/images/heroes/black-panther.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 2,
+      "Utility": 3,
+      "Damage": 8,
       "Sustain": 1,
-      "Mobility": 1,
-      "Ultimate": 1
+      "Mobility": 10,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -247,7 +255,7 @@
       },
       "reason": "Black Panther was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Utility",
+        "Mobility",
         "Damage"
       ]
     }
@@ -270,9 +278,11 @@
       "Switching between her weapons can feel a bit counter-intuitive at first to deal with immediate t..."
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Venom",
+      "Magik"
     ],
     "synergies": [
       "Phoenix",
@@ -297,11 +307,11 @@
     ],
     "imageUrl": "/images/heroes/black-widow.png",
     "buildProfile": {
-      "Utility": 1,
-      "Damage": 3,
+      "Utility": 4,
+      "Damage": 8,
       "Sustain": 1,
-      "Mobility": 1,
-      "Ultimate": 1
+      "Mobility": 4,
+      "Ultimate": 6
     },
     "buildProfileRationale": {
       "source": {
@@ -311,7 +321,7 @@
       "reason": "Black Widow was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
         "Damage",
-        "Utility"
+        "Ultimate"
       ]
     }
   },
@@ -333,9 +343,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Peni Parker",
+      "The Thing",
+      "Luna Snow",
+      "Mantis",
+      "Scarlet Witch"
     ],
     "synergies": [
       "Moon Knight"
@@ -359,11 +371,11 @@
     ],
     "imageUrl": "/images/heroes/blade.png",
     "buildProfile": {
-      "Utility": 1,
-      "Damage": 3,
+      "Utility": 4,
+      "Damage": 8,
       "Sustain": 1,
-      "Mobility": 3,
-      "Ultimate": 1
+      "Mobility": 8,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -395,9 +407,11 @@
       "Needs support timing"
     ],
     "counters": [
-      "Long-range poke",
-      "High-mobility duelists",
-      "Sustained anti-shield pressure"
+      "Wolverine",
+      "Hela",
+      "Hawkeye",
+      "The Punisher",
+      "Mantis"
     ],
     "synergies": [
       "Wolverine",
@@ -423,11 +437,11 @@
     ],
     "imageUrl": "/images/heroes/hulk.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 1,
-      "Sustain": 3,
-      "Mobility": 1,
-      "Ultimate": 1
+      "Utility": 6,
+      "Damage": 5,
+      "Sustain": 2,
+      "Mobility": 9,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -436,8 +450,8 @@
       },
       "reason": "Hulk was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Vanguard role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
-        "Utility"
+        "Mobility",
+        "Ultimate"
       ]
     }
   },
@@ -459,9 +473,11 @@
       "Needs support timing"
     ],
     "counters": [
-      "Long-range poke",
-      "High-mobility duelists",
-      "Sustained anti-shield pressure"
+      "Wolverine",
+      "Hela",
+      "Hawkeye",
+      "Namor",
+      "Mantis"
     ],
     "synergies": [
       "Black Cat",
@@ -486,11 +502,11 @@
     ],
     "imageUrl": "/images/heroes/captain-america.png",
     "buildProfile": {
-      "Utility": 3,
-      "Damage": 1,
-      "Sustain": 6,
-      "Mobility": 1,
-      "Ultimate": 1
+      "Utility": 6,
+      "Damage": 5,
+      "Sustain": 5,
+      "Mobility": 8,
+      "Ultimate": 6
     },
     "buildProfileRationale": {
       "source": {
@@ -499,7 +515,7 @@
       },
       "reason": "Captain America was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Vanguard role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
+        "Mobility",
         "Utility"
       ]
     }
@@ -522,9 +538,11 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Dive pressure",
-      "Line-of-sight denial",
-      "Burst focus"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Hela",
+      "Magik"
     ],
     "synergies": [
       "Vanguards",
@@ -550,11 +568,11 @@
     ],
     "imageUrl": "/images/heroes/cloak-and-dagger.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 1,
+      "Utility": 8,
+      "Damage": 4,
       "Sustain": 5,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Mobility": 5,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -563,8 +581,8 @@
       },
       "reason": "Cloak & Dagger was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Strategist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
-        "Utility"
+        "Utility",
+        "Ultimate"
       ]
     }
   },
@@ -586,9 +604,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Namor",
+      "Scarlet Witch",
+      "Peni Parker",
+      "Luna Snow",
+      "The Thing"
     ],
     "synergies": [
       "Vanguards",
@@ -614,11 +634,11 @@
     ],
     "imageUrl": "/images/heroes/daredevil.png",
     "buildProfile": {
-      "Utility": 3,
-      "Damage": 3,
+      "Utility": 6,
+      "Damage": 8,
       "Sustain": 1,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Mobility": 8,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -627,8 +647,8 @@
       },
       "reason": "Daredevil was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Utility",
-        "Damage"
+        "Damage",
+        "Mobility"
       ]
     }
   },
@@ -650,9 +670,11 @@
       "Needs cooldown discipline"
     ],
     "counters": [
-      "Cooldown tracking",
-      "Role mismatch pressure",
-      "Coordinated focus fire"
+      "Namor",
+      "Scarlet Witch",
+      "Peni Parker",
+      "Mantis",
+      "The Thing"
     ],
     "synergies": [
       "Flexible team comps",
@@ -819,7 +841,7 @@
     "imageUrl": "/images/heroes/deadpool.png",
     "buildProfile": {
       "Utility": 9,
-      "Damage": 10,
+      "Damage": 9,
       "Sustain": 10,
       "Mobility": 9,
       "Ultimate": 10
@@ -831,8 +853,8 @@
       },
       "reason": "Deadpool was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Multi-Role role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 6 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Damage",
-        "Sustain"
+        "Sustain",
+        "Ultimate"
       ]
     },
     "playstyles": [
@@ -952,9 +974,11 @@
       "Needs support timing"
     ],
     "counters": [
-      "Long-range poke",
-      "High-mobility duelists",
-      "Sustained anti-shield pressure"
+      "Wolverine",
+      "Hela",
+      "Hawkeye",
+      "The Punisher",
+      "Doctor Strange"
     ],
     "synergies": [
       "Strategists",
@@ -980,11 +1004,11 @@
     ],
     "imageUrl": "/images/heroes/devil-dinosaur.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 2,
-      "Sustain": 3,
-      "Mobility": 3,
-      "Ultimate": 1
+      "Utility": 5,
+      "Damage": 6,
+      "Sustain": 2,
+      "Mobility": 6,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -993,8 +1017,8 @@
       },
       "reason": "Devil Dinosaur was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Vanguard role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
-        "Mobility"
+        "Ultimate",
+        "Damage"
       ]
     }
   },
@@ -1016,9 +1040,11 @@
       "Needs support timing"
     ],
     "counters": [
-      "Long-range poke",
-      "High-mobility duelists",
-      "Sustained anti-shield pressure"
+      "Wolverine",
+      "Hela",
+      "Hawkeye",
+      "Magneto",
+      "Moon Knight"
     ],
     "synergies": [
       "Invisible Woman"
@@ -1042,11 +1068,11 @@
     ],
     "imageUrl": "/images/heroes/doctor-strange.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 1,
+      "Utility": 9,
+      "Damage": 5,
       "Sustain": 4,
-      "Mobility": 1,
-      "Ultimate": 1
+      "Mobility": 4,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -1055,8 +1081,8 @@
       },
       "reason": "Doctor Strange was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Vanguard role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
-        "Utility"
+        "Utility",
+        "Ultimate"
       ]
     }
   },
@@ -1078,9 +1104,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Magik",
+      "Venom"
     ],
     "synergies": [
       "Deadpool",
@@ -1105,11 +1133,11 @@
     ],
     "imageUrl": "/images/heroes/elsa-bloodstone.png",
     "buildProfile": {
-      "Utility": 1,
-      "Damage": 2,
+      "Utility": 4,
+      "Damage": 8,
       "Sustain": 1,
-      "Mobility": 3,
-      "Ultimate": 1
+      "Mobility": 7,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -1118,8 +1146,8 @@
       },
       "reason": "Elsa Bloodstone was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Mobility",
-        "Damage"
+        "Damage",
+        "Mobility"
       ]
     }
   },
@@ -1141,9 +1169,11 @@
       "Needs support timing"
     ],
     "counters": [
-      "Long-range poke",
-      "High-mobility duelists",
-      "Sustained anti-shield pressure"
+      "Wolverine",
+      "Hela",
+      "Hawkeye",
+      "The Punisher",
+      "Doctor Strange"
     ],
     "synergies": [
       "Luna Snow",
@@ -1168,11 +1198,11 @@
     ],
     "imageUrl": "/images/heroes/emma-frost.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 1,
-      "Sustain": 3,
-      "Mobility": 1,
-      "Ultimate": 1
+      "Utility": 7,
+      "Damage": 5,
+      "Sustain": 2,
+      "Mobility": 4,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -1181,7 +1211,7 @@
       },
       "reason": "Emma Frost was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Vanguard role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
+        "Ultimate",
         "Utility"
       ]
     }
@@ -1204,9 +1234,11 @@
       "Cajun Charge has a very long cooldown that prevents Big Easy Impact from being effectively cycle..."
     ],
     "counters": [
-      "Dive pressure",
-      "Line-of-sight denial",
-      "Burst focus"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Hela",
+      "Moon Knight"
     ],
     "synergies": [
       "Vanguards",
@@ -1232,11 +1264,11 @@
     ],
     "imageUrl": "/images/heroes/gambit.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 2,
+      "Utility": 7,
+      "Damage": 5,
       "Sustain": 4,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Mobility": 5,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -1245,7 +1277,7 @@
       },
       "reason": "Gambit was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Strategist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
+        "Ultimate",
         "Utility"
       ]
     }
@@ -1268,9 +1300,11 @@
       "Needs support timing"
     ],
     "counters": [
-      "Long-range poke",
-      "High-mobility duelists",
-      "Sustained anti-shield pressure"
+      "Wolverine",
+      "Human Torch",
+      "The Punisher",
+      "Hela",
+      "Doctor Strange"
     ],
     "synergies": [
       "Mantis",
@@ -1295,11 +1329,11 @@
     ],
     "imageUrl": "/images/heroes/groot.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 1,
-      "Sustain": 3,
-      "Mobility": 1,
-      "Ultimate": 1
+      "Utility": 9,
+      "Damage": 4,
+      "Sustain": 2,
+      "Mobility": 2,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -1308,8 +1342,8 @@
       },
       "reason": "Groot was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Vanguard role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
-        "Utility"
+        "Utility",
+        "Ultimate"
       ]
     }
   },
@@ -1329,9 +1363,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Magik",
+      "Venom"
     ],
     "synergies": [
       "Cloak & Dagger",
@@ -1356,11 +1392,11 @@
     ],
     "imageUrl": "/images/heroes/hawkeye.png",
     "buildProfile": {
-      "Utility": 1,
-      "Damage": 2,
+      "Utility": 4,
+      "Damage": 9,
       "Sustain": 1,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Mobility": 5,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -1370,7 +1406,7 @@
       "reason": "Hawkeye was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
         "Damage",
-        "Mobility"
+        "Ultimate"
       ]
     }
   },
@@ -1392,9 +1428,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Captain America",
+      "Doctor Strange"
     ],
     "synergies": [
       "Venom",
@@ -1419,11 +1457,11 @@
     ],
     "imageUrl": "/images/heroes/hela.png",
     "buildProfile": {
-      "Utility": 1,
-      "Damage": 3,
+      "Utility": 4,
+      "Damage": 9,
       "Sustain": 1,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Mobility": 5,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -1433,7 +1471,7 @@
       "reason": "Hela was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
         "Damage",
-        "Mobility"
+        "Ultimate"
       ]
     }
   },
@@ -1455,9 +1493,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Hela",
+      "Hawkeye",
+      "The Punisher",
+      "Black Widow",
+      "Namor"
     ],
     "synergies": [
       "Vanguards",
@@ -1483,11 +1523,11 @@
     ],
     "imageUrl": "/images/heroes/human-torch.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 3,
+      "Utility": 7,
+      "Damage": 9,
       "Sustain": 1,
-      "Mobility": 1,
-      "Ultimate": 1
+      "Mobility": 9,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -1497,7 +1537,7 @@
       "reason": "Human Torch was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
         "Damage",
-        "Utility"
+        "Mobility"
       ]
     }
   },
@@ -1519,9 +1559,11 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Dive pressure",
-      "Line-of-sight denial",
-      "Burst focus"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Magik",
+      "Hela"
     ],
     "synergies": [
       "Vanguards",
@@ -1547,11 +1589,11 @@
     ],
     "imageUrl": "/images/heroes/invisible-woman.png",
     "buildProfile": {
-      "Utility": 4,
-      "Damage": 2,
+      "Utility": 10,
+      "Damage": 4,
       "Sustain": 6,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Mobility": 5,
+      "Ultimate": 10
     },
     "buildProfileRationale": {
       "source": {
@@ -1560,8 +1602,8 @@
       },
       "reason": "Invisible Woman was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Strategist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
-        "Utility"
+        "Utility",
+        "Ultimate"
       ]
     }
   },
@@ -1583,9 +1625,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Namor",
+      "Scarlet Witch",
+      "Peni Parker",
+      "Luna Snow",
+      "Mantis"
     ],
     "synergies": [
       "Luna Snow",
@@ -1610,11 +1654,11 @@
     ],
     "imageUrl": "/images/heroes/iron-fist.png",
     "buildProfile": {
-      "Utility": 3,
-      "Damage": 3,
+      "Utility": 5,
+      "Damage": 8,
       "Sustain": 1,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Mobility": 9,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -1623,7 +1667,7 @@
       },
       "reason": "Iron Fist was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Utility",
+        "Mobility",
         "Damage"
       ]
     }
@@ -1646,9 +1690,11 @@
       "Has no defensive tools nor any self-sustain."
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Namor",
+      "Hela",
+      "Hawkeye",
+      "The Punisher",
+      "Black Widow"
     ],
     "synergies": [
       "Vanguards",
@@ -1674,11 +1720,11 @@
     ],
     "imageUrl": "/images/heroes/iron-man.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 3,
+      "Utility": 4,
+      "Damage": 8,
       "Sustain": 2,
-      "Mobility": 4,
-      "Ultimate": 1
+      "Mobility": 9,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -1710,9 +1756,11 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Dive pressure",
-      "Line-of-sight denial",
-      "Burst focus"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Magik",
+      "Hela"
     ],
     "synergies": [
       "Groot",
@@ -1738,11 +1786,11 @@
     ],
     "imageUrl": "/images/heroes/jeff-the-land-shark.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 1,
+      "Utility": 7,
+      "Damage": 3,
       "Sustain": 4,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Mobility": 6,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -1751,7 +1799,7 @@
       },
       "reason": "Jeff the Land Shark was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Strategist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
+        "Ultimate",
         "Utility"
       ]
     }
@@ -1774,9 +1822,11 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Dive pressure",
-      "Line-of-sight denial",
-      "Burst focus"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Moon Knight",
+      "Scarlet Witch"
     ],
     "synergies": [
       "Mantis",
@@ -1801,11 +1851,11 @@
     ],
     "imageUrl": "/images/heroes/loki.png",
     "buildProfile": {
-      "Utility": 1,
-      "Damage": 1,
+      "Utility": 9,
+      "Damage": 5,
       "Sustain": 3,
-      "Mobility": 1,
-      "Ultimate": 1
+      "Mobility": 6,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -1814,8 +1864,8 @@
       },
       "reason": "Loki was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Strategist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
-        "Utility"
+        "Utility",
+        "Ultimate"
       ]
     }
   },
@@ -1837,9 +1887,11 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Dive pressure",
-      "Line-of-sight denial",
-      "Burst focus"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Magik",
+      "Hela"
     ],
     "synergies": [
       "White Fox"
@@ -1863,11 +1915,11 @@
     ],
     "imageUrl": "/images/heroes/luna-snow.png",
     "buildProfile": {
-      "Utility": 3,
-      "Damage": 1,
+      "Utility": 8,
+      "Damage": 3,
       "Sustain": 5,
-      "Mobility": 1,
-      "Ultimate": 1
+      "Mobility": 8,
+      "Ultimate": 9
     },
     "buildProfileRationale": {
       "source": {
@@ -1876,7 +1928,7 @@
       },
       "reason": "Luna Snow was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Strategist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
+        "Ultimate",
         "Utility"
       ]
     }
@@ -1899,9 +1951,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Namor",
+      "Scarlet Witch",
+      "Peni Parker",
+      "Luna Snow",
+      "The Thing"
     ],
     "synergies": [
       "Doctor Strange",
@@ -1926,11 +1980,11 @@
     ],
     "imageUrl": "/images/heroes/magik.png",
     "buildProfile": {
-      "Utility": 1,
-      "Damage": 3,
+      "Utility": 5,
+      "Damage": 8,
       "Sustain": 1,
-      "Mobility": 1,
-      "Ultimate": 1
+      "Mobility": 9,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -1939,8 +1993,8 @@
       },
       "reason": "Magik was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Damage",
-        "Utility"
+        "Mobility",
+        "Damage"
       ]
     }
   },
@@ -1962,9 +2016,11 @@
       "Unlike Doctor Strange, he can't hold his Metallic Curtain indefinitely."
     ],
     "counters": [
-      "Long-range poke",
-      "High-mobility duelists",
-      "Sustained anti-shield pressure"
+      "Wolverine",
+      "Hela",
+      "Hawkeye",
+      "The Punisher",
+      "Doctor Strange"
     ],
     "synergies": [
       "Gambit",
@@ -1989,11 +2045,11 @@
     ],
     "imageUrl": "/images/heroes/magneto.png",
     "buildProfile": {
-      "Utility": 3,
-      "Damage": 2,
-      "Sustain": 3,
-      "Mobility": 1,
-      "Ultimate": 1
+      "Utility": 8,
+      "Damage": 5,
+      "Sustain": 2,
+      "Mobility": 4,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -2003,7 +2059,7 @@
       "reason": "Magneto was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Vanguard role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
         "Utility",
-        "Sustain"
+        "Ultimate"
       ]
     }
   },
@@ -2025,9 +2081,11 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Dive pressure",
-      "Line-of-sight denial",
-      "Burst focus"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Magik",
+      "Hela"
     ],
     "synergies": [
       "Vanguards",
@@ -2053,11 +2111,11 @@
     ],
     "imageUrl": "/images/heroes/mantis.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 1,
+      "Utility": 8,
+      "Damage": 3,
       "Sustain": 5,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Mobility": 6,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -2066,8 +2124,8 @@
       },
       "reason": "Mantis was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Strategist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
-        "Utility"
+        "Utility",
+        "Ultimate"
       ]
     }
   },
@@ -2089,9 +2147,11 @@
       "Cannot use other abilities while in his stretched state from Reflexive Rubber."
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Peni Parker",
+      "The Thing",
+      "Wolverine",
+      "Luna Snow",
+      "Mantis"
     ],
     "synergies": [
       "Rocket Raccoon",
@@ -2116,11 +2176,11 @@
     ],
     "imageUrl": "/images/heroes/mister-fantastic.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 2,
+      "Utility": 5,
+      "Damage": 7,
       "Sustain": 1,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Mobility": 6,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -2129,8 +2189,8 @@
       },
       "reason": "Mister Fantastic was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Utility",
-        "Damage"
+        "Damage",
+        "Ultimate"
       ]
     }
   },
@@ -2152,9 +2212,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Hela",
+      "Hawkeye"
     ],
     "synergies": [
       "Vanguards",
@@ -2180,11 +2242,11 @@
     ],
     "imageUrl": "/images/heroes/moon-knight.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 2,
+      "Utility": 6,
+      "Damage": 8,
       "Sustain": 1,
-      "Mobility": 1,
-      "Ultimate": 1
+      "Mobility": 7,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -2193,8 +2255,8 @@
       },
       "reason": "Moon Knight was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Utility",
-        "Damage"
+        "Damage",
+        "Mobility"
       ]
     }
   },
@@ -2216,9 +2278,11 @@
       "Very vulnerable when Blessing of the Deep is on cooldown."
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Hela",
+      "Hawkeye",
+      "The Punisher",
+      "Black Widow",
+      "Doctor Strange"
     ],
     "synergies": [
       "Hela"
@@ -2242,11 +2306,11 @@
     ],
     "imageUrl": "/images/heroes/namor.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 3,
+      "Utility": 8,
+      "Damage": 7,
       "Sustain": 1,
-      "Mobility": 3,
-      "Ultimate": 2
+      "Mobility": 4,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -2255,8 +2319,8 @@
       },
       "reason": "Namor was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Damage",
-        "Mobility"
+        "Utility",
+        "Damage"
       ]
     }
   },
@@ -2278,9 +2342,11 @@
       "Very frail outside of her Cyber-Webs, as she no defensive options compared to other Vanguards."
     ],
     "counters": [
-      "Long-range poke",
-      "High-mobility duelists",
-      "Sustained anti-shield pressure"
+      "Hela",
+      "Hawkeye",
+      "The Punisher",
+      "Human Torch",
+      "Doctor Strange"
     ],
     "synergies": [
       "Strategists",
@@ -2306,11 +2372,11 @@
     ],
     "imageUrl": "/images/heroes/peni-parker.png",
     "buildProfile": {
-      "Utility": 5,
-      "Damage": 1,
-      "Sustain": 5,
-      "Mobility": 3,
-      "Ultimate": 1
+      "Utility": 9,
+      "Damage": 5,
+      "Sustain": 4,
+      "Mobility": 5,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -2320,7 +2386,7 @@
       "reason": "Peni Parker was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Vanguard role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
         "Utility",
-        "Sustain"
+        "Ultimate"
       ]
     }
   },
@@ -2342,9 +2408,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Hela",
+      "Hawkeye"
     ],
     "synergies": [
       "Vanguards",
@@ -2370,11 +2438,11 @@
     ],
     "imageUrl": "/images/heroes/phoenix.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 3,
+      "Utility": 6,
+      "Damage": 9,
       "Sustain": 1,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Mobility": 8,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -2384,7 +2452,7 @@
       "reason": "Phoenix was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
         "Damage",
-        "Utility"
+        "Mobility"
       ]
     }
   },
@@ -2406,9 +2474,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Namor",
+      "Scarlet Witch",
+      "Peni Parker",
+      "Luna Snow",
+      "Mantis"
     ],
     "synergies": [
       "Cloak & Dagger",
@@ -2433,11 +2503,11 @@
     ],
     "imageUrl": "/images/heroes/psylocke.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 3,
+      "Utility": 5,
+      "Damage": 9,
       "Sustain": 1,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Mobility": 9,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -2447,7 +2517,7 @@
       "reason": "Psylocke was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
         "Damage",
-        "Utility"
+        "Mobility"
       ]
     }
   },
@@ -2469,9 +2539,11 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Dive pressure",
-      "Line-of-sight denial",
-      "Burst focus"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Magik",
+      "Venom"
     ],
     "synergies": [
       "Groot",
@@ -2496,11 +2568,11 @@
     ],
     "imageUrl": "/images/heroes/rocket-raccoon.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 1,
+      "Utility": 9,
+      "Damage": 4,
       "Sustain": 3,
-      "Mobility": 3,
-      "Ultimate": 1
+      "Mobility": 8,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -2509,7 +2581,7 @@
       },
       "reason": "Rocket Raccoon was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Strategist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
+        "Utility",
         "Mobility"
       ]
     }
@@ -2532,9 +2604,11 @@
       "Staying in Defensive Stance for too long will leave you vulnerable to long-range stuns such as W..."
     ],
     "counters": [
-      "Long-range poke",
-      "High-mobility duelists",
-      "Sustained anti-shield pressure"
+      "Wolverine",
+      "Hela",
+      "Hawkeye",
+      "The Punisher",
+      "Mantis"
     ],
     "synergies": [
       "Gambit",
@@ -2559,11 +2633,11 @@
     ],
     "imageUrl": "/images/heroes/rogue.png",
     "buildProfile": {
-      "Utility": 1,
-      "Damage": 1,
-      "Sustain": 3,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Utility": 7,
+      "Damage": 6,
+      "Sustain": 2,
+      "Mobility": 8,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -2572,8 +2646,8 @@
       },
       "reason": "Rogue was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Vanguard role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
-        "Mobility"
+        "Mobility",
+        "Ultimate"
       ]
     }
   },
@@ -2595,9 +2669,11 @@
       "Very vulnerable if Mystic Projection is on cooldown."
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Hela",
+      "Hawkeye",
+      "The Punisher",
+      "Black Widow",
+      "Doctor Strange"
     ],
     "synergies": [
       "Doctor Strange",
@@ -2622,11 +2698,11 @@
     ],
     "imageUrl": "/images/heroes/scarlet-witch.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 5,
+      "Utility": 5,
+      "Damage": 7,
       "Sustain": 1,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Mobility": 7,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -2635,8 +2711,8 @@
       },
       "reason": "Scarlet Witch was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Damage",
-        "Utility"
+        "Ultimate",
+        "Damage"
       ]
     }
   },
@@ -2658,9 +2734,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Namor",
+      "Scarlet Witch",
+      "Peni Parker",
+      "Luna Snow",
+      "Mantis"
     ],
     "synergies": [
       "Peni Parker"
@@ -2684,11 +2762,11 @@
     ],
     "imageUrl": "/images/heroes/spider-man.png",
     "buildProfile": {
-      "Utility": 3,
-      "Damage": 3,
+      "Utility": 5,
+      "Damage": 8,
       "Sustain": 1,
-      "Mobility": 3,
-      "Ultimate": 1
+      "Mobility": 10,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -2697,7 +2775,7 @@
       },
       "reason": "Spider-Man was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Utility",
+        "Mobility",
         "Damage"
       ]
     }
@@ -2720,9 +2798,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Hela",
+      "Hawkeye"
     ],
     "synergies": [
       "Iron Man",
@@ -2747,11 +2827,11 @@
     ],
     "imageUrl": "/images/heroes/squirrel-girl.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 3,
+      "Utility": 6,
+      "Damage": 8,
       "Sustain": 1,
-      "Mobility": 1,
-      "Ultimate": 1
+      "Mobility": 7,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -2761,7 +2841,7 @@
       "reason": "Squirrel Girl was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
         "Damage",
-        "Utility"
+        "Mobility"
       ]
     }
   },
@@ -2783,9 +2863,11 @@
       "Can be interrupted during Blaster Barrage and Galactic Legend."
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Hela",
+      "Hawkeye",
+      "The Punisher",
+      "Black Widow",
+      "Namor"
     ],
     "synergies": [
       "Rocket Raccoon",
@@ -2810,11 +2892,11 @@
     ],
     "imageUrl": "/images/heroes/star-lord.png",
     "buildProfile": {
-      "Utility": 1,
-      "Damage": 3,
+      "Utility": 4,
+      "Damage": 8,
       "Sustain": 1,
-      "Mobility": 3,
-      "Ultimate": 1
+      "Mobility": 9,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -2823,8 +2905,8 @@
       },
       "reason": "Star-Lord was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Damage",
-        "Mobility"
+        "Mobility",
+        "Damage"
       ]
     }
   },
@@ -2846,9 +2928,11 @@
       "Has no defensive or self-sustain tools outside of her Ultimate."
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Hela",
+      "Hawkeye",
+      "The Punisher",
+      "Black Widow",
+      "Namor"
     ],
     "synergies": [
       "Vanguards",
@@ -2874,11 +2958,11 @@
     ],
     "imageUrl": "/images/heroes/storm.png",
     "buildProfile": {
-      "Utility": 1,
-      "Damage": 3,
+      "Utility": 8,
+      "Damage": 7,
       "Sustain": 1,
-      "Mobility": 5,
-      "Ultimate": 2
+      "Mobility": 9,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -2888,7 +2972,7 @@
       "reason": "Storm was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
         "Mobility",
-        "Damage"
+        "Utility"
       ]
     }
   },
@@ -2910,9 +2994,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Magik",
+      "Venom"
     ],
     "synergies": [
       "Daredevil",
@@ -2937,11 +3023,11 @@
     ],
     "imageUrl": "/images/heroes/the-punisher.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 2,
+      "Utility": 4,
+      "Damage": 9,
       "Sustain": 1,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Mobility": 3,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -2950,8 +3036,8 @@
       },
       "reason": "The Punisher was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Utility",
-        "Damage"
+        "Damage",
+        "Ultimate"
       ]
     }
   },
@@ -2973,9 +3059,11 @@
       "Needs support timing"
     ],
     "counters": [
-      "Long-range poke",
-      "High-mobility duelists",
-      "Sustained anti-shield pressure"
+      "Wolverine",
+      "Hela",
+      "Hawkeye",
+      "The Punisher",
+      "Mantis"
     ],
     "synergies": [
       "Wolverine",
@@ -3001,11 +3089,11 @@
     ],
     "imageUrl": "/images/heroes/the-thing.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 1,
-      "Sustain": 3,
-      "Mobility": 1,
-      "Ultimate": 1
+      "Utility": 7,
+      "Damage": 5,
+      "Sustain": 2,
+      "Mobility": 5,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -3014,8 +3102,8 @@
       },
       "reason": "The Thing was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Vanguard role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
-        "Utility"
+        "Utility",
+        "Ultimate"
       ]
     }
   },
@@ -3037,9 +3125,11 @@
       "Needs support timing"
     ],
     "counters": [
-      "Long-range poke",
-      "High-mobility duelists",
-      "Sustained anti-shield pressure"
+      "Wolverine",
+      "Hela",
+      "Hawkeye",
+      "The Punisher",
+      "Mantis"
     ],
     "synergies": [
       "Angela"
@@ -3063,11 +3153,11 @@
     ],
     "imageUrl": "/images/heroes/thor.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 1,
-      "Sustain": 3,
-      "Mobility": 1,
-      "Ultimate": 1
+      "Utility": 6,
+      "Damage": 6,
+      "Sustain": 2,
+      "Mobility": 8,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -3076,8 +3166,8 @@
       },
       "reason": "Thor was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Vanguard role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
-        "Utility"
+        "Mobility",
+        "Ultimate"
       ]
     }
   },
@@ -3099,9 +3189,11 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Dive pressure",
-      "Line-of-sight denial",
-      "Burst focus"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Magik",
+      "Hela"
     ],
     "synergies": [
       "Iron Man",
@@ -3126,11 +3218,11 @@
     ],
     "imageUrl": "/images/heroes/ultron.png",
     "buildProfile": {
-      "Utility": 1,
-      "Damage": 1,
+      "Utility": 8,
+      "Damage": 4,
       "Sustain": 3,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Mobility": 8,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -3139,7 +3231,7 @@
       },
       "reason": "Ultron was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Strategist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
+        "Utility",
         "Mobility"
       ]
     }
@@ -3162,9 +3254,11 @@
       "Functions more as a sturdy melee Duelist than a Vanguard, having few options to protect his team..."
     ],
     "counters": [
-      "Long-range poke",
-      "High-mobility duelists",
-      "Sustained anti-shield pressure"
+      "Wolverine",
+      "Namor",
+      "Peni Parker",
+      "Scarlet Witch",
+      "Mantis"
     ],
     "synergies": [
       "Strategists",
@@ -3190,11 +3284,11 @@
     ],
     "imageUrl": "/images/heroes/venom.png",
     "buildProfile": {
-      "Utility": 3,
-      "Damage": 1,
+      "Utility": 6,
+      "Damage": 5,
       "Sustain": 3,
-      "Mobility": 2,
-      "Ultimate": 2
+      "Mobility": 9,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -3203,8 +3297,8 @@
       },
       "reason": "Venom was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Vanguard role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Utility",
-        "Sustain"
+        "Mobility",
+        "Ultimate"
       ]
     }
   },
@@ -3226,9 +3320,11 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Dive pressure",
-      "Line-of-sight denial",
-      "Burst focus"
+      "Spider-Man",
+      "Black Panther",
+      "Psylocke",
+      "Magik",
+      "Hela"
     ],
     "synergies": [
       "Black Cat",
@@ -3253,11 +3349,11 @@
     ],
     "imageUrl": "/images/heroes/white-fox.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 1,
+      "Utility": 8,
+      "Damage": 4,
       "Sustain": 6,
-      "Mobility": 2,
-      "Ultimate": 1
+      "Mobility": 5,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {
@@ -3266,8 +3362,8 @@
       },
       "reason": "White Fox was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Strategist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Sustain",
-        "Utility"
+        "Utility",
+        "Ultimate"
       ]
     }
   },
@@ -3289,9 +3385,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Namor",
+      "Scarlet Witch",
+      "Peni Parker",
+      "Doctor Strange",
+      "Mantis"
     ],
     "synergies": [
       "Captain America"
@@ -3315,11 +3413,11 @@
     ],
     "imageUrl": "/images/heroes/winter-soldier.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 2,
+      "Utility": 5,
+      "Damage": 8,
       "Sustain": 1,
-      "Mobility": 3,
-      "Ultimate": 1
+      "Mobility": 6,
+      "Ultimate": 7
     },
     "buildProfileRationale": {
       "source": {
@@ -3328,8 +3426,8 @@
       },
       "reason": "Winter Soldier was scored from Fandom overview text, listed strengths/weaknesses, ability descriptions, and 0 technical detail entries. Duelist role weighting sets the baseline, then descriptions adjust Utility, Damage, Sustain, Mobility, and Ultimate independently. 0 ultimate-labeled ability entryies and 0 passive entryies influenced the final profile.",
       "strongestSignals": [
-        "Mobility",
-        "Utility"
+        "Damage",
+        "Ultimate"
       ]
     }
   },
@@ -3351,9 +3449,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Crowd control",
-      "Protective barriers",
-      "Focused peel"
+      "Peni Parker",
+      "The Thing",
+      "Luna Snow",
+      "Mantis",
+      "Scarlet Witch"
     ],
     "synergies": [
       "Phoenix",
@@ -3378,11 +3478,11 @@
     ],
     "imageUrl": "/images/heroes/wolverine.png",
     "buildProfile": {
-      "Utility": 2,
-      "Damage": 3,
+      "Utility": 4,
+      "Damage": 8,
       "Sustain": 1,
-      "Mobility": 3,
-      "Ultimate": 1
+      "Mobility": 8,
+      "Ultimate": 8
     },
     "buildProfileRationale": {
       "source": {

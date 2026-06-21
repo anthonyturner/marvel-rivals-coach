@@ -301,7 +301,10 @@
 
     <div class="matchup-row">
       <section>
-        <h3>Counters</h3>
+        <div class="section-heading">
+          <h3>Counters</h3>
+          <a routerLink="/counters" [queryParams]="{ hero: hero.id }">Counter lab</a>
+        </div>
         <div class="tag-list">
           @for (counter of hero.counters; track counter) {
           <span>{{ counter }}</span>
