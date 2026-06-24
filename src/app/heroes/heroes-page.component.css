@@ -653,6 +653,123 @@ h1 {
   color: var(--modal-text-soft);
 }
 
+.ultimate-paths {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid rgba(154, 106, 0, 0.28);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--heroes-box-shadow);
+}
+
+.ultimate-paths .section-heading p {
+  margin-top: 4px;
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.ultimate-path-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.ultimate-path-tabs button {
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid rgba(154, 106, 0, 0.22);
+  border-radius: 6px;
+  background: rgba(255, 248, 203, 0.74);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 850;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.ultimate-path-tabs button.active,
+.ultimate-path-tabs button:hover {
+  border-color: rgba(3, 159, 159, 0.42);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.ultimate-path-panel {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid rgba(154, 106, 0, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.ultimate-path-panel>strong {
+  color: var(--accent-strong);
+  font-size: 0.95rem;
+}
+
+.ultimate-path-panel p {
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.ultimate-path-timing {
+  padding-left: 10px;
+  border-left: 3px solid var(--accent);
+  font-weight: 750;
+}
+
+.ultimate-path-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 10px;
+}
+
+.ultimate-path-grid section {
+  padding: 12px;
+  border: 1px solid rgba(154, 106, 0, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 248, 203, 0.54);
+}
+
+.ultimate-path-grid h4 {
+  margin: 0;
+  color: var(--accent-strong);
+  font-size: 0.7rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ultimate-path-grid ul {
+  margin-top: 10px;
+  padding-left: 18px;
+}
+
+.ultimate-path-grid li {
+  line-height: 1.45;
+}
+
+.hero-detail.hero-detail-modal .ultimate-paths,
+.hero-detail.hero-detail-modal .ultimate-path-panel,
+.hero-detail.hero-detail-modal .ultimate-path-grid section {
+  border-color: var(--modal-border);
+  background: rgb(255 255 255);
+}
+
+.hero-detail.hero-detail-modal .ultimate-path-tabs button {
+  border-color: rgba(138, 98, 0, 0.22);
+}
+
+.hero-detail.hero-detail-modal .ultimate-path-panel>strong,
+.hero-detail.hero-detail-modal .ultimate-path-grid h4 {
+  color: var(--modal-gold);
+}
+
 .deadpool-upgrades {
   display: grid;
   gap: 10px;
@@ -724,6 +841,59 @@ h1 {
   border-left: 3px solid var(--accent);
   font-size: 0.82rem;
   font-weight: 750;
+}
+
+.aggressive-paths {
+  background: rgba(255, 248, 203, 0.86);
+}
+
+.aggressive-path-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.aggressive-path-tabs button {
+  min-height: 42px;
+  padding: 8px 10px;
+  border: 1px solid rgba(154, 106, 0, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 850;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.aggressive-path-tabs button.active,
+.aggressive-path-tabs button:hover {
+  border-color: rgba(3, 159, 159, 0.42);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.aggressive-path-panel {
+  display: grid;
+  gap: 10px;
+}
+
+.aggressive-path-panel>strong {
+  color: var(--accent-strong);
+}
+
+.aggressive-path-panel>p {
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.hero-detail.hero-detail-modal .aggressive-path-tabs button {
+  border-color: rgba(138, 98, 0, 0.22);
+}
+
+.hero-detail.hero-detail-modal .aggressive-path-panel>strong {
+  color: var(--modal-gold);
 }
 
 .detail-columns,
@@ -1234,6 +1404,12 @@ ul {
 
   .technical-details .stat-card:nth-last-child(1):nth-child(2n + 1) {
     grid-column: 1 / -1;
+  }
+
+  .ultimate-path-tabs,
+  .ultimate-path-grid,
+  .aggressive-path-tabs {
+    grid-template-columns: 1fr;
   }
 }
 

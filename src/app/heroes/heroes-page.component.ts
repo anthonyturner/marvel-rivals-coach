@@ -17,6 +17,7 @@ import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-brows
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { forkJoin } from 'rxjs';
 
+import { HERO_GUIDES, HeroUltimateGuide } from '../hero-guides/hero-guide-data';
 import { HeroDataService } from './hero-data.service';
 import {
   buildHeroBuildProfileRationale,
@@ -56,6 +57,20 @@ interface DeadpoolUpgradeStep {
   name: string;
   reason: string;
   note: string;
+}
+
+interface DeadpoolUltimatePath extends HeroUltimateGuide {
+  timing: string;
+  execution: string[];
+}
+
+interface DeadpoolAggressivePath {
+  id: string;
+  title: string;
+  summary: string;
+  whenToUse: string;
+  upgrades: DeadpoolUpgradeStep[];
+  transcriptRead: string;
 }
 
 @Component({
@@ -111,7 +126,214 @@ export class HeroesPageComponent implements OnInit {
   readonly selectedAbilityKitRole = signal<HeroRole>('Vanguard');
   readonly isHeroDetailModalOpen = signal(false);
   readonly activeAbilityAnchorId = signal('');
+  readonly activeUltimatePathName = signal('');
+  readonly activeAggressivePathId = signal('');
   readonly buildTypes = heroBuildTypes();
+  readonly deadpoolUltimatePaths: DeadpoolUltimatePath[] = [
+    {
+      ...this.tankpoolUltimateGuide('The Ban Hammer / Gun Ultimate'),
+      timing:
+        'Choose this path when a backline threat, Punisher angle, Phoenix, Angela shift, or enemy Strategist is the fight problem.',
+      execution: [
+        'Play flanky Tankpool: take an off-angle, force the support line to look at you, then ult the target that cannot ignore the pressure.',
+        'Gun ult is the default fight-winning path when you need reliable punishment from range or need to finish a squishy through chaos.',
+        'The rank-one review shows gun ult becoming more common on maps with front-to-back fights or into Punisher pressure.',
+        'Use Deadpool In Your Area before the commit when possible so the attack-speed window helps surprise the backline.',
+      ],
+    },
+    {
+      ...this.tankpoolUltimateGuide('Katana / Sword Ultimate'),
+      timing:
+        'Choose this path when survival, point stall, or a close-range cleanup matters more than ranged target pressure.',
+      execution: [
+        'Treat sword ult as a tempo and survival tool: speed plus healing lets you stay alive while the fight turns messy.',
+        'Dash before ulting when you can. If the dash connects, the ult refresh gives more total slash/bounce attempts.',
+        'Swap to swords quickly when Jeff ult or heavy focus threatens you; surviving the engage can be the whole value.',
+        'Use it in small rooms or close scrambles where aiming pistols gets awkward and sword pressure is easier to apply.',
+      ],
+    },
+    {
+      ...this.tankpoolUltimateGuide('Magical Unicorn Shield / Plushie Shield'),
+      timing:
+        'Choose this path when the fight is decided by line of sight, burst denial, or isolating a support from their team.',
+      execution: [
+        'Drop shield with a specific job: block an ultimate, cut a healing lane, split two supports, or buy one reset beat.',
+        'Use it defensively before it is upgraded; the transcript review calls out early bubble usage as punishable when spent too casually.',
+        'Bubble between a support and their target, then pressure the isolated side before the shield is shredded.',
+        'Do not treat it like permanent cover. It is a short denial window that creates a commit or escape timing.',
+      ],
+    },
+  ];
+  readonly deadpoolAggressivePaths: DeadpoolAggressivePath[] = [
+    {
+      id: 'flank-mobility',
+      title: 'Flank Mobility',
+      summary:
+        'The most repeated rank-one route: take movement first, then add gun pressure once you can safely live behind the enemy team.',
+      whenToUse:
+        'Use when you are playing Tankpool like a backline pressure hero and need two exits before taking deep angles.',
+      upgrades: [
+        {
+          rank: 1,
+          name: 'Hazardous Hijinks',
+          reason: 'Double dash comes first because the style is constantly behind the enemy team.',
+          note: 'Transcript read: first game starts dash first, and the review says two dashes let him play more aggressively in backline.',
+        },
+        {
+          rank: 2,
+          name: 'Dual Desert Eagles',
+          reason: 'Gold Deagles are the second pickup once the escape route is online.',
+          note: 'Adds ranged kill pressure without forcing front-to-back tank farming.',
+        },
+        {
+          rank: 3,
+          name: 'Deadpool In Your Area',
+          reason: 'The E upgrade adds the attack-speed window before backline commits.',
+          note: 'The review repeatedly notes E before jumping supports to catch them by surprise.',
+        },
+        {
+          rank: 4,
+          name: 'Magical Unicorn Shield!',
+          reason: 'Bubble comes after core pressure to split healing lines or buy a reset.',
+          note: 'Use it with a job; early casual bubble usage was called punishable.',
+        },
+        {
+          rank: 5,
+          name: 'Kick@$$ Katana',
+          reason: 'Sword damage comes later unless the lobby is mostly small-room brawls.',
+          note: 'The transcript calls the sword upgrade surprising but real when he wants more close-range damage.',
+        },
+      ],
+      transcriptRead:
+        'Observed order: dash first, then Gold Deagles, then E, with bubble/sword flexing later depending on fight shape.',
+    },
+    {
+      id: 'support-hunt',
+      title: 'Support Hunt',
+      summary:
+        'A backline assassination path for games where the squishies are reachable and photos/upgrades come from winning the flank.',
+      whenToUse:
+        'Use when the enemy supports are isolated, your mechanics are warm, and you can choose kills over safe photo farming when the fight is won.',
+      upgrades: [
+        {
+          rank: 1,
+          name: 'Hazardous Hijinks',
+          reason: 'Movement still comes first so failed support pressure does not become a feed.',
+          note: 'Double dash lets you enter, force peel, and leave before the collapse.',
+        },
+        {
+          rank: 2,
+          name: 'Dual Desert Eagles',
+          reason: 'Deagles help secure backline targets while you are playing off-angles.',
+          note: 'The reviewer contrasts this with old tank-shooting upgrade farming at high level.',
+        },
+        {
+          rank: 3,
+          name: 'Deadpool In Your Area',
+          reason: 'Pop E before the backline commit for faster shots and surprise pressure.',
+          note: 'This is the aggression button before diving supports or Phoenix-style targets.',
+        },
+        {
+          rank: 4,
+          name: 'Kick@$$ Katana',
+          reason: 'Adds close-range cleanup when the support starts juking in your face.',
+          note: 'Small rooms and messy third-person close fights favor sword pressure.',
+        },
+        {
+          rank: 5,
+          name: 'The Ban Hammer',
+          reason: 'Taunt turns panicked support play into damage and sustain value.',
+          note: 'Best when the support has to keep healing through your pressure.',
+        },
+      ],
+      transcriptRead:
+        'The review frames the evolved style as much more flank-heavy, Psylocke-like, and focused on squishies in the backline.',
+    },
+    {
+      id: 'gun-ult-counter',
+      title: 'Gun Ult Counter',
+      summary:
+        'The front-to-back answer path: upgrade gun ult early when Punisher, Phoenix, or long sightline threats are deciding fights.',
+      whenToUse:
+        'Use on maps where flanks are harder, Punisher is blasting from the back, or you need a ranged answer no other tank can reach.',
+      upgrades: [
+        {
+          rank: 1,
+          name: 'The Big Test / Gun Ultimate',
+          reason: 'Gun ult first is the situational answer when the enemy backline threat is the whole fight.',
+          note: 'Transcript read: the reviewer suspects early gun ult upgrades are specifically because of Punisher.',
+        },
+        {
+          rank: 2,
+          name: 'Dual Desert Eagles',
+          reason: 'Follow with gun pressure so your neutral game matches the ult plan.',
+          note: 'This keeps the Punisher/Phoenix lane honest between ult windows.',
+        },
+        {
+          rank: 3,
+          name: 'Hazardous Hijinks',
+          reason: 'Add double dash once you need to chase, confirm, or escape after the ranged punish.',
+          note: 'The route still comes back to movement; the order just changes because of the matchup.',
+        },
+        {
+          rank: 4,
+          name: 'Deadpool In Your Area',
+          reason: 'E comes next for faster pressure during the hard commit.',
+          note: 'The transcript summarizes one route as ult, Deagles, dash, then E.',
+        },
+        {
+          rank: 5,
+          name: 'Kick@$$ Katana',
+          reason: 'Take sword later if the fight collapses into close rooms or cleanup duels.',
+          note: 'Gun is the main plan here; sword is the backup for scrambles.',
+        },
+      ],
+      transcriptRead:
+        'Observed order on the Punisher/front-to-back map: gun ult early, then Deagles/dash, then E, with gun ult used repeatedly.',
+    },
+    {
+      id: 'shield-isolation',
+      title: 'Shield Isolation',
+      summary:
+        'A utility-heavy route for cutting healing lines, blocking burst, and trapping a support away from their team.',
+      whenToUse:
+        'Use when fights are decided by line of sight, support peel, or brief denial windows instead of pure kill speed.',
+      upgrades: [
+        {
+          rank: 1,
+          name: 'Hazardous Hijinks',
+          reason: 'Movement first still makes the aggressive shield angle safer.',
+          note: 'You need a route in and a route out before placing a deep bubble.',
+        },
+        {
+          rank: 2,
+          name: 'Dual Desert Eagles',
+          reason: 'Deagles give you the damage to punish whoever gets separated by shield.',
+          note: 'Shield without follow-up damage only delays the fight.',
+        },
+        {
+          rank: 3,
+          name: 'Deadpool In Your Area',
+          reason: 'E helps convert the isolated target before the bubble is destroyed.',
+          note: 'Use it before committing through the shield split.',
+        },
+        {
+          rank: 4,
+          name: 'Magical Unicorn Shield!',
+          reason: 'Upgrade bubble once line-of-sight denial is your win condition.',
+          note: 'The guide calls shield niche but very strong when used to block ults, healing, or one reset beat.',
+        },
+        {
+          rank: 5,
+          name: 'Kick@$$ Katana',
+          reason: 'Sword finishes isolated targets that retreat into close cover.',
+          note: 'Take after shield unless the room-fight damage is needed earlier.',
+        },
+      ],
+      transcriptRead:
+        'Bubble is not the default first aggressive buy; it becomes valuable when you are deliberately splitting healing or denying a huge button.',
+    },
+  ];
   readonly deadpoolUpgradeOrders: Record<Exclude<HeroRole, 'Multi-Role'>, DeadpoolUpgradeStep[]> = {
     Vanguard: [
       {
@@ -469,6 +691,54 @@ export class HeroesPageComponent implements OnInit {
     return this.selectedAbilityKit(hero)?.role ?? 'Vanguard';
   }
 
+  deadpoolVanguardAggressivePaths(hero: Hero): DeadpoolAggressivePath[] {
+    if (hero.id !== 'deadpool' || this.deadpoolUpgradeRole(hero) !== 'Vanguard') {
+      return [];
+    }
+
+    return this.deadpoolAggressivePaths;
+  }
+
+  activeDeadpoolAggressivePath(hero: Hero): DeadpoolAggressivePath | undefined {
+    const paths = this.deadpoolVanguardAggressivePaths(hero);
+
+    if (paths.length === 0) {
+      return undefined;
+    }
+
+    const selectedId = this.activeAggressivePathId();
+
+    return paths.find((path) => path.id === selectedId) ?? paths[0];
+  }
+
+  selectDeadpoolAggressivePath(pathId: string): void {
+    this.activeAggressivePathId.set(pathId);
+  }
+
+  deadpoolVanguardUltimatePaths(hero: Hero): DeadpoolUltimatePath[] {
+    if (hero.id !== 'deadpool' || this.deadpoolUpgradeRole(hero) !== 'Vanguard') {
+      return [];
+    }
+
+    return this.deadpoolUltimatePaths;
+  }
+
+  activeDeadpoolUltimatePath(hero: Hero): DeadpoolUltimatePath | undefined {
+    const paths = this.deadpoolVanguardUltimatePaths(hero);
+
+    if (paths.length === 0) {
+      return undefined;
+    }
+
+    const selectedName = this.activeUltimatePathName();
+
+    return paths.find((path) => path.name === selectedName) ?? paths[0];
+  }
+
+  selectDeadpoolUltimatePath(pathName: string): void {
+    this.activeUltimatePathName.set(pathName);
+  }
+
   highlightedAbilityText(hero: Hero, text: string): SafeHtml {
     const abilities = [...this.displayedAbilities(hero)].sort((a, b) => b.name.length - a.name.length);
     const html = this.escapeHtml(text);
@@ -615,6 +885,18 @@ export class HeroesPageComponent implements OnInit {
 
   private heroMatchesRole(hero: Hero, role: HeroRole): boolean {
     return hero.role === role || this.roleAbilityKits(hero).some((kit) => kit.role === role);
+  }
+
+  private tankpoolUltimateGuide(name: string): HeroUltimateGuide {
+    const guide = HERO_GUIDES.find((heroGuide) => heroGuide.heroId === 'deadpool' && heroGuide.role === 'Vanguard');
+    const ultimate = guide?.ultimates.find((path) => path.name === name);
+
+    return ultimate ?? {
+      name,
+      plan: 'Use this path when its fight job solves the current enemy pressure.',
+      goodAgainst: [],
+      avoidInto: [],
+    };
   }
 
   private normalizeHeroName(value: string): string {

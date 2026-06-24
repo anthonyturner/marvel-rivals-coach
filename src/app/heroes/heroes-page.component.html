@@ -250,7 +250,103 @@
     </section>
     }
 
-    @if (deadpoolUpgradeOrder(hero).length > 0) {
+    @if (deadpoolVanguardUltimatePaths(hero).length > 0 && activeDeadpoolUltimatePath(hero); as activePath) {
+    <section class="ultimate-paths" aria-labelledby="deadpool-ultimate-path-title">
+      <div class="section-heading">
+        <div>
+          <h3 id="deadpool-ultimate-path-title">Ultimate Path</h3>
+          <p>Vanguard Deadpool fight plan</p>
+        </div>
+      </div>
+
+      <div class="ultimate-path-tabs" role="tablist" aria-label="Vanguard Deadpool ultimate paths">
+        @for (path of deadpoolVanguardUltimatePaths(hero); track path.name) {
+        <button type="button" role="tab" [class.active]="activePath.name === path.name"
+          [attr.aria-selected]="activePath.name === path.name" (click)="selectDeadpoolUltimatePath(path.name)">
+          {{ path.name }}
+        </button>
+        }
+      </div>
+
+      <article class="ultimate-path-panel" role="tabpanel">
+        <strong>{{ activePath.name }}</strong>
+        <p>{{ activePath.plan }}</p>
+        <p class="ultimate-path-timing">{{ activePath.timing }}</p>
+
+        <div class="ultimate-path-grid">
+          <section>
+            <h4>Execute</h4>
+            <ul>
+              @for (step of activePath.execution; track step) {
+              <li>{{ step }}</li>
+              }
+            </ul>
+          </section>
+
+          <section>
+            <h4>Good Into</h4>
+            <ul>
+              @for (target of activePath.goodAgainst; track target) {
+              <li>{{ target }}</li>
+              }
+            </ul>
+          </section>
+
+          <section>
+            <h4>Avoid Into</h4>
+            <ul>
+              @for (target of activePath.avoidInto; track target) {
+              <li>{{ target }}</li>
+              }
+            </ul>
+          </section>
+        </div>
+      </article>
+    </section>
+    }
+
+    @if (deadpoolVanguardAggressivePaths(hero).length > 0 && activeDeadpoolAggressivePath(hero); as activePath) {
+    <section class="deadpool-upgrades aggressive-paths" aria-labelledby="deadpool-aggressive-path-title">
+      <div class="section-heading">
+        <div>
+          <h3 id="deadpool-aggressive-path-title">Aggressive Paths</h3>
+          <p>Skill book routes from the rank-one Tankpool review</p>
+        </div>
+      </div>
+
+      <div class="aggressive-path-tabs" role="tablist" aria-label="Vanguard Deadpool aggressive upgrade paths">
+        @for (path of deadpoolVanguardAggressivePaths(hero); track path.id) {
+        <button type="button" role="tab" [class.active]="activePath.id === path.id"
+          [attr.aria-selected]="activePath.id === path.id" (click)="selectDeadpoolAggressivePath(path.id)">
+          {{ path.title }}
+        </button>
+        }
+      </div>
+
+      <article class="aggressive-path-panel" role="tabpanel">
+        <strong>{{ activePath.title }}</strong>
+        <p>{{ activePath.summary }}</p>
+        <p class="upgrade-source">{{ activePath.whenToUse }}</p>
+
+        <ol>
+          @for (upgrade of activePath.upgrades; track upgrade.name) {
+          <li>
+            <span>{{ upgrade.rank }}</span>
+            <div>
+              <strong>{{ upgrade.name }}</strong>
+              <p>{{ upgrade.reason }}</p>
+              <small>{{ upgrade.note }}</small>
+            </div>
+          </li>
+          }
+        </ol>
+
+        <p class="upgrade-source">{{ activePath.transcriptRead }}</p>
+      </article>
+    </section>
+    }
+
+    @if (deadpoolUpgradeOrder(hero).length > 0 && deadpoolVanguardAggressivePaths(hero).length === 0) {
     <section class="deadpool-upgrades" aria-labelledby="deadpool-upgrade-title">
       <div class="section-heading">
         <div>
