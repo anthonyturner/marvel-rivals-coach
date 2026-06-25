@@ -1,8 +1,8 @@
 <section class="home-page">
-  <header class="hero">
+  <header class="hero scroll-reveal">
     <div class="hero-copy">
       <p class="eyebrow">Marvel Rivals Coach</p>
-      <h1>Strategy hub for sharper fights, cleaner reviews, and smarter queues.</h1>
+      <h1>Plan cleaner fights before you queue.</h1>
       <p class="lede">
         Browse heroes, learn map-control fundamentals, watch curated tutorials, and turn guide
         notes into practical drills for your next ranked block.
@@ -14,26 +14,46 @@
       </div>
     </div>
 
-    <aside class="season-card" aria-label="Current Marvel Rivals season news">
-      <span>Current Focus</span>
-      <h2>{{ content().currentFocusTitle }}</h2>
-      <p>{{ content().currentFocusDescription }}</p>
-      <div class="season-list">
-        @for (item of content().quickLinks; track item.label) {
-          <div>
-            <small>{{ item.label }}</small>
-            <strong>{{ item.value }}</strong>
-          </div>
-        }
+    <aside class="command-window" aria-label="Current coaching dashboard">
+      <div class="window-bar" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
+
+      <div class="prompt-row">
+        <div>
+          <span>Coach prompt</span>
+          <p>What should I improve before my next match?</p>
+        </div>
+        <a routerLink="/watch-next">Plan</a>
+      </div>
+
+      <div class="command-card">
+        <div class="command-header">
+          <span>Current Focus</span>
+          <strong>{{ content().currentFocusTitle }}</strong>
+          <p>{{ content().currentFocusDescription }}</p>
+        </div>
+
+        <div class="season-list" aria-label="Current season quick links">
+          @for (item of content().quickLinks; track item.label) {
+            <div>
+              <small>{{ item.label }}</small>
+              <strong>{{ item.value }}</strong>
+            </div>
+          }
+        </div>
+      </div>
+
       <p class="source-status">
-        {{ content().sourceMode === 'database' ? 'Loaded from the Turso content database' : 'Using curated fallback data' }}
+        {{ content().sourceMode === 'database' ? 'Live content database' : 'Curated fallback data' }}
         - {{ content().lastChecked }}
       </p>
     </aside>
   </header>
 
-  <section class="stats" aria-label="Site stats">
+  <section class="stats scroll-reveal" aria-label="Site stats">
     @for (stat of content().heroStats; track stat.label) {
       <article>
         <strong>{{ stat.value }}</strong>
@@ -42,27 +62,117 @@
     }
   </section>
 
-  <section class="portal-section" aria-labelledby="portal-title">
-    <div class="section-heading">
-      <p class="eyebrow">Explore</p>
-      <h2 id="portal-title">Coach wiki portals</h2>
+  <section class="stack-section" aria-labelledby="stack-title">
+    <div class="stack-intro scroll-reveal">
+      <p class="eyebrow">How It Works</p>
+      <h2 id="stack-title">Build your next match plan one layer at a time.</h2>
+      <p>
+        Move from first-time fundamentals into hero choices, fight plans, and review habits. Each
+        layer gives you one clearer decision before you queue.
+      </p>
     </div>
 
-    <div class="portal-grid">
-      @for (portal of content().portals; track portal.title) {
-        <a class="portal-card" [routerLink]="portal.path">
-          <img [src]="portal.image" [alt]="portal.title" loading="lazy" />
-          <div>
-            <h3>{{ portal.title }}</h3>
-            <p>{{ portal.description }}</p>
-          </div>
-        </a>
-      }
+    <div class="stack-cards" aria-label="Coach workflow cards">
+      <article class="stack-card stack-card-one">
+        <div class="stack-count">
+          <span>01</span>
+          <small>/ 04</small>
+        </div>
+        <div>
+          <h3>Learn the game shape</h3>
+          <p>
+            Start with roles, objectives, regrouping, and the basic team-fight loop so the match
+            stops feeling like six separate duels.
+          </p>
+        </div>
+        <a routerLink="/hero-guides/first-time">Open first-time guide</a>
+      </article>
+
+      <article class="stack-card stack-card-two">
+        <div class="stack-count">
+          <span>02</span>
+          <small>/ 04</small>
+        </div>
+        <div>
+          <h3>Pick your role job</h3>
+          <p>
+            Decide whether you are creating space, pressure, or stability, then choose a hero whose
+            kit makes that job easier.
+          </p>
+        </div>
+        <a routerLink="/heroes">Browse heroes</a>
+      </article>
+
+      <article class="stack-card stack-card-three">
+        <div class="stack-count">
+          <span>03</span>
+          <small>/ 04</small>
+        </div>
+        <div>
+          <h3>Choose one fight habit</h3>
+          <p>
+            Focus the session around cover, timing, target priority, or resets instead of trying to
+            fix every mistake at once.
+          </p>
+        </div>
+        <a routerLink="/learning-paths">Open learning paths</a>
+      </article>
+
+      <article class="stack-card stack-card-four">
+        <div class="stack-count">
+          <span>04</span>
+          <small>/ 04</small>
+        </div>
+        <div>
+          <h3>Review the repeat mistake</h3>
+          <p>
+            After the match, find the first decision that made a death likely and turn it into one
+            cue for the next queue.
+          </p>
+        </div>
+        <a routerLink="/watch-next">Find next lesson</a>
+      </article>
     </div>
   </section>
 
-  <section class="main-grid">
-    <div class="news-panel" aria-labelledby="news-title">
+  <main class="dashboard-grid">
+    <section class="portal-panel scroll-reveal" aria-labelledby="portal-title">
+      <div class="section-heading">
+        <p class="eyebrow">Explore</p>
+        <h2 id="portal-title">Coach workspace</h2>
+      </div>
+
+      <div class="portal-grid">
+        @for (portal of content().portals; track portal.title) {
+          <a class="portal-card" [routerLink]="portal.path">
+            <img [src]="portal.image" [alt]="portal.title" loading="lazy" />
+            <div>
+              <h3>{{ portal.title }}</h3>
+              <p>{{ portal.description }}</p>
+            </div>
+          </a>
+        }
+      </div>
+    </section>
+
+    <aside class="guide-panel scroll-reveal" aria-labelledby="featured-title">
+      <div class="section-heading">
+        <p class="eyebrow">Featured Guides</p>
+        <h2 id="featured-title">Start here</h2>
+      </div>
+
+      <div class="guide-list">
+        @for (guide of content().featuredGuides; track guide.title) {
+          <a [routerLink]="guide.path">
+            <span>{{ guide.tag }}</span>
+            <h3>{{ guide.title }}</h3>
+            <p>{{ guide.description }}</p>
+          </a>
+        }
+      </div>
+    </aside>
+
+    <section class="news-panel scroll-reveal" aria-labelledby="news-title">
       <div class="section-heading">
         <p class="eyebrow">Latest News</p>
         <h2 id="news-title">Season and BattlePass notes</h2>
@@ -87,23 +197,6 @@
           </article>
         }
       </div>
-    </div>
-
-    <aside class="guide-panel" aria-labelledby="featured-title">
-      <div class="section-heading">
-        <p class="eyebrow">Featured Guides</p>
-        <h2 id="featured-title">Start here</h2>
-      </div>
-
-      <div class="guide-list">
-        @for (guide of content().featuredGuides; track guide.title) {
-          <a [routerLink]="guide.path">
-            <span>{{ guide.tag }}</span>
-            <h3>{{ guide.title }}</h3>
-            <p>{{ guide.description }}</p>
-          </a>
-        }
-      </div>
-    </aside>
-  </section>
+    </section>
+  </main>
 </section>
