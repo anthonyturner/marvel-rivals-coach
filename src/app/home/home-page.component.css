@@ -120,7 +120,6 @@ h1 {
   box-shadow: 0 24px 70px rgb(151 143 120), inset 0 1px rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(20px) saturate(145%);
 }
-
 .command-window {
   display: grid;
   gap: 18px;
