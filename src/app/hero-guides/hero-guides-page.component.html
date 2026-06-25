@@ -32,25 +32,56 @@
       </div>
     </section>
 
-    <section class="guide-group" aria-labelledby="discipline-guides-title">
+    <section class="guide-group" aria-labelledby="start-here-guides-title">
       <div class="group-heading">
-        <p class="kicker">Discipline Tutorials</p>
-        <h2 id="discipline-guides-title">Fundamentals that carry across heroes</h2>
-        <p>Decision-making lessons for survival, engagement timing, poke pressure, and fight pacing.</p>
+        <p class="kicker">Start Here</p>
+        <h2 id="start-here-guides-title">New player fundamentals</h2>
+        <p>Guides for your first matches before you dive into role-specific lessons.</p>
       </div>
 
       <div class="guide-grid">
-        @for (guide of fundamentalsGuides; track guide.heroId) {
-          <a class="guide-card" [routerLink]="['/hero-guides', guide.heroId]">
-            <img [src]="guide.image" [alt]="guide.heroName" loading="lazy" />
-            <span>
-              <small>{{ guide.role }}</small>
-              <strong>{{ guide.heroName }}</strong>
-              <em>{{ guide.poolJob }}</em>
-            </span>
-          </a>
-        }
+        <a class="guide-card featured-guide" routerLink="/hero-guides/first-time">
+          <img src="/images/heroes/captain-america.png" alt="Captain America" loading="lazy" />
+          <span>
+            <small>First Time Guide</small>
+            <strong>How To Play The Game</strong>
+            <em>A complete first-match explanation without the interactive course.</em>
+          </span>
+        </a>
+         <a class="guide-card featured-guide" routerLink="/beginner-interactive-guide">
+          <img src="/images/heroes/captain-america.png" alt="Captain America" loading="lazy" />
+          <span>
+            <small>First Time Interactive Guide</small>
+            <strong>How To Play The Game</strong>
+            <em>A complete first-match explanation with the interactive course.</em>
+          </span>
+        </a>
       </div>
+
     </section>
+
+    
+    @for (group of fundamentalsGuideGroups; track group.kicker) {
+      <section class="guide-group" [attr.aria-labelledby]="group.kicker + '-title'">
+        <div class="group-heading">
+          <p class="kicker">{{ group.kicker }}</p>
+          <h2 [id]="group.kicker + '-title'">{{ group.title }}</h2>
+          <p>{{ group.description }}</p>
+        </div>
+
+        <div class="guide-grid">
+          @for (guide of group.guides; track guide.heroId) {
+            <a class="guide-card" [routerLink]="['/hero-guides', guide.heroId]">
+              <img [src]="guide.image" [alt]="guide.heroName" loading="lazy" />
+              <span>
+                <small>{{ group.kicker }}</small>
+                <strong>{{ guide.heroName }}</strong>
+                <em>{{ guide.poolJob }}</em>
+              </span>
+            </a>
+          }
+        </div>
+      </section>
+    }
   </main>
 </section>

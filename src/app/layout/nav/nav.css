@@ -1,0 +1,122 @@
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  gap: 8px;
+}
+
+nav a,
+nav span,
+.nav-group-trigger {
+  display: inline-grid;
+  min-height: 38px;
+  place-items: center;
+  padding: 0 12px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+nav a.active,
+nav a:hover,
+.nav-group:hover .nav-group-trigger,
+.nav-group:focus-within .nav-group-trigger {
+  border-color: rgba(224, 169, 0, 0.45);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.nav-group {
+  position: relative;
+}
+
+.nav-group-trigger {
+  grid-auto-flow: column;
+  gap: 6px;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.nav-group-trigger span {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  color: currentColor;
+  font-size: 0.72rem;
+}
+
+.nav-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 20;
+  display: grid;
+  min-width: 210px;
+  padding: 12px 8px 8px;
+  border: 1px solid rgba(224, 169, 0, 0.24);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 42px rgba(17, 35, 57, 0.16);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.nav-group:hover .nav-menu,
+.nav-group:focus-within .nav-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.nav-menu a,
+.nav-menu span {
+  justify-content: start;
+  width: 100%;
+  min-height: 36px;
+  border-radius: 6px;
+  text-align: left;
+}
+
+nav span.disabled {
+  color: var(--text-faint);
+  cursor: not-allowed;
+}
+
+
+@media (max-width: 760px) {
+  nav {
+    justify-content: start;
+  }
+
+  .nav-group {
+    width: 100%;
+  }
+
+  .nav-group-trigger {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nav-menu {
+    position: static;
+    display: none;
+    width: 100%;
+    margin-top: 6px;
+    box-shadow: none;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .nav-group:hover .nav-menu,
+  .nav-group:focus-within .nav-menu {
+    display: grid;
+  }
+}

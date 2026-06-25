@@ -244,7 +244,7 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
+  border-radius: 8px;
 }
 
 .heroes-layout.detail-modal-open .hero-grid,
@@ -407,15 +407,16 @@ h1 {
 }
 
 .modal-close-button {
-  border: 1px solid rgb(255 216 102/38%);
-  background: rgb(0 0 0 / 0%);
-  color: #ffffff;
+  border: 1px solid rgba(17, 24, 39, 0.16);
+  background: rgba(255, 255, 255, 0.82);
+  color: #111827;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12), inset 0 1px rgba(255, 255, 255, 0.86);
 }
 
 .detail-pop-button:hover,
 .modal-close-button:hover {
-  background: #93959c73;
-  color: var(--accent-ink);
+  background: #ffffff;
+  color: #111827;
 }
 
 .hero-detail-backdrop {
@@ -425,31 +426,32 @@ h1 {
   display: grid;
   place-items: center;
   padding: 24px;
-  background: rgba(10, 18, 32, 0.18);
-  backdrop-filter: blur(6px);
+  background:
+    linear-gradient(135deg, rgba(230, 244, 255, 0.28), rgba(255, 255, 255, 0.1)),
+    rgba(10, 18, 32, 0.22);
+  backdrop-filter: blur(10px) saturate(130%);
 }
 
 .hero-detail.hero-detail-modal {
-  --modal-text: #1d220b;
-  --modal-text-soft: #41451b;
-  --modal-text-muted: #6d6724;
-  --modal-gold: #8a6200;
-  --modal-gold-soft: rgba(138, 98, 0, 0.16);
-  --modal-panel: rgba(255, 248, 203, 0.74);
-  --modal-panel-strong: rgba(255, 244, 174, 0.86);
-  --modal-border: rgba(138, 98, 0, 0.24);
+  --modal-text: #111827;
+  --modal-text-soft: #334155;
+  --modal-text-muted: #475569;
+  --modal-gold: #7a5200;
+  --modal-border: rgba(15, 23, 42, 0.14);
   position: relative;
   top: auto;
   width: min(980px, 100%);
   max-height: min(88dvh, 920px);
   overflow-y: auto;
   border-color: var(--modal-border);
-  background: rgb(143 143 142 / 33%);
-  backdrop-filter: blur(18px) saturate(145%);
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.86), rgba(236, 246, 255, 0.32) 42%, rgba(255, 255, 255, 0.72)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 251, 255, 0.64)),
+    rgba(255, 255, 255, 0.54);
+  backdrop-filter: blur(28px) saturate(155%);
   box-shadow:
-    0 30px 90px rgba(83, 82, 1, 0.22),
-    inset 0 1px rgba(255, 255, 255, 0.72),
-    inset 0 0 0 1px rgba(138, 98, 0, 0.08);
+    0 34px 110px rgba(15, 23, 42, 0.28),
+    inset 0 1px rgba(255, 255, 255, 0.92);
 }
 
 .modal-close-button {
@@ -477,6 +479,25 @@ h1 {
   font-size: clamp(1.8rem, 3vw, 2.55rem);
   line-height: 0.98;
   text-shadow: 0 1px rgba(255, 255, 255, 0.72);
+}
+
+.hero-detail.hero-detail-modal .detail-hero-container,
+.hero-detail.hero-detail-modal .detail-hero-container :is(
+  .detail-hero,
+  .playstyle,
+  .hero-build-profile,
+  .build-profile-source,
+  .deadpool-upgrades,
+  .aggressive-path-panel,
+  article,
+  section
+) {
+  background: #ffffff;
+}
+
+.hero-detail.hero-detail-modal .detail-hero-container {
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.12);
 }
 
 .hero-detail.hero-detail-modal p,
@@ -635,7 +656,7 @@ h1 {
 
 .hero-detail.hero-detail-modal .ultimate-strategies article {
   border-color: rgba(138, 98, 0, 0.22);
-  background: rgba(255, 255, 255, 0.48);
+  background: #ffffff;
   box-shadow: inset 4px 0 var(--modal-gold);
 }
 
@@ -649,7 +670,7 @@ h1 {
 
 .hero-detail.hero-detail-modal .ultimate-strategies article .ultimate-source {
   border-color: rgba(138, 98, 0, 0.18);
-  background: rgba(255, 255, 255, 0.48);
+  background: #ffffff;
   color: var(--modal-text-soft);
 }
 
@@ -776,7 +797,7 @@ h1 {
   padding: 14px;
   border: 1px solid rgba(154, 106, 0, 0.28);
   border-radius: 8px;
-  background: rgba(255, 248, 203, 0.76);
+  background: rgb(255 255 255);
   box-shadow: var(--heroes-box-shadow);
 }
 
@@ -948,7 +969,7 @@ ul {
 
 .hero-detail.hero-detail-modal .tag-list span:not(.hero-matchup-chip) {
   border-color: rgba(138, 98, 0, 0.24);
-  background: rgba(255, 255, 255, 0.48);
+  background: #ffffff;
   color: var(--modal-text);
 }
 
@@ -964,10 +985,8 @@ ul {
 
 .hero-detail.hero-detail-modal .abilities {
   border-color: var(--modal-border);
-  background:
-    linear-gradient(135deg, rgb(255 255 255), rgba(255, 255, 255, 0.18)),
-    rgba(255, 248, 203, 0.5);
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.76), 0 18px 38px rgba(83, 82, 1, 0.1);
+  background: #ffffff;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.9), 0 18px 38px rgba(15, 23, 42, 0.08);
 }
 
 .passive-abilities {
@@ -981,9 +1000,7 @@ ul {
 }
 
 .hero-detail.hero-detail-modal .passive-abilities {
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.54), rgba(138, 98, 0, 0.12)),
-    var(--modal-panel);
+  background: #ffffff;
 }
 
 .ability-heading {
@@ -1052,9 +1069,7 @@ ul {
 
 .hero-detail.hero-detail-modal .abilities article {
   border-color: rgba(138, 98, 0, 0.22);
-  background:
-    linear-gradient(110deg, rgba(138, 98, 0, 0.12), transparent 46%),
-    rgb(253 253 253 / 86%);
+  background: #ffffff;
   box-shadow: var(--heroes-box-shadow);
 }
 
@@ -1069,8 +1084,8 @@ ul {
 .hero-detail.hero-detail-modal .abilities article.highlighted {
   border-color: rgba(138, 98, 0, 0.58);
   background:
-    linear-gradient(120deg, rgba(255, 216, 102, 0.42), rgba(255, 255, 255, 0.26)),
-    rgba(255, 248, 203, 0.9);
+    linear-gradient(120deg, rgba(255, 216, 102, 0.28), rgba(255, 255, 255, 0.86)),
+    #ffffff;
   box-shadow: inset 5px 0 var(--modal-gold), 0 0 0 3px rgba(138, 98, 0, 0.14), 0 18px 34px rgba(83, 82, 1, 0.16);
 }
 
@@ -1167,7 +1182,7 @@ ul {
 
 .hero-detail.hero-detail-modal .technical-details .stat-card {
   border-color: rgba(138, 98, 0, 0.18);
-  background: rgba(255, 255, 255, 0.48);
+  background: #ffffff;
 }
 
 .stat-icon {

@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
 
+import { BeginnerGuidePageComponent } from './beginner-guide/beginner-guide-page.component';
 import { BuildTheoryPageComponent } from './build-theory/build-theory-page.component';
 import { CountersPageComponent } from './counters/counters-page.component';
 import { GameStatsPageComponent } from './game-stats/game-stats-page.component';
+import { FirstTimeGuidePageComponent } from './hero-guides/first-time-guide-page.component';
 import { HeroGuideDetailPageComponent } from './hero-guides/hero-guide-detail-page.component';
 import { GlossaryPageComponent } from './glossary/glossary-page.component';
 import { HeroGuidesPageComponent } from './hero-guides/hero-guides-page.component';
@@ -30,6 +32,10 @@ export const routes: Routes = [
     component: HeroGuidesPageComponent,
   },
   {
+    path: 'hero-guides/first-time',
+    component: FirstTimeGuidePageComponent,
+  },
+  {
     path: 'hero-guides/:heroId',
     component: HeroGuideDetailPageComponent,
   },
@@ -40,6 +46,10 @@ export const routes: Routes = [
   {
     path: 'techniques',
     component: TechniquesPageComponent,
+  },
+  {
+    path: 'beginner-interactive-guide',
+    component: BeginnerGuidePageComponent,
   },
   {
     path: 'build-theory',

@@ -120,7 +120,7 @@ export class HeroesPageComponent implements OnInit {
 
   readonly roles: HeroRoleFilter[] = ['All', 'Vanguard', 'Duelist', 'Strategist'];
   readonly selectedRole = signal<HeroRoleFilter>('All');
-  readonly heroGridMode = signal<HeroGridMode>('rows');
+  readonly heroGridMode = signal<HeroGridMode>('thumbs');
   readonly searchTerm = signal('');
   readonly selectedHeroId = signal(this.heroes()[0]?.id ?? '');
   readonly selectedAbilityKitRole = signal<HeroRole>('Vanguard');
@@ -166,172 +166,112 @@ export class HeroesPageComponent implements OnInit {
   ];
   readonly deadpoolAggressivePaths: DeadpoolAggressivePath[] = [
     {
-      id: 'flank-mobility',
-      title: 'Flank Mobility',
+      id: 'aggressive-path',
+      title: 'Aggressive Path',
       summary:
-        'The most repeated rank-one route: take movement first, then add gun pressure once you can safely live behind the enemy team.',
+        'The main Vanguard Deadpool route from the transcript: hit early power spikes, build ultimate fast, and keep constant pressure instead of waiting for perfect moments.',
       whenToUse:
-        'Use when you are playing Tankpool like a backline pressure hero and need two exits before taking deep angles.',
+        'Use when your team needs you to force tempo, create early pressure, and turn style points into a fast ultimate cycle.',
       upgrades: [
         {
           rank: 1,
           name: 'Hazardous Hijinks',
-          reason: 'Double dash comes first because the style is constantly behind the enemy team.',
-          note: 'Transcript read: first game starts dash first, and the review says two dashes let him play more aggressively in backline.',
+          reason: 'Starts the route with early pressure, six charges, bunny bounce value, movement, and fast style-up ranks.',
+          note: 'Use the extra movement to dash in and out, stay on Strategists or exposed targets, and keep momentum rolling while your ultimate is still weaker.',
         },
         {
           rank: 2,
           name: 'Dual Desert Eagles',
-          reason: 'Gold Deagles are the second pickup once the escape route is online.',
-          note: 'Adds ranged kill pressure without forcing front-to-back tank farming.',
+          reason: 'Stabilizes the route with reliable ranged pressure and fast ultimate charge before you hard commit.',
+          note: 'Pair upgraded Deagles with Deadpool In Your Area attack speed to spray grouped enemies and build more than half an ultimate safely.',
         },
         {
           rank: 3,
-          name: 'Deadpool In Your Area',
-          reason: 'The E upgrade adds the attack-speed window before backline commits.',
-          note: 'The review repeatedly notes E before jumping supports to catch them by surprise.',
+          name: 'The Big Test',
+          reason: 'Upgrades the ultimate once the pressure loop is already online.',
+          note: 'The stronger activation health and eight-second completed challenge window matter most when you are already in their face.',
         },
         {
           rank: 4,
+          name: 'Deadpool In Your Area',
+          reason: 'Locks the aggressive route together with damage reduction, ally protection, attack speed, and sustain during the ultimate window.',
+          note: 'Drop it before or during The Big Test challenge completion so damage reduction, healing, bonus health, and faster attacks stack together.',
+        },
+        {
+          rank: 5,
+          name: 'Kick@$$ Katana',
+          reason: 'Improves committed melee damage after the core pressure and ultimate engine are online.',
+          note: 'Faster swings, crit potential, and more reliable close-range damage help once you are already brawling in their space.',
+        },
+        {
+          rank: 6,
           name: 'Magical Unicorn Shield!',
-          reason: 'Bubble comes after core pressure to split healing lines or buy a reset.',
-          note: 'Use it with a job; early casual bubble usage was called punishable.',
+          reason: 'Adds stronger utility, but it is not the core of the aggressive loop.',
+          note: 'Use the larger 400-health shield to block damage, cover a reset, or pressure a Strategist the way the ability section describes.',
         },
         {
-          rank: 5,
-          name: 'Kick@$$ Katana',
-          reason: 'Sword damage comes later unless the lobby is mostly small-room brawls.',
-          note: 'The transcript calls the sword upgrade surprising but real when he wants more close-range damage.',
-        },
-      ],
-      transcriptRead:
-        'Observed order: dash first, then Gold Deagles, then E, with bubble/sword flexing later depending on fight shape.',
-    },
-    {
-      id: 'support-hunt',
-      title: 'Support Hunt',
-      summary:
-        'A backline assassination path for games where the squishies are reachable and photos/upgrades come from winning the flank.',
-      whenToUse:
-        'Use when the enemy supports are isolated, your mechanics are warm, and you can choose kills over safe photo farming when the fight is won.',
-      upgrades: [
-        {
-          rank: 1,
-          name: 'Hazardous Hijinks',
-          reason: 'Movement still comes first so failed support pressure does not become a feed.',
-          note: 'Double dash lets you enter, force peel, and leave before the collapse.',
-        },
-        {
-          rank: 2,
-          name: 'Dual Desert Eagles',
-          reason: 'Deagles help secure backline targets while you are playing off-angles.',
-          note: 'The reviewer contrasts this with old tank-shooting upgrade farming at high level.',
-        },
-        {
-          rank: 3,
-          name: 'Deadpool In Your Area',
-          reason: 'Pop E before the backline commit for faster shots and surprise pressure.',
-          note: 'This is the aggression button before diving supports or Phoenix-style targets.',
-        },
-        {
-          rank: 4,
-          name: 'Kick@$$ Katana',
-          reason: 'Adds close-range cleanup when the support starts juking in your face.',
-          note: 'Small rooms and messy third-person close fights favor sword pressure.',
-        },
-        {
-          rank: 5,
+          rank: 7,
           name: 'The Ban Hammer',
-          reason: 'Taunt turns panicked support play into damage and sustain value.',
-          note: 'Best when the support has to keep healing through your pressure.',
+          reason: 'Lowest priority in this path because the aggressive Vanguard plan is built around movement, Deagles, ultimate pressure, and sustain.',
+          note: 'Still useful in specific situations, but the transcript says it is not the focus for Vanguard play.',
         },
       ],
       transcriptRead:
-        'The review frames the evolved style as much more flank-heavy, Psylocke-like, and focused on squishies in the backline.',
+        'Transcript order: Hazardous Hijinks, Dual Desert Eagles, The Big Test, Deadpool In Your Area, Katana, Unicorn Shield, Ban Hammer.',
     },
     {
-      id: 'gun-ult-counter',
-      title: 'Gun Ult Counter',
+      id: 'defense-path',
+      title: 'Defense Path',
       summary:
-        'The front-to-back answer path: upgrade gun ult early when Punisher, Phoenix, or long sightline threats are deciding fights.',
+        'The safer defensive route from the transcript: establish ranged pressure, protect the team, then counter-engage when the fight comes to you.',
       whenToUse:
-        'Use on maps where flanks are harder, Punisher is blasting from the back, or you need a ranged answer no other tank can reach.',
+        'Use when you are holding space, defending a lane, peeling for allies, or playing a slower fight where enemies have to walk into you.',
       upgrades: [
         {
           rank: 1,
-          name: 'The Big Test / Gun Ultimate',
-          reason: 'Gun ult first is the situational answer when the enemy backline threat is the whole fight.',
-          note: 'Transcript read: the reviewer suspects early gun ult upgrades are specifically because of Punisher.',
+          name: 'Dual Desert Eagles',
+          reason: 'Starts with safe ranged damage and reliable ultimate charge while you absorb front-line pressure on defense.',
+          note: 'Spray grouped enemies with base Deadpool In Your Area to build charge quickly without stepping too far forward.',
         },
         {
           rank: 2,
-          name: 'Dual Desert Eagles',
-          reason: 'Follow with gun pressure so your neutral game matches the ult plan.',
-          note: 'This keeps the Punisher/Phoenix lane honest between ult windows.',
+          name: 'Deadpool In Your Area',
+          reason: 'Becomes the defensive backbone: 40% damage reduction for you and 20% for nearby allies.',
+          note: 'Use it to stabilize the front line or peel a dive on your Strategists so the fight has time to flip.',
         },
         {
           rank: 3,
           name: 'Hazardous Hijinks',
-          reason: 'Add double dash once you need to chase, confirm, or escape after the ranged punish.',
-          note: 'The route still comes back to movement; the order just changes because of the matchup.',
+          reason: 'Adds mobility and burst style generation after defensive pressure and ultimate charge are already online.',
+          note: 'Use the six charges to finish ultimate, reposition quickly, or punish overextensions without forcing a full commit.',
         },
         {
           rank: 4,
-          name: 'Deadpool In Your Area',
-          reason: 'E comes next for faster pressure during the hard commit.',
-          note: 'The transcript summarizes one route as ult, Deagles, dash, then E.',
+          name: 'The Big Test',
+          reason: 'Turns the defensive setup into a counter-engage payoff.',
+          note: 'With Deadpool In Your Area already upgraded, you can use the enhanced ultimate with strong survivability and team support.',
         },
         {
           rank: 5,
           name: 'Kick@$$ Katana',
-          reason: 'Take sword later if the fight collapses into close rooms or cleanup duels.',
-          note: 'Gun is the main plan here; sword is the backup for scrambles.',
-        },
-      ],
-      transcriptRead:
-        'Observed order on the Punisher/front-to-back map: gun ult early, then Deagles/dash, then E, with gun ult used repeatedly.',
-    },
-    {
-      id: 'shield-isolation',
-      title: 'Shield Isolation',
-      summary:
-        'A utility-heavy route for cutting healing lines, blocking burst, and trapping a support away from their team.',
-      whenToUse:
-        'Use when fights are decided by line of sight, support peel, or brief denial windows instead of pure kill speed.',
-      upgrades: [
-        {
-          rank: 1,
-          name: 'Hazardous Hijinks',
-          reason: 'Movement first still makes the aggressive shield angle safer.',
-          note: 'You need a route in and a route out before placing a deep bubble.',
+          reason: 'Improves close-range cleanup and pressure once enemies have committed into your space.',
+          note: 'On defense, the transcript frames Katana less as an opener and more as cleanup or close-range pressure.',
         },
         {
-          rank: 2,
-          name: 'Dual Desert Eagles',
-          reason: 'Deagles give you the damage to punish whoever gets separated by shield.',
-          note: 'Shield without follow-up damage only delays the fight.',
-        },
-        {
-          rank: 3,
-          name: 'Deadpool In Your Area',
-          reason: 'E helps convert the isolated target before the bubble is destroyed.',
-          note: 'Use it before committing through the shield split.',
-        },
-        {
-          rank: 4,
+          rank: 6,
           name: 'Magical Unicorn Shield!',
-          reason: 'Upgrade bubble once line-of-sight denial is your win condition.',
-          note: 'The guide calls shield niche but very strong when used to block ults, healing, or one reset beat.',
+          reason: 'Adds more utility for blocking damage, saving teammates, and controlling space.',
+          note: 'The 400-health shield is stronger on defense because brief denial windows can preserve the position you are holding.',
         },
         {
-          rank: 5,
-          name: 'Kick@$$ Katana',
-          reason: 'Sword finishes isolated targets that retreat into close cover.',
-          note: 'Take after shield unless the room-fight damage is needed earlier.',
+          rank: 7,
+          name: 'The Ban Hammer',
+          reason: 'Lowest priority because the defensive path mostly uses Katana ultimate and team-stabilizing tools.',
+          note: 'The transcript says 90 to 95% of the time this path uses Katana ultimate instead.',
         },
       ],
       transcriptRead:
-        'Bubble is not the default first aggressive buy; it becomes valuable when you are deliberately splitting healing or denying a huge button.',
+        'Transcript order: Dual Desert Eagles, Deadpool In Your Area, Hazardous Hijinks, The Big Test, Katana, Unicorn Shield, Ban Hammer.',
     },
   ];
   readonly deadpoolUpgradeOrders: Record<Exclude<HeroRole, 'Multi-Role'>, DeadpoolUpgradeStep[]> = {

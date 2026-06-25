@@ -104,6 +104,11 @@ h2 {
   transform: translateY(-2px);
 }
 
+.featured-guide {
+  border-color: rgba(224, 169, 0, 0.48);
+  background: #fff9df;
+}
+
 .guide-card img {
   width: 100%;
   aspect-ratio: 1;
