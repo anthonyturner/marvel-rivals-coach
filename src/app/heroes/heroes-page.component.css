@@ -208,8 +208,8 @@ h1 {
   gap: 6px;
 }
 
-.role-tabs{
-    justify-content: end;
+.role-tabs {
+  justify-content: end;
 }
 
 .role-tabs button,
@@ -452,10 +452,7 @@ h1 {
   max-height: min(88dvh, 920px);
   overflow-y: auto;
   border-color: var(--modal-border);
-  background:
-    linear-gradient(115deg, rgba(255, 255, 255, 0.86), rgba(236, 246, 255, 0.32) 42%, rgba(255, 255, 255, 0.72)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 251, 255, 0.64)),
-    rgba(255, 255, 255, 0.54);
+  background: linear-gradient(115deg, rgb(255 255 255 / 0%), rgba(236, 246, 255, 0.32) 42%, rgba(255, 255, 255, 0.72)), linear-gradient(180deg, rgb(255 255 255 / 0%), rgb(248 251 255 / 22%)), rgb(255 255 255 / 0%);
   backdrop-filter: blur(28px) saturate(155%);
   box-shadow:
     0 34px 110px rgba(15, 23, 42, 0.28),
@@ -797,6 +794,53 @@ h1 {
   color: var(--modal-gold);
 }
 
+
+.aggressive-paths {
+  background: rgba(255, 248, 203, 0.86);
+}
+
+.aggressive-path-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.aggressive-path-tabs button {
+  min-height: 42px;
+  padding: 8px 10px;
+  border: 1px solid rgba(154, 106, 0, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 850;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.aggressive-path-tabs button.active,
+.aggressive-path-tabs button:hover {
+  border-color: rgba(3, 159, 159, 0.42);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.aggressive-path-panel {
+  display: grid;
+  gap: 10px;
+}
+
+.aggressive-path-panel>strong {
+  color: var(--accent-strong);
+}
+
+.aggressive-path-panel>p {
+  color: var(--text);
+  line-height: 1.5;
+}
+
+
 .deadpool-upgrades {
   display: grid;
   gap: 10px;
@@ -868,51 +912,6 @@ h1 {
   border-left: 3px solid var(--accent);
   font-size: 0.82rem;
   font-weight: 750;
-}
-
-.aggressive-paths {
-  background: rgba(255, 248, 203, 0.86);
-}
-
-.aggressive-path-tabs {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.aggressive-path-tabs button {
-  min-height: 42px;
-  padding: 8px 10px;
-  border: 1px solid rgba(154, 106, 0, 0.2);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.72);
-  color: var(--text);
-  font: inherit;
-  font-size: 0.76rem;
-  font-weight: 850;
-  line-height: 1.2;
-  cursor: pointer;
-}
-
-.aggressive-path-tabs button.active,
-.aggressive-path-tabs button:hover {
-  border-color: rgba(3, 159, 159, 0.42);
-  background: var(--accent);
-  color: var(--accent-ink);
-}
-
-.aggressive-path-panel {
-  display: grid;
-  gap: 10px;
-}
-
-.aggressive-path-panel>strong {
-  color: var(--accent-strong);
-}
-
-.aggressive-path-panel>p {
-  color: var(--text);
-  line-height: 1.5;
 }
 
 .hero-detail.hero-detail-modal .aggressive-path-tabs button {
