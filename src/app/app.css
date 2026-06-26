@@ -63,8 +63,12 @@
 
 @media (max-width: 760px) {
   .top-nav {
-    position: static;
-    display: grid;
+    position: sticky;
+    min-height: 70px;
     padding: 14px;
+  }
+
+  .brand {
+    min-width: 0;
   }
 }

@@ -1,40 +1,69 @@
- <nav aria-label="Primary navigation">
-      @for (item of primaryNavItems; track item.label) {
-        @if (item.enabled) {
-          <a
-            class="nav-link"
-            [routerLink]="item.path"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: item.path === '/' }"
-          >
-            {{ item.label }}
-          </a>
-        } @else {
-          <span class="disabled">{{ item.label }}</span>
-        }
-      }
+<button
+  class="menu-toggle"
+  type="button"
+  aria-label="Toggle navigation menu"
+  aria-controls="primary-navigation"
+  [attr.aria-expanded]="isMenuOpen()"
+  (click)="toggleMenu()"
+>
+  <span class="menu-toggle-icon" aria-hidden="true"></span>
+  <span class="menu-toggle-label">Menu</span>
+</button>
 
-      @for (group of navGroups; track group.label) {
+<nav id="primary-navigation" aria-label="Primary navigation" [class.is-open]="isMenuOpen()">
+  @for (item of primaryNavItems; track item.label) {
+    @if (item.enabled) {
         <div class="nav-group">
-          <button class="nav-group-trigger" type="button" [attr.aria-label]="group.label + ' menu'">
-            {{ group.label }}
-            <span aria-hidden="true">▾</span>
-          </button>
+      <a
+        class="nav-link"
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+        (click)="closeMenu()"
+      >
+        {{ item.label }}
+      </a>
+      </div>
+    } @else {
+      <span class="disabled">{{ item.label }}</span>
+    }
+  }
 
-          <div class="nav-menu">
-            @for (item of group.items; track item.label) {
-              @if (item.enabled) {
-                <a
-                  [routerLink]="item.path"
-                  routerLinkActive="active"
-                >
-                  {{ item.label }}
-                </a>
-              } @else {
-                <span class="disabled">{{ item.label }}</span>
-              }
-            }
-          </div>
-        </div>
-      }
-    </nav>
+  @for (group of navGroups; track group.label) {
+    <div class="nav-group">
+      <div class="nav-group-heading">
+        <a
+          class="nav-group-link"
+          [routerLink]="group.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeMenu()"
+        >
+          {{ group.label }}
+        </a>
+        <button
+          class="nav-group-trigger"
+          type="button"
+          [attr.aria-label]="'Expand ' + group.label + ' menu'"
+          [attr.aria-controls]="'nav-group-' + group.label.toLowerCase()"
+          [attr.aria-expanded]="openGroup() === group.label"
+          (click)="toggleGroup(group.label)"
+        >
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class="nav-menu" [id]="'nav-group-' + group.label.toLowerCase()" [class.is-open]="openGroup() === group.label">
+        @for (item of group.items; track item.label) {
+          @if (item.enabled) {
+            <a [routerLink]="item.path" routerLinkActive="active" (click)="closeMenu()">
+              {{ item.label }}
+            </a>
+          } @else {
+            <span class="disabled">{{ item.label }}</span>
+          }
+        }
+      </div>
+    </div>
+  }
+</nav>

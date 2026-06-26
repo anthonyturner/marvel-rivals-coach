@@ -12,6 +12,7 @@ import { HeroesPageComponent } from './heroes/heroes-page.component';
 import { HomePageComponent } from './home/home-page.component';
 import { LearningPathsPageComponent } from './learning-paths/learning-paths-page.component';
 import { MediaTutorialsPageComponent } from './media-tutorials/media-tutorials-page.component';
+import { NAVIGATION_CATEGORIES, NavigationCategoryPageComponent } from './navigation-category/navigation-category-page.component';
 import { PowerPositionsPageComponent } from './power-positions/power-positions-page.component';
 import { StrategicCoverPageComponent } from './strategic-cover/strategic-cover-page.component';
 import { TeamBuilderPageComponent } from './team-builder/team-builder-page.component';
@@ -26,6 +27,21 @@ export const routes: Routes = [
   {
     path: 'heroes',
     component: HeroesPageComponent,
+  },
+  {
+    path: 'learn',
+    component: NavigationCategoryPageComponent,
+    data: { category: NAVIGATION_CATEGORIES[0] },
+  },
+  {
+    path: 'resources',
+    component: NavigationCategoryPageComponent,
+    data: { category: NAVIGATION_CATEGORIES[1] },
+  },
+  {
+    path: 'tools',
+    component: NavigationCategoryPageComponent,
+    data: { category: NAVIGATION_CATEGORIES[2] },
   },
   {
     path: 'hero-guides',

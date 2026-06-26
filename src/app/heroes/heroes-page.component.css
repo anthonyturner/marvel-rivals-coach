@@ -196,12 +196,20 @@ h1 {
   box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
+.view-toggle {
+  margin-bottom: 8px;
+}
+
 .role-tabs,
 .view-toggle {
   display: flex;
   flex-wrap: wrap;
-  justify-content: end;
-  gap: 8px;
+  justify-content: start;
+  gap: 6px;
+}
+
+.role-tabs{
+    justify-content: end;
 }
 
 .role-tabs button,
@@ -482,16 +490,14 @@ h1 {
 }
 
 .hero-detail.hero-detail-modal .detail-hero-container,
-.hero-detail.hero-detail-modal .detail-hero-container :is(
-  .detail-hero,
+.hero-detail.hero-detail-modal .detail-hero-container :is(.detail-hero,
   .playstyle,
   .hero-build-profile,
   .build-profile-source,
   .deadpool-upgrades,
   .aggressive-path-panel,
   article,
-  section
-) {
+  section) {
   background: #ffffff;
 }
 

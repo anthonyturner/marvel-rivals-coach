@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { NAVIGATION_CATEGORIES } from '../../navigation-category/navigation-category-page.component';
 
 @Component({
   selector: 'app-nav',
@@ -8,41 +9,30 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './nav.css',
 })
 export class Nav {
+  readonly isMenuOpen = signal(false);
+  readonly openGroup = signal<string | null>(null);
 
   readonly primaryNavItems = [
     { label: 'Home', path: '/', enabled: true },
     { label: 'Heroes', path: '/heroes', enabled: true },
   ];
 
-  readonly navGroups = [
-    {
-      label: 'Learn',
-      items: [
-        { label: 'Guides', path: '/hero-guides', enabled: true },
-        { label: 'Techniques', path: '/techniques', enabled: true },
-        { label: 'Build Theory', path: '/build-theory', enabled: true },
-        { label: 'Learning Paths', path: '/learning-paths', enabled: true },
-        { label: 'Power Positions', path: '/power-positions', enabled: true },
-        { label: 'Strategic Cover', path: '/strategic-cover', enabled: true },
-      ],
-    },
-    {
-      label: 'Resources',
-      items: [
-        { label: 'Media Tutorials', path: '/media-tutorials', enabled: true },
-        { label: 'Game Stats', path: '/game-stats', enabled: true },
-        { label: 'Glossary', path: '/glossary', enabled: true },
-      ],
-    },
-    {
-      label: 'Tools',
-      items: [
-        { label: 'Watch Next Quiz', path: '/watch-next', enabled: true },
-        { label: 'Counters', path: '/counters', enabled: true },
-        { label: 'Team Builder', path: '/team-builder', enabled: true },
-        { label: 'AI Coach', path: '/ai-coach', enabled: false },
-      ],
-    },
-  ];
+  readonly navGroups = NAVIGATION_CATEGORIES;
+
+  toggleMenu(): void {
+    this.isMenuOpen.update((isOpen) => !isOpen);
+    if (!this.isMenuOpen()) {
+      this.openGroup.set(null);
+    }
+  }
+
+  toggleGroup(label: string): void {
+    this.openGroup.update((openGroup) => openGroup === label ? null : label);
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen.set(false);
+    this.openGroup.set(null);
+  }
 
 }

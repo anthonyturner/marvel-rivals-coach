@@ -36,6 +36,8 @@ import {
   HeroVideoType,
 } from './hero.model';
 
+import {slugify, escapeRegExp} from '../utilities/string-utils';
+
 type HeroRoleFilter = HeroRole | 'All';
 type HeroGridMode = 'rows' | 'thumbs';
 
@@ -490,6 +492,7 @@ export class HeroesPageComponent implements OnInit {
     if (role !== 'All') {
       this.selectedAbilityKitRole.set(role);
     }
+    this.openHeroDetailModal();
   }
 
   updateSearch(event: Event): void {
@@ -688,7 +691,7 @@ export class HeroesPageComponent implements OnInit {
     }
 
     const abilityLookup = new Map(abilities.map((ability) => [this.escapeHtml(ability.name).toLowerCase(), ability]));
-    const names = abilities.map((ability) => this.escapeRegExp(this.escapeHtml(ability.name)));
+    const names = abilities.map((ability) => escapeRegExp(this.escapeHtml(ability.name)));
     const pattern = new RegExp(`(^|[^a-zA-Z0-9])(${names.join('|')})(?=[^a-zA-Z0-9]|$)`, 'gi');
 
     const linkedHtml = html.replace(pattern, (match, prefix: string, abilityName: string) => {
@@ -707,7 +710,7 @@ export class HeroesPageComponent implements OnInit {
   }
 
   abilityAnchorId(hero: Hero, ability: HeroAbility): string {
-    return `ability-${hero.id}-${this.slugify(ability.name)}`;
+    return `ability-${hero.id}-${slugify(ability.name)}`;
   }
 
   technicalDetailType(label: string): string {
@@ -856,16 +859,6 @@ export class HeroesPageComponent implements OnInit {
       .replace(/'/g, '&#039;');
   }
 
-  private escapeRegExp(value: string): string {
-    return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  }
-
-  private slugify(value: string): string {
-    return value
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, '');
-  }
 
   private buildPlaystyle(hero: Hero, role: HeroRole, abilities: HeroAbility[]): string {
     if (hero.id === 'deadpool' && role === 'Vanguard') {
