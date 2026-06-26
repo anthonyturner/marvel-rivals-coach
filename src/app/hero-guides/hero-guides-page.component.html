@@ -40,6 +40,16 @@
       </div>
 
       <div class="guide-grid">
+        @if (coachMillsGuide; as guide) {
+          <a class="guide-card featured-guide" [routerLink]="['/hero-guides', guide.heroId]">
+            <img [src]="guide.image" [alt]="guide.heroName" loading="lazy" />
+            <span>
+              <small>Coach Mills</small>
+              <strong>{{ guide.heroName }}</strong>
+              <em>{{ guide.summary }}</em>
+            </span>
+          </a>
+        }
         <a class="guide-card featured-guide" routerLink="/hero-guides/first-time">
           <img src="/images/heroes/captain-america.png" alt="Captain America" loading="lazy" />
           <span>

@@ -22,6 +22,7 @@ export class HeroGuidesPageComponent {
   readonly guides = HERO_GUIDES;
   readonly heroGuides = this.guides.filter((guide) => guide.category === 'hero');
   readonly fundamentalsGuides = this.guides.filter((guide) => guide.category === 'fundamentals');
+  readonly coachMillsGuide = this.guides.find((guide) => guide.heroId === 'coach-mills-ultimate-beginners-guide');
 
   readonly fundamentalsGuideGroups: FundamentalsGuideGroup[] = [
     {

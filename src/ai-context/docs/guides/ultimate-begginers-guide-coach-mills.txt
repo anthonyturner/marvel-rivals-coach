@@ -1,0 +1,1644 @@
+
+Search in video
+intro
+0:00
+Marvel Rebels has officially been
+0:01
+released for over a year, and there's
+0:03
+never been a better time to hop in. With
+0:05
+so many new characters since launch, the
+0:07
+game is thriving and better than ever.
+0:09
+That being said, if you come from other
+0:11
+hero shooters or you're brand new to the
+0:14
+genre, Marvel Rivals can be extremely
+0:16
+daunting. So, in this video, we're going
+0:17
+to break down the ultimate new and
+0:19
+updated beginner's guide that will tell
+0:21
+you everything you need to know so that
+0:22
+you can be prepared to jump right into
+0:24
+Marvel Rivals, have a great time
+0:26
+learning and playing new characters, and
+0:28
+start your grind in ranked to the
+0:30
+highest elos possible. Now, if you enjoy
+0:32
+this content, I highly recommend you
+0:34
+subscribing so you don't miss out on the
+0:35
+many other guides that will help you
+0:37
+improve at Rivals and join the Discord
+0:38
+in the links down below. We have a great
+0:40
+community where you can talk about the
+0:41
+game, find great duo partners, and hang
+0:44
+out with me. So, I can't wait to see you
+0:45
+there. But let's jump right into the
+What Kind of Game Is Marvel Rivals?
+0:47
+video now. What kind of game is Marvel
+0:49
+Rivals exactly? And it's just defined as
+0:51
+a hero shooter, a arena hero shooter.
+0:54
+And what does that actually mean? Well,
+0:56
+you get to choose between a large roster
+0:57
+of characters. And it's important to
+0:59
+understand that every single character
+1:00
+plays fundamentally different. There is
+1:02
+no consistent gunplay or similar things
+1:05
+that you're doing throughout the roster
+1:07
+like you'll see in other games like Apex
+1:09
+or Valerant. Every single character
+1:12
+fires differently, has different
+1:13
+abilities, and operates in a
+1:16
+fundamentally different way from one
+1:17
+another. And success comes from
+1:19
+understanding these abilities, the
+1:21
+timing of them, teamwork, and not just
+1:23
+aim. You're not just winning games based
+1:25
+on pew pewing the enemy head. Now, this
+1:27
+leads me directly into abilities and
+1:29
+cooldowns, because every hero is going
+1:31
+to have multiple abilities with
+1:33
+different cooldowns, just timers that
+1:35
+once you use the ability, you have to
+1:37
+wait that set time to use it again. Now,
+1:39
+abilities can range from dealing damage
+1:41
+to saving a teammate to trying to heal
+1:44
+somebody to protecting yourself from an
+1:46
+ability of an opponent. There's a
+1:48
+million different things a cooldown can
+1:50
+be. And using them properly or managing
+1:53
+them is a core skill in a hero shooter
+1:55
+because if you waste it for very little
+1:57
+value, then you're probably going to
+1:59
+lose. But if you use it consistently
+2:01
+[music] for high value, high impact is
+2:03
+what we call it, then you're going to
+2:04
+win 1v ones, win team fights, and win
+2:07
+games of rivals. Now, I know this might
+2:09
+seem obvious, but passive versus active
+2:11
+abilities is an important distinction we
+2:13
+have to talk about. So, passive
+2:14
+abilities are just always on. They are
+2:17
+always or automatically triggered, and
+2:19
+they typically define what makes a hero
+2:21
+unique. Some characters can walk on
+2:23
+walls, for instance. Some characters,
+2:25
+like the thing, are crowd control
+2:27
+immune, so he can't be pulled in or
+2:29
+moved around by an opponent's abilities.
+2:32
+And that is something that he doesn't
+2:34
+have to press a button to use. It's just
+2:36
+automatic a part of him, but it it adds
+2:39
+to his identity and it adds to his power
+2:41
+level. And then active abilities are
+2:43
+just things that you have to manually
+2:45
+do. You have to press the button at the
+2:47
+right time. It's going to go on cooldown
+2:48
+after use. And often they decide how a
+2:51
+fight plays out, how a 1v one plays out
+2:54
+when used correctly versus incorrectly.
+2:56
+So passive abilities could convince you
+2:57
+to play a character, but active
+2:59
+abilities are the things that you can
+3:01
+actually get better at and improve your
+3:03
+use of. Now, of course, we have to talk
+3:05
+about ultimates. And every single hero
+3:07
+is going to have a powerful ultimate
+3:09
+ability. Think of them as normal
+3:10
+abilities, but supercharged that have
+3:12
+the chance of dramatically changing the
+3:15
+entire battle and giving you a huge
+3:17
+advantage when used properly. And
+3:19
+ultimates can be charged in several
+3:20
+ways. By dealing damage, by healing your
+3:23
+teammates, or just passively overtime
+3:25
+slowly. And ultimates are super strong
+3:28
+in the fact that they can secure
+3:29
+multiple kills, save your entire team,
+3:32
+or completely flip a fight in your
+3:34
+favor. How and when you use your
+3:35
+ultimate often will decide how a game is
+3:38
+won or lost. Now, something else you
+3:40
+need to think about is that every
+3:41
+character is going to have a unique
+3:42
+primary fire. Not every hero shoots with
+3:45
+a gun. Some heroes are even melee
+3:47
+focused. Some shoot beams or
+3:49
+projectiles, and it's all different. No
+3:51
+two hero will feel the same. and
+3:53
+experimentation and trying these
+3:55
+characters out for yourself to decide
+3:57
+what you like and how they're different
+3:58
+is important to develop as a player.
+4:00
+Now, let's talk about the roles in
+4:02
+Marvel Rivals because Rivals has three
+4:04
+core roles and they're going to be
+4:05
+similar to support, tank, and DPS, but
+Roles Explained
+4:08
+there are going to be important
+4:09
+differences in this game versus many
+4:11
+other hero shooters. So, the first one
+4:13
+is the strategist role. You could also
+4:15
+think of these as a support role. And
+4:17
+their primary strengths are their
+4:18
+ability to consistently heal teammates,
+4:20
+and that's a big part of what they get
+4:21
+their value from. and utility abilities
+4:24
+or things that allow you to get an
+4:26
+advantage throughout the fight, not
+4:27
+necessarily directly tied to dealing
+4:29
+damage. So, stuff like teleports or
+4:31
+revives or certain buffs they give to
+4:33
+allies. Now, an important mindset to
+4:35
+have though is don't think about
+4:37
+strategists or supports as healers.
+4:40
+Because while healing is a way that you
+4:41
+do get a lot of value, and it's a really
+4:43
+important job in your role, it is not
+4:46
+all you could do. It's one piece of it.
+4:48
+Strategists can deal damage, get kills,
+4:50
+and make plays all by themselves. They
+4:52
+are high impact decision makers and they
+4:54
+control the fight in many ways not just
+4:56
+healing. Now next is the vanguard or you
+4:59
+might know it as the tank and their
+5:00
+primary strengths are really high health
+5:02
+and survivability. They can absorb
+5:04
+damage for the team and they can create
+5:07
+space on the map which is a concept
+5:09
+we're not going to get too into as this
+5:11
+is a introductory or beginner's guide.
+5:14
+Basically, space are the places on the
+5:16
+map that you want to occupy, deal damage
+5:19
+from, exist in, and heal from. And these
+5:22
+are places that you want to be able to
+5:24
+walk to and fight for. And tanks or
+5:27
+vanguards are the one role that can
+5:30
+stand in the line of fire and not
+5:33
+instantly fall over. Any other character
+5:35
+when shot by multiple people will simply
+5:37
+die. But most Vanguards, they have high
+5:40
+enough survivability where they can
+5:41
+contest that space and not simply fall
+5:44
+over or get instantly deleted. Now, some
+5:46
+key role concepts for Vanguard is to
+5:48
+hold forward positions and allow your
+5:50
+team to play off your pressure and take
+5:53
+angles more safely. Enable teammates to
+5:56
+fight safely, whether that's in the open
+5:58
+or just trying to take more ground on
+6:00
+the enemy. And they're often going to
+6:02
+play front line. There's many tanks that
+6:03
+play in different ways, but the person
+6:05
+that is typically going to push when
+6:07
+your team has an advantage and leads the
+6:09
+front of the pack is going to be your
+6:11
+vanguard. While it's a role filled with
+6:13
+tons of responsibility, it's also the
+6:14
+leader of every team and you will lead
+6:17
+your team to victory or defeat. Now,
+6:19
+last but probably least, no, I'm just
+6:21
+kidding, is duelist, the DPS. Primary
+6:24
+strengths of a duelist is high damage
+6:26
+output, strong 1v one potential and
+6:29
+playmaking ability, the ability to
+6:31
+generate picks. Duelists have the
+6:33
+ability to secure kills like no other
+6:35
+role. They just get to see a person that
+6:38
+is out of position or by themselves away
+6:41
+from their team. They can kill that
+6:43
+person very quickly. They can pressure
+6:45
+enemy backlines and they can capitalize
+6:47
+on many of the openings that are created
+6:49
+by vanguards and strategists. There are
+6:52
+many different kinds of DPS that do
+6:54
+fundamentally different things from
+6:56
+dealing damage from range to diving in
+6:58
+or jumping on top of people to try to
+7:00
+surgically kill them. But something that
+7:02
+is true for all duelists is that if
+7:04
+vanguards are the shields for a person,
+7:06
+the duelist is the sword for a
+7:08
+composition. Now, let's talk about
+Heroes & Synergies
+7:10
+heroes and synergies. because certain
+7:11
+hero combinations unlock bonus abilities
+7:14
+in Marvel Rivals and these synergies can
+7:16
+add new active abilities to a character
+7:18
+or significantly increase the power of
+7:21
+certain duos. Now, important to note,
+7:23
+some synergies are completely
+7:24
+game-changing and the entire meta or the
+7:27
+best things in the game revolve around
+7:29
+them, while others just give you
+7:31
+marginal benefits, but they might be
+7:33
+enough to decide to pick one character
+7:35
+over another if there's a synergy
+7:38
+character also being played. A hero can
+7:40
+also be strong without synergy. And
+7:42
+there are many characters that have no
+7:44
+synergies at all that are still plenty
+7:45
+strong and powerful enough to see play
+7:48
+even at the highest levels in this game.
+7:51
+Now, we're moving on to strengths and
+7:52
+weaknesses, cuz you need to understand
+7:53
+that every single hero has matchups that
+7:56
+they will excel in. Because of the
+7:58
+various difference between many heroes,
+8:00
+some heroes have the tools to deal with
+8:02
+certain heroes easily, while other
+8:04
+heroes directly interact with them in a
+8:06
+way that is hard for them to
+8:08
+counterplay. So, understanding these
+8:10
+matchups or strengths and weaknesses can
+8:12
+help you pick better fights, avoid bad
+8:15
+engagements, and most importantly, play
+8:17
+around enemy cooldowns so that you can
+8:19
+get the upper hand. While I don't
+8:21
+recommend learning every character in
+8:22
+the game, the more you know about how
+8:25
+another character uses their cooldowns,
+8:28
+the better you yourself can play around
+8:30
+it on the other side. Having experience
+8:31
+on both sides of the matchup can make
+8:33
+you even better at the one you want to
+8:35
+excel in. Now, for team compositions,
+8:37
+Marvel Rivals is a 6v6. And one of the
+8:40
+assumptions you might make going into
+8:41
+rivals is that the most optimal comp
+8:44
+will always be two strategists, two
+8:46
+vanguards, and two duelists. Now, the
+8:49
+reality here is that 22 is actually not
+8:52
+always optimal. There are many past
+8:54
+metas that include triple tank, triple
+8:56
+vanguard plus triple support, single
+8:59
+tank dive compositions, triple support,
+9:02
+and two DPS with one tank. Well, almost
+9:05
+always at least one of each is
+9:07
+represented. Mostly always two supports.
+9:10
+There is a ton of different combinations
+9:12
+that can be viable depending on how good
+9:14
+you are at the characters, synergies,
+9:16
+maps, and matchups. Another thing you
+9:18
+need to think about is that composition
+9:20
+does matter, but flexibility is what's
+9:22
+truly going to win games. Nothing
+9:25
+matters to having in a comp in a vacuum.
+9:27
+you need certain things to deal with
+9:29
+other things, but if those things don't
+9:31
+exist, if you don't have to have someone
+9:34
+that can shoot a flyer because they're
+9:35
+not playing flyers, then the rules about
+9:37
+what you can play change, and they
+9:39
+always change depending on how good your
+9:41
+team is at certain characters and what
+9:43
+the opponents are playing. Ultimately, I
+9:45
+want you to keep an open mind about
+9:47
+compositions. Don't make up your mind
+9:49
+too quickly and be open for
+9:51
+experimentation in your games so you can
+9:53
+truly figure it out for yourself in a
+9:55
+constantly changing game that doesn't
+9:56
+have anything fully solved. It's okay to
+9:58
+keep an open mind.
+Choosing a Main
+10:01
+Now, number four you might be curious
+10:02
+about is how do you choose a main? How
+10:04
+do you choose that perfect main for you?
+10:06
+And the first thing I would recommend is
+10:08
+when you're just getting started, I want
+10:09
+you to try everything. Okay, maybe not
+10:11
+everything, but try a lot of the things
+10:13
+that look interesting to you. Try as
+10:15
+many characters as you possibly can
+10:16
+because there's some characters that you
+10:18
+might not look like you would be
+10:20
+interested in them until you play them
+10:22
+and then you find out, wow, this is
+10:23
+perfect for me. And you're really just
+10:25
+not going to know what fits you until
+10:27
+you try it. Now, when you have time, try
+10:29
+to play every hero at least a little bit
+10:30
+because playing a hero will let you
+10:33
+understand their abilities, play around
+10:35
+their cooldowns, and just make smarter
+10:37
+decisions. Eventually, you want to have
+10:38
+a little experience on everybody, but
+10:40
+that doesn't necessarily mean you're
+10:41
+going to main them. is just to kind of
+10:43
+expand your tree of knowledge about the
+10:46
+game as a whole. Now, another thing I
+10:48
+would recommend is be flexible. While I
+10:51
+don't want you to learn every single
+10:53
+hero in the game, at higher ranks
+10:55
+especially, and as you try to climb the
+10:56
+game, heroes can get banned and you're
+10:58
+not going to be able to just lock one
+11:00
+character forever. And one tricking is
+11:02
+an easy avenue to just get hard
+11:04
+countered. We talked about matchups and
+11:06
+there are certain characters that are
+11:08
+going to have a really hard time beating
+11:09
+others and it's going to be really nice
+11:11
+to have some more tools in your toolbox,
+11:12
+so to speak. It's also generally good to
+11:14
+be able to make better compositions. The
+11:17
+more characters and roles you can flex
+11:19
+to, the easier it's going to be to craft
+11:21
+a composition that gives you a better
+11:23
+chance of winning or just one that has
+11:25
+more tools to deal with the problems
+11:27
+ahead. Now, my core recommendation is
+11:30
+have three to four heroes you're
+11:31
+comfortable with and not have much more
+11:33
+than that. too many characters or trying
+11:35
+to be great at too many characters is
+11:37
+just going to make you mid at best at
+11:39
+most of them, but having too little runs
+11:41
+into many of the problems that we talked
+11:42
+about. So, I think a sweet spot is about
+11:45
+three to four and then just really hone
+11:47
+in on getting great with those
+11:48
+characters and make them different
+11:50
+enough or [music] have a range enough to
+11:51
+where you have characters to swap to in
+11:54
+every situation. Now, I've said this a
+11:56
+lot if you've seen any of my other
+11:57
+videos, but if you're catching me for
+11:59
+the first time, do not listen to tier
+12:02
+lists. And you might be like, "Mills,
+12:03
+like half your videos are tier lists.
+12:05
+You post a lot of them." And I do. And
+12:07
+tier lists are a really popular piece of
+12:10
+content. Everyone makes them. Everyone
+12:12
+watches them. They're good fun and
+12:13
+they're great to make cuz you just get
+12:15
+to yap a lot. But the thing is, tier
+12:17
+lists are mostly built on what is the
+12:20
+best and most optimal in the highest
+12:22
+levels of play. And this is going to be
+12:25
+dramatically different depending on your
+12:27
+individual skill, your rank, your
+12:29
+platform. And there's going to be tons
+12:31
+of ways for you to climb to the highest
+12:33
+ranks of play even in top 500 with any
+12:35
+character you want to play. Now, this
+12:37
+doesn't mean that characters aren't
+12:39
+strong or weak or buffed or nerfed, but
+12:41
+skill and understanding matter more than
+12:43
+just the raw power of characters. And if
+12:45
+you're taking a tier list and using that
+12:47
+as your gospel for what you can and
+12:50
+can't play, you're just kind of looking
+12:53
+at the game in a wrong way in my
+12:54
+opinion, and you're going to be hurting
+12:56
+your development as a whole. I recommend
+12:59
+picking what you like at the start of
+13:00
+the game. Don't care about what's good
+13:02
+or bad. Choose heroes you find cool,
+13:04
+fun, interesting. And this is a way that
+13:06
+you're just going to be able to learn
+13:08
+about the game organically. And also,
+13:10
+being great at a non-meta hero can give
+13:13
+you a pretty big advantage as well
+13:15
+because there are less repetitions.
+13:17
+People don't have a lot of experience
+13:18
+playing against it. So, if you're really
+13:20
+great at a character people might put
+13:22
+low on their tier list, they're not
+13:23
+going to know what to do when you're
+13:25
+pulling out strategies they've never
+13:27
+seen before because you have experience
+13:29
+on a hero that most people do not. Now,
+13:31
+I will say though, tier list could be
+13:32
+great tools to know what are going to be
+13:34
+the most popular characters people are
+13:36
+playing because if you're playing a like
+13:38
+an unmeta character or pretty much any
+13:40
+character, you need to think about what
+13:43
+are your matchups against the best
+13:45
+characters or the most picked characters
+13:47
+because if you could find ways to get
+13:49
+advantages in all these very common
+13:51
+matchups, that's how you quickly climb.
+13:54
+Now, next we have game modes and maps.
+Game Modes & Maps
+13:56
+So, there are three predominant game
+13:58
+modes in the competitive for Marvel
+14:00
+Rivals. First off is convoy or payload
+14:02
+where you're escorting a objective that
+14:05
+will heal your team if you're near it,
+14:07
+but also goes slightly faster the more
+14:10
+people are on there, up to four people.
+14:12
+And you are moving this towards certain
+14:14
+objectives that will change the spawn
+14:16
+location for your team. If opponents are
+14:18
+on the objective, the objective will no
+14:20
+longer move. And this creates some
+14:22
+interesting situations where you have to
+14:25
+force them off of it or kill them in
+14:27
+order to constantly push the objectives.
+14:29
+The number one tip I'll give you for
+14:30
+this mode is that the objectives that
+14:33
+change where you spawn is the most
+14:36
+important objectives to fight over.
+14:38
+Those are the ones you need to defend or
+14:39
+take. Investing ultimates, all your
+14:41
+abilities, and even trading your lives
+14:44
+to try to cap these objectives because
+14:46
+these change the entire map going
+14:49
+forward, and they also give your team
+14:50
+more time to push even further in the
+14:52
+map. So those are the fights for those
+14:55
+points that really really matter for
+14:57
+winning or losing convoy. Now the next
+14:59
+is domination or king of the hill. A
+15:01
+very common game mode from other games
+15:02
+where there's an objective that opens up
+15:04
+and the team that occupies it will
+15:07
+control it and you will build a
+15:09
+percentage up to 100. When they kill
+15:11
+you, wipe you off of it and take it
+15:13
+back. Now they go up to 100 and the
+15:15
+first team to 100% wins. Pretty
+15:17
+self-explanatory. But the number one tip
+15:19
+I'll give you for domination is that you
+15:21
+often want to push the enemies even off
+15:24
+the objective with the intent to kill
+15:26
+them all and win what we call a team
+15:28
+fight. Because if you are holding the
+15:31
+objective, but you're putting yourself
+15:32
+at a disadvantage cuz there's like no
+15:34
+cover or you need to back up cuz you're
+15:37
+weak or you don't have cooldowns, then
+15:39
+you kind of traded 5% for losing the
+15:42
+whole fight rather than doing the thing
+15:43
+that gives you a higher chance to win
+15:45
+the fight, which will then equate to 20,
+15:48
+30, or even 40% of that objective. Now,
+15:50
+the last one is convergence, which is
+15:52
+going to be a capture point. Kind of
+15:54
+similar to domination. one team defends
+15:56
+and one team takes, but once the team
+15:58
+takes that point, it turns into a
+16:00
+convoy. So, it's a bit of a combination
+16:02
+of the two. And the tips for both of
+16:04
+them would kind of apply here. Now,
+16:06
+something that you're going to need to
+16:07
+develop if you want to get better at
+16:09
+rivals is map awareness. You need to
+16:11
+think about where the health packs are
+16:13
+because health packs are spread
+16:14
+throughout the entire map. And learning
+16:16
+the locations of these health packs can
+16:18
+massively affect your 1v one capability.
+16:20
+Because if you're fighting an enemy, but
+16:22
+you can dip to a health pack really
+16:23
+quickly, if they chase you and you're at
+16:25
+full HP, you could easily win. This can
+16:27
+help you escape or run away from
+16:30
+situations where people are chasing you.
+16:32
+And this can help you extend fights in a
+16:34
+situation where you're not easily able
+16:36
+to get heals, so you have a form of
+16:39
+sustain or heal in isolated areas
+16:42
+because you know the map. Another thing
+16:43
+you need to think about when you're
+16:45
+learning the maps is flank routes. Most
+16:47
+chokes will have alternate paths. Like
+16:49
+there are choke points that you can go
+16:51
+directly into where the enemy team is,
+16:53
+but there are alternate paths that you
+16:55
+can take around so you're not funneling
+16:56
+in one area where all damage that
+16:59
+they're outputting is going into that
+17:00
+choke. Makes it really easy to die.
+17:02
+There are also mobility heroes that can
+17:04
+excel at flank routes and take
+17:06
+untraditional flank routes. pull
+17:08
+pressure away from the front line, pull
+17:10
+pressure to the back line, and force
+17:11
+enemies back trying to help their
+17:13
+supports. So, there's a lot of quote
+17:15
+unquote space that these characters can
+17:17
+make. Now, also, there are destructible
+17:19
+environments on every single map or
+17:21
+parts of maps that can be destroyed, and
+17:23
+destruction can force enemies out of
+17:25
+certain strong positions, like breaking
+17:27
+a high ground platform that they're
+17:29
+standing on, create new routes for your
+17:31
+team to navigate through to the point or
+17:32
+the objectives. And in general, you
+17:34
+should always be aware of what can
+17:36
+collapse beneath you, depending on if
+17:38
+you're on console or PC. There's a
+17:40
+button that you can press that will show
+17:42
+you a vision of everything that is
+17:44
+breakable. Experiment around with it so
+17:46
+that you can easily see what you can
+17:48
+destroy that you might not think you
+Team Fights & Objectives
+17:50
+could have. Now, moving on to team
+17:52
+fights and objectives. So, a common term
+17:55
+that you'll hear me and other
+17:56
+coaches/pros use is called team fights.
+17:59
+And this occurs when both teams commit
+18:02
+abilities and ultimates in a fight to
+18:04
+have a victor, right? It's just all
+18:06
+teams or all players slamming into each
+18:09
+other, fighting, trading abilities,
+18:11
+trying to kill each other. And winning
+18:12
+that fight is often more important than
+18:15
+touching that objective. Now, the best
+18:16
+way to explain why this matters is to
+18:18
+give you an example, a common example of
+18:20
+the opposite. Let's say your team is
+18:22
+pushing a payload and three of you are
+18:24
+sitting on the objective while three of
+18:26
+you are pushed up fighting the enemy of
+18:28
+six players. Now, the team that's pushed
+18:30
+up, that's three against six. They're
+18:32
+probably going to die. And what happens
+18:34
+quickly after those three people die?
+18:36
+Well, the six players that are still
+18:38
+alive are going to walk to the
+18:39
+objective, walk to the three players,
+18:41
+and kill them, too. So, they won the
+18:43
+team fight. And you might be like, "Hey,
+18:45
+well, we had six people alive and so did
+18:47
+they, so we should have had an even
+18:48
+chance of winning that fight." But you
+18:50
+didn't because you split up into two
+18:52
+groups. What should often happen is if
+18:54
+your team is actively fighting in a full
+18:56
+team fight, you should join them. Even
+18:58
+if that means leaving the objective or
+19:00
+slowing down the payload for a certain
+19:02
+amount of time, because once you play
+19:04
+with your team, fight as a six, win, and
+19:06
+kill the enemy team, then you all can
+19:08
+sit on the payload and capture some
+19:10
+locked in form of objective that will
+19:12
+change the spawns. And winning the team
+19:14
+fight is ultimately what decided that,
+19:16
+not pushing the objective slightly
+19:18
+faster. You got to think big picture
+19:20
+here where winning the fight is
+19:22
+ultimately what's going to matter and
+19:24
+will create more locked in progress
+19:26
+moments than getting small little
+19:29
+percentages, little meters, pushing it
+19:31
+slightly faster or sitting on the
+19:33
+objective slightly longer. Now, in
+19:35
+general, we talked about objectives, but
+19:37
+there's a form of locked in versus
+19:40
+temporary progress. We talked about the
+19:42
+slight percentages that you get on a
+19:44
+payload or a small movement of it going
+19:47
+faster. This is temporary versus locked
+19:51
+in, which is like checkpoints, spawn
+19:53
+changes, and these cannot be undone. So,
+19:56
+as an example, if your entire team dies
+19:59
+in the act of capturing a payload
+20:02
+objective, that's good because you
+20:05
+capped it. It doesn't matter that the
+20:06
+enemy team killed you. And this also
+20:08
+means that if the enemy team just capped
+20:11
+a objective that changes their spawns
+20:14
+and it's locked in, you don't want to
+20:15
+use ultimates anymore. You don't want to
+20:17
+kill them anymore. You want to back up a
+20:19
+little bit and fight them as they move
+20:21
+forward because no amount of killing
+20:23
+them at this point will undo what
+20:25
+they've already locked in. Very
+20:27
+important and something that you'll
+20:28
+learn a little bit more intuitively as
+20:30
+you play more games. Now, number seven
+A Team-Based Game at Its Core
+20:32
+is a teambased game at its core. That's
+20:34
+what all hero shooters are, especially
+20:36
+Marvel Rivals. You need to play together
+20:38
+to win. Marvel Rivals is a game that
+20:40
+rewards coordination or trying to work
+20:42
+together to a common goal. Focus fire is
+20:45
+going to win more fights, as in two
+20:47
+people shooting at the same person at
+20:49
+the same time. As a one-on-one fight
+20:52
+with almost every character, people die
+20:54
+slowly, far slower than you compare it
+20:57
+to a game like Counter-Strike or
+20:58
+Valerant, where someone could die in a
+21:01
+millisecond. In this game, people can
+21:03
+die fast, but it typically requires
+21:05
+multiple players to actively focus the
+21:08
+same target. Split damage oftentimes
+21:11
+will create no kills, while focus fire
+21:13
+can create very, very rapid kills.
+21:15
+That's one of the many reasons why
+21:17
+trying to focus the same targets and
+21:19
+work together creates far more winning
+21:21
+opportunities. Let's talk about
+21:23
+leadership versus following. In a game
+21:25
+like this, one of the biggest problems
+21:26
+is that everyone wants to be a leader.
+21:28
+Everyone just wants to do their own
+21:30
+thing. And most of the time, people
+21:32
+never look at what each other wants. A
+21:33
+DPS is pushing in and like, "Hey, why
+21:35
+did you shoot this person?" While a tank
+21:36
+is holding the objective like, "Where is
+21:38
+my help?" and a supporter is being dove
+21:40
+like no one's here with me and everyone
+21:42
+is kind of doing their own thing. But
+21:44
+sometimes you don't need leaders. You
+21:46
+just need to follow what your team is
+21:48
+doing. Find a teammate that is doing
+21:50
+something similar to what you want to
+21:51
+accomplish and play to help them be more
+21:54
+impactful together. When you're both
+21:56
+doing the same thing, you can accomplish
+21:58
+far more than everyone trying to do
+22:00
+their own thing. It's like there's two
+22:02
+couches in a house and instead of two
+22:05
+people both trying to carry one couch
+22:07
+each on their back out the door, both of
+22:10
+y'all both carry one couch, take it out,
+22:12
+then go back for the second couch, take
+22:14
+that out. It It's going to be way
+22:15
+easier. No one's going to get hurt in
+22:17
+the process. Less margin for error. It's
+22:19
+the same concept. Now, another thing
+22:21
+about this game is that it's mostly a
+22:23
+resource exchange game at its core. So,
+22:26
+it's going to play actually more
+22:28
+fundamentally to something like Dota or
+22:30
+League than a traditional FPS. You are
+22:32
+constantly trading cooldowns, healing,
+22:35
+and ultimates. And this exchange, this
+22:38
+eb and flow of resources of building up
+22:40
+your abilities, building up your
+22:42
+ultimates, getting advantage in your
+22:44
+ultimates and your ability cooldown
+22:47
+management versus your opponents is
+22:49
+going to win you games and not just raw
+22:51
+aim. This doesn't mean mechanics don't
+22:53
+matter, but it can be a big wakeup call
+22:54
+when coming from a game that is pure
+22:57
+aimbased and struggling in here because
+23:00
+that's not what this game is ultimately
+23:02
+about. Now, last but certainly not
+23:03
+least, is competitive and ranked. After
+23:05
+you played enough quickplay matches and
+23:07
+you've gotten a little bit of a feel for
+23:08
+the game, you could jump into the ranked
+23:10
+mode where there are rewards like custom
+23:12
+skins you can earn for reaching certain
+23:14
+ranks and you could just get, you know,
+23:16
+the ability to be better than other
+23:17
+people. Okay, sorry. But all joking
+23:19
+aside, ranked is where you can prove
+23:21
+your skill and prove it against yourself
+23:23
+as you get better day in and day out and
+23:26
+slowly improve your skills and become
+23:29
+better overall at Marvel Rivals than you
+23:31
+were yesterday. That self- betterment,
+23:34
+trying to challenge yourself and
+23:35
+challenge yourself against other people
+23:37
+also striving for the same goal is
+23:39
+something that is addicting and I think
+23:41
+important to the experience of rivals.
+23:43
+And the rank structure is going to go
+23:45
+like this. bronze, silver, gold, plat,
+23:47
+diamond, grandmaster, celestial,
+23:49
+eternity. And if you meet the
+23:51
+qualifications for top 500 in eternity,
+23:54
+you will be in one above all. And unlike
+23:56
+other games, top 500 is shared between
+23:58
+every single region. So if you reach top
+24:00
+500, you are legitimately a top 500
+24:03
+player in the entire world, which is a
+24:05
+pretty cool goal to reach. Now, there
+24:07
+will be a placement match that will try
+24:08
+to put you closer to where you belong,
+24:10
+but then after that, you will then
+24:12
+climb, gaining rank when you win and
+24:14
+losing rank when you lose. And there are
+24:16
+certain restrictions depending on the
+24:18
+ranks that do change every once in a
+24:20
+while. But you can't play with someone
+24:22
+that is too far away from you. And once
+24:24
+you get to higher ranks, like celestial
+24:26
+and above, you can no longer three
+24:28
+stack, at least currently as of this
+24:29
+recording. But that might change. Now,
+24:31
+once you're reaching gold and beyond,
+24:33
+you will now have a hero ban system
+24:35
+where each team gets an opportunity to
+24:37
+ban two heroes. And this forces
+24:39
+flexibility in deeper hero pools and
+24:41
+allows you to ban some of the characters
+24:42
+you just really don't want to play
+24:44
+against, which can be nice. Now, as a
+24:46
+general bit of advice, I'll say that in
+24:47
+the lower ranks of play in Marvel
+24:49
+Rivals, the game doesn't play like you
+24:51
+would think a hero shooter should. not
+24:53
+as much about the trading of resources
+24:56
+as a team and ultimates, but more about
+24:58
+individual playmaking and getting high
+25:00
+kills and low deaths. As you start to
+25:02
+climb, the game becomes more fundamental
+25:04
+in how it plays out. There's a increase
+25:06
+in optimization and teamwork of your
+25:08
+abilities and ultimates, but this is
+25:10
+something that you're going to have to
+25:12
+earn if you want to experience. It's not
+25:14
+something that's going to be given to
+25:15
+you right off the bat in bronze and
+25:16
+silver simply due to the lack of
+25:18
+understanding and just general
+25:21
+population of the player base down
+25:22
+there. you're not going to get the full
+25:24
+hero shooter experience until probably
+25:27
+gold or platinum. Something I always say
+25:28
+is regardless of how casual you want to
+25:30
+take Rivals, I think it's in your best
+25:33
+interest to climb to at least platinum
+25:35
+at some point in your career of playing
+25:37
+the game because the games feel more
+25:40
+real and more fun when it's actually a
+25:42
+hero shooter as opposed to a polished
+25:45
+over team deathmatch or something like
+25:46
+that. Now, also there's a lot of ways to
+25:48
+play this game in tournaments. There's
+25:50
+many insystem or inclient tournaments
+25:52
+you could participate in. A lot of
+25:54
+different teams you can join, friends
+25:56
+you can run tournaments with. I think
+25:57
+playing this game in a coordinated
+25:59
+setting with five other players that you
+26:02
+know everyone's playing the characters
+26:04
+they want to play and you practice
+26:05
+together could be one of the most
+26:07
+fulfilling experiences in a hero
+26:08
+shooter. And I would recommend not
+26:10
+completely disregarding the more
+26:12
+competitive side of things because the
+26:14
+game is also deep and fun in that
+26:16
+regard, giving you a much different
+26:17
+experience than the chaotic natures of
+26:19
+ranked. Now, this concludes our Marvel
+26:21
+Rivals beginner's guide, and it gives
+26:22
+you everything you need to have a strong
+26:23
+foundation going forward. But if you
+26:25
+want to know more, I highly recommend
+26:27
+smashing that like and subscribe and
+26:28
+checking out the Discord. If you want to
+26:30
+find a community, if you want to get
+26:31
+better at the game, and if you want to
+26:33
+learn more, we have tons of guides on
+26:35
+this channel and we're constantly making
+26:36
+more. So, I would recommend subscribing.
+26:38
+And I'm also a founder of the Marvel
+26:40
+Rous Academy, a place where you can come
+26:41
+in to learn from many of the top coaches
+26:44
+in the game about how to improve, how to
+26:46
+climb, finding ways to fix your
+26:48
+positioning, get better and deeper at
+26:50
+the game, and also we host Coach Grims
+26:53
+where it's a 6v6 coordinated environment
+26:56
+where you are playing against other
+26:57
+academy members, and you're being
+26:59
+coached after every single match to
+27:00
+improve all the aspects of your gameplay
+27:02
+and quickly improve. We also run
+27:04
+community tournaments. We have great
+27:06
+players in there that are always looking
+27:07
+for people to climb with and everyone's
+27:09
+really serious about getting better. So,
+27:11
+I think that's a great community and
+27:12
+resource. The first month is free. You
+27:14
+can check that out down below in the
+27:16
+description as well. And uh yeah, I just
+27:18
+want you to have a great time playing
+27:19
+this game. So, whether you're looking to
+27:21
+take it super seriously or just have fun
+27:23
+learning the game and being more casual,
+27:25
+this is such a great game and a great
+27:27
+experience as long as you don't get, you
+27:30
+know, wrapped up in some of the
+27:31
+negativity in the game. So, anyways, I
+27:33
+hope you enjoyed the video. Thank you
+27:34
+for coming by and I'll see you next

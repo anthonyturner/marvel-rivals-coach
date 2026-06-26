@@ -27,6 +27,95 @@ export interface HeroGuide {
 
 export const HERO_GUIDES: HeroGuide[] = [
   {
+    heroId: 'coach-mills-ultimate-beginners-guide',
+    heroName: 'The Ultimate Beginner Guide',
+    category: 'fundamentals',
+    role: 'Fundamentals',
+    image: '/images/heroes/captain-america.png',
+    sourceLabel: "Coach Mills - Marvel Rivals Ultimate Beginner's Guide",
+    sourceUrl: 'https://www.youtube.com/watch?v=nyEnGfGdFtU',
+    summary:
+      'A first-match foundation for Marvel Rivals: learn what each hero brings, play the objective through winning fights, and develop a small flexible hero pool.',
+    poolJob:
+      'Build reliable fundamentals before chasing advanced mechanics: manage cooldowns, understand your role, fight with your team, and reset when the fight is lost.',
+    pickWhen:
+      'Start here if you are new to Marvel Rivals or hero shooters and want a practical overview before choosing a main or entering competitive play.',
+    sections: [
+      {
+        title: 'A hero shooter is more than aim',
+        points: [
+          'Every hero has a distinct primary fire, set of abilities, and rhythm. Give yourself permission to experiment before deciding what fits.',
+          'Matches are won through ability timing, teamwork, positioning, and cooldown management as much as raw aim.',
+          'A cooldown is valuable when it creates a meaningful swing: damage that wins an opening, healing that saves a teammate, protection that denies an enemy play, or utility that changes the fight.',
+          'Do not spend major abilities just because they are available. Ask what the ability can accomplish before you commit it.',
+          'Passives shape a hero automatically; active abilities are the decisions you can deliberately improve through repetition.',
+          'Ultimates charge through contribution and time, then can dramatically change a fight. Use them for a clear fight-winning purpose instead of holding them forever or throwing them away alone.',
+        ],
+      },
+      {
+        title: 'Understand the three role jobs',
+        points: [
+          'Strategists support the team with healing, utility, damage, and high-impact decisions. Healing matters, but they are not limited to being healbots.',
+          'Vanguards survive pressure, contest valuable ground, and let teammates take safer angles. Their job is to create space the team can actually use.',
+          'Duelists convert openings into pressure and eliminations. They can threaten isolated targets, backlines, and enemies caught out of position.',
+          'Think of a Vanguard as the team’s durable front and a Duelist as its finishing pressure, while Strategists keep the fight workable and create options.',
+          'Your role is a starting responsibility, not a script. Watch the current fight and help solve the problem your team actually has.',
+        ],
+      },
+      {
+        title: 'Learn heroes, synergies, and matchups',
+        points: [
+          'Some hero combinations create team-up benefits, but a hero does not need a synergy to be useful.',
+          'Matchups are about tools: which abilities let one hero pressure, escape, deny, or punish another hero.',
+          'You do not need to master the entire roster immediately. Playing unfamiliar heroes briefly still teaches you what their cooldowns look like from the other side.',
+          'Composition matters, but flexibility matters more than forcing a rigid formula. Adapt to the map, your teammates, and the threats the enemy is actually using.',
+          'When an enemy is repeatedly causing trouble, identify the tool enabling them and look for a hero, angle, or teammate response that limits it.',
+        ],
+      },
+      {
+        title: 'Choose a main without trapping yourself',
+        points: [
+          'Try heroes that look interesting, even if they do not immediately seem like your style. You learn fit by playing, not by guessing from a roster screen.',
+          'Build comfort on roughly three or four heroes with different answers to common situations rather than spreading practice across the whole roster.',
+          'Keep enough flexibility to handle bans, difficult matchups, and team needs, especially as you move into more competitive games.',
+          'Do not let a tier list choose your main. Strength at the highest level can differ from what works for your experience, platform, and current skill.',
+          'A hero you enjoy and understand gives you better practice than a supposedly optimal pick you do not know how to play.',
+        ],
+      },
+      {
+        title: 'Play modes through their important moments',
+        points: [
+          'In Convoy, checkpoint progress changes future spawns and is worth committing resources to. Force defenders away from the objective, then convert the win into movement.',
+          'In Domination, the objective matters, but winning the full team fight creates the safest capture time. Do not trade a winnable fight for a few isolated seconds on point.',
+          'Health packs, alternative routes, high ground, and destructible cover all change which positions are safe and which escapes are available.',
+          'Learn maps with a simple question: where can I recover, rotate, or take a better angle before the next fight starts?',
+          'Use the environment intentionally. A route or piece of cover is valuable when it lets your team apply pressure without giving the enemy an easy target.',
+        ],
+      },
+      {
+        title: 'Win fights before chasing progress',
+        points: [
+          'A team fight is the committed clash where both teams spend abilities and ultimates. Winning it usually creates more objective progress than trickling onto the objective alone.',
+          'Stay close enough to support teammates and help focus the same problem. Six separate duels rarely beat coordinated pressure.',
+          'If a fight is clearly lost, disengage and regroup. Feeding staggered eliminations gives the enemy more time and resources.',
+          'After a win, take the secure progress available: capture, push, establish better positions, and prepare for the enemy return.',
+          'Track resources across the fight. Cooldowns and ultimates are shared opportunities; a team that uses them with a plan has a major advantage.',
+        ],
+      },
+      {
+        title: 'Improve one repeatable habit at a time',
+        points: [
+          'Use early matches to learn, not to judge yourself. Pick one simple focus such as saving an escape cooldown, finding health packs, or grouping before every fight.',
+          'Quick Play is a useful place to test heroes and limits. Competitive play asks for more awareness, flexibility, and resource discipline.',
+          'Review a frustrating death with one question: what information, position, cooldown, or timing decision would have made it safer?',
+          'Good progress comes from small repeated improvements. You do not need every mechanic at once to become a reliable teammate.',
+          'Keep the game enjoyable. Curiosity and consistent practice are more useful long-term than forcing yourself into a hero or style you dislike.',
+        ],
+      },
+    ],
+    ultimates: [],
+  },
+  {
     heroId: 'deadpool',
     heroName: 'Deadpool',
     category: 'hero',
