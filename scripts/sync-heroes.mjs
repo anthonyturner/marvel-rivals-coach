@@ -139,6 +139,7 @@ async function buildHero(pageTitle) {
     role,
     difficulty,
     summary: getOfficialSummary(text, pageTitle, role),
+    overview: getFullOverview(text, pageTitle, role),
     strengths: strengths.length > 0 ? strengths : fallbackStrengths(role),
     weaknesses: weaknesses.length > 0 ? weaknesses : fallbackWeaknesses(role),
     counters: existingHero?.counters?.length > 0 ? existingHero.counters : getFallbackCounters(role),
@@ -358,8 +359,32 @@ function getOfficialSummary(text, name, role) {
   return `${name} is a ${role} hero in Marvel Rivals.`;
 }
 
+function getFullOverview(text, name, role) {
+  const overview = text.match(/==\s*Overview\s*==\s*(.*?)(?=\n==\s*[^=]|\n$)/s);
+
+  if (!overview) {
+    return getOfficialSummary(text, name, role);
+  }
+
+  const sections = [...overview[1].matchAll(/===\s*([^=]+?)\s*===\s*(.*?)(?=\n===|\n==|$)/gs)]
+    .map((section) => {
+      const title = removeWikiMarkup(section[1]);
+      const body = section[2]
+        .split('\n')
+        .map((line) => removeWikiMarkup(line.replace(/^\*\s*/, '')))
+        .filter(Boolean)
+        .join(' ');
+
+      return title && body ? `${title}: ${body}` : body;
+    })
+    .filter(Boolean);
+  const overviewBody = sections.length > 0 ? sections.join(' ') : removeWikiMarkup(overview[1]);
+
+  return overviewBody || getOfficialSummary(text, name, role);
+}
+
 function getSectionBullets(text, sectionName, take = 3) {
-  const section = text.match(new RegExp(`==Overview==.*?===${escapeRegExp(sectionName)}===\\s*(.*?)(?=\\n===|\\n==)`, 's'));
+  const section = text.match(new RegExp(`==\\s*Overview\\s*==.*?===\\s*${escapeRegExp(sectionName)}\\s*===\\s*(.*?)(?=\\n===|\\n==)`, 's'));
 
   if (!section) {
     return [];

@@ -67,6 +67,7 @@ export interface Hero {
   role: HeroRole;
   difficulty: number;
   summary: string;
+  overview?: string;
   playstyle: string;
   strengths: string[];
   weaknesses: string[];

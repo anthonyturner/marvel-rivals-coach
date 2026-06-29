@@ -75,6 +75,11 @@ interface DeadpoolAggressivePath {
   transcriptRead: string;
 }
 
+interface FandomOverviewSection {
+  title: string;
+  body: string;
+}
+
 @Component({
   selector: 'app-heroes-page',
   imports: [CommonModule, RouterLink],
@@ -128,6 +133,7 @@ export class HeroesPageComponent implements OnInit {
   readonly selectedAbilityKitRole = signal<HeroRole>('Vanguard');
   readonly isHeroDetailModalOpen = signal(false);
   readonly activeAbilityAnchorId = signal('');
+  readonly selectedAbilityTabId = signal('');
   readonly activeUltimatePathName = signal('');
   readonly activeAggressivePathId = signal('');
   readonly buildTypes = heroBuildTypes();
@@ -543,16 +549,20 @@ export class HeroesPageComponent implements OnInit {
 
     event.preventDefault();
     const targetId = link.dataset['abilityTarget'] ?? '';
-    const target = document.getElementById(targetId);
+    this.selectedAbilityTabId.set(targetId);
 
-    if (!target) {
-      return;
-    }
+    window.setTimeout(() => {
+      const target = document.getElementById(targetId);
 
-    this.activeAbilityAnchorId.set(targetId);
-    target.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
+      if (!target) {
+        return;
+      }
+
+      this.activeAbilityAnchorId.set(targetId);
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
     });
   }
 
@@ -576,6 +586,21 @@ export class HeroesPageComponent implements OnInit {
 
   passiveAbilities(hero: Hero): HeroAbility[] {
     return this.displayedAbilities(hero).filter((ability) => this.isPassiveAbility(ability));
+  }
+
+  selectedAbilityTab(hero: Hero, abilities: HeroAbility[]): HeroAbility | undefined {
+    if (abilities.length === 0) {
+      return undefined;
+    }
+
+    const selectedId = this.selectedAbilityTabId();
+
+    return abilities.find((ability) => this.abilityAnchorId(hero, ability) === selectedId) ?? abilities[0];
+  }
+
+  selectAbilityTab(hero: Hero, ability: HeroAbility): void {
+    this.selectedAbilityTabId.set(this.abilityAnchorId(hero, ability));
+    this.activeAbilityAnchorId.set('');
   }
 
   displayedPlaystyle(hero: Hero): string {
@@ -685,28 +710,27 @@ export class HeroesPageComponent implements OnInit {
   highlightedAbilityText(hero: Hero, text: string): SafeHtml {
     const abilities = [...this.displayedAbilities(hero)].sort((a, b) => b.name.length - a.name.length);
     const html = this.escapeHtml(text);
+    let linkedHtml = html;
 
-    if (abilities.length === 0) {
-      return this.sanitizer.bypassSecurityTrustHtml(html);
+    if (abilities.length > 0) {
+      const abilityLookup = new Map(abilities.map((ability) => [this.escapeHtml(ability.name).toLowerCase(), ability]));
+      const names = abilities.map((ability) => escapeRegExp(this.escapeHtml(ability.name)));
+      const pattern = new RegExp(`(^|[^a-zA-Z0-9])(${names.join('|')})(?=[^a-zA-Z0-9]|$)`, 'gi');
+
+      linkedHtml = html.replace(pattern, (match, prefix: string, abilityName: string) => {
+        const ability = abilityLookup.get(abilityName.toLowerCase());
+
+        if (!ability) {
+          return match;
+        }
+
+        const anchor = this.abilityAnchorId(hero, ability);
+
+        return `${prefix}<a class="ability-text-link" href="#${anchor}" data-ability-target="${anchor}">${abilityName}</a>`;
+      });
     }
 
-    const abilityLookup = new Map(abilities.map((ability) => [this.escapeHtml(ability.name).toLowerCase(), ability]));
-    const names = abilities.map((ability) => escapeRegExp(this.escapeHtml(ability.name)));
-    const pattern = new RegExp(`(^|[^a-zA-Z0-9])(${names.join('|')})(?=[^a-zA-Z0-9]|$)`, 'gi');
-
-    const linkedHtml = html.replace(pattern, (match, prefix: string, abilityName: string) => {
-      const ability = abilityLookup.get(abilityName.toLowerCase());
-
-      if (!ability) {
-        return match;
-      }
-
-      const anchor = this.abilityAnchorId(hero, ability);
-
-      return `${prefix}<a class="ability-text-link" href="#${anchor}" data-ability-target="${anchor}">${abilityName}</a>`;
-    });
-
-    return this.sanitizer.bypassSecurityTrustHtml(linkedHtml);
+    return this.sanitizer.bypassSecurityTrustHtml(this.highlightCombatTerms(linkedHtml));
   }
 
   abilityAnchorId(hero: Hero, ability: HeroAbility): string {
@@ -715,6 +739,10 @@ export class HeroesPageComponent implements OnInit {
 
   technicalDetailType(label: string): string {
     const normalized = label.toLowerCase();
+
+    if (/boost|buff|debuff|vulnerability|damage reduction|movement|speed|slow|stun|knock|launch|pull|root|blind|reveal|scan|purify|cleanse/.test(normalized)) {
+      return 'utility';
+    }
 
     if (/damage|critical|vulnerability|boost/.test(normalized)) {
       return 'damage';
@@ -753,6 +781,7 @@ export class HeroesPageComponent implements OnInit {
       cooldown: 'fa-solid fa-clock-rotate-left',
       duration: 'fa-regular fa-hourglass-half',
       healing: 'fa-solid fa-heart-pulse',
+      utility: 'fa-solid fa-wand-magic-sparkles',
       range: 'fa-solid fa-crosshairs',
       speed: 'fa-solid fa-gauge-high',
       resource: 'fa-solid fa-battery-half',
@@ -774,6 +803,35 @@ export class HeroesPageComponent implements OnInit {
 
   heroBuildProfileRationale(hero: Hero): HeroBuildProfileRationale {
     return hero.buildProfileRationale ?? buildHeroBuildProfileRationale(hero);
+  }
+
+  fandomOverviewSections(hero: Hero): FandomOverviewSection[] {
+    const overview = (hero.overview ?? hero.summary).trim();
+    const headingPattern = /\b(Strengths|Weaknesses|Abilities|Tips|Strategy|Trivia|Lore|Overview)\s*:/g;
+    const matches = [...overview.matchAll(headingPattern)];
+
+    if (matches.length === 0) {
+      return [{
+        title: 'Overview',
+        body: overview,
+      }];
+    }
+
+    return matches.map((match, index) => {
+      const title = match[1];
+      const bodyStart = (match.index ?? 0) + match[0].length;
+      const bodyEnd = matches[index + 1]?.index ?? overview.length;
+      const body = overview.slice(bodyStart, bodyEnd).trim();
+
+      return {
+        title,
+        body,
+      };
+    }).filter((section) => section.body.length > 0);
+  }
+
+  fandomHeroUrl(hero: Hero): string {
+    return `https://marvelrivals.fandom.com/wiki/${encodeURIComponent(hero.name.replaceAll(' ', '_'))}`;
   }
 
   heroByName(name: string): Hero | undefined {
@@ -857,6 +915,39 @@ export class HeroesPageComponent implements OnInit {
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#039;');
+  }
+
+  private highlightCombatTerms(html: string): string {
+    const termPattern = /\b(damage reduction|movement boost|attack speed|speed boost|knock back|launch up|damage over time|bonus damage|bonus health|life steal|damage|damaging|damages|damaged|burst|critical|crit|headshot|explosion|explode|detonate|vulnerability|heal|heals|healing|healed|restore|restores|restoring|regenerate|regeneration|recovery|recover|lifesteal|overhealth|utility|boost|boosts|boosted|buff|debuff|slow|stun|knockback|launch|root|blind|reveal|scan|purify|cleanse|shield|barrier|protect|invincibility|unstoppable)\b/gi;
+
+    return html
+      .split(/(<[^>]+>)/g)
+      .map((part) => {
+        if (part.startsWith('<')) {
+          return part;
+        }
+
+        return part.replace(termPattern, (match) => {
+          const className = this.combatHighlightClass(match);
+
+          return `<span class="combat-highlight ${className}">${match}</span>`;
+        });
+      })
+      .join('');
+  }
+
+  private combatHighlightClass(term: string): string {
+    const normalized = term.toLowerCase();
+
+    if (/heal|restore|regenerate|recovery|recover|lifesteal|life steal|bonus health|overhealth/.test(normalized)) {
+      return 'healing-highlight';
+    }
+
+    if (/utility|boost|buff|debuff|damage reduction|attack speed|speed boost|movement boost|slow|stun|knock|launch|root|blind|reveal|scan|purify|cleanse|shield|barrier|protect|invincibility|unstoppable/.test(normalized)) {
+      return 'utility-highlight';
+    }
+
+    return 'damage-highlight';
   }
 
 

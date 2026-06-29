@@ -438,5 +438,16 @@
     "relatedTerms": ["Hero Build", "Engage", "Cooldown Trade", "Sustain Build", "Utility Build"],
     "sourceName": "Coach definition for Marvel Rivals build planning",
     "sourceUrl": "/glossary"
+  },
+  {
+    "id": "inflating-the-ladder",
+    "term": "Inflating the Ladder",
+    "category": "Ranked",
+    "definition": "A ranked-ladder distortion where smurfs or alternate accounts temporarily add high-skill players into lower visible ranks, making those ranks feel harder or more populated with strong players than they really are.",
+    "coachNote": "Do not read every hard lobby as proof you belong lower. Smurfs can make a rank feel uneven because the account rank and the player's real skill do not match.",
+    "example": "A Diamond-level player on a fresh Gold account can inflate Gold by playing far above the lobby's expected skill while climbing through it.",
+    "relatedTerms": ["Smurf", "Matchmaking", "Ranked", "Ladder"],
+    "sourceName": "Coach definition for Marvel Rivals ranked discussion",
+    "sourceUrl": "/glossary"
   }
 ]

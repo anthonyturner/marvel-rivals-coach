@@ -65,7 +65,7 @@
     </aside>
     }
     }
-    <section class="hero-container" >
+    <section class="hero-container">
       <div class="view-toggle" aria-label="Hero card layout">
         <button type="button" [class.active]="heroGridMode() === 'rows'" (click)="selectHeroGridMode('rows')">
           Rows
@@ -130,8 +130,22 @@
     <aside class="hero-detail hero-detail-modal" [@modalZoom] [ngClass]="roleClass(heroRoleLabel(hero))"
       aria-modal="true" role="dialog" [attr.aria-label]="hero.name + ' hero details'"
       (click)="handleAbilityLinkClick($event); $event.stopPropagation()">
-      <button class="modal-close-button" type="button" aria-label="Close hero details"
-        (click)="closeHeroDetailModal()">Close</button>
+      <div class="modal-actions">
+        @if (roleAbilityKits(hero).length > 0) {
+        <section class="role-pool-switcher modal-role-switcher" aria-label="Ability role pool">
+          <div class="ability-role-tabs">
+            @for (kit of roleAbilityKits(hero); track kit.role) {
+            <button type="button" [class.active]="selectedAbilityKit(hero)?.role === kit.role"
+              (click)="selectAbilityKit(kit.role)">
+              {{ kit.label }}
+            </button>
+            }
+          </div>
+        </section>
+        }
+        <button class="modal-close-button" type="button" aria-label="Close hero details"
+          (click)="closeHeroDetailModal()">Close</button>
+      </div>
       <ng-container [ngTemplateOutlet]="heroDetailsTemplate"
         [ngTemplateOutletContext]="{ $implicit: hero }"></ng-container>
     </aside>
@@ -155,7 +169,202 @@
         </div>
       </div>
 
+      <section class="deadpool-upgrades" aria-label="Marvel Rivals Fandom overview">
+        <div class="section-heading">
+          <h3>Fandom Overview</h3>
+          <a [href]="fandomHeroUrl(hero)" target="_blank" rel="noopener noreferrer">Source</a>
+        </div>
+        @for (section of fandomOverviewSections(hero); track section.title) {
+        <article class="overview-section">
+          <strong>{{ section.title }}</strong>
+          <p>{{ section.body }}</p>
+        </article>
+        }
+      </section>
+
       <p class="playstyle" [innerHTML]="highlightedAbilityText(hero, displayedPlaystyle(hero))"></p>
+
+      <div class="detail-columns">
+        <section>
+          <h3>Strengths</h3>
+          <ul>
+            @for (strength of hero.strengths; track strength) {
+            <li>{{ strength }}</li>
+            }
+          </ul>
+        </section>
+
+        <section>
+          <h3>Weaknesses</h3>
+          <ul>
+            @for (weakness of hero.weaknesses; track weakness) {
+            <li>{{ weakness }}</li>
+            }
+          </ul>
+        </section>
+      </div>
+
+      <div class="matchup-row">
+        <section>
+          <div class="section-heading">
+            <h3>Counters</h3>
+            <a routerLink="/counters" [queryParams]="{ hero: hero.id }">Counter lab</a>
+          </div>
+          <div class="tag-list">
+            @for (counter of hero.counters; track counter) {
+            @if (heroByName(counter); as counterHero) {
+            <span class="hero-matchup-chip" [title]="counterHero.name">
+              <img [src]="counterHero.imageUrl" [alt]="counterHero.name" />
+            </span>
+            } @else {
+            <span>{{ counter }}</span>
+            }
+            }
+          </div>
+        </section>
+
+        <section>
+          <h3>Synergies</h3>
+          <div class="tag-list">
+            @for (synergy of hero.synergies; track synergy) {
+            @if (heroByName(synergy); as synergyHero) {
+            <span class="hero-matchup-chip" [title]="synergyHero.name">
+              <img [src]="synergyHero.imageUrl" [alt]="synergyHero.name" />
+            </span>
+            } @else {
+            <span class="hero-matchup-chip icon-chip" [title]="synergy" [attr.aria-label]="synergy">
+              <i [class]="synergyIcon(synergy)" aria-hidden="true"></i>
+            </span>
+            }
+            }
+          </div>
+        </section>
+      </div>
+
+      <section class="abilities">
+        <div class="section-heading ability-heading">
+          <h3>Abilities</h3>
+        </div>
+        @if (passiveAbilities(hero).length > 0) {
+        <section class="abilities passive-abilities">
+          <div class="section-heading ability-heading">
+            <h3>Passive Abilities</h3>
+          </div>
+
+          <div class="ability-tabs" role="tablist" aria-label="Passive ability tabs">
+            @for (ability of passiveAbilities(hero); track ability.name) {
+            <button type="button" role="tab"
+              [class.active]="selectedAbilityTab(hero, passiveAbilities(hero))?.name === ability.name"
+              [attr.aria-selected]="selectedAbilityTab(hero, passiveAbilities(hero))?.name === ability.name"
+              [attr.aria-controls]="abilityAnchorId(hero, ability)" (click)="selectAbilityTab(hero, ability)">
+              <span>{{ ability.type }}</span>
+              <small>{{ ability.name }}</small>
+            </button>
+            }
+          </div>
+
+          @if (selectedAbilityTab(hero, passiveAbilities(hero)); as ability) {
+          <article [id]="abilityAnchorId(hero, ability)" role="tabpanel"
+            [class.highlighted]="activeAbilityAnchorId() === abilityAnchorId(hero, ability)">
+            <span>{{ ability.type }}</span>
+            <strong>{{ ability.name }}</strong>
+            <p [innerHTML]="highlightedAbilityText(hero, ability.description)"></p>
+            @if (ability.technicalDetails?.length) {
+            <h4>Stats & formulas</h4>
+            <dl class="technical-details" aria-label="Passive ability technical details">
+              @for (detail of ability.technicalDetails; track detail.label + detail.value) {
+              <div [class]="'stat-card stat-' + technicalDetailType(detail.label)">
+                <span class="stat-icon" aria-hidden="true">
+                  <i [class]="technicalDetailIcon(detail.label)"></i>
+                </span>
+                <div class="stat-copy">
+                  <dt>{{ detail.label }}</dt>
+                  <dd>{{ detail.value }}</dd>
+                </div>
+              </div>
+              }
+            </dl>
+            }
+          </article>
+          }
+        </section>
+        }
+        <section class="abilities">
+          <div class="section-heading ability-heading">
+            <h3>Normal Abilities</h3>
+          </div>
+          <div class="ability-tabs" role="tablist" aria-label="Ability tabs">
+            @for (ability of activeAbilities(hero); track ability.name) {
+            <button type="button" role="tab"
+              [class.active]="selectedAbilityTab(hero, activeAbilities(hero))?.name === ability.name"
+              [attr.aria-selected]="selectedAbilityTab(hero, activeAbilities(hero))?.name === ability.name"
+              [attr.aria-controls]="abilityAnchorId(hero, ability)" (click)="selectAbilityTab(hero, ability)">
+              <span>{{ ability.type }}</span>
+              <small>{{ ability.name }}</small>
+            </button>
+            }
+          </div>
+
+          @if (selectedAbilityTab(hero, activeAbilities(hero)); as ability) {
+          <article [id]="abilityAnchorId(hero, ability)" role="tabpanel"
+            [class.highlighted]="activeAbilityAnchorId() === abilityAnchorId(hero, ability)">
+            <span>{{ ability.type }}</span>
+            <strong>{{ ability.name }}</strong>
+            <p [innerHTML]="highlightedAbilityText(hero, ability.description)"></p>
+            @if (ability.technicalDetails?.length) {
+            <h4>Stats & formulas</h4>
+            <dl class="technical-details" aria-label="Ability technical details">
+              @for (detail of ability.technicalDetails; track detail.label + detail.value) {
+              <div [class]="'stat-card stat-' + technicalDetailType(detail.label)">
+                <span class="stat-icon" aria-hidden="true">
+                  <i [class]="technicalDetailIcon(detail.label)"></i>
+                </span>
+                <div class="stat-copy">
+                  <dt>{{ detail.label }}</dt>
+                  <dd>{{ detail.value }}</dd>
+                </div>
+              </div>
+              }
+            </dl>
+            }
+          </article>
+          }
+        </section>
+      </section>
+
+
+      <section class="hero-build-profile" aria-label="Hero build theory profile">
+        <div class="section-heading">
+          <h3>Build Profile</h3>
+          <p>0-10 coach rating by fight-plan value, not official stats</p>
+        </div>
+
+        <div class="build-profile-bars">
+          @for (type of buildTypes; track type) {
+          <div [class]="scoreTone(heroBuildValue(hero, type))">
+            <span>{{ type }}</span>
+            <meter min="0" max="10" [value]="heroBuildValue(hero, type)"></meter>
+            <strong>{{ heroBuildValue(hero, type) }}</strong>
+          </div>
+          }
+        </div>
+
+        <p class="build-profile-note">
+          Ratings combine role, ability text, and guide interpretation. They are meant to explain a hero's fight-plan
+          value, not replace official ability numbers.
+        </p>
+
+        @if (heroBuildProfileRationale(hero); as rationale) {
+        <div class="build-profile-source">
+          <strong>Fandom description analysis</strong>
+          <p>{{ rationale.reason }}</p>
+          <div>
+            <a [href]="rationale.source.url" target="_blank" rel="noopener noreferrer">{{ rationale.source.label }}</a>
+          </div>
+        </div>
+        }
+      </section>
+
 
       @if (displayedPlaystyleGuides(hero).length > 0) {
       <section class="deadpool-upgrades" aria-label="Detailed playstyle variants">
@@ -199,38 +408,6 @@
         }
       </section>
       }
-
-      <section class="hero-build-profile" aria-label="Hero build theory profile">
-        <div class="section-heading">
-          <h3>Build Profile</h3>
-          <p>0-10 coach rating by fight-plan value, not official stats</p>
-        </div>
-
-        <div class="build-profile-bars">
-          @for (type of buildTypes; track type) {
-          <div [class]="scoreTone(heroBuildValue(hero, type))">
-            <span>{{ type }}</span>
-            <meter min="0" max="10" [value]="heroBuildValue(hero, type)"></meter>
-            <strong>{{ heroBuildValue(hero, type) }}</strong>
-          </div>
-          }
-        </div>
-
-        <p class="build-profile-note">
-          Ratings combine role, ability text, and guide interpretation. They are meant to explain a hero's fight-plan
-          value, not replace official ability numbers.
-        </p>
-
-        @if (heroBuildProfileRationale(hero); as rationale) {
-        <div class="build-profile-source">
-          <strong>Fandom description analysis</strong>
-          <p>{{ rationale.reason }}</p>
-          <div>
-            <a [href]="rationale.source.url" target="_blank" rel="noopener noreferrer">{{ rationale.source.label }}</a>
-          </div>
-        </div>
-        }
-      </section>
     </div>
 
 
@@ -247,102 +424,102 @@
         <p [innerHTML]="highlightedAbilityText(hero, ultimate.strategy)"></p>
       </article>
       }
-    </section>
-    }
 
-    @if (deadpoolVanguardUltimatePaths(hero).length > 0 && activeDeadpoolUltimatePath(hero); as activePath) {
-    <section class="ultimate-paths" aria-labelledby="deadpool-ultimate-path-title">
-      <div class="section-heading">
-        <div>
-          <h3 id="deadpool-ultimate-path-title">Ultimate Path</h3>
-          <p>Vanguard Deadpool fight plan</p>
+      @if (deadpoolVanguardUltimatePaths(hero).length > 0 && activeDeadpoolUltimatePath(hero); as activePath) {
+      <section class="ultimate-paths" aria-labelledby="deadpool-ultimate-path-title">
+        <div class="section-heading">
+          <div>
+            <h3 id="deadpool-ultimate-path-title">Ultimate Path</h3>
+            <p>Vanguard Deadpool fight plan</p>
+          </div>
         </div>
-      </div>
 
-      <div class="ultimate-path-tabs" role="tablist" aria-label="Vanguard Deadpool ultimate paths">
-        @for (path of deadpoolVanguardUltimatePaths(hero); track path.name) {
-        <button type="button" role="tab" [class.active]="activePath.name === path.name"
-          [attr.aria-selected]="activePath.name === path.name" (click)="selectDeadpoolUltimatePath(path.name)">
-          {{ path.name }}
-        </button>
-        }
-      </div>
-
-      <article class="ultimate-path-panel" role="tabpanel">
-        <strong>{{ activePath.name }}</strong>
-        <p>{{ activePath.plan }}</p>
-        <p class="ultimate-path-timing">{{ activePath.timing }}</p>
-
-        <div class="ultimate-path-grid">
-          <section>
-            <h4>Execute</h4>
-            <ul>
-              @for (step of activePath.execution; track step) {
-              <li>{{ step }}</li>
-              }
-            </ul>
-          </section>
-
-          <section>
-            <h4>Good Into</h4>
-            <ul>
-              @for (target of activePath.goodAgainst; track target) {
-              <li>{{ target }}</li>
-              }
-            </ul>
-          </section>
-
-          <section>
-            <h4>Avoid Into</h4>
-            <ul>
-              @for (target of activePath.avoidInto; track target) {
-              <li>{{ target }}</li>
-              }
-            </ul>
-          </section>
-        </div>
-      </article>
-    </section>
-    }
-
-    @if (deadpoolVanguardAggressivePaths(hero).length > 0 && activeDeadpoolAggressivePath(hero); as activePath) {
-    <section class="deadpool-upgrades aggressive-paths" aria-labelledby="deadpool-aggressive-path-title">
-      <div class="section-heading">
-        <div>
-          <h3 id="deadpool-aggressive-path-title">Aggressive Paths</h3>
-          <p>Skill book routes from the rank-one Tankpool review</p>
-        </div>
-      </div>
-
-      <div class="aggressive-path-tabs" role="tablist" aria-label="Vanguard Deadpool aggressive upgrade paths">
-        @for (path of deadpoolVanguardAggressivePaths(hero); track path.id) {
-        <button type="button" role="tab" [class.active]="activePath.id === path.id"
-          [attr.aria-selected]="activePath.id === path.id" (click)="selectDeadpoolAggressivePath(path.id)">
-          {{ path.title }}
-        </button>
-        }
-      </div>
-
-      <article class="aggressive-path-panel" role="tabpanel">
-        <strong>{{ activePath.title }}</strong>
-        <p>{{ activePath.summary }}</p>
-        <p class="upgrade-source">{{ activePath.whenToUse }}</p>
-
-        <ol>
-          @for (upgrade of activePath.upgrades; track upgrade.name) {
-          <li>
-            <span>{{ upgrade.rank }}</span>
-            <div>
-              <strong>{{ upgrade.name }}</strong>
-              <p>{{ upgrade.reason }}</p>
-              <small>{{ upgrade.note }}</small>
-            </div>
-          </li>
+        <div class="ultimate-path-tabs" role="tablist" aria-label="Vanguard Deadpool ultimate paths">
+          @for (path of deadpoolVanguardUltimatePaths(hero); track path.name) {
+          <button type="button" role="tab" [class.active]="activePath.name === path.name"
+            [attr.aria-selected]="activePath.name === path.name" (click)="selectDeadpoolUltimatePath(path.name)">
+            {{ path.name }}
+          </button>
           }
-        </ol>
+        </div>
 
-        <p class="upgrade-source">{{ activePath.transcriptRead }}</p>
-      </article>
+        <article class="ultimate-path-panel" role="tabpanel">
+          <strong>{{ activePath.name }}</strong>
+          <p>{{ activePath.plan }}</p>
+          <p class="ultimate-path-timing">{{ activePath.timing }}</p>
+
+          <div class="ultimate-path-grid">
+            <section>
+              <h4>Execute</h4>
+              <ul>
+                @for (step of activePath.execution; track step) {
+                <li>{{ step }}</li>
+                }
+              </ul>
+            </section>
+
+            <section>
+              <h4>Good Into</h4>
+              <ul>
+                @for (target of activePath.goodAgainst; track target) {
+                <li>{{ target }}</li>
+                }
+              </ul>
+            </section>
+
+            <section>
+              <h4>Avoid Into</h4>
+              <ul>
+                @for (target of activePath.avoidInto; track target) {
+                <li>{{ target }}</li>
+                }
+              </ul>
+            </section>
+          </div>
+        </article>
+      </section>
+      }
+
+      @if (deadpoolVanguardAggressivePaths(hero).length > 0 && activeDeadpoolAggressivePath(hero); as activePath) {
+      <section class="deadpool-upgrades aggressive-paths" aria-labelledby="deadpool-aggressive-path-title">
+        <div class="section-heading">
+          <div>
+            <h3 id="deadpool-aggressive-path-title">Aggressive Paths</h3>
+            <p>Skill book routes from the rank-one Tankpool review</p>
+          </div>
+        </div>
+
+        <div class="aggressive-path-tabs" role="tablist" aria-label="Vanguard Deadpool aggressive upgrade paths">
+          @for (path of deadpoolVanguardAggressivePaths(hero); track path.id) {
+          <button type="button" role="tab" [class.active]="activePath.id === path.id"
+            [attr.aria-selected]="activePath.id === path.id" (click)="selectDeadpoolAggressivePath(path.id)">
+            {{ path.title }}
+          </button>
+          }
+        </div>
+
+        <article class="aggressive-path-panel" role="tabpanel">
+          <strong>{{ activePath.title }}</strong>
+          <p>{{ activePath.summary }}</p>
+          <p class="upgrade-source">{{ activePath.whenToUse }}</p>
+
+          <ol>
+            @for (upgrade of activePath.upgrades; track upgrade.name) {
+            <li>
+              <span>{{ upgrade.rank }}</span>
+              <div>
+                <strong>{{ upgrade.name }}</strong>
+                <p>{{ upgrade.reason }}</p>
+                <small>{{ upgrade.note }}</small>
+              </div>
+            </li>
+            }
+          </ol>
+
+          <p class="upgrade-source">{{ activePath.transcriptRead }}</p>
+        </article>
+      </section>
+      }
     </section>
     }
 
@@ -374,125 +551,5 @@
     </section>
     }
 
-    <div class="detail-columns">
-      <section>
-        <h3>Strengths</h3>
-        <ul>
-          @for (strength of hero.strengths; track strength) {
-          <li>{{ strength }}</li>
-          }
-        </ul>
-      </section>
-
-      <section>
-        <h3>Weaknesses</h3>
-        <ul>
-          @for (weakness of hero.weaknesses; track weakness) {
-          <li>{{ weakness }}</li>
-          }
-        </ul>
-      </section>
-    </div>
-
-    <div class="matchup-row">
-      <section>
-        <div class="section-heading">
-          <h3>Counters</h3>
-          <a routerLink="/counters" [queryParams]="{ hero: hero.id }">Counter lab</a>
-        </div>
-        <div class="tag-list">
-          @for (counter of hero.counters; track counter) {
-          @if (heroByName(counter); as counterHero) {
-          <span class="hero-matchup-chip" [title]="counterHero.name">
-            <img [src]="counterHero.imageUrl" [alt]="counterHero.name" />
-          </span>
-          } @else {
-          <span>{{ counter }}</span>
-          }
-          }
-        </div>
-      </section>
-
-      <section>
-        <h3>Synergies</h3>
-        <div class="tag-list">
-          @for (synergy of hero.synergies; track synergy) {
-          @if (heroByName(synergy); as synergyHero) {
-          <span class="hero-matchup-chip" [title]="synergyHero.name">
-            <img [src]="synergyHero.imageUrl" [alt]="synergyHero.name" />
-          </span>
-          } @else {
-          <span class="hero-matchup-chip icon-chip" [title]="synergy" [attr.aria-label]="synergy">
-            <i [class]="synergyIcon(synergy)" aria-hidden="true"></i>
-          </span>
-          }
-          }
-        </div>
-      </section>
-    </div>
-
-    @if (passiveAbilities(hero).length > 0) {
-    <section class="abilities passive-abilities">
-      <div class="section-heading ability-heading">
-        <h3>Passive Abilities</h3>
-      </div>
-
-      @for (ability of passiveAbilities(hero); track ability.name) {
-      <article [id]="abilityAnchorId(hero, ability)"
-        [class.highlighted]="activeAbilityAnchorId() === abilityAnchorId(hero, ability)">
-        <span>{{ ability.type }}</span>
-        <strong>{{ ability.name }}</strong>
-        <p [innerHTML]="highlightedAbilityText(hero, ability.description)"></p>
-        @if (ability.technicalDetails?.length) {
-        <h4>Stats & formulas</h4>
-        <dl class="technical-details" aria-label="Passive ability technical details">
-          @for (detail of ability.technicalDetails; track detail.label + detail.value) {
-          <div [class]="'stat-card stat-' + technicalDetailType(detail.label)">
-            <span class="stat-icon" aria-hidden="true">
-              <i [class]="technicalDetailIcon(detail.label)"></i>
-            </span>
-            <div class="stat-copy">
-              <dt>{{ detail.label }}</dt>
-              <dd>{{ detail.value }}</dd>
-            </div>
-          </div>
-          }
-        </dl>
-        }
-      </article>
-      }
-    </section>
-    }
-
-    <section class="abilities">
-      <div class="section-heading ability-heading">
-        <h3>Abilities</h3>
-      </div>
-
-      @for (ability of activeAbilities(hero); track ability.name) {
-      <article [id]="abilityAnchorId(hero, ability)"
-        [class.highlighted]="activeAbilityAnchorId() === abilityAnchorId(hero, ability)">
-        <span>{{ ability.type }}</span>
-        <strong>{{ ability.name }}</strong>
-        <p [innerHTML]="highlightedAbilityText(hero, ability.description)"></p>
-        @if (ability.technicalDetails?.length) {
-        <h4>Stats & formulas</h4>
-        <dl class="technical-details" aria-label="Ability technical details">
-          @for (detail of ability.technicalDetails; track detail.label + detail.value) {
-          <div [class]="'stat-card stat-' + technicalDetailType(detail.label)">
-            <span class="stat-icon" aria-hidden="true">
-              <i [class]="technicalDetailIcon(detail.label)"></i>
-            </span>
-            <div class="stat-copy">
-              <dt>{{ detail.label }}</dt>
-              <dd>{{ detail.value }}</dd>
-            </div>
-          </div>
-          }
-        </dl>
-        }
-      </article>
-      }
-    </section>
   </ng-template>
 </section>

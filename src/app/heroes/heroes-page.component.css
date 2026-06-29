@@ -459,11 +459,30 @@ h1 {
     inset 0 1px rgba(255, 255, 255, 0.92);
 }
 
-.modal-close-button {
+.modal-actions {
   position: sticky;
   top: 0;
   z-index: 2;
-  justify-self: end;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  padding: 2px 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.62));
+  backdrop-filter: blur(18px);
+}
+
+.modal-actions .modal-close-button {
+  flex: 0 0 auto;
+}
+
+.modal-role-switcher {
+  flex: 1 1 260px;
+}
+
+.modal-role-switcher .ability-role-tabs {
+  justify-content: start;
 }
 
 .detail-hero {
@@ -994,6 +1013,66 @@ ul {
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.9), 0 18px 38px rgba(15, 23, 42, 0.08);
 }
 
+.ability-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 132px), 1fr));
+  gap: 8px;
+}
+
+.ability-tabs button {
+  display: grid;
+  gap: 5px;
+  align-content: center;
+  min-height: 58px;
+  padding: 9px 10px;
+  border: 1px solid rgba(224, 169, 0, 0.24);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.76);
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.ability-tabs button:hover,
+.ability-tabs button.active {
+  border-color: rgba(3, 159, 159, 0.42);
+  background: rgba(232, 247, 251, 0.82);
+  box-shadow: inset 0 0 0 1px rgba(3, 159, 159, 0.16);
+}
+
+.ability-tabs button span {
+  color: var(--accent-strong);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.ability-tabs button small {
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.hero-detail.hero-detail-modal .ability-tabs button {
+  border-color: rgba(138, 98, 0, 0.2);
+  background: #ffffff;
+}
+
+.hero-detail.hero-detail-modal .ability-tabs button:hover,
+.hero-detail.hero-detail-modal .ability-tabs button.active {
+  border-color: rgba(138, 98, 0, 0.42);
+  background: rgba(255, 248, 226, 0.92);
+  box-shadow: inset 0 0 0 1px rgba(138, 98, 0, 0.14);
+}
+
+.hero-detail.hero-detail-modal .ability-tabs button span {
+  color: var(--modal-gold);
+}
+
 .passive-abilities {
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.62), rgba(224, 169, 0, 0.14)),
@@ -1108,6 +1187,34 @@ ul {
   color: #ffffff;
 }
 
+:host ::ng-deep .combat-highlight {
+  display: inline;
+  padding: 1px 5px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-weight: 850;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+:host ::ng-deep .damage-highlight {
+  border-color: rgba(180, 35, 24, 0.2);
+  background: rgba(255, 231, 230, 0.92);
+  color: #9f1d14;
+}
+
+:host ::ng-deep .healing-highlight {
+  border-color: rgba(22, 121, 76, 0.2);
+  background: rgba(222, 247, 232, 0.92);
+  color: #12683f;
+}
+
+:host ::ng-deep .utility-highlight {
+  border-color: rgba(114, 87, 200, 0.2);
+  background: rgba(238, 233, 255, 0.92);
+  color: #5c45ad;
+}
+
 .abilities article::after {
   position: absolute;
   inset: 0;
@@ -1219,6 +1326,10 @@ ul {
 
 .stat-healing {
   --stat-color: #16794c;
+}
+
+.stat-utility {
+  --stat-color: #7257c8;
 }
 
 .stat-range {
