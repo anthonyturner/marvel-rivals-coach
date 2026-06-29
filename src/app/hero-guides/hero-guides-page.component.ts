@@ -32,6 +32,7 @@ export class HeroGuidesPageComponent {
         'Survival, engagement timing, presence, and fight discipline that apply no matter who you pick.',
       guides: this.fundamentalsGuides.filter((guide) =>
         [
+          'neutral-game-fundamentals',
           'survival-discipline',
           'engagement-discipline',
           'season-8-5-discipline',

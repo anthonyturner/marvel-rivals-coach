@@ -162,7 +162,6 @@ h1 {
 }
 
 .quick-read p,
-.section-preview,
 .ultimate-section p {
   color: var(--text-soft);
   line-height: 1.58;
@@ -171,31 +170,19 @@ h1 {
 .guide-sections {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
-  align-items: stretch;
-  gap: 16px;
+  gap: 18px;
+  align-items: start;
   padding: 18px 0;
 }
 
 .guide-sections article {
   position: relative;
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
   padding: 18px;
-  cursor: pointer;
   background:
     linear-gradient(135deg, rgba(255, 248, 203, 0.55), rgba(255, 255, 255, 0.78)),
     var(--bg-elevated);
   box-shadow: 0 14px 28px rgba(17, 35, 57, 0.08);
-  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
-}
-
-.guide-sections article:hover,
-.guide-sections article:focus-visible {
-  border-color: rgba(154, 106, 0, 0.42);
-  box-shadow: 0 18px 36px rgba(17, 35, 57, 0.14);
-  outline: none;
-  transform: translateY(-2px);
 }
 
 .guide-sections article::before {
@@ -243,110 +230,15 @@ h1 {
   font-size: 1.35rem;
 }
 
-.section-preview {
-  margin-top: 14px;
-  padding: 12px;
-  border-color: rgba(3, 159, 159, 0.24);
-  border: 1px solid rgba(3, 159, 159, 0.24);
-  border-radius: 7px;
-  background: rgba(232, 247, 251, 0.66);
-  color: var(--text);
-  font-weight: 750;
-}
-
-.open-section-button {
-  width: fit-content;
-  margin-top: auto;
-  transform: translateY(12px);
-  padding: 8px 10px;
-  border: 1px solid rgba(154, 106, 0, 0.26);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.7);
-  color: var(--accent-strong);
-  font: inherit;
-  font-size: 0.8rem;
-  font-weight: 850;
-  text-transform: uppercase;
-  pointer-events: none;
-}
-
-.section-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  background: rgba(7, 11, 21, 0.62);
-  backdrop-filter: blur(10px);
-}
-
-.section-modal {
-  position: relative;
-  display: grid;
-  gap: 16px;
-  width: min(860px, 100%);
-  max-height: min(82vh, 820px);
-  overflow: auto;
-  padding: 22px;
-  border: 1px solid rgba(154, 106, 0, 0.28);
-  border-radius: 8px;
-  background:
-    linear-gradient(135deg, rgba(255, 248, 203, 0.96), rgba(232, 247, 251, 0.92)),
-    var(--bg-elevated);
-  box-shadow: 0 28px 72px rgba(7, 11, 21, 0.34);
-}
-
-.modal-close-button {
-  position: sticky;
-  top: 0;
-  justify-self: end;
-  padding: 8px 10px;
-  border: 1px solid rgba(154, 106, 0, 0.28);
-  border-radius: 6px;
-  background: var(--accent);
-  color: var(--accent-ink);
-  font: inherit;
-  font-size: 0.82rem;
-  font-weight: 850;
-  cursor: pointer;
-}
-
-.modal-heading {
-  display: grid;
-  grid-template-columns: 46px minmax(0, 1fr);
-  gap: 12px;
-  align-items: center;
-}
-
-.modal-heading>span {
-  display: grid;
-  width: 42px;
-  aspect-ratio: 1;
-  place-items: center;
-  border-radius: 8px;
-  background: var(--accent);
-  color: var(--accent-ink);
-  font-size: 1rem;
-  font-weight: 900;
-}
-
-.modal-heading h2 {
-  margin: 0;
-  color: var(--text);
-  font-size: clamp(1.45rem, 3vw, 2.1rem);
-  line-height: 1.1;
-}
-
-.section-modal ul {
+.section-points {
   display: grid;
   gap: 9px;
-  margin: 0;
+  margin: 14px 0 0;
   padding: 0;
   list-style: none;
 }
 
-.section-modal li {
+.section-points li {
   position: relative;
   padding: 11px 12px 11px 34px;
   border: 1px solid rgba(16, 32, 51, 0.08);
@@ -356,7 +248,7 @@ h1 {
   line-height: 1.55;
 }
 
-.section-modal li::before {
+.section-points li::before {
   position: absolute;
   top: 18px;
   left: 14px;
@@ -367,14 +259,14 @@ h1 {
   content: "";
 }
 
-.section-modal li.lead-point {
+.section-points li.lead-point {
   border-color: rgba(3, 159, 159, 0.24);
   background: rgba(232, 247, 251, 0.74);
   color: var(--text);
   font-weight: 750;
 }
 
-.section-modal li.lead-point::before {
+.section-points li.lead-point::before {
   background: var(--teal);
 }
 
@@ -454,12 +346,19 @@ h1 {
     width: fit-content;
   }
 
-  .section-modal-backdrop {
-    padding: 12px;
-  }
-
-  .section-modal {
-    max-height: 88vh;
+  .guide-sections article {
     padding: 16px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .guide-sections {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 760px) and (max-width: 1099px) {
+  .guide-sections {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

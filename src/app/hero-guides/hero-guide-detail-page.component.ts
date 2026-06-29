@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, HostListener, inject, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { HERO_GUIDES } from './hero-guide-data';
-import { HeroGuideSection } from './hero-guide-data';
 
 @Component({
   selector: 'app-hero-guide-detail-page',
@@ -16,8 +15,6 @@ export class HeroGuideDetailPageComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly sanitizer = inject(DomSanitizer);
   readonly guides = HERO_GUIDES;
-  readonly selectedSection = signal<HeroGuideSection | undefined>(undefined);
-  readonly selectedSectionIndex = signal(0);
 
   readonly guide = computed(() => {
     const heroId = this.route.snapshot.paramMap.get('heroId');
@@ -26,20 +23,6 @@ export class HeroGuideDetailPageComponent {
   });
 
   readonly sourceEmbedUrl = computed(() => this.youtubeEmbedUrl(this.guide().sourceUrl));
-
-  openSectionModal(section: HeroGuideSection, index: number): void {
-    this.selectedSection.set(section);
-    this.selectedSectionIndex.set(index);
-  }
-
-  closeSectionModal(): void {
-    this.selectedSection.set(undefined);
-  }
-
-  @HostListener('document:keydown.escape')
-  closeSectionModalOnEscape(): void {
-    this.closeSectionModal();
-  }
 
   private youtubeEmbedUrl(url?: string): SafeResourceUrl | undefined {
     if (!url) {

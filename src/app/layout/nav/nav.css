@@ -14,7 +14,7 @@ nav {
 }
 
 nav a,
-nav span,
+nav .disabled,
 .nav-group-trigger {
   display: inline-grid;
   min-height: 38px;
@@ -64,10 +64,14 @@ nav a:hover,
 
 .chevron {
   display: inline-block;
+  min-height: 0;
   width: 7px;
   height: 7px;
-  border-right: 1.5px solid currentColor;
-  border-bottom: 1.5px solid currentColor;
+  padding: 0;
+  border: 0;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  border-radius: 0;
   transform: rotate(45deg) translateY(-2px);
   transition: transform 160ms ease;
 }
@@ -79,7 +83,6 @@ nav a:hover,
 .nav-menu {
   position: absolute;
   top: 100%;
-  right: 0;
   z-index: 20;
   display: grid;
   min-width: 210px;
@@ -216,7 +219,7 @@ nav span.disabled {
   }
 
   nav a,
-  nav span,
+  nav .disabled,
   .nav-group-trigger {
     min-height: 44px;
     padding: 0 10px;

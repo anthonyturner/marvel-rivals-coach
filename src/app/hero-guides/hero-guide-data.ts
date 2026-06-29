@@ -319,6 +319,93 @@ export const HERO_GUIDES: HeroGuide[] = [
     ],
   },
   {
+    heroId: 'neutral-game-fundamentals',
+    heroName: 'Neutral Game Fundamentals',
+    category: 'fundamentals',
+    role: 'Fundamentals',
+    image: '/images/heroes/doctor-strange.png',
+    sourceLabel: 'N / Nen - Neutral Game transcript',
+    summary:
+      'Neutral is the state before either side has a clear advantage: both teams are controlling space, baiting resources, and waiting for the mistake that opens the fight.',
+    poolJob:
+      'Use movement, spacing, cooldown tracking, and pressure to create a small advantage before the big engage, pick, or ultimate chain begins.',
+    pickWhen:
+      'Use this guide when people talk about neutral and you are not sure what it means, or when every fight feels like nothing matters until ultimates start flying.',
+    sections: [
+      {
+        title: 'Neutral is before the big moment',
+        points: [
+          'Neutral is everything that happens before and between the obvious fight-swinging moments.',
+          'In a fighting game, the flashy parts are combos, powered-up states, and super moves. Neutral is the movement, spacing, jabs, baiting, and waiting that happens before those moments land.',
+          'In Marvel Rivals, the flashy parts are big engages, eliminations, and ultimates. Neutral is the quieter phase where both teams are trying to earn the right to make one of those plays.',
+          'A neutral state means neither team has a clear advantage yet. Both sides are looking for space, information, cooldowns, damage, and a mistake to punish.',
+          'Neutral is not doing nothing. It is the part of the game where players are testing each other without fully committing.',
+        ],
+      },
+      {
+        title: 'The fighting game comparison',
+        points: [
+          'The transcript uses Tekken as the clean example because fighting games make neutral easier to see.',
+          'Players may look like they are only stepping forward, backing away, poking, or waiting, but they are actually controlling space and baiting unsafe actions.',
+          'The goal is to make the opponent press the wrong button, move into the wrong range, or spend a powerful option at the wrong time.',
+          'Once that mistake happens, the player can cash out with the big combo, powered-up move, or super.',
+          'The same principle applies in team games: the big play usually comes after a smaller neutral mistake creates permission to commit.',
+        ],
+      },
+      {
+        title: 'Neutral in Marvel Rivals',
+        points: [
+          'In Marvel Rivals, neutral is about cooldowns, space control, positioning, baiting, and waiting for the enemy team to push too hard or too little.',
+          'Both teams are trying to control the playable area of the map without being punished.',
+          'Both teams are tracking resources: their own cooldowns, enemy cooldowns, ultimates, defensive saves, mobility, and healing tools.',
+          'A good neutral exchange can be as simple as forcing an enemy to waste a cooldown while your team keeps its resources intact.',
+          'A bad neutral exchange is giving the enemy the first opening by walking into danger, spending an important tool for no value, or overextending before your team is ready.',
+        ],
+      },
+      {
+        title: 'Why ultimates make neutral feel muddy',
+        points: [
+          'The transcript argues that Marvel Rivals does have neutral, but frequent ultimates can make neutral feel less important than it should.',
+          'When ultimates happen constantly, matches can feel like both teams are mostly racing to build the next fight-winning button.',
+          'Strategist ultimates can erase danger or create huge sustain windows, while Duelist ultimates can delete players quickly.',
+          'Because those ultimates counteract and chain into each other, the quieter skill expression before the ultimate phase can feel compressed.',
+          'That does not mean neutral is fake. It means you have to recognize the neutral phase before the ultimate lines start stacking.',
+        ],
+      },
+      {
+        title: 'What you are looking for',
+        points: [
+          'Look for enemy cooldowns spent too early. A movement tool, shield, stun, defensive save, or healing burst can become the signal that your team can press.',
+          'Look for enemies who push too far. Overextension is one of the clearest neutral mistakes because it gives your team a target before the enemy is ready to trade back.',
+          'Look for enemies who push too little. If the enemy refuses to contest space, your team can move forward, take angles, and start the next fight from a stronger position.',
+          'Look for your own openings too. If your team has better cooldowns, stronger angles, or healthier players, neutral has already started tilting in your favor.',
+          'The point is to notice the moment of weakness before everyone commits at once.',
+        ],
+      },
+      {
+        title: 'How each role plays neutral',
+        points: [
+          'Vanguards play neutral by testing space, threatening forward movement, protecting key lanes, and watching for the enemy to spend tools that make a push safer.',
+          'Duelists play neutral by pressuring angles, poking, threatening backlines, and making the enemy respect their position before committing to a kill.',
+          'Strategists play neutral by keeping the team stable, preserving major saves, holding safe sightlines, and using utility to deny the enemy opening.',
+          'No role should treat neutral as permission to stand still. Everyone is either controlling space, denying space, baiting resources, or preparing for the punish.',
+          'The best neutral plays often look small until the fight starts and the enemy is missing the cooldown, position, or health they needed.',
+        ],
+      },
+      {
+        title: 'Neutral checklist',
+        points: [
+          'Ask whether either team has a clear advantage yet. If not, you are probably in neutral.',
+          'Ask what space your team is trying to control and what space the enemy is trying to protect.',
+          'Ask which cooldowns matter most before the fight can safely begin.',
+          'Ask whether the enemy just made a mistake by pushing too hard, backing up too far, or spending a resource too early.',
+          'Ask whether your next action creates pressure without opening your team to an easy punish.',
+        ],
+      },
+    ],
+    ultimates: [],
+  },
+  {
     heroId: 'survival-discipline',
     heroName: 'Survival Discipline',
     category: 'fundamentals',
