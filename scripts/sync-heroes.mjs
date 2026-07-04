@@ -128,6 +128,7 @@ async function buildHero(pageTitle) {
   const weaknesses = getSectionBullets(text, 'Weaknesses');
   const synergies = getSynergies(text);
   const abilities = await getAbilities(pageTitle);
+  const strategyGuide = getStrategyGuide(text, pageTitle, role, strengths, weaknesses, abilities);
 
   const roleAbilityKits = id === 'deadpool' && existingHero?.roleAbilityKits
     ? await enrichDeadpoolRoleAbilityKits(existingHero.roleAbilityKits)
@@ -140,6 +141,7 @@ async function buildHero(pageTitle) {
     difficulty,
     summary: getOfficialSummary(text, pageTitle, role),
     overview: getFullOverview(text, pageTitle, role),
+    strategyGuide,
     strengths: strengths.length > 0 ? strengths : fallbackStrengths(role),
     weaknesses: weaknesses.length > 0 ? weaknesses : fallbackWeaknesses(role),
     counters: existingHero?.counters?.length > 0 ? existingHero.counters : getFallbackCounters(role),
@@ -381,6 +383,144 @@ function getFullOverview(text, name, role) {
   const overviewBody = sections.length > 0 ? sections.join(' ') : removeWikiMarkup(overview[1]);
 
   return overviewBody || getOfficialSummary(text, name, role);
+}
+
+function getStrategyGuide(text, name, role, strengths, weaknesses, abilities) {
+  const strategyText = getTopLevelSection(text, 'Strategy');
+  const fandomParagraphs = strategyText ? wikiBlockToParagraphs(strategyText) : [];
+  const paragraphs = fandomParagraphs.length > 0
+    ? fandomParagraphs
+    : buildFallbackStrategyParagraphs(name, role, strengths, weaknesses, abilities);
+
+  return {
+    sourceTitle: fandomParagraphs.length > 0 ? `${name} strategy on Marvel Rivals Wiki` : `${name} coach strategy`,
+    sourceUrl: `https://marvelrivals.fandom.com/wiki/${encodeURIComponent(name.replaceAll(' ', '_'))}#Strategy`,
+    summary: summarizeStrategy(name, role, paragraphs, abilities),
+    paragraphs,
+    situations: buildStrategySituations(name, role, paragraphs, strengths, weaknesses, abilities),
+  };
+}
+
+function getTopLevelSection(text, sectionName) {
+  const section = text.match(new RegExp(`^==\\s*${escapeRegExp(sectionName)}\\s*==\\s*([\\s\\S]*?)(?=^==\\s*[^=].*?==\\s*$|\\n__FORCETOC__|$)`, 'm'));
+
+  return section?.[1]?.trim() ?? '';
+}
+
+function wikiBlockToParagraphs(text) {
+  return text
+    .split('\n')
+    .map((line) => line.replace(/^\*+\s*/, '').trim())
+    .filter(Boolean)
+    .filter((line) => !line.startsWith('{{') && !line.startsWith('|') && !line.startsWith('=='))
+    .map((line) => removeWikiMarkup(line))
+    .map((line) => line.replace(/\s+/g, ' ').trim())
+    .filter(Boolean);
+}
+
+function buildFallbackStrategyParagraphs(name, role, strengths, weaknesses, abilities) {
+  const primary = abilities[0]?.name ?? 'primary pressure';
+  const utility = abilities.find((ability) => /shield|block|heal|dash|leap|rush|barrier|guard|web|flight|cloak|stun|slow|pull|knock/i.test(`${ability.name} ${ability.description}`))?.name
+    ?? abilities[1]?.name
+    ?? 'utility cooldowns';
+  const ultimate = abilities.find((ability) => /ultimate/i.test(`${ability.type} ${ability.description}`))?.name
+    ?? abilities.at(-1)?.name
+    ?? 'ultimate';
+  const strengthLine = strengths[0] ? `${name}'s main edge is ${strengths[0].toLowerCase()}` : `${name}'s main job is to convert their role tools into fight advantage`;
+  const weaknessLine = weaknesses[0] ? `Respect this limitation: ${weaknesses[0].toLowerCase()}` : 'Avoid committing every cooldown before your team is ready to follow.';
+
+  switch (role) {
+    case 'Vanguard':
+      return [
+        `${strengthLine}. Use ${primary} and ${utility} to take space, force attention, and make enemies spend important cooldowns before your team fully commits.`,
+        `${name} is strongest when you pressure a valuable angle, bait defensive tools, then leave before the enemy can punish you. ${weaknessLine}`,
+        `Use ${ultimate} to start a decisive push, survive the enemy counter-engage, or turn a messy fight into space your team can actually occupy.`,
+      ];
+    case 'Duelist':
+      return [
+        `${strengthLine}. Use ${primary} to threaten priority targets, then save ${utility} for the escape, chase, or finishing window.`,
+        `${name} should look for isolated enemies, distracted supports, and targets that have already used mobility or defensive cooldowns. ${weaknessLine}`,
+        `Use ${ultimate} after the enemy has spent shields, mobility, or sustain tools so your burst has a real path to secure eliminations.`,
+      ];
+    case 'Strategist':
+      return [
+        `${strengthLine}. Keep line of sight on teammates, use ${primary} for steady value, and hold ${utility} for the moment enemy pressure actually lands.`,
+        `${name} should balance healing, damage, and survival instead of tunneling one task. ${weaknessLine}`,
+        `Use ${ultimate} to answer an enemy engage, rescue a committed teammate, or stabilize the fight your team has chosen to take.`,
+      ];
+    default:
+      return [
+        `${strengthLine}. Choose the role kit your team needs, then use ${primary} and ${utility} to solve that fight's biggest problem.`,
+        `${name} gets value from swapping priorities as the fight changes. ${weaknessLine}`,
+        `Use ${ultimate} only after deciding whether this fight needs engage, peel, sustain, or cleanup.`,
+      ];
+  }
+}
+
+function summarizeStrategy(name, role, paragraphs, abilities) {
+  const joined = paragraphs.join(' ');
+  const lower = joined.toLowerCase();
+  const abilityNames = abilities.map((ability) => ability.name).filter((abilityName) => joined.includes(abilityName));
+  const rolePhrase = role === 'Vanguard'
+    ? 'space-maker'
+    : role === 'Duelist'
+      ? 'pressure dealer'
+      : role === 'Strategist'
+        ? 'fight stabilizer'
+        : 'flex-role problem solver';
+  const traits = [
+    /dive|backline|flank/.test(lower) ? 'dives or pressures backline angles' : '',
+    /cooldown|bait|force|nuisance|harass|disrupt/.test(lower) ? 'forces enemy cooldowns and attention' : '',
+    /shield|block|mitigat|protect|peel/.test(lower) ? 'protects space or peels pressure' : '',
+    /heal|overhealth|revive|sustain/.test(lower) ? 'stabilizes teammates through burst pressure' : '',
+    /finisher|ko|kill|eliminat|burst/.test(lower) ? 'converts openings into eliminations' : '',
+  ].filter(Boolean);
+  const abilityLine = abilityNames.length > 0 ? ` Key tools: ${abilityNames.slice(0, 3).join(', ')}.` : '';
+
+  return `${name} plays as a ${rolePhrase}${traits.length > 0 ? ` who ${traits.slice(0, 2).join(' and ')}` : ''}.${abilityLine}`;
+}
+
+function buildStrategySituations(name, role, paragraphs, strengths, weaknesses, abilities) {
+  const text = `${paragraphs.join(' ')} ${strengths.join(' ')} ${weaknesses.join(' ')} ${abilities.map((ability) => `${ability.name} ${ability.description}`).join(' ')}`.toLowerCase();
+  const situations = [];
+  const add = (label, description, pattern) => {
+    if (situations.length < 5 && pattern.test(text)) {
+      situations.push({ label, description });
+    }
+  };
+
+  add('Bait cooldowns', `Show pressure, make enemies spend mobility, shields, crowd control, or sustain, then reset before recommitting.`, /bait|cooldown|force|nuisance|harass|disrupt|pressure/);
+  add('Backline pressure', `Look for supports, snipers, or ranged damage dealers who are distracted or separated from their frontline.`, /backline|support|ranged|dive|flank|harass/);
+  add('Take space', `Lead the move through contested angles so teammates can cross, rotate, or follow your engage.`, /space|frontline|tank|shield|block|mitigat|barrier|protect|vanguard/);
+  add('Peel and stabilize', `Turn back toward threatened allies when enemy divers commit and trade your utility for their engage tools.`, /peel|protect|ally|heal|sustain|revive|overhealth|support/);
+  add('Finish windows', `Commit damage after enemies lose escape options, defensive cooldowns, or healing resources.`, /finish|ko|kill|eliminat|burst|low-health|target/);
+  add('Disengage routes', `Keep one movement or defensive option available so you can leave after drawing focus.`, /escape|retreat|mobility|movement|dash|leap|flight|swing|reposition/);
+
+  if (situations.length > 0) {
+    return situations;
+  }
+
+  switch (role) {
+    case 'Vanguard':
+      return [
+        { label: 'Bait cooldowns', description: `Start pressure, draw enemy resources, and leave enough health or mobility to survive the response.` },
+        { label: 'Take space', description: `Move first when your team is ready so allies can follow through the opening you create.` },
+      ];
+    case 'Duelist':
+      return [
+        { label: 'Finish windows', description: `Attack targets after their escape, shield, or healing tools are unavailable.` },
+        { label: 'Off-angle pressure', description: `Use side angles to split attention without taking an isolated losing duel.` },
+      ];
+    case 'Strategist':
+      return [
+        { label: 'Peel and stabilize', description: `Hold key utility for the enemy engage and keep yourself alive while teammates recover.` },
+        { label: 'Resource pacing', description: `Spend burst healing or defensive tools when damage lands, not during harmless poke.` },
+      ];
+    default:
+      return [
+        { label: 'Choose the job', description: `Decide whether the fight needs engage, peel, damage, or sustain before committing your kit.` },
+      ];
+  }
 }
 
 function getSectionBullets(text, sectionName, take = 3) {

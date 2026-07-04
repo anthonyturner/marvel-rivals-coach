@@ -51,6 +51,19 @@ export interface HeroPlaystyleGuide {
   ultimateNotes: string[];
 }
 
+export interface HeroStrategySituation {
+  label: string;
+  description: string;
+}
+
+export interface HeroStrategyGuide {
+  sourceTitle: string;
+  sourceUrl: string;
+  summary: string;
+  paragraphs: string[];
+  situations: HeroStrategySituation[];
+}
+
 export type HeroVideoType = 'paz-gameplay' | 'paz-counters-combos';
 
 export interface HeroVideo {
@@ -68,6 +81,7 @@ export interface Hero {
   difficulty: number;
   summary: string;
   overview?: string;
+  strategyGuide?: HeroStrategyGuide;
   playstyle: string;
   strengths: string[];
   weaknesses: string[];

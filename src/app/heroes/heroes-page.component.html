@@ -177,12 +177,52 @@
         @for (section of fandomOverviewSections(hero); track section.title) {
         <article class="overview-section">
           <strong>{{ section.title }}</strong>
-          <p>{{ section.body }}</p>
+          @for (paragraph of section.paragraphs; track paragraph) {
+          <p [innerHTML]="highlightedOverviewText(hero, paragraph)"></p>
+          <br aria-hidden="true" />
+          }
         </article>
         }
       </section>
 
       <p class="playstyle" [innerHTML]="highlightedAbilityText(hero, displayedPlaystyle(hero))"></p>
+
+      @if (strategyGuide(hero); as strategy) {
+      <section class="ultimate-strategies" aria-label="Hero strategy">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Strategy</p>
+            <h3>How to Play {{ hero.name }}</h3>
+          </div>
+          <a [href]="strategy.sourceUrl" target="_blank" rel="noopener noreferrer">Source</a>
+        </div>
+
+        <article>
+          <span>Main job</span>
+          <p [innerHTML]="highlightedOverviewText(hero, strategy.summary)"></p>
+        </article>
+
+        <article>
+          <span>Strategy notes</span>
+          @for (paragraph of strategy.paragraphs; track paragraph) {
+          <p [innerHTML]="highlightedOverviewText(hero, paragraph)"></p>
+          <br aria-hidden="true" />
+          }
+        </article>
+
+        <article>
+          <span>Situation jobs</span>
+          <ul>
+            @for (situation of strategy.situations; track situation.label) {
+            <li>
+              <strong>{{ situation.label }}</strong>
+              <p [innerHTML]="highlightedOverviewText(hero, situation.description)"></p>
+            </li>
+            }
+          </ul>
+        </article>
+      </section>
+      }
 
       <div class="detail-columns">
         <section>

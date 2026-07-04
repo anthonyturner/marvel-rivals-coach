@@ -32,6 +32,7 @@ import {
   HeroPlaystyleGuide,
   HeroRole,
   HeroRoleAbilityKit,
+  HeroStrategyGuide,
   HeroVideo,
   HeroVideoType,
 } from './hero.model';
@@ -77,7 +78,7 @@ interface DeadpoolAggressivePath {
 
 interface FandomOverviewSection {
   title: string;
-  body: string;
+  paragraphs: string[];
 }
 
 @Component({
@@ -708,6 +709,14 @@ export class HeroesPageComponent implements OnInit {
   }
 
   highlightedAbilityText(hero: Hero, text: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(this.highlightCombatTerms(this.linkAbilityText(hero, text)));
+  }
+
+  highlightedOverviewText(hero: Hero, text: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(this.linkAbilityText(hero, text));
+  }
+
+  private linkAbilityText(hero: Hero, text: string): string {
     const abilities = [...this.displayedAbilities(hero)].sort((a, b) => b.name.length - a.name.length);
     const html = this.escapeHtml(text);
     let linkedHtml = html;
@@ -730,7 +739,7 @@ export class HeroesPageComponent implements OnInit {
       });
     }
 
-    return this.sanitizer.bypassSecurityTrustHtml(this.highlightCombatTerms(linkedHtml));
+    return linkedHtml;
   }
 
   abilityAnchorId(hero: Hero, ability: HeroAbility): string {
@@ -805,6 +814,19 @@ export class HeroesPageComponent implements OnInit {
     return hero.buildProfileRationale ?? buildHeroBuildProfileRationale(hero);
   }
 
+  strategyGuide(hero: Hero): HeroStrategyGuide {
+    return hero.strategyGuide ?? {
+      sourceTitle: `${hero.name} coach strategy`,
+      sourceUrl: this.fandomHeroUrl(hero),
+      summary: this.displayedPlaystyle(hero),
+      paragraphs: [
+        this.displayedPlaystyle(hero),
+        `${hero.name}'s fight plan should be built around ${this.displayedAbilities(hero).slice(0, 2).map((ability) => ability.name).join(' and ') || 'their strongest cooldowns'}.`,
+      ],
+      situations: this.fallbackStrategySituations(hero),
+    };
+  }
+
   fandomOverviewSections(hero: Hero): FandomOverviewSection[] {
     const overview = (hero.overview ?? hero.summary).trim();
     const headingPattern = /\b(Strengths|Weaknesses|Abilities|Tips|Strategy|Trivia|Lore|Overview)\s*:/g;
@@ -813,7 +835,7 @@ export class HeroesPageComponent implements OnInit {
     if (matches.length === 0) {
       return [{
         title: 'Overview',
-        body: overview,
+        paragraphs: this.fandomOverviewParagraphs(hero, overview),
       }];
     }
 
@@ -825,9 +847,9 @@ export class HeroesPageComponent implements OnInit {
 
       return {
         title,
-        body,
+        paragraphs: this.fandomOverviewParagraphs(hero, body),
       };
-    }).filter((section) => section.body.length > 0);
+    }).filter((section) => section.paragraphs.length > 0);
   }
 
   fandomHeroUrl(hero: Hero): string {
@@ -948,6 +970,49 @@ export class HeroesPageComponent implements OnInit {
     }
 
     return 'damage-highlight';
+  }
+
+  private fallbackStrategySituations(hero: Hero): HeroStrategyGuide['situations'] {
+    switch (this.heroRoleLabel(hero)) {
+      case 'Vanguard':
+        return [
+          { label: 'Bait cooldowns', description: 'Show pressure, draw defensive tools or crowd control, then reset before the enemy can punish.' },
+          { label: 'Take space', description: 'Move first when teammates can follow so your pressure turns into a real team angle.' },
+        ];
+      case 'Duelist':
+        return [
+          { label: 'Finish windows', description: 'Commit after enemy mobility, shields, or sustain tools are unavailable.' },
+          { label: 'Split attention', description: 'Use off-angles to make the enemy look away from your frontline without taking a losing isolated duel.' },
+        ];
+      case 'Strategist':
+        return [
+          { label: 'Peel and stabilize', description: 'Hold key utility for the enemy engage and keep line of sight on teammates under pressure.' },
+          { label: 'Resource pacing', description: 'Spend burst healing or defensive tools when damage actually lands.' },
+        ];
+      default:
+        return [
+          { label: 'Choose the job', description: 'Decide whether the fight needs engage, peel, damage, or sustain before committing your kit.' },
+        ];
+    }
+  }
+
+  private fandomOverviewParagraphs(hero: Hero, text: string): string[] {
+    const abilityNames = this.displayedAbilities(hero)
+      .map((ability) => ability.name)
+      .sort((a, b) => b.length - a.length);
+
+    if (abilityNames.length === 0) {
+      return [text.trim()].filter(Boolean);
+    }
+
+    const abilityPattern = new RegExp(`(^|\\s)(?=(${abilityNames.map((name) => escapeRegExp(name)).join('|')})\\b)`, 'g');
+
+    return text
+      .replace(/\s+\*/g, ' ')
+      .replace(abilityPattern, '\n$1')
+      .split(/\n+/)
+      .map((paragraph) => paragraph.trim())
+      .filter(Boolean);
   }
 
 
