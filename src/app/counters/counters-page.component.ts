@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
+import { CounterEngineService } from './counter-engine.service';
 import { HeroDataService } from '../heroes/hero-data.service';
 import { Hero, HeroRole } from '../heroes/hero.model';
 
@@ -14,6 +15,7 @@ type RoleFilter = HeroRole | 'All';
   styleUrl: './counters-page.component.css',
 })
 export class CountersPageComponent implements OnInit {
+  private readonly counterEngine = inject(CounterEngineService);
   private readonly heroDataService = inject(HeroDataService);
   private readonly route = inject(ActivatedRoute);
   private readonly heroes = signal<Hero[]>([]);
@@ -28,15 +30,7 @@ export class CountersPageComponent implements OnInit {
     const role = this.selectedRole();
     const searchTerm = this.searchTerm().trim().toLowerCase();
 
-    return this.heroes().filter((hero) => {
-      const matchesRole = role === 'All' || hero.role === role || this.heroHasRoleKit(hero, role);
-      const matchesSearch =
-        !searchTerm ||
-        hero.name.toLowerCase().includes(searchTerm) ||
-        hero.counters.some((counter) => counter.toLowerCase().includes(searchTerm));
-
-      return matchesRole && matchesSearch;
-    });
+    return this.counterEngine.filterHeroes(this.heroes(), role, searchTerm);
   });
 
   readonly selectedHero = computed(() => {
@@ -52,9 +46,7 @@ export class CountersPageComponent implements OnInit {
       return [];
     }
 
-    return selectedHero.counters
-      .map((counter) => this.findHeroByName(counter))
-      .filter((hero): hero is Hero => Boolean(hero));
+    return this.counterEngine.matchedCounterHeroes(selectedHero, this.heroes());
   });
 
   readonly unmatchedCounters = computed(() => {
@@ -64,7 +56,7 @@ export class CountersPageComponent implements OnInit {
       return [];
     }
 
-    return selectedHero.counters.filter((counter) => !this.findHeroByName(counter));
+    return this.counterEngine.unmatchedCounters(selectedHero, this.heroes());
   });
 
   readonly heroesCounteredBySelected = computed(() => {
@@ -74,18 +66,11 @@ export class CountersPageComponent implements OnInit {
       return [];
     }
 
-    const selectedName = this.normalizeName(selectedHero.name);
-
-    return this.heroes().filter((hero) =>
-      hero.id !== selectedHero.id &&
-      hero.counters.some((counter) => this.normalizeName(counter) === selectedName),
-    );
+    return this.counterEngine.heroesCounteredBy(selectedHero, this.heroes());
   });
 
   readonly topCounteredHeroes = computed(() =>
-    [...this.heroes()]
-      .sort((a, b) => b.counters.length - a.counters.length || a.name.localeCompare(b.name))
-      .slice(0, 6),
+    this.counterEngine.topCounteredHeroes(this.heroes()),
   );
 
   ngOnInit(): void {
@@ -123,154 +108,10 @@ export class CountersPageComponent implements OnInit {
   }
 
   counterSummary(hero: Hero): string {
-    const matched = hero.counters.filter((counter) => this.findHeroByName(counter)).length;
-    const concepts = Math.max(hero.counters.length - matched, 0);
-    const parts = [
-      matched ? `${matched} hero picks` : '',
-      concepts ? `${concepts} matchup notes` : '',
-    ].filter(Boolean);
-
-    return parts.join(' + ') || 'Counter data pending';
+    return this.counterEngine.counterSummary(hero, this.heroes());
   }
 
   counterReason(target: Hero, counterName: string): string {
-    const counter = this.findHeroByName(counterName);
-
-    if (!counter) {
-      return `${counterName} is a matchup answer because it attacks a key part of ${target.name}'s fight plan.`;
-    }
-
-    const targetProfile = this.heroThreatProfile(target);
-    const counterProfile = this.heroAnswerProfile(counter);
-    const specificReason = this.specificCounterReason(target.name, counter.name);
-
-    if (specificReason) {
-      return specificReason;
-    }
-
-    if (targetProfile === 'dive' && counterProfile === 'anti-dive') {
-      return `${counter.name} punishes ${target.name}'s dive timing with area denial, tracking pressure, or peel before the engage can reset.`;
-    }
-
-    if (targetProfile === 'flyer' && counterProfile === 'hitscan') {
-      return `${counter.name} can keep consistent sightline pressure on ${target.name}, forcing them lower, slower, or back to cover.`;
-    }
-
-    if (targetProfile === 'tank' && counterProfile === 'tank-breaker') {
-      return `${counter.name} pressures ${target.name}'s health pool and makes extended frontline trades harder to survive.`;
-    }
-
-    if (targetProfile === 'backline' && counterProfile === 'dive') {
-      return `${counter.name} can reach ${target.name}'s position quickly, force defensive cooldowns, and break their safe support rhythm.`;
-    }
-
-    if (targetProfile === 'sniper' && counterProfile === 'dive') {
-      return `${counter.name} closes distance quickly, denies comfortable sightlines, and turns ${target.name}'s range advantage into a scramble.`;
-    }
-
-    if (targetProfile === 'summon' && counterProfile === 'range') {
-      return `${counter.name} can clear or pressure ${target.name}'s setup from safer angles before the zone takes over the fight.`;
-    }
-
-    if (counterProfile === 'control') {
-      return `${counter.name} interrupts ${target.name}'s preferred timing with crowd control, zoning, or forced repositioning.`;
-    }
-
-    if (counterProfile === 'sustain') {
-      return `${counter.name} helps the team live through ${target.name}'s burst window, denying the quick pick they need.`;
-    }
-
-    return `${counter.name} counters ${target.name} by challenging their preferred range, timing, or cooldown cycle.`;
-  }
-
-  private findHeroByName(name: string): Hero | undefined {
-    const normalized = this.normalizeName(name);
-
-    return this.heroes().find((hero) => this.normalizeName(hero.name) === normalized);
-  }
-
-  private normalizeName(value: string): string {
-    return value
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '');
-  }
-
-  private heroHasRoleKit(hero: Hero, role: RoleFilter): boolean {
-    return role !== 'All' && Boolean(hero.roleAbilityKits?.some((kit) => kit.role === role));
-  }
-
-  private heroThreatProfile(hero: Hero): 'backline' | 'dive' | 'flyer' | 'sniper' | 'summon' | 'tank' | 'general' {
-    if (['Adam Warlock', 'Cloak & Dagger', 'Gambit', 'Invisible Woman', 'Jeff the Land Shark', 'Loki', 'Luna Snow', 'Mantis', 'Rocket Raccoon', 'Ultron', 'White Fox'].includes(hero.name)) {
-      return 'backline';
-    }
-
-    if (['Black Cat', 'Black Panther', 'Daredevil', 'Iron Fist', 'Magik', 'Psylocke', 'Spider-Man', 'Venom', 'Wolverine'].includes(hero.name)) {
-      return 'dive';
-    }
-
-    if (['Angela', 'Human Torch', 'Iron Man', 'Star-Lord', 'Storm'].includes(hero.name)) {
-      return 'flyer';
-    }
-
-    if (['Black Widow', 'Hawkeye', 'Hela', 'The Punisher'].includes(hero.name)) {
-      return 'sniper';
-    }
-
-    if (['Groot', 'Namor', 'Peni Parker'].includes(hero.name)) {
-      return 'summon';
-    }
-
-    if (hero.role === 'Vanguard') {
-      return 'tank';
-    }
-
-    return 'general';
-  }
-
-  private heroAnswerProfile(hero: Hero): 'anti-dive' | 'control' | 'dive' | 'hitscan' | 'range' | 'sustain' | 'tank-breaker' | 'general' {
-    if (['Namor', 'Peni Parker', 'Scarlet Witch', 'The Thing'].includes(hero.name)) {
-      return 'anti-dive';
-    }
-
-    if (['Black Widow', 'Hawkeye', 'Hela', 'The Punisher'].includes(hero.name)) {
-      return 'hitscan';
-    }
-
-    if (['Black Cat', 'Black Panther', 'Magik', 'Psylocke', 'Spider-Man', 'Venom'].includes(hero.name)) {
-      return 'dive';
-    }
-
-    if (['Luna Snow', 'Mantis', 'Invisible Woman', 'Rocket Raccoon', 'Cloak & Dagger'].includes(hero.name)) {
-      return 'sustain';
-    }
-
-    if (['Wolverine', 'The Punisher', 'Hela'].includes(hero.name)) {
-      return 'tank-breaker';
-    }
-
-    if (['Doctor Strange', 'Magneto', 'Moon Knight', 'Human Torch'].includes(hero.name)) {
-      return 'range';
-    }
-
-    if (['Doctor Strange', 'Mantis', 'Scarlet Witch', 'Peni Parker'].includes(hero.name)) {
-      return 'control';
-    }
-
-    return 'general';
-  }
-
-  private specificCounterReason(targetName: string, counterName: string): string {
-    const matchupKey = `${targetName}|${counterName}`;
-    const reasons: Record<string, string> = {
-      'Black Panther|Namor': 'Namor is one of the cleanest anti-dive answers: turret pressure keeps hitting Black Panther through his dash-in rhythm and makes resets much harder.',
-      'Black Panther|Scarlet Witch': 'Scarlet Witch can keep easy tracking damage on Black Panther while he moves through melee range, forcing him to disengage sooner.',
-      'Black Panther|Peni Parker': 'Peni Parker makes the dive path expensive with traps, web zones, and setup control that Black Panther has to cross before reaching the backline.',
-      'Spider-Man|Namor': 'Namor turret pressure tracks Spider-Man during web entries and punishes him before he can finish the backline combo.',
-      'Iron Man|Namor': 'Namor can place pressure that keeps Iron Man from hovering freely, especially when turret angles cover his escape routes.',
-      'Venom|Wolverine': 'Wolverine is built to punish high-health frontliners, so Venom cannot rely on bonus health and extended brawls as freely.',
-      'Hulk|Wolverine': 'Wolverine threatens Hulk in extended close-range fights and cuts through the value Hulk wants from staying in the frontline.',
-    };
-
-    return reasons[matchupKey] ?? '';
+    return this.counterEngine.counterReason(target, counterName, this.heroes());
   }
 }
