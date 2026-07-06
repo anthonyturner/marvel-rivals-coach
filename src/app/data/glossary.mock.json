@@ -779,6 +779,23 @@
     "sourceUrl": "/glossary"
   },
   {
+    "id": "feed",
+    "term": "feed",
+    "category": "Competitive Gaming",
+    "definition": "To die repeatedly or give the enemy easy value, especially when those deaths charge enemy ultimates or create unfair fights.",
+    "coachNote": "Feeding is often a positioning or timing problem, not just a mechanics problem. Reset, group, and stop entering fights before the team is ready.",
+    "example": "Do not feed before our supports get back from spawn.",
+    "relatedTerms": [
+      "Competitive",
+      "Behavior",
+      "Inting",
+      "Throwing",
+      "Ult"
+    ],
+    "sourceName": "Manual glossary entry",
+    "sourceUrl": "/glossary"
+  },
+  {
     "id": "throwing",
     "term": "throwing",
     "category": "Competitive Gaming",
