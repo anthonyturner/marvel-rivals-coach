@@ -812,6 +812,22 @@
     "sourceUrl": "/glossary"
   },
   {
+    "id": "gas-lighting",
+    "term": "gas-lighting",
+    "category": "Internet Slang",
+    "definition": "Manipulating someone into doubting what they saw, remembered, or understood. In game chat, it is often used when someone denies obvious mistakes or tries to rewrite what happened.",
+    "coachNote": "Use this term carefully. Not every disagreement or bad call is gas-lighting; look for repeated denial or blame-shifting that makes teammates question reality.",
+    "example": "Saying the team never grouped after everyone clearly waited together can feel like gas-lighting.",
+    "relatedTerms": [
+      "Chat",
+      "Behavior",
+      "Blame",
+      "Toxicity"
+    ],
+    "sourceName": "Manual glossary entry",
+    "sourceUrl": "/glossary"
+  },
+  {
     "id": "tilted",
     "term": "tilted",
     "category": "Competitive Gaming",
@@ -1028,5 +1044,261 @@
     ],
     "sourceName": "Coach definition informed by Marvel Rivals positioning terms",
     "sourceUrl": "/glossary"
+  },
+  {
+    "id": "vanguard",
+    "term": "Vanguard",
+    "category": "Role",
+    "definition": "The Marvel Rivals frontline role. Vanguards usually have larger health pools, defensive tools, and space-making abilities that let a team start or survive fights.",
+    "coachNote": "A Vanguard's job is not only to soak damage. Good Vanguard play creates timing, cover, and pressure so allies can safely deal damage or heal.",
+    "example": "Doctor Strange, Groot, and Venom are Vanguards.",
+    "relatedTerms": [
+      "Tank",
+      "Frontline",
+      "Sustain",
+      "Engage"
+    ],
+    "sourceName": "Marvel Rivals gameplay overview",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
+  },
+  {
+    "id": "duelist",
+    "term": "Duelist",
+    "category": "Role",
+    "definition": "The Marvel Rivals damage role. Duelists focus on pressure, burst, finishing kills, flanking, or controlling sightlines through damage threat.",
+    "coachNote": "Duelist does not mean ignore the team. Pick a damage job: break shields, pressure flyers, finish isolated targets, or open an angle for the next engage.",
+    "example": "Hela, Spider-Man, and The Punisher are Duelists.",
+    "relatedTerms": [
+      "DPS",
+      "Damage Build",
+      "Flanking",
+      "Target Priority"
+    ],
+    "sourceName": "Marvel Rivals gameplay overview",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
+  },
+  {
+    "id": "strategist",
+    "term": "Strategist",
+    "category": "Role",
+    "definition": "The Marvel Rivals support role. Strategists help teammates through healing, buffs, utility, damage support, and fight-saving cooldowns.",
+    "coachNote": "Strategists are not heal bots. Their cooldown timing, survival, and utility often decide whether a team can reset, re-engage, or survive an ultimate.",
+    "example": "Luna Snow, Mantis, and Rocket Raccoon are Strategists.",
+    "relatedTerms": [
+      "Support",
+      "Backline",
+      "Utility Build",
+      "Peeling"
+    ],
+    "sourceName": "Marvel Rivals gameplay overview",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
+  },
+  {
+    "id": "convoy",
+    "term": "Convoy",
+    "category": "Game Mode",
+    "definition": "An objective mode where the attacking team escorts a moving objective through the map while defenders try to stop or reverse its progress.",
+    "coachNote": "Convoy is about progress management. Attackers need clean pushes around checkpoints; defenders need staged contests and retakes instead of late trickles.",
+    "example": "On Convoy, attackers should group before pushing the vehicle through a dangerous choke.",
+    "relatedTerms": [
+      "Objective",
+      "Payload",
+      "Checkpoint",
+      "Overtime"
+    ],
+    "sourceName": "Marvel Rivals modes overview",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
+  },
+  {
+    "id": "domination",
+    "term": "Domination",
+    "category": "Game Mode",
+    "definition": "A control-point mode where both teams fight over a single objective zone and win the round by holding it to the required score.",
+    "coachNote": "Domination rewards clean rotations and retakes. Do not spend ultimates after the point is already lost unless the team can actually flip it.",
+    "example": "A team may win Domination by capturing two objective rounds before the other team does.",
+    "relatedTerms": [
+      "Objective",
+      "Point Control",
+      "Retake",
+      "Team Fight"
+    ],
+    "sourceName": "Marvel Rivals modes overview",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
+  },
+  {
+    "id": "convergence",
+    "term": "Convergence",
+    "category": "Game Mode",
+    "definition": "A hybrid objective mode where attackers first capture a checkpoint, then escort a moving objective through later checkpoints if the first capture succeeds.",
+    "coachNote": "Convergence asks for two plans: how to break the first point, then how to manage the escort phase once the map opens up.",
+    "example": "After winning the first checkpoint in Convergence, the attacking team swaps from point pressure into escort path control.",
+    "relatedTerms": [
+      "Objective",
+      "Checkpoint",
+      "Convoy",
+      "Map Control"
+    ],
+    "sourceName": "Marvel Rivals modes overview",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
+  },
+  {
+    "id": "conquest",
+    "term": "Conquest",
+    "category": "Game Mode",
+    "definition": "An arcade mode where eliminations drop points that enemies can collect, while allies can pick them up to deny the score.",
+    "coachNote": "In Conquest, confirming the point drop matters as much as getting the elimination. Do not leave free points on the floor after a pick.",
+    "example": "After eliminating an enemy in Conquest, step forward only if it is safe enough to collect or deny the dropped point.",
+    "relatedTerms": [
+      "Arcade",
+      "Final Hit",
+      "Deny",
+      "Elimination"
+    ],
+    "sourceName": "Marvel Rivals modes overview",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
+  },
+  {
+    "id": "doom-match",
+    "term": "Doom Match",
+    "category": "Game Mode",
+    "definition": "A free-for-all arcade mode where players compete for Final Hits, with winners determined by the top half of the lobby or the target score.",
+    "coachNote": "Doom Match is about finishing power and survival. Chasing every duel can hand Final Hits to third parties.",
+    "example": "In Doom Match, a low-health escape can be better than forcing a duel that another player can clean up.",
+    "relatedTerms": [
+      "Arcade",
+      "Final Hit",
+      "Free For All",
+      "Elimination"
+    ],
+    "sourceName": "Marvel Rivals modes overview",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
+  },
+  {
+    "id": "resource-rumble",
+    "term": "Resource Rumble",
+    "category": "Game Mode",
+    "definition": "A mode where teams fight over resource zones, drain resources from captured areas, and may unlock a final contest point depending on progress.",
+    "coachNote": "Resource Rumble is won by rotating early and controlling the next zone before the resource timer forces everyone there.",
+    "example": "When the first resource zone is nearly depleted, rotate toward the next likely fight instead of overcommitting late.",
+    "relatedTerms": [
+      "Objective",
+      "Rotation",
+      "Point Control",
+      "Map Control"
+    ],
+    "sourceName": "Marvel Rivals modes overview",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
+  },
+  {
+    "id": "hero-ban",
+    "term": "Hero Ban",
+    "category": "Ranked",
+    "definition": "A competitive draft rule where teams remove selected heroes from the match so neither side can play them.",
+    "coachNote": "Ban heroes that break your planned composition, dominate the current map, or hard-counter your team's best win condition.",
+    "example": "A team might ban a strong flyer if its composition has weak anti-air pressure.",
+    "relatedTerms": [
+      "Competitive",
+      "Draft",
+      "Meta",
+      "Team Composition"
+    ],
+    "sourceName": "TechRadar - Marvel Rivals ranks and Competitive Mode",
+    "sourceUrl": "https://www.techradar.com/gaming/marvel-rivals-ranks"
+  },
+  {
+    "id": "chrono-shield",
+    "term": "Chrono Shield",
+    "category": "Ranked",
+    "definition": "A ranked protection mechanic that can prevent a demotion or point loss after enough losses have charged it.",
+    "coachNote": "Chrono Shield is a buffer, not a strategy. If it triggers, use the saved rank as a cue to review what is causing the losing streak.",
+    "example": "A fully charged Chrono Shield can shatter instead of letting a ranked loss demote you.",
+    "relatedTerms": [
+      "Ranked",
+      "Competitive",
+      "Demotion",
+      "Ladder"
+    ],
+    "sourceName": "TechRadar - Marvel Rivals ranks and Competitive Mode",
+    "sourceUrl": "https://www.techradar.com/gaming/marvel-rivals-ranks"
+  },
+  {
+    "id": "placement-match",
+    "term": "Placement Match",
+    "category": "Ranked",
+    "definition": "A ranked match used near the start of a season to help determine a player's starting rank around a projected skill level.",
+    "coachNote": "Play placements for stable habits, not desperation. A small sample rewards consistency more than risky hero swaps every fight.",
+    "example": "After a new season begins, placement matches help decide where a player starts on the ranked ladder.",
+    "relatedTerms": [
+      "Ranked",
+      "Competitive",
+      "Ladder",
+      "Matchmaking"
+    ],
+    "sourceName": "Marvel Rivals Competitive overview",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
+  },
+  {
+    "id": "destructible-environment",
+    "term": "Destructible Environment",
+    "category": "Map Control",
+    "definition": "Map geometry that can be damaged or broken, changing sightlines, cover, routes, and fight positions during a match.",
+    "coachNote": "Use destruction deliberately. Breaking cover can expose enemies, but it can also remove your own reset point if you are careless.",
+    "example": "Destroying a wall can open a new sightline onto an objective or deny an enemy's safe corner.",
+    "relatedTerms": [
+      "Cover",
+      "Sightline",
+      "Map Control",
+      "Power Position"
+    ],
+    "sourceName": "Marvel Rivals gameplay overview",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
+  },
+  {
+    "id": "ultimate-charge",
+    "term": "Ultimate Charge",
+    "category": "Combat",
+    "definition": "Progress toward a hero's ultimate ability, built over time and through combat actions until the ultimate becomes available.",
+    "coachNote": "Track ultimate charge by fight rhythm. If the enemy used several high-value cooldowns and won a long fight, expect ultimates soon.",
+    "example": "Feeding before a regroup can give enemies extra ultimate charge for the next fight.",
+    "relatedTerms": [
+      "Ultimate Build",
+      "Ult",
+      "Team Fight",
+      "Cooldown Trade"
+    ],
+    "sourceName": "Marvel Rivals gameplay overview",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
+  },
+  {
+    "id": "final-hit",
+    "term": "Final Hit",
+    "category": "Combat",
+    "definition": "The finishing blow that secures an elimination credit, especially important in modes that score or rank players by final hits.",
+    "coachNote": "Final Hits matter, but do not tunnel on them. Pressuring the right target can win a fight even if someone else gets the final blow.",
+    "example": "Doom Match rewards players for securing Final Hits before the match ends.",
+    "relatedTerms": [
+      "Elimination",
+      "Doom Match",
+      "Target Priority",
+      "Damage Build"
+    ],
+    "sourceName": "Marvel Rivals modes overview",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
+  },
+  {
+    "id": "assist",
+    "term": "Assist",
+    "category": "Combat",
+    "definition": "Credit for helping an ally secure an elimination through support actions such as healing, slowing, boosting, or other utility.",
+    "coachNote": "In Marvel Rivals, assists reward meaningful support value. Strategists can contribute heavily without being the final damage source.",
+    "example": "Healing an ally while they finish a target can contribute to an assist.",
+    "relatedTerms": [
+      "Strategist",
+      "Utility Build",
+      "Elimination",
+      "Support"
+    ],
+    "sourceName": "Polygon - How to get assists in Marvel Rivals",
+    "sourceUrl": "https://www.polygon.com/marvel-rivals-guide/510849/assists-how-to-get"
   }
 ]
