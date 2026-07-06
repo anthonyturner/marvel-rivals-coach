@@ -1300,5 +1300,645 @@
     ],
     "sourceName": "Polygon - How to get assists in Marvel Rivals",
     "sourceUrl": "https://www.polygon.com/marvel-rivals-guide/510849/assists-how-to-get"
+  },
+  {
+    "id": "c9",
+    "term": "C9",
+    "category": "Objective",
+    "definition": "Accidentally leaving an objective during a capture, stall, or overtime moment and losing progress or the point because nobody is contesting it.",
+    "coachNote": "Before chasing kills, check whether someone is still touching objective. Many lost fights are really lost objective discipline.",
+    "example": "The team got three eliminations but C9'd because nobody stayed on point.",
+    "relatedTerms": [
+      "Objective",
+      "Overtime",
+      "Point Control",
+      "Throwing"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
+  },
+  {
+    "id": "dc",
+    "term": "DC",
+    "category": "Gaming Chat",
+    "definition": "Short for disconnected. A player has lost connection to the match or left unexpectedly.",
+    "coachNote": "If a teammate DCs, play for delay and survivability until the match system or teammate reconnect decides what happens next.",
+    "example": "Our Vanguard DC'd before the second fight.",
+    "relatedTerms": [
+      "Chat",
+      "Matchmaking",
+      "Competitive",
+      "AFK"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
+  },
+  {
+    "id": "elo",
+    "term": "Elo",
+    "category": "Ranked",
+    "definition": "A player rating concept used as shorthand for ranked skill or matchmaking strength. In Marvel Rivals discussion, players use it to describe rank movement and match quality.",
+    "coachNote": "Do not judge improvement only by Elo after one session. Look for repeated decisions that make your next ten games more stable.",
+    "example": "A player might say they are in low Elo when their ranked matches feel less coordinated.",
+    "relatedTerms": [
+      "Ranked",
+      "Competitive",
+      "Ladder",
+      "Matchmaking"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
+  },
+  {
+    "id": "pit",
+    "term": "Pit",
+    "category": "Map Control",
+    "definition": "A map hazard or drop-off that can instantly eliminate players who fall into it, often making displacement abilities more dangerous nearby.",
+    "coachNote": "Fight differently near pits. Save mobility, respect knockbacks, and avoid standing where one displacement turns a won fight into a lost one.",
+    "example": "Spider-Man can threaten pit kills by displacing enemies near a ledge.",
+    "relatedTerms": [
+      "Map Control",
+      "Displacement",
+      "Knockback",
+      "Positioning"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
+  },
+  {
+    "id": "rebalance",
+    "term": "Rebalance",
+    "category": "Competitive Gaming",
+    "definition": "A balance update that changes how a hero, ability, or mechanic works, often mixing buffs and nerfs rather than simply making something stronger or weaker.",
+    "coachNote": "After a rebalance, reread the kit instead of relying on old muscle memory. The hero's job may have shifted even if the name stayed the same.",
+    "example": "A patch can rebalance an ability by lowering its burst damage but adding more charges.",
+    "relatedTerms": [
+      "Patch",
+      "Buff",
+      "Nerf",
+      "Meta"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
+  },
+  {
+    "id": "pve",
+    "term": "PvE",
+    "category": "Game Mode",
+    "definition": "Player versus environment. A mode type where players fight non-player enemies rather than another player team.",
+    "coachNote": "PvE is useful for learning basic aim, movement, and ability flow, but it will not teach every habit needed against real players.",
+    "example": "Practice vs. AI is a PvE-style option.",
+    "relatedTerms": [
+      "Practice",
+      "Arcade",
+      "PvP",
+      "Game Mode"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
+  },
+  {
+    "id": "pvp",
+    "term": "PvP",
+    "category": "Game Mode",
+    "definition": "Player versus player. A mode type where teams or players fight against other human-controlled opponents.",
+    "coachNote": "PvP punishes predictable movement and poor timing faster than PvE. Treat scouting and cooldown discipline as part of the fundamentals.",
+    "example": "Quick Match and Competitive are PvP modes.",
+    "relatedTerms": [
+      "Quick Match",
+      "Competitive",
+      "PvE",
+      "Team Fight"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
+  },
+  {
+    "id": "smurfing",
+    "term": "Smurfing",
+    "category": "Ranked",
+    "definition": "When a highly experienced or high-ranked player uses a lower-ranked or new account, often creating uneven matches for less experienced players.",
+    "coachNote": "A smurf can distort one match, but do not let it distort your review. Separate unwinnable pressure from mistakes you can actually fix.",
+    "example": "A high-rank Duelist on a new account can make a low-rank lobby feel much harder than normal.",
+    "relatedTerms": [
+      "Ranked",
+      "Matchmaking",
+      "Inflating the Ladder",
+      "Elo"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
+  },
+  {
+    "id": "proficiency",
+    "term": "Proficiency",
+    "category": "Progression",
+    "definition": "A hero-specific progression system where players complete challenges and earn Proficiency Points to unlock ranks and cosmetic rewards.",
+    "coachNote": "Proficiency shows time and task completion on a hero, not guaranteed decision quality. Use it as motivation, then still review fight choices.",
+    "example": "A player can raise Luna Snow proficiency by completing hero challenges over many matches.",
+    "relatedTerms": [
+      "Hero",
+      "Challenge",
+      "Progression",
+      "Cosmetic"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Proficiency",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Proficiency"
+  },
+  {
+    "id": "damage-boost",
+    "term": "Damage Boost",
+    "category": "Status Effect",
+    "definition": "A buff that increases the amount of damage a hero deals while the effect is active.",
+    "coachNote": "Damage boost is strongest when paired with timing. Boost a planned burst window, not random poke that the enemy can safely heal.",
+    "example": "A Strategist damage boost can help a Duelist finish an exposed target faster.",
+    "relatedTerms": [
+      "Buff",
+      "Damage Build",
+      "Target Priority",
+      "Cooldown Trade"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Status Effects",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Status_Effects"
+  },
+  {
+    "id": "damage-reduction",
+    "term": "Damage Reduction",
+    "category": "Status Effect",
+    "definition": "A buff that reduces incoming damage while active, helping a hero survive pressure or commit into danger.",
+    "coachNote": "Damage reduction is a timing tool. Use it to cross space, survive enemy burst, or hold a position long enough for help to arrive.",
+    "example": "A Vanguard may use damage reduction before leading the team through a choke.",
+    "relatedTerms": [
+      "Buff",
+      "Sustain",
+      "Vanguard",
+      "Engage"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Status Effects",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Status_Effects"
+  },
+  {
+    "id": "healing-reduction",
+    "term": "Healing Reduction",
+    "category": "Status Effect",
+    "definition": "A debuff that reduces the healing a hero receives, making sustain and support resources less effective during the effect.",
+    "coachNote": "When healing reduction lands, swap from slow pressure to confirmation. The window is valuable because normal sustain cannot fully answer it.",
+    "example": "A healing reduction effect can make a high-sustain Vanguard much easier to finish.",
+    "relatedTerms": [
+      "Debuff",
+      "Sustain",
+      "Support",
+      "Target Priority"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Status Effects",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Status_Effects"
+  },
+  {
+    "id": "purify",
+    "term": "Purify",
+    "category": "Status Effect",
+    "definition": "A cleanse effect that removes active debuffs from a hero.",
+    "coachNote": "Purify effects are fight-saving when held for the right debuff. Do not spend them early if the enemy still has a stronger control tool available.",
+    "example": "Purify can remove a dangerous debuff before an ally is focused down.",
+    "relatedTerms": [
+      "Cleanse",
+      "Debuff",
+      "Utility Build",
+      "Cooldown Trade"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Status Effects",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Status_Effects"
+  },
+  {
+    "id": "earthbound",
+    "term": "Earthbound",
+    "category": "Status Effect",
+    "definition": "A debuff that disables movement abilities such as dashes or jumps, making mobile heroes easier to punish.",
+    "coachNote": "Earthbound creates a focus-fire window. Call the target immediately because mobility heroes become much easier to finish while grounded.",
+    "example": "Applying Earthbound to a flyer can stop their escape long enough for the team to punish.",
+    "relatedTerms": [
+      "Debuff",
+      "Crowd Control",
+      "Mobility Build",
+      "Flyer"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Status Effects",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Status_Effects"
+  },
+  {
+    "id": "immobilize",
+    "term": "Immobilize",
+    "category": "Status Effect",
+    "definition": "A debuff that prevents a hero from moving until the effect ends, sometimes described as imprisoning the target.",
+    "coachNote": "Immobilize is strongest when teammates are ready to follow up. A rooted target still needs damage or displacement to become a won fight.",
+    "example": "Immobilizing a flanker can give the backline time to turn and eliminate them.",
+    "relatedTerms": [
+      "Crowd Control",
+      "Debuff",
+      "Peeling",
+      "Target Priority"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Status Effects",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Status_Effects"
+  },
+  {
+    "id": "silenced",
+    "term": "Silenced",
+    "category": "Status Effect",
+    "definition": "A debuff that prevents a hero from using their ultimate ability while the effect is active.",
+    "coachNote": "Silence effects are strongest against heroes who are waiting to turn the fight with an ultimate. Track likely ultimate windows before spending it.",
+    "example": "Silencing a hero before they can ult can stop a fight-winning counterplay.",
+    "relatedTerms": [
+      "Debuff",
+      "Ult",
+      "Ultimate Charge",
+      "Cooldown Trade"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Status Effects",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Status_Effects"
+  },
+  {
+    "id": "quick-match",
+    "term": "Quick Match",
+    "category": "Game Mode",
+    "definition": "The main non-ranked queue for standard Marvel Rivals objective play, featuring modes such as Domination, Convoy, and Convergence.",
+    "coachNote": "Use Quick Match to practice heroes and map flow, but still build ranked habits: regroup, track cooldowns, and play the objective.",
+    "example": "A player can practice a new Strategist in Quick Match before taking them into Competitive.",
+    "relatedTerms": [
+      "PvP",
+      "Competitive",
+      "Domination",
+      "Convoy"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Game Modes",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Game_Modes"
+  },
+  {
+    "id": "competitive",
+    "term": "Competitive",
+    "category": "Game Mode",
+    "definition": "The ranked Marvel Rivals queue where players earn or lose rank points, climb divisions, and play higher-stakes versions of the core objective modes.",
+    "coachNote": "Competitive rewards consistency more than hero hopping. Pick a small pool, review repeated mistakes, and manage tilt between matches.",
+    "example": "Competitive unlocks ranked progression and uses modes such as Domination, Convoy, and Convergence.",
+    "relatedTerms": [
+      "Ranked",
+      "Elo",
+      "Hero Ban",
+      "Placement Match"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Competitive",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Competitive"
+  },
+  {
+    "id": "arcade",
+    "term": "Arcade",
+    "category": "Game Mode",
+    "definition": "A casual hub for alternate Marvel Rivals modes that use different rules from the standard objective queues.",
+    "coachNote": "Arcade can sharpen mechanics and hero comfort, but always check the mode rules before judging whether a play was correct.",
+    "example": "Conquest and Doom Match are examples of Arcade-style modes.",
+    "relatedTerms": [
+      "Conquest",
+      "Doom Match",
+      "Free Fight",
+      "PvP"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Game Modes",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Game_Modes"
+  },
+  {
+    "id": "practice-vs-ai",
+    "term": "Practice vs. AI",
+    "category": "Game Mode",
+    "definition": "A practice queue where players fight AI-controlled opponents using objective rules similar to standard match modes.",
+    "coachNote": "Practice vs. AI is best for learning controls, ability ranges, and map routes. Move to PvP when you need realistic pressure and punishment.",
+    "example": "A beginner can use Practice vs. AI to learn how Convoy objectives move.",
+    "relatedTerms": [
+      "PvE",
+      "Practice",
+      "Quick Match",
+      "Objective"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Game Modes",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Game_Modes"
+  },
+  {
+    "id": "custom-game",
+    "term": "Custom Game",
+    "category": "Game Mode",
+    "definition": "A private or custom rules match setup where players can choose modes, maps, and settings outside normal matchmaking.",
+    "coachNote": "Custom games are excellent for map walkthroughs, team drills, and testing hero interactions without match pressure.",
+    "example": "A team can load a Custom Game to practice a first-point Convergence setup.",
+    "relatedTerms": [
+      "Practice",
+      "Map Control",
+      "Team Composition",
+      "Objective"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Game Modes",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Game_Modes"
+  },
+  {
+    "id": "annihilation",
+    "term": "Annihilation",
+    "category": "Game Mode",
+    "definition": "A large-team mode where two sides score by earning eliminations, with a target score or timer deciding the winner.",
+    "coachNote": "In elimination-heavy modes, survival and cleanup matter more than slow objective posture. Avoid feeding points through isolated duels.",
+    "example": "18 vs. 18 Annihilation rewards teams for reaching the kill target before time expires.",
+    "relatedTerms": [
+      "PvP",
+      "Elimination",
+      "Final Hit",
+      "Team Fight"
+    ],
+    "sourceName": "Marvel Rivals modes overview",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
+  },
+  {
+    "id": "free-fight",
+    "term": "Free Fight",
+    "category": "Game Mode",
+    "definition": "An Arcade-style mode using Quick Match-style rules while allowing duplicate heroes, with ban rules used to keep compositions from becoming too warped.",
+    "coachNote": "Free Fight changes composition expectations. Do not assume normal role balance or duplicate-hero limits apply.",
+    "example": "A Free Fight lobby can include repeated hero picks that standard queues would restrict.",
+    "relatedTerms": [
+      "Arcade",
+      "Quick Match",
+      "Hero Ban",
+      "Team Composition"
+    ],
+    "sourceName": "Marvel Rivals modes overview",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
+  },
+  {
+    "id": "overtime",
+    "term": "Overtime",
+    "category": "Objective",
+    "definition": "A final contest window that keeps an objective fight alive when the timer or score would otherwise end, usually because a team is still contesting.",
+    "coachNote": "Overtime is not the moment for perfect setups. Touch safely, survive, and chain resources so the team gets one more real fight.",
+    "example": "A Vanguard may touch in overtime so teammates can respawn and recontest.",
+    "relatedTerms": [
+      "Objective",
+      "C9",
+      "Contest",
+      "Stall"
+    ],
+    "sourceName": "Coach definition informed by Marvel Rivals objective modes",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Game_Modes"
+  },
+  {
+    "id": "contest",
+    "term": "Contest",
+    "category": "Objective",
+    "definition": "Standing in or near an objective area to prevent the enemy from freely capturing, scoring, or moving the objective.",
+    "coachNote": "Contest with a plan. A clean touch that buys time is useful; walking in alone with no escape usually just feeds ultimate charge.",
+    "example": "A mobile hero can contest the point briefly while the team rotates back.",
+    "relatedTerms": [
+      "Objective",
+      "Overtime",
+      "C9",
+      "Stall"
+    ],
+    "sourceName": "Coach definition informed by Marvel Rivals objective modes",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Game_Modes"
+  },
+  {
+    "id": "checkpoint",
+    "term": "Checkpoint",
+    "category": "Objective",
+    "definition": "A progress marker in objective modes that attackers try to capture or escort toward, often extending the round or changing the map phase.",
+    "coachNote": "Play differently around checkpoints. Attackers should save enough resources to finish the last meters; defenders should stage a real retake before progress locks in.",
+    "example": "Convergence starts with a checkpoint before shifting into an escort phase.",
+    "relatedTerms": [
+      "Convergence",
+      "Convoy",
+      "Objective",
+      "Payload"
+    ],
+    "sourceName": "Marvel Rivals modes overview",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
+  },
+  {
+    "id": "bonus-health",
+    "term": "Bonus Health",
+    "category": "Status Effect",
+    "definition": "Temporary extra health granted by an ability, buff, or effect, increasing how much damage a hero can survive before being eliminated.",
+    "coachNote": "Treat bonus health as a timing resource. Push while it is active, then reset before the extra durability disappears.",
+    "example": "A Vanguard may gain bonus health before committing into the enemy frontline.",
+    "relatedTerms": [
+      "Sustain",
+      "Damage Reduction",
+      "Vanguard",
+      "Buff"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Status Effects",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Status_Effects"
+  },
+  {
+    "id": "healing-over-time",
+    "term": "Healing Over Time",
+    "category": "Status Effect",
+    "definition": "A healing effect that restores health gradually for a duration instead of all at once.",
+    "coachNote": "Healing over time needs patience and cover. If you keep taking burst damage while it ticks, the value disappears before it stabilizes you.",
+    "example": "A Strategist may apply healing over time before the team re-engages.",
+    "relatedTerms": [
+      "Sustain",
+      "Support",
+      "Strategist",
+      "Healing Boost"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Status Effects",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Status_Effects"
+  },
+  {
+    "id": "invulnerable",
+    "term": "Invulnerable",
+    "category": "Status Effect",
+    "definition": "A state where a hero is temporarily immune to incoming damage.",
+    "coachNote": "Do not waste burst into invulnerability. Track when the effect ends and aim to punish the exit timing instead.",
+    "example": "Some abilities briefly make a hero invulnerable during movement or transformation.",
+    "relatedTerms": [
+      "Cooldown Trade",
+      "Damage Reduction",
+      "Phased",
+      "Ultimate"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Status Effects",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Status_Effects"
+  },
+  {
+    "id": "lifesteal",
+    "term": "Lifesteal",
+    "category": "Status Effect",
+    "definition": "A healing effect that restores health based on a portion of the damage dealt to enemies.",
+    "coachNote": "Lifesteal rewards uptime, but it still loses to burst or crowd control. Keep hitting only when your position lets you survive the trade.",
+    "example": "A hero with lifesteal can sustain longer while actively damaging enemies.",
+    "relatedTerms": [
+      "Sustain",
+      "Damage Build",
+      "Healing Reduction",
+      "Brawl"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Status Effects",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Status_Effects"
+  },
+  {
+    "id": "movement-boost",
+    "term": "Movement Boost",
+    "category": "Status Effect",
+    "definition": "A buff that increases movement speed, helping a hero rotate, chase, disengage, or cross dangerous space faster.",
+    "coachNote": "Movement boost is strongest when the team moves with the timing. Speeding in alone usually turns a good buff into an early feed.",
+    "example": "A movement boost can help a team cross a long sightline before poke damage stacks up.",
+    "relatedTerms": [
+      "Mobility Build",
+      "Rotation",
+      "Engage",
+      "Disengage"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Status Effects",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Status_Effects"
+  },
+  {
+    "id": "stealth",
+    "term": "Stealth",
+    "category": "Status Effect",
+    "definition": "A state where a hero becomes invisible or much harder for enemies to see, usually to scout, reposition, or set up an attack.",
+    "coachNote": "Stealth creates first-look advantage, not guaranteed safety. Use it to choose a better angle and exit path before committing.",
+    "example": "A stealth hero can scout a backline route before starting a flank.",
+    "relatedTerms": [
+      "Scouting",
+      "Flanking",
+      "Off-Angle",
+      "Target Priority"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Status Effects",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Status_Effects"
+  },
+  {
+    "id": "rank-one-above-all",
+    "term": "One Above All",
+    "category": "Ranked",
+    "definition": "The top Marvel Rivals ranked designation, commonly shortened to OAA, used for the highest players at the top of the competitive ladder.",
+    "coachNote": "One Above All is a leaderboard goal, not a normal improvement benchmark. Review decisions by fight quality, then let rank follow the consistency.",
+    "example": "A player chasing One Above All needs strong mechanics, hero mastery, map knowledge, and long-term ranked consistency.",
+    "relatedTerms": [
+      "OAA",
+      "Eternity",
+      "Ranked",
+      "Competitive"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Competitive",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Competitive"
+  },
+  {
+    "id": "rank-oaa",
+    "term": "OAA",
+    "category": "Ranked",
+    "definition": "Short for One Above All, the highest Marvel Rivals ranked designation for top competitive players.",
+    "coachNote": "When players say OAA, they usually mean the very top end of the ladder rather than simply a strong ranked player.",
+    "example": "That Duelist peaked OAA last season.",
+    "relatedTerms": [
+      "One Above All",
+      "Eternity",
+      "Ranked",
+      "Ladder"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Competitive",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Competitive"
+  },
+  {
+    "id": "rank-eternity",
+    "term": "Eternity",
+    "category": "Ranked",
+    "definition": "A very high Marvel Rivals rank below the One Above All leaderboard tier, where players continue accumulating points instead of moving through normal sub-tiers.",
+    "coachNote": "At Eternity, small mistakes get punished quickly. Prioritize stable hero pools, matchup knowledge, and clean mental resets between games.",
+    "example": "An Eternity player is expected to understand rotations, ultimate economy, and draft pressure at a high level.",
+    "relatedTerms": [
+      "One Above All",
+      "OAA",
+      "Celestial",
+      "Ranked"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Competitive",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Competitive"
+  },
+  {
+    "id": "rank-celestial",
+    "term": "Celestial",
+    "category": "Ranked",
+    "definition": "A high Marvel Rivals competitive rank below Eternity and above the lower ladder ranks.",
+    "coachNote": "Celestial games often demand strong role discipline. Winning usually comes from coordinated timings, not just individual outplays.",
+    "example": "A Celestial support should know when to kite, peel, and save cooldowns for enemy ultimates.",
+    "relatedTerms": [
+      "Eternity",
+      "Ranked",
+      "Competitive",
+      "Ladder"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Competitive",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Competitive"
+  },
+  {
+    "id": "rank-platinum",
+    "term": "Platinum",
+    "category": "Ranked",
+    "definition": "A Marvel Rivals competitive rank above Gold and below higher ladder ranks such as Diamond and Celestial.",
+    "coachNote": "Platinum is where repeated fundamentals matter more: fewer stagger deaths, cleaner ultimate plans, and better adaptation to enemy win conditions.",
+    "example": "A Platinum player may climb faster by reducing solo engages and improving target priority.",
+    "relatedTerms": [
+      "Gold",
+      "Ranked",
+      "Competitive",
+      "Ladder"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Competitive",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Competitive"
+  },
+  {
+    "id": "rank-gold",
+    "term": "Gold",
+    "category": "Ranked",
+    "definition": "A middle Marvel Rivals competitive rank above Silver and below Platinum.",
+    "coachNote": "Gold is a good place to tighten one or two core habits at a time: group before fights, use cover, and stop spending ultimates after fights are already lost.",
+    "example": "A Gold player who learns to reset instead of feeding can climb without changing heroes.",
+    "relatedTerms": [
+      "Silver",
+      "Platinum",
+      "Ranked",
+      "Competitive"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Competitive",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Competitive"
+  },
+  {
+    "id": "rank-silver",
+    "term": "Silver",
+    "category": "Ranked",
+    "definition": "A Marvel Rivals competitive rank above Bronze and below Gold.",
+    "coachNote": "Silver improvement usually starts with fight structure: regroup, identify the objective, and use abilities with a reason instead of on cooldown.",
+    "example": "A Silver team can win more fights by waiting for all six players before re-engaging.",
+    "relatedTerms": [
+      "Bronze",
+      "Gold",
+      "Ranked",
+      "Competitive"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Competitive",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Competitive"
+  },
+  {
+    "id": "rank-bronze",
+    "term": "Bronze",
+    "category": "Ranked",
+    "definition": "One of the starting lower ranks in Marvel Rivals Competitive, below Silver.",
+    "coachNote": "Bronze climbing is mostly fundamentals: stay near cover, learn your hero's job, group before fights, and avoid giving away free deaths.",
+    "example": "A Bronze player can improve quickly by focusing on survival and simple team timing.",
+    "relatedTerms": [
+      "Silver",
+      "Ranked",
+      "Competitive",
+      "Ladder"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Competitive",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Competitive"
   }
 ]
