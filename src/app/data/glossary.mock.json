@@ -779,6 +779,22 @@
     "sourceUrl": "/glossary"
   },
   {
+    "id": "throwing",
+    "term": "throwing",
+    "category": "Competitive Gaming",
+    "definition": "Playing in a way that causes your team to lose, either intentionally or through very reckless decisions.",
+    "coachNote": "Use this carefully. A bad play is not always throwing; look for repeated choices that ignore the team's win condition.",
+    "example": "stop throwing and group before the next fight",
+    "relatedTerms": [
+      "Competitive",
+      "Behavior",
+      "Inting",
+      "Tilted"
+    ],
+    "sourceName": "Manual glossary entry",
+    "sourceUrl": "/glossary"
+  },
+  {
     "id": "tilted",
     "term": "tilted",
     "category": "Competitive Gaming",
