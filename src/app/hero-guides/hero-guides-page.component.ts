@@ -41,6 +41,17 @@ export class HeroGuidesPageComponent {
       ),
     },
     {
+      kicker: 'Vanguard Fundamentals',
+      title: 'Turns, space control, and solo tanking',
+      description:
+        'Tank-specific decision guides for walking forward with purpose, giving space safely, and protecting the team without feeding.',
+      guides: this.fundamentalsGuides.filter((guide) =>
+        [
+          'tank-fundamentals-turns-space',
+        ].includes(guide.heroId),
+      ),
+    },
+    {
       kicker: 'Duelist Fundamentals',
       title: 'Pressure, angles, target priority, and resets',
       description:

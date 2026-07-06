@@ -10,6 +10,12 @@ export interface HeroUltimateGuide {
   avoidInto: string[];
 }
 
+export interface HeroGuideImage {
+  src: string;
+  alt: string;
+  label: string;
+}
+
 export interface HeroGuide {
   heroId: string;
   heroName: string;
@@ -18,6 +24,7 @@ export interface HeroGuide {
   image: string;
   sourceLabel: string;
   sourceUrl?: string;
+  relatedImages?: HeroGuideImage[];
   summary: string;
   poolJob: string;
   pickWhen: string;
@@ -114,6 +121,345 @@ export const HERO_GUIDES: HeroGuide[] = [
       },
     ],
     ultimates: [],
+  },
+  {
+    heroId: 'tank-fundamentals-turns-space',
+    heroName: 'Tank Fundamentals: Turns And Space',
+    category: 'fundamentals',
+    role: 'Vanguard',
+    image: '/images/heroes/captain-america.png',
+    sourceLabel: 'Tank rank-up guide transcript',
+    sourceUrl: 'https://www.youtube.com/watch?v=axEc0rgvYi4&t=1801s',
+    relatedImages: [
+      { src: '/images/heroes/magneto.png', alt: 'Magneto', label: 'Solo tank anchor' },
+      { src: '/images/heroes/doctor-strange.png', alt: 'Doctor Strange', label: 'Point control' },
+      { src: '/images/heroes/emma-frost.png', alt: 'Emma Frost', label: 'Frontline turns' },
+      { src: '/images/heroes/venom.png', alt: 'Venom', label: 'Dive timing' },
+      { src: '/images/heroes/hulk.png', alt: 'Hulk', label: 'Side-space bully' },
+      { src: '/images/heroes/thor.png', alt: 'Thor', label: 'Angle clear' },
+    ],
+    summary:
+      'A Vanguard fundamentals guide about taking turns, holding space, main tank vs off tank jobs, solo tanking, and using ultimates during the fight instead of forcing them as risky openers.',
+    poolJob:
+      'Hold as much useful space as possible without dying, read whose turn it is, and spend cooldowns when your team can actually follow up.',
+    pickWhen:
+      'Use this guide when you play Vanguard, fill solo tank, push too far without follow-up, sit cart after won fights, or struggle to understand when you should walk forward or give space.',
+    sections: [
+      {
+        title: 'Tank is a fundamentals role',
+        points: [
+          'Vanguard is not only about being durable. The role asks for strong game awareness, map understanding, cooldown discipline, and timing.',
+          'A tank player often sees the most information because they are near the front of the fight and can read what is happening in front of and behind them.',
+          'Your rank-up path on tank is mostly fundamentals: knowing when to hold, when to give space, when to peel, when to support your team turn, and when to disengage.',
+          'The two biggest carry habits are holding as much space as possible and not dying.',
+          'You do not need to make every play yourself. You need to create playable fights for the rest of your team.',
+        ],
+      },
+      {
+        title: 'Understand turns',
+        points: [
+          'The guide frames Marvel Rivals fights as a turn-based rhythm: one team spends pressure, the other team answers, then space changes hands.',
+          'Dive pressure usually goes first. If an enemy Venom dives your backline, your team has to spend attention and healing on that dive before you can safely walk forward.',
+          'If you push alone while your own backline is being attacked, you may get no follow-up, burn all your resources, and die wondering why nobody came with you.',
+          'When an enemy diver leaves low and their supports have to heal them, that can become your team turn. Walk forward and spend offensive cooldowns while the enemy is busy recovering.',
+          'In front-to-back fights without divers, turns often come from whoever takes more poke first. If their tank is low and walking backward, your team can walk forward.',
+          'When it is your team turn, spend offensive abilities. When it is the enemy turn, play cover, hold S, preserve health, and be willing to give space.',
+        ],
+      },
+      {
+        title: 'Main tank job: own main space',
+        points: [
+          'A main tank is responsible for the objective lane, the main choke points, and the path your team needs to cross.',
+          'After winning a fight, do not default to sitting on cart. Take forward space, set a line, and make the enemy fight earlier.',
+          'Think of map space like properties on a board. You want to hold as many useful properties as you safely can.',
+          'Holding forward on offense can guarantee more cart progress even if you lose the next fight because the objective has moved during neutral.',
+          'Forward holds should be soft holds, not ego holds. If multiple enemies walk out or your supports are far back on cart, give space before you get low.',
+          'Hold close to cover, then gradually fall back from corner to corner instead of giving up the whole map at once.',
+        ],
+      },
+      {
+        title: 'Cover, corners, and right-hand peeks',
+        points: [
+          'You cannot hold space while taking infinite damage. Good tanking is about making enemies work for every point of health they take from you.',
+          'Use corners and right-hand peeks to deal damage while exposing as little of yourself as possible.',
+          'Do not farm support ultimates by eating free damage if that damage forces you out of space or gets you killed.',
+          'Power positions matter. Sometimes high ground is more important than a default corner because a DPS on that high ground can create too many angles on you.',
+          'Know your hero limits. A tank with easy vertical movement can contest power positions differently than Emma Frost or another less flexible frontline tank.',
+          'If you cannot safely contest a power position, back up to the next cover line instead of dying for space your hero cannot hold.',
+        ],
+      },
+      {
+        title: 'Marking angles depends on your tank',
+        points: [
+          'Whether you should chase an enemy DPS angle depends on your hero range, mobility, and job in the composition.',
+          'Magneto can often sit point and shoot because his range lets him influence angles without abandoning main.',
+          'Emma Frost can poke some angles with beam, but she should not spend too much time walking away from point if that lets the enemy tank push into her backline.',
+          'A low-range frontline tank should not chase every Star-Lord or ranged angle if doing so gives up main control.',
+          'Mobile tanks such as Rogue, Hulk, Thor, Captain America, or Venom can contest some side angles more naturally, but they still need an exit plan.',
+        ],
+      },
+      {
+        title: 'Off tank job: clear side space',
+        points: [
+          'Main tanks usually hold the objective and main route. Off tanks can hold and clear the side spaces, high grounds, and off-angles.',
+          'Mobile off tanks can bully enemy Duelists who are routing toward your backline, forcing them to spend cooldowns or leave before they get value.',
+          'Clearing an off-angle can create a free turn for your team because the enemy angle has to retreat and receive healing.',
+          'Captain America and Venom are especially good at pressuring poke heroes on height because they can close distance quickly and drive them away.',
+          'Hulk, Rogue, and Thor can be very good into enemy divers because they can meet those divers on side routes and make them use resources before they reach your supports.',
+          'Your goal as an off tank is not random chasing. Your goal is to remove the angles that stop your team from walking forward.',
+        ],
+      },
+      {
+        title: 'Solo tanking: play like a 600 HP support',
+        points: [
+          'Solo tanking is more limited than playing with two tanks. You usually cannot leave point or main space to take creative angles.',
+          'The guide identifies Magneto, Emma Frost, and Doctor Strange as comfortable solo tank options because they can hold point, protect space, and support teammates reliably.',
+          'The three main solo tank jobs are simple and non-negotiable.',
+          'Main point 1: hold the objective. Contest point or main space for as long as you can without dying.',
+          'Main point 2: shoot whoever your DPS are shooting. When your Duelists start a real play, add your damage and utility to their target.',
+          'Main point 3: peel whoever is on your backline. If enemy divers hit your supports, protect your supports first so your team keeps enough sustain to hold.',
+          'If your backline is being dove, take cover first because your supports are busy surviving and may not be able to heal you.',
+          'Use bubbles, shields, poke, or pressure to help your supports live, then look forward again after the enemy dive leaves.',
+          'When both teams dive at the same time, solo tank priority is usually protecting your supports before helping your own diver, because losing a support can make holding point impossible.',
+        ],
+      },
+      {
+        title: 'Support your Duelists on their turn',
+        points: [
+          'When solo tanking with three Duelists, the game puts more playmaking weight on the Duelists and asks you to support their timing.',
+          'If your Iron Fist, Spider-Man, Phoenix, or another Duelist commits to a real angle, help by shooting their target, bubbling them if possible, or walking forward enough to make their play safer.',
+          'Do not try to create a solo flank play as the only tank if it exposes your supports and abandons point control.',
+          'Watch which target your DPS can actually reach. Sometimes your job is to weave shots past the enemy tank and help finish the squishier target your Duelist is pressuring.',
+          'If your Duelists are ahead of you and likely die unless you help, the fight may require you to take a little more space and support that play.',
+        ],
+      },
+      {
+        title: 'Ultimate timing for tanks',
+        points: [
+          'The guide warns against using tank ultimates as risky fight openers, especially when solo tanking.',
+          'Use tank ultimates during a turn, after the fight has started and enemy resources are already committed.',
+          'A Doctor Strange ultimate can be stronger as peel when enemies dive your backline than as a predictable opener before anyone has spent cooldowns.',
+          'A Magneto ultimate can deny healing on a low target during an active fight, turning a frontline trade into a kill and then becoming offensive pressure with the throw.',
+          'Ultimates used during the fight are harder to counter because the enemy has fewer clean answers available.',
+          'Your life is extremely valuable as the solo tank. Do not take unnecessary ultimate setups that get you killed and give the enemy infinite space.',
+        ],
+      },
+      {
+        title: 'Tank checklist',
+        points: [
+          'Ask whose turn it is before spending major cooldowns.',
+          'Walk forward when your team has pressure or the enemy is recovering.',
+          'Give space when the enemy is spending resources and your team needs to live.',
+          'Hold the most forward space you can safely hold, then fall back by cover lines.',
+          'Clear side angles if your hero has the mobility and range to do it without abandoning your job.',
+          'When solo tanking, prioritize support survival, objective control, and helping your DPS target.',
+          'Use ultimates during active turns instead of opening fights with risky, easy-to-counter setups.',
+        ],
+      },
+    ],
+    ultimates: [],
+  },
+  {
+    heroId: 'captain-america',
+    heroName: 'Captain America',
+    category: 'hero',
+    role: 'Vanguard',
+    image: '/images/heroes/captain-america.png',
+    sourceLabel: 'Paz Captain America comprehensive guide',
+    sourceUrl: 'https://www.youtube.com/watch?v=HZrBVN4tuik',
+    relatedImages: [
+      { src: '/images/heroes/venom.png', alt: 'Venom', label: 'Best tank partner' },
+      { src: '/images/heroes/psylocke.png', alt: 'Psylocke', label: 'Dive follow-up' },
+      { src: '/images/heroes/black-panther.png', alt: 'Black Panther', label: 'Backline collapse' },
+      { src: '/images/heroes/iron-fist.png', alt: 'Iron Fist', label: 'Pressure duo' },
+      { src: '/images/heroes/luna-snow.png', alt: 'Luna Snow', label: 'Support pairing' },
+      { src: '/images/heroes/the-punisher.png', alt: 'The Punisher', label: 'Shield threat' },
+    ],
+    summary:
+      'Captain America is a mobile dive Vanguard who wins through pressure, displacement, soft engages, backline disruption, and timely peel instead of sitting main and punching tanks all game.',
+    poolJob:
+      'Stage around the enemy, force support cooldowns, help friendly divers collapse, intercept flankers when your supports need help, and use Freedom Charge to engage, answer threats, or stall.',
+    pickWhen:
+      'Pick Captain America when your team can surround the enemy with dive pressure, when you need a Vanguard who can harass poke/backline heroes, or when your supports need a mobile tank who can peel without becoming stationary.',
+    sections: [
+      {
+        title: 'General philosophy: do not sit main',
+        points: [
+          'The guide opens with a clear warning: Captain America does not get full value by sitting in main and punching tanks the entire game.',
+          'His value comes from pressure and displacement. You either help set up a dive by surrounding the enemy team or intercept a flanker before they reaches your supports.',
+          'If your team has divers like Psylocke, Daredevil, Iron Fist, or Black Panther, look to aid their backline pressure instead of playing a slow frontline trade.',
+          'If your supports are struggling, flip the job: stop enemy flankers before they get a clean engage.',
+          'Cap is at his best when he stages intelligently, draws a circle around the enemy team, forces resources, and then decides whether the next touch is a kill attempt or a reset.',
+        ],
+      },
+      {
+        title: 'Sentinel Strike: punch into shield pressure',
+        points: [
+          'Sentinel Strike starts with melee punches that deal 40 damage per punch and build charges under the reticle.',
+          'After four charges, or after punching a target twice, Captain America gains mini shield throws that deal 45 damage per hit.',
+          'The mini shield throws do not ricochet like Vibranium Energy Saw, but they automatically target enemies near the crosshair.',
+          'The guide notes a practical aiming quirk: aiming slightly to the right of a target gives more generous homing than aiming to the left.',
+          'The mini shields only travel about 25 meters, so they are not a long-range poke plan. They are a chase and pressure tool once you are already close.',
+          'You can build Sentinel Strike charges off Groot walls, Loki clones, and Moon Knight ankhs, but not off inanimate shields such as Emma Frost shield.',
+        ],
+      },
+      {
+        title: 'Leading Dash and Super-Soldier Slam',
+        points: [
+          'Leading Dash gives Captain America a 33% sprint speed boost with no cooldown and no energy meter.',
+          'You can sprint between mini shield throws to stay on targets, but if you spam sprint and throws too quickly, you can cancel the shield throw and lose damage.',
+          'The guide recommends listening for the shield impact sound before throwing again so the rhythm stays clean.',
+          'Sprint can be hold or toggle based on comfort. The guide cares more about doing the Captain America idea correctly than tiny sprint min-maxing.',
+          'Jumping while sprinting unlocks Super-Soldier Slam, a ground slam that deals 30 damage and launches enemies upward.',
+          'If you are already close, punch twice, slam, then follow with mini shield throws. If a friendly diver engages first, slam with them to help burst a support.',
+          'Super-Soldier Slam can also be an escape tool, but it has a 12-second cooldown, so do not spend it casually if you will need it to leave.',
+        ],
+      },
+      {
+        title: 'Living Legend: shield for stuns and clutch blocks',
+        points: [
+          'Living Legend raises Cap shield and deflects projectiles in random directions, unlike Daredevil-style aiming deflects.',
+          'Melee hits and beams do not deflect back, though some beam damage can still be blocked.',
+          'The shield has 350 health and recovers 50 health per second while put away.',
+          'You cannot spam the shield freely: after lowering it there is a short lockout, and if it breaks completely you wait longer before using it again.',
+          'The guide says the shield is mainly for dodging stuns and surviving sticky moments, such as Luna snowballs or Hela stuns.',
+          'It can also protect friendly supports from projectile pressure and certain ultimates, including Iron Man and Magneto situations.',
+          'Do not hold shield just because it is available. Better pathing, cover, health packs, and support healing can solve many poke situations without spending your key defensive tool.',
+        ],
+      },
+      {
+        title: 'Liberty Rush: finish or escape, not both',
+        points: [
+          'Liberty Rush sends Captain America forward in a 12-meter charge that deals 30 damage.',
+          'It can be used every 10 seconds regardless of whether Living Legend is up, down, or broken.',
+          'During the dash, Cap is crowd-control immune, which lets him dodge tools such as Luna snowball, Doctor Strange ultimate, and even Jeff ultimate timing.',
+          'The guide frames Liberty Rush as a tool to either finish a target quickly or get out of danger.',
+          'Because the dash stops when it hits a target, it is not like Psylocke dash. You usually cannot use the same Liberty Rush to both damage through someone and escape cleanly.',
+          'If the engage is only a soft engage to force resources, consider saving Liberty Rush so you can dodge CC and leave.',
+        ],
+      },
+      {
+        title: 'Vibranium Energy Saw and the core combo',
+        points: [
+          'Vibranium Energy Saw is the larger shield throw. It deals 70 damage on first hit, then can ricochet up to three times with reduced damage each bounce.',
+          'Throwing it at the ground near a target can still ricochet into them, which makes aiming at the legs more consistent than trying to land perfect direct hits every time.',
+          'Do not throw it too early from stealth or staging, because it alerts enemies and gives supports time to heal the damage.',
+          'Do not hold it forever either. If you never weave it in, you lose finishing power and pressure.',
+          'The guide combo is: sprint, jump, Vibranium Energy Saw, wait, left click, Liberty Rush, then left click.',
+          'Use this harder combo when you and another diver are trying to kill. For a soft engage, use shield throw and slam pressure, then save Liberty Rush to leave or dodge crowd control.',
+          'Cap abilities are simple alone but hectic together, so the guide recommends practicing the timings in the range until the rhythm feels natural.',
+        ],
+      },
+      {
+        title: 'Freedom Charge: mini support ultimate',
+        points: [
+          'Freedom Charge gives Captain America and nearby allies bonus health plus a 30% movement speed boost.',
+          'On cast, Cap gains 150 bonus health and nearby allies gain 100 bonus health. After that, Cap radiates more bonus health over time while the ultimate is active.',
+          'Try to pop it near teammates when possible so they receive the immediate bonus health and can use the trail/aura during the fight.',
+          'The guide describes three major uses: engaging, countering medium threats, and stalling.',
+          'As an engage, it lets Cap and his team move quickly into the enemy backline without spending a stronger support ultimate first.',
+          'As a counter, it can answer medium-level threats such as Star-Lord ultimate, Psylocke pressure, Black Panther pressure, or moments where your backline needs immediate durability.',
+          'As a stall tool, it makes Cap extremely hard to kill while he bumps enemies around and buys time on the objective.',
+          'Consider turning on ally health bars for Captain America because the ultimate can save teammates like a support tool, but tanks do not naturally get the same critical health prompts supports do.',
+        ],
+      },
+      {
+        title: 'Counters and annoying matchups',
+        points: [
+          'The guide argues Emma Frost is not necessarily a hard counter if you are skilled on Captain America because Liberty Rush can dodge key CC and Cap mobility makes him hard to pin down.',
+          'Peni Parker and The Thing are called out as more annoying Vanguard matchups.',
+          'One practical ranked weakness is that some teammates only understand simple front-to-back brawls, so picking Cap instead of Magneto, Emma, or Strange can confuse your team plan.',
+          'Winter Soldier is annoying because he can dash into you and force you to leave without mobility.',
+          'Namor can be annoying because Cap cannot easily clear turrets alone, though Cap health pool helps him soak more than a squishy diver would.',
+          'Punisher is dangerous if he can aim because he can shred your shield quickly and make your staging feel fragile.',
+          'Duelists that mark or track you, such as Iron Fist and Daredevil, can make it much harder to take clean angles.',
+          'Ultron is mentioned as a major answer to Freedom Charge because his pressure can burn through the bonus health plan.',
+        ],
+      },
+      {
+        title: 'Synergies: surround and collapse',
+        points: [
+          'Cap has a team-up with Winter Soldier that lets Bucky reposition to him, but the guide treats it as useful rather than the main reason to pick Cap.',
+          'Venom is highlighted as the best tank partner because Cap and Venom can take different angles and collapse on the same target, instantly forcing support cooldowns.',
+          'Angela can be added to create even more pressure: multiple huge health bars converging from different angles can overwhelm ranked teams.',
+          'Dive or pressure Duelists such as Psylocke, Black Panther, Iron Fist, and Star-Lord fit Cap game plan because they want to surround enemies and cook the backline.',
+          'Human Torch can pair well because Cap can punch enemies and force them to kite through Torch fire zones.',
+          'Luna Snow is called out as a strong support pairing, while Mantis can make Cap engages more lethal without needing to overcommit.',
+        ],
+      },
+      {
+        title: 'VOD lesson: force cooldowns before kills',
+        points: [
+          'The Paulie VOD review reinforces that the whole Cap idea is not always killing immediately. It is pressuring enemies, forcing resources, and then taking the harder engage after cooldowns are gone.',
+          'In one fight, Cap stages away from main, waits for the friendly Psylocke flank to be ready, then slams into supports once the enemy backline is vulnerable.',
+          'After a pick or forced resource, he leaves instead of feeding, then re-enters when the next opening appears.',
+          'The guide praises using Cap to clear space for a flanking Jeff, letting Jeff create a strong damage/healing angle from behind the enemy team.',
+          'In chaotic triple-support fights, Cap should put out fires: pressure the threat that matters, force support ultimates, and use Freedom Charge so your own supports can ult second.',
+          'If you cannot peel a backline threat because it is already too committed or too far gone, look for an equal or better play on the enemy backline instead of wasting time.',
+        ],
+      },
+      {
+        title: 'Soft engage discipline',
+        points: [
+          'A soft engage is a pressure touch designed to force cooldowns, not a full all-in.',
+          'The VOD shows Cap jumping supports, forcing Mantis sleep or Luna snowball, then using Liberty Rush or shield discipline to leave before the punish lands.',
+          'Many Cap players reach supports and assume the job is to keep holding primary fire. The guide says the better habit is to read the defensive cooldown and leave if the hard engage is not ready.',
+          'Once sleep, snowball, runes, portals, or other support tools are forced, the next engage is much easier and much more dangerous.',
+          'Soft pressure on supports can also starve healing from the enemy frontline, letting your team win point or kill the tank without Cap personally finishing the support.',
+          'Good Captain America play is composure: do not go too deep, do not die for the first touch, and let the pressure stack until the fight cracks.',
+        ],
+      },
+    ],
+    ultimates: [
+      {
+        name: 'Freedom Charge: Engage',
+        plan:
+          'Use Freedom Charge after a soft engagement or as your team is ready to move so Cap, divers, and follow-up damage can flood the backline together.',
+        goodAgainst: [
+          'Backlines with forced cooldowns',
+          'Dive partners such as Psylocke or Black Panther',
+          'Teams that are slow to turn around',
+          'Fights where you want speed without spending a major support ultimate first',
+        ],
+        avoidInto: [
+          'Opening before your team can follow',
+          'Using it far away from allies who need the bonus health',
+          'Ultron pressure that can burn through the sustain plan',
+        ],
+      },
+      {
+        name: 'Freedom Charge: Counter-threat',
+        plan:
+          'Treat Cap ultimate like a mini support ultimate into medium threats. Pop it near your team when enemy pressure lands and use the movement speed to escape or turn.',
+        goodAgainst: [
+          'Star-Lord ultimate',
+          'Psylocke or Black Panther diving supports',
+          'Jeff Storm-style combo pressure',
+          'Moments where supports would otherwise spend a bigger ultimate',
+        ],
+        avoidInto: [
+          'Huge fight-ending ultimates that need stronger answers',
+          'Using it after teammates are already split beyond the aura',
+          'Silently using it when your supports are already committing their ultimates',
+        ],
+      },
+      {
+        name: 'Freedom Charge: Stall',
+        plan:
+          'Use Freedom Charge to buy objective time, keep yourself alive, bump enemies around with shield interactions, and survive long enough for teammates to return or finish the fight.',
+        goodAgainst: [
+          'Last-second objective contests',
+          'Overtime stalls',
+          'Messy fights where living is the win condition',
+          'Buying time for support ultimates or respawns',
+        ],
+        avoidInto: [
+          'Stalling alone with no realistic team return',
+          'Running away from the objective trail value',
+          'Treating stall as permission to ignore cover completely',
+        ],
+      },
+    ],
   },
   {
     heroId: 'deadpool',

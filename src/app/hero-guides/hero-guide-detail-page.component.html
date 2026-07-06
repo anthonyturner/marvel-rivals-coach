@@ -23,6 +23,15 @@
       </article>
     </section>
 
+    <section class="related-image-strip" aria-label="Related guide heroes">
+      @for (image of relatedImages(guide); track image.src + image.label) {
+        <article>
+          <img [src]="image.src" [alt]="image.alt" loading="lazy" />
+          <span>{{ image.label }}</span>
+        </article>
+      }
+    </section>
+
     <section class="source-panel" aria-label="Original guide source">
       <div>
         <span>Original source</span>

@@ -1,0 +1,239 @@
+Chapter 1: Intro
+0:00Captain America has been a solid tank since the game has come out, but so many players are afraid of picking him and locking in. My name is Paz, an eternity
+0:088 secondsplayer on the competitive ladder, and I'm going to tell you all of the things you need to know in order to pop off and carry your ranked games on Captain America. Starting things off, understand
+Chapter 2: General Philosophy
+0:1717 secondsthat Captain America is a tank that wears many different hats, but he does not wear the hat of sitting in main and just punching the tanks the whole game.
+0:2424 secondsInstead, he plays to either set up a dive by surrounding the enemy team or intercepting a flanker before they do the same to your team. It all depends on
+0:3232 secondswhat you have and what your team needs, but pressure and displacement is the name of the game to get the most out of Captain America. If you have characters
+0:4040 secondslike Psylock or Daredevil, look to aid them in their dives against supports in the backline. And if your supports are struggling, try to stop characters like
+0:4747 secondsBP before those characters go in on your supports. With all that out of the way, we'll talk a little bit more about that in the Bronx GM, but let's get into
+0:5555 secondsCaptain America's kit. Starting off with Cap's primary damage ability, we have Sentinel Strike. That honestly is one of the more complicated attacks in the
+Chapter 3: Sentinel Strike (Primary Attack)
+1:031 minute, 3 secondsgame, at least at first glance. First, Captain America punches targets for 40 damage per punch while also gaining two
+1:101 minute, 10 secondscharges below his reticle. When you get four charges under the reticle or punch a target twice, Cap gains access to mini
+1:181 minute, 18 secondsshield throws that deal 45 damage per hit. These shields do not ricochet like other shields we'll talk about later, but they do automatically target enemies
+1:261 minute, 26 secondsthat are near your crosshair, which is pretty nice. For some reason, if you aim to the left of a target, it actually doesn't really home in at all, but if you aim to the right, it's very generous
+1:351 minute, 35 secondswith its homing capabilities. So, make sure you're aiming to the right. Just know that the shields don't have unlimited range either, though. They only fly for 25 m before they come back
+1:431 minute, 43 secondsto you. Why you'd be 25 m away from your target, I don't really know. But hey, now you know that they do have just this like weird fall-off thing. Later in the
+1:511 minute, 51 secondsguide, we will go over a bunch of different combos. But as it stands right now in the guide, we're just going to keep it super simple. And honestly, the combos aren't that crazy either.
+2:002 minutesSomething to note about the shield through charges is that you actually can build them off of Groot walls and Loki clones, but you can't build them off of
+2:072 minutes, 7 secondsinanimate shields like Emma's, for example. But even like moonnight ox, those work too. Typically, when attacking an enemy on cap, it is very
+2:152 minutes, 15 secondseasy for them to run away from you since you're using a melee attack. But this is where your leading dash comes in, allowing you to run 33% faster whenever
+Chapter 4: Leading Dash (Sprint)
+2:222 minutes, 22 secondsyou hold shift. While using your mini shield throws, you can actually sprint in between each throw to keep up with your targets so they have a really hard
+2:312 minutes, 31 secondstime getting away from you. The issue is is that if you actually spam your throws and your dash way too fast, it gets to a point where you actually just cancel
+2:392 minutes, 39 secondsyour shield throw altogether, making your damage zero, just absolutely nothing. Instead, what you actually need to be doing is you need to wait until you hear the impact sound of the shield.
+2:492 minutes, 49 secondsThat sounds like a juicy true Jedi like Lego game dink. Like here, just just listen for yourself. them.
+2:572 minutes, 57 secondsIn the settings, you can also switch the sprint from hold to just a toggle tap to sprint, which can make some of the combos easy and more efficient to hit.
+3:053 minutes, 5 secondsBut to be honest, if you want to run someone down, you can just hold your sprint key and then click punch when you need to without really letting go of
+3:133 minutes, 13 secondsthat sprint key. Sure, you might lose a little bit of sprint speed. I mean, there's been some tests and it's like a fraction of a second faster, but if you
+3:203 minutes, 20 secondswere playing literally all day or even if you're just picking it up every now and then, I just don't think there's really a need to minmax and be crazy here. Do what you think is comfortable,
+3:293 minutes, 29 secondswhatever you're used to, and just do the idea of Captain America correctly. This isn't all you get from sprint, though.
+3:343 minutes, 34 secondsThere is a still a little bit more that you can get out of this. When you jump in the air, you can also gain access to a super soldier slam that can be activated to slam into the ground based
+3:433 minutes, 43 secondson where the shield reticle shows up as seen on screen. This ability deals 30 damage and also launches enemies up, like a venom slam for example, allowing
+3:513 minutes, 51 secondsyou to start combos while also making it harder for enemies to get away from you.
+3:553 minutes, 55 secondsIf you can close the distance on an enemy before jumping on the air, I mean, you should just punch them twice, slam them, and then go crazy with your mini shield throws. If not, you can also just
+4:034 minutes, 3 secondsslam the target when a friendly diver engages. It's very easy to just completely blow up a support this way.
+4:084 minutes, 8 secondsYou can also use the ability to leave if you need to, but that just depends on whether or not your target's going to get peel or not. Just keep in mind that
+4:154 minutes, 15 secondsthe slam is on a 12 second cool down. So if you go in, you're not really going to be able to get out with this ability unless you use your ultimate and you stall for a really long time. The nice
+4:234 minutes, 23 secondspart about the sprint on Captain America though is that there is no cool down associated with it. There isn't even an energy bar. The only reason why you
+4:314 minutes, 31 secondswouldn't want to really run all the time then is just that it is pretty loud. So if you were trying to conceal a very deep flank, you're actually just going
+4:384 minutes, 38 secondsto want to have to just walk there. But to be honest, good players will know that you are going to be coming anyways from that angle. So stage in a way that you're going to be able to draw a circle
+4:464 minutes, 46 secondsaround the enemy team, dive when you're ready, force out resources, and then take the fight from there. Next up, let's talk about his shield, living legend. Upon holding right click by
+Chapter 5: Living Legend (Shield)
+4:554 minutes, 55 secondsdefault, Cap pulls his shield up in front of him, deflecting any projectiles shot at him back at the enemies in a random direction. This is different from
+5:045 minutes, 4 secondsDaredevil, for example, where every single blocked projectile actually goes where your reticle goes. This time, it is completely random. So melee hits and
+5:115 minutes, 11 secondsbeams do not get deflected back. But things like hella daggers, Iron Man als mag alts, all of those things work. The laser will still get blocked from Emma
+5:195 minutes, 19 secondsthough. It just doesn't get deflected back at her. The shield also has 350 health and recovers for 50 health per second while it is chilling in your
+5:275 minutes, 27 secondsinventory. Kind of like other deflect impair abilities. You cannot spam the shield either. It says you can only pull it out for once every second unless it
+5:355 minutes, 35 secondsgets completely broken where you're going to have to wait 5 seconds before you can brandish it again. But what is this shield really even used for though?
+5:425 minutes, 42 secondsTypically, this is used to either dodge stuns the enemies will throw at you or to get out of very sticky situations.
+5:485 minutes, 48 secondsThink of things like Luna snowballs or hella stuns. These are what you really need to have your shield for. You can also use the shield to protect your friendly supports from certain targets.
+5:575 minutes, 57 secondsThis is where deflecting hella daggers and ultimates like Iron Man and Mag come into play. You just want to make sure that you don't use the shield just because you can. While it is nice to
+6:066 minutes, 6 secondsblock damage while you were staging for dives throughout the game, a lot of the damage you take can just be healed by health packs, your supports, or just
+6:136 minutes, 13 secondsmitigating that damage altogether with better positioning and better pathing.
+6:186 minutes, 18 secondsWhether or not you need the shield given a certain situation is going to come down to practice though and just learning what you can get away with.
+Chapter 6: Liberty Rush (Dash)
+6:236 minutes, 23 secondsThis perfectly segus us to the second ability, Liberty Rush, that sends Cap forward with a quick 12 m long charge dealing 30 damage. You can also use the
+6:326 minutes, 32 secondsability every 10 seconds regardless if your shield is up, down, or even broken.
+6:376 minutes, 37 secondsIt would seem like that's all there really is to the ability, but trust me, there's actually more. While you were dashing, you are completely CC immune, meaning you can dodge things like Luna
+6:466 minutes, 46 secondsSnowballs and even Doctor Strange ultimates. It even works against Jeff ultimates. Seriously, this is insane.
+6:526 minutes, 52 secondsOutside of this, typically this is your tool to either finish off targets quickly or to get out, but not both.
+6:586 minutes, 58 secondsThis is because your dash momentum does stop if you hit a target directly. It's not like a psylock dash that can just go
+7:057 minutes, 5 secondsclean through a target. It will stop on hit. Finally, we have Captain America's vibranium energy saw, which in short is
+Chapter 7: Vibranium Energy Saw (Shield Throw)
+7:127 minutes, 12 secondshis big shield throw that actually ricochets between targets. Every 8 seconds, Cap can throw his shield, dealing 70 damage to the first target he
+7:207 minutes, 20 secondshits. Then, it can ricochet up to three times, dealing 20% less damage for each ricochet. This means that you can hit the ground next to a target and it will
+7:297 minutes, 29 secondsricochet towards them, allowing you to deal more consistent damage, although it will be reduced damage. So, it is best to aim at a target's legs, so even if
+7:387 minutes, 38 secondsyou do miss them, you still get some extra damage. The key to using the ability is to weave it in with the rest of your kit, though. If you throw it
+7:467 minutes, 46 secondsaround too early, the enemies will just heal the damage you deal to them, and it's also just going to alert them of your position. If you never use it, you're just never going to be able to
+7:537 minutes, 53 secondsfinish off targets, and you're going to be doing nothing all game. instead.
+7:567 minutes, 56 secondsEvery single time before you slam after a jump, use your shield throw, and then slam the ground, dash into them, and
+8:038 minutes, 3 secondsthen punch them. The button combination is going to look like this. You're going to start by holding shift, space, E, wait, left click, F, and then left
+8:128 minutes, 12 secondsclick. This will deal a considerable amount of damage to the target and likely eliminate them if another person is diving with you. If you are soft engaging on the target, in other words,
+8:208 minutes, 20 secondsyou're not really trying to kill them, you're just trying to get resources out, you can actually save your dash to get out and dodge any crowd control abilities the enemies are going to be
+8:288 minutes, 28 secondsthrowing at you. As you can see, all of Cap's abilities in a vacuum are very, very simple, but when you put all of them together, it can kind of get hectic
+8:358 minutes, 35 secondsand confusing. So, take some time in the practice range to get used to all of the different techs, and you're going to be golden. Let's now talk about Cap's insanely strong ultimate, Freedom
+Chapter 8: Freedom Charge (Ultimate)
+8:448 minutes, 44 secondsCharge. Upon pressing the ultimate, Cap will begin to create an American flag trail behind him as he runs around, granting him and his allies bonus health
+8:528 minutes, 52 secondsand a 30% movement speed buff. On cast, Cap gains 150 bonus health, while allies around him gain 100 bonus health, which
+9:009 minutesis effectively a Jeff ultimate at the click of a button, unless you were getting shot at by an Ultron, which is the main counter to this ultimate. For every second after Tap gains 100 bonus health and allies gain 60 bonus health.
+9:109 minutes, 10 secondsSo, ideally, you want to try to pop the ultimate next to your team when possible. The ultimate itself lasts for 10 seconds, but the path will decay
+9:189 minutes, 18 secondsafter 5 seconds. And when the ultimate is just completely over, they just disintegrate right then and there.
+9:239 minutes, 23 secondsHowever, while the ultimate is active, the path isn't the only thing that provides bonus health over time. Cap himself also just continuously radiates
+9:319 minutes, 31 secondsthe aura, meaning you can actually use this ultimate as an answer to specific combos, like Jeff Storm, for example, to keep your team completely safe even if
+9:399 minutes, 39 secondsthey get gobbled up. What is this alt actually good for, though, on a fight-by-fight basis? understand that Cap's alt is like a mini support alter
+9:479 minutes, 47 secondsthat is good for so many different things. The three that come to mind are engaging, countering medium level threats, and stalling. First, engaging
+9:549 minutes, 54 secondswith a cap ultimate is super strong. Not only are you not wasting something strong like a Luna ultimate, for example, or a cloak alt, you are also
+10:0110 minutes, 1 secondgiving your team a movement speed boost for easy access into the enemy backline.
+10:0610 minutes, 6 secondsIt is very overwhelming when you have a Psylock and a cap in your backline. It's a whole other story when the rest of the team is on the way since you are going
+10:1310 minutes, 13 secondsto be using the ultimate after a soft engagement to snowball the fight.
+10:1610 minutes, 16 secondsSecond, you can also use it to counter medium level threats. Let's face it, supports and ranked press Q at some of the worst times at field. When playing
+10:2410 minutes, 24 secondscap, though, this isn't really an issue because your alt can be an answer to some lesser threats. Say the enemy team is using an ultimate like Star-Lord for
+10:3110 minutes, 31 secondsexample. Press alt, shoot your team, and everything is fine. Maybe enemies are using something like a Psylock or a BP and are trying to get on your supports
+10:3810 minutes, 38 secondsand they get blindsided or you just failed to find them before the fight and you know they got in your backline early. Then what you can do is you can just jump up, slam on your team, pop alt
+10:4610 minutes, 46 secondsand the fight is looking very good again. Take a punisher al for example.
+10:5010 minutes, 50 secondsYou know, maybe catapult isn't the best and even good enough to stop that if he has a damage boost, for example. But it could sometimes be life or death for
+10:5810 minutes, 58 secondsyour team to get them out and just get him out of the line of sight of the Punisher if you don't have a Luna alt, for example, to just fight through it.
+11:0411 minutes, 4 secondsJust be careful or be ready to tell your team how you're going to be planning on alting here. Supports rarely think about how tanks like Cap and Magneto could impact the flow of an alt fight.
+11:1411 minutes, 14 secondsSometimes, dude, it's just better to let your supports just press their alts and just kind of waste them sometimes so that you can have your alt for clutch moments. Trust me, I know this from
+11:2311 minutes, 23 secondsexperience. Finally, this ultimate is excellent for stalling. While you have your ultimate online, if you hold your shield up with right click, it can
+11:3011 minutes, 30 secondsactually bump enemies around, allowing you to displace enemies, but also makes it really, really hard to hit you. There was a moment in the first MRC tournament
+11:3811 minutes, 38 secondswhere the sauce boss on my team stalled a point with me for like 20 seconds to secure top 32 and it was absolutely filthy on hand. I don't have the clip,
+11:4711 minutes, 47 secondsbut the fact that I remember this months later, this is at least 6 7 8 months later, that means something. That means that this character was like very very
+11:5611 minutes, 56 secondsgood at stalling at one point or another. If you need to stall for something, cap alts can legitimately just win you games if you lock in. And it's so tilting when the cap alts and
+12:0412 minutes, 4 secondsyou lose to it. Finally, as a last little tip to add in there, consider turning ally health bars on for cap.
+12:1012 minutes, 10 secondsSupports get target critical signs when someone is low. Tanks don't. This might be the one character that I turn this on for though, even if it clutters my
+12:1712 minutes, 17 secondsscreen. It is just nice to be able to save people this consistently. All right, now that we have discussed all of Captain America's abilities, let's start talking about what counters him.
+Chapter 9: Counters
+12:2512 minutes, 25 secondsStarting with the tanks, you might think that Emma Frost counters you on camp, but if you are very skilled on Captain America, you are going to have one of the best matchups into her in the entire
+12:3412 minutes, 34 secondsgame. Sure, she could choke slam you, but if you use your dash effectively, you'll be able to dodge the CC. And then what is she going to really do to you?
+12:4012 minutes, 40 secondsShe can't really build charge off of you unless you put your shield in her face, and your mobility is just too fast for her to really do anything with her crystals. Instead, characters like Penny
+12:4912 minutes, 49 secondsParker and the Thing are much more annoying to play into, although it's not really impossible to be honest. The tank counter to you on cap is just that you
+12:5712 minutes, 57 secondsaren't on mag Emma and in ranked teammates sometimes will just fall over because they don't know what to do if the game isn't just a simple frontto back brawl. Moving on to DPS. Bucky is
+13:0613 minutes, 6 secondsreally annoying to play into simply because he can dash into you and you have to try to leave without mobility.
+13:1213 minutes, 12 secondsSo, it's pretty darn impossible and just annoying. Near can also be pretty annoying since you can't really deal with the turrets on your own, but at least you have a health bar to soak up
+13:2013 minutes, 20 secondsall that damage unlike something like magic for example. Punisher is also really annoying to play against if he can aim because your shield will be gone almost instantly, making you feel like
+13:2913 minutes, 29 secondsyou were just walking on eggshells around him. However, if you have a good dive partner, life is good because I mean, a Psylock and a Cap on a Punisher at the same time. Finally, DPS that can
+13:3713 minutes, 37 secondsmark you like Iron Fist and Daredevil are also pretty annoying since you're actually not really going to be able to ever take an angle. Just makes it so that it would be better if you were on literally any other tank in the game.
+13:4613 minutes, 46 secondsAnd as a little one that I didn't actually write in the script, Iron Man in my quickplay games and a little bit of my comp games has been really annoying to play against just because I can never reach him and I just have to
+13:5513 minutes, 55 secondshope that maybe my Punisher or Hella shoots them. So that's another character that's pretty annoying. And as for supports, Ultron completely counters your alt because he does bonus damage to
+14:0314 minutes, 3 secondsyour alt and then you also just can't hit him in the air just like Iron Man.
+14:0614 minutes, 6 secondsIt's very, very annoying. Loki and Adam are also pretty annoying since they can stop your entire game plan in a single button. But at the same time, if you
+14:1314 minutes, 13 secondsplay around that whole idea correctly, you can also just bait them out to use their cooldowns, and then you can just counter them later in the fight. Most of the time, Cap can pretty much play into anything the enemies will throw at you.
+14:2314 minutes, 23 secondsBut it just comes down to will your team know what to do with the space you make.
+14:2714 minutes, 27 secondsAnd the answer is sometimes just no, which kind of stinks. Moving on to who Cap has synergy with, I do have to shout out the team up he gets with Bucky that
+Chapter 10: Synergies
+14:3614 minutes, 36 secondsallows Bucky to pretty much reposition to the Cap whenever he pleases. It is nice to know, but it's by no means like this groundbreaking team up. And if no
+14:4414 minutes, 44 secondsone on the team is playing Bucky, I do still think he's worth a ban here.
+14:4714 minutes, 47 secondsOutside of the team up, the best tank to play right now with Cap is by far and away Venom. When both Cap and Venom take different angles and converge later on the same target, it is legit impossible.
+14:5714 minutes, 57 secondsIt's impossible to deal with it in rank.
+14:5914 minutes, 59 secondsIt's absolutely filthy. You will instantly force out support cooldowns with the press of a single button together, and you're going to be able to get right out. So, it's like, guys, we need to be playing the cat venom more.
+15:0815 minutes, 8 secondsYou can even add Angela into the mix, too. And now it's just nightmare fuel.
+15:1115 minutes, 11 secondsYou have three huge health bars all converging on you from different angles.
+15:1415 minutes, 14 secondsGuys, more people need to learn how to play these tank comps. They are very strong. Any DPS that can aid in this game plan too is insane. By the way,
+15:2115 minutes, 21 secondspair Cap with a Psylock, a BP, an Iron Fist, a Star-Lord. Really, anyone with the gameplay loop that wants to surround the enemies and you are going to cook the backline so easily. It is insane.
+15:3015 minutes, 30 secondsPeople that specialize in these roles are hard to come by though. But the games where they do come around, I'm telling you guys, it it's just an instantaneous win. like you can't lose
+15:3715 minutes, 37 secondsthis game. Human Torch is also really nice because he can put a zone on the ground and then you can punch the enemies actually to force them to kite
+15:4515 minutes, 45 secondsinto the fire zone. So, this was actually a meta in Proplay for a short amount of time back in like I think it was season 1.5 or two. Don't quote me on
+15:5215 minutes, 52 secondsthat. It's somewhere around that. I might be wrong. But back when Jeff had his old kit, Porch, Jeff, and Cap were absolutely crazy strong. They were
+16:0016 minutesdominating teams. Finally, for supports, Luna Snow is hands down the pick in every single comp. I've said this for nearly every single guide, and I'm never
+16:0816 minutes, 8 secondsreally going to stop until she gets nerfed to the ground. Mantis is also pretty decent as she can make your engagements more lethal without committing all that hard. You can even
+16:1616 minutes, 16 secondsrun a Luna Atom comp in the future if support also, you're pretty much just always going to
+Chapter 11: Matchups
+16:2616 minutes, 26 secondsbe chilling on Cap. Now, I don't usually talk about matchups for tanks, but for Captain America, I do quickly want to say that Cap is really good at rage
+16:3416 minutes, 34 secondsbaiting Hela with how strong she is right now. If you just stick yourself on Hela all game, she won't really be able to do anything while your Hela carries the game. Also, what I said about Emma
+16:4316 minutes, 43 secondsstill stands here. I'm telling you guys, Cap is an S tier character right now, and I'm glad you made it this far in the guide and are learning him. He is worth your time to learn. Now that we
+Chapter 12: VOD Intro
+16:5116 minutes, 51 secondsunderstand Cap and his kit, as well as where he is applicable, let's take a look at a couple of odds to get an even better understanding of his kit. All right, y'all. Today we are looking at
+Chapter 13: VOD One
+17:0017 minutesPaulie, who plays for Citadel. I actually didn't really know about who Paulie was, but I heard from a lot of pro players that I'm friends with that this guy is the goat of Captain America.
+17:0917 minutes, 9 secondsAnd let me tell you guys, the first fight is genuinely kind of insane. So, as you can see, the first thing we're going to talk about is how Paulie goes
+17:1617 minutes, 16 secondsthrough the first fight and just setting up on Captain America. The very first thing we want to look at is look at the positioning here. Team [clears throat] is going to be sitting on point here,
+17:2517 minutes, 25 secondssetting up an angle in main. They use the portal to just set up a nice fight since they have a strange and the enemy team just decides not to run it. This is going to set them up very well for a
+17:3317 minutes, 33 secondsdomination map. Immediately instead of playing for main, we see the cap walking on right and being very stealthy here.
+17:4117 minutes, 41 secondsMaking sure we're playing around the Jeff to enable the Jeff to get a ton of alt charge here, guys. Like we're doing tons of damage here with the Jeff. And
+17:4817 minutes, 48 secondsthen right when the Psylock is ready on her flank uh to try to pressure her DPS, she probably is calling out to the cap.
+17:5417 minutes, 54 secondsHey yo, their cap's in the backline. I'm on this guy. You can just go on supports alone because you're not going to get counter-engaged on. So after he knows this, Paulie's going to be able to go in
+18:0318 minutes, 3 secondsimmediately do the jump attack that we talked about earlier with the slam. You know, have a nice distance away from the enemy team while throwing the normal shields out. And then immediately what
+18:1218 minutes, 12 secondshappens is we get a pick on Mantis, which was a little lucky and probably shouldn't have happened. the enemy team probably should have been able to live through that. And then after that, he
+18:1918 minutes, 19 secondsleaves and gets runes out as well, which is very, very good. Uh, I wanted to say here too, it's like the Crazy Raccoon is also a very strong team. Like I remember
+18:2818 minutes, 28 secondsor I recognize a lot of these players from Overwatch, but then again, immediately once those runes are forced out, he's just going to go on the supports and look, he's just going to be able to kill them immediately after. The
+18:3718 minutes, 37 secondswhole idea from bronze all the way to pro play with this hero is not to get all of your kills right away. it is to
+18:4418 minutes, 44 secondspressure the enemies to force out cooldowns and then go for these crazy engages. So, now that we just, you know, confirmed that basic play style on
+18:5318 minutes, 53 secondsCaptain America, let's take a look at how he takes the rest of this map. All right, y'all. I hope you all are prepared because let me tell you, this is a very long fight and I just want to analyze a lot of different things here.
+Chapter 14: VOD Two
+19:0219 minutes, 2 secondsThere's a lot of different things to learn from this second VOD. So, make sure you buckle in, lock in here. The first thing is notice who's flanking with the Captain America in triple
+19:1019 minutes, 10 secondssupport. It's the Jeff the Shark, which I didn't really think about, but on this map specifically, I actually think it's really, really solid. So, what you're
+19:1819 minutes, 18 secondsgoing to see here is Captain America and Jeff are going to close the circle around the enemy team. We have Melo on Psylock sitting here. We have Doctor
+19:2619 minutes, 26 secondsStrange and the rest of the the what is it? The backline, I suppose, sitting here. And then what's happening is the Jeff the Shark and the Captain America are actually going to go super deep on
+19:3419 minutes, 34 secondsthis flank. And what I didn't realize is I think Jeff can actually flank deeper than Psylock, guys. Like it's a lot safer for these two to do this because
+19:4119 minutes, 41 secondsJeff has so much healing and by being behind the entire enemy team instead of like just with Strange in the in the main angle or on a weird off angle, he
+19:4919 minutes, 49 secondshas a very easy time just lining up just a bunch of damage on the entire enemy team. So this is this right here is not really cap like doing a whole lot on his
+19:5719 minutes, 57 secondsown, but he's what he's doing is he's clearing the space for his Jeff the Shark to get this crazy angle as you're going to see right here. Like guys, it's
+20:0420 minutes, 4 secondskind of insane though. Like this is like I want my Jeff the Sharks in ranked to be doing this with me on cap. Like hello. This is actually super smart. So
+20:1320 minutes, 13 secondsagain, let's look at it from the Captain America POV. To set up this flank on Jeff the Shark is actually really solid because it's going to be able to not
+20:2020 minutes, 20 secondsonly force out runes from Loki, but also break them even faster. So as you can see, he knows that Jeff is behind him.
+20:2720 minutes, 27 secondsThat's Paulie knows. Immediately starts pressuring the supports. Sure, he gets slept, but look, those runes went down and they are already broken by the time this guy's even going to be able to wake
+20:3520 minutes, 35 secondsup. Sure, the backline did die probably from the enemy's cap in Star-Lord, but this isn't really the end of the world because we have three supports. Our our
+20:4420 minutes, 44 secondsCaptain America almost has alt. So, what he's doing right now is he notices, bang, my cap just aled. I'm going to be able I'm going to be able not my cap, my strange just alted. I'm going to be able
+20:5220 minutes, 52 secondsto punch the enemy team on cap and get a bunch of al charge here. The moment we get our alt, we see that the rocket presses al. We're gonna just, you know,
+20:5920 minutes, 59 secondsrespond with our own support alt on cap, which is why I think cap with triple support is so oppressive. Then pretty much the entire team won't die even
+21:0721 minutes, 7 secondsthough we are down two supports, which is going to allow Tanuki to then look for a Jeff the Shark alt, which is very strong. You're going to be able to set
+21:1421 minutes, 14 secondsup possibly a game plan here. Maybe Tanuki can get someone off the map with Jeff the Shark. He at least takes the mantis out, which means that Crazy
+21:2221 minutes, 22 secondsRaccoon doesn't have nearly as much damage as they would like right now with damage boosts. And now what happens is instead of going for these crazy flanks once the fight has broken out, really
+21:3121 minutes, 31 secondswhat Captain America is doing, what Paul is doing on cap is we are putting out fires around the team. We're making sure that the things that need to be dealt
+21:3821 minutes, 38 secondswith are being pressured. We're forcing out support ultimates. We're finding picks on DPS. So right now, he's not necessarily looking like, hm, let me get
+21:4621 minutes, 46 secondsa bunch of damage here. He's more so thinking like what can I do here? Like how can I get alt charge when when there is a threat that I can deal with? How
+21:5421 minutes, 54 secondscan I deal with it? If I can't deal with it, for example, in this situation when the enemy cap is going with an alt, like those people are dead, he can't really help them. So instead of peeling in this
+22:0222 minutes, 2 secondssituation, you know what? I'm not going to be able to get anything done here.
+22:0522 minutes, 5 secondsMaybe I can force out a support with my Psylock across the map. He was a little late to it, but you know, that's a very hard situation to kind of figure out the answer to. I do agree with what he did.
+22:1422 minutes, 14 secondsSo like this is very strong though. If I can't deal with the backline because the it's just Jmack back there on cap with an alult, I'm just going to dive their backline. So, what this does, you know,
+22:2122 minutes, 21 secondshe would have pressured that out. If he can't do it anymore though, he's just going to farm some damage, farm some alt. It's coming up though, the stuff that he's doing immediately forces out the runes because he knows that Last
+22:3022 minutes, 30 secondsknows that he's about to get walked on by not only a Psylock, but also a cap.
+22:3422 minutes, 34 secondsAnd then immediately after that, he hears that the the Loki has alt. So, he looks for where Loki is. Says, "Hm, wait, that's the Loki right there. As I
+22:4222 minutes, 42 secondscan tell, he's right next to him. I'm going to make sure I dive both of these supports and then immediately in these big alt fights, bam, he forces out the alt from last. Very strong game plan
+22:5022 minutes, 50 secondshere. Just whenever the there's these like crazy triple support fights, which will happen a lot in ranked by the way, we're focusing on putting out buyers and
+22:5822 minutes, 58 secondsif there are no fires to put out, we are forcing out enemy support ultimates so that my supports can al second and then we can be invincible for longer. So, as
+23:0623 minutes, 6 secondsyou can see throughout this entire fight, I know I'm pausing a lot, but not only did Rocket alt, Mantis alted, and then also the Loki alted. And we only used two support alts because I used Cap
+23:1523 minutes, 15 secondsalt. I'm saying I as Poly Cap Cap, he used his alt to counter the enemy rocket alt with the the [ __ ] eating the Mantis
+23:2223 minutes, 22 secondsas well. This is buying time for our team. We're not going to die. And immediately what we can do once we get our support along them, the fight is
+23:2923 minutes, 29 secondscompletely over. This is a macro master class of how to put out fires on Captain America, how to maintain composure, not
+23:3823 minutes, 38 secondsgo do too much, not go too deep, not die, and then set up a very, very nice last fight for your team, even though they do end up losing this, but setting
+23:4623 minutes, 46 secondsup a very winnable situation on Cap for the team. So, I'm interested in seeing if there's anything else we can really learn from uh Paulie's Captain America on this last map here. All right, y'all.
+Chapter 15: VOD Three
+23:5723 minutes, 57 secondsSo, for this last VOD review, guys, I want to show you just like what a soft engagement looks like at the highest levels of play because it's something we
+24:0524 minutes, 5 secondssaid at the very start of the guide, but it's not really something I elaborated on as much as I would have liked to. And I really wanted to save it for these pro
+24:1224 minutes, 12 secondsgames because I knew good CAT players are going to know how to engage, how to force out cooldowns, how to just pressure supports right here. You know,
+24:2024 minutes, 20 secondsPaulie's not getting scared to just punch Mag when he's solo, when he's alone to get some extra alt charge, which is pretty much all this is. But immediately after that, hey, there's the
+24:2824 minutes, 28 secondssupports. We're going to jump in. We're going to do our combo with the E here.
+24:3124 minutes, 31 secondsWe're going to do our normal combo just like anything else. But instead of using our F to do damage, we immediately see like this is crazy, by the way. He sees
+24:3924 minutes, 39 secondsthat the Mantis throws down the sleep, by the way. And I don't know if you guys caught this cuz it's really hard to see, but out of the corner of his eye, you
+24:4724 minutes, 47 secondscan see the purple like the purple. This is the sleep right here. Immediately presses F to get out of here. And what's really good about this is that I feel
+24:5424 minutes, 54 secondslike most CAT players, right, when they go in on supports, they're like, "All right, I'm on supports. I'm doing my job. I' I've made it to the end of the
+25:0225 minutes, 2 secondsroad. Now I just have to press M1." But it's not that simple. By using this F though to get out, what this does is it
+25:0825 minutes, 8 secondsmaintains pressure on both Last and I'm not even going to try to say this name because that would be disrespectful to ruin that name. But as you can see, now
+25:1625 minutes, 16 secondsthat we know, hey, there's no sleep right now, what we can do is we can much more easily force out some portals later on in the fight if we want to, if they
+25:2425 minutes, 24 secondsget those, if they can charge those, which is really good from Poly. So, as we can see, we go in, we force these these cool downs out that are defensive
+25:3125 minutes, 31 secondsthat would keep us alive. And then immediately what we do is now they are down cool downs and now we can go for an engage. Now we can go for a much harder engage. Now we can try to What he's
+25:4025 minutes, 40 secondsactually trying to do here is I don't even think that Paulie is actually trying to go that deep on on the Luna Snow. What he's really trying to do is he's trying to just force out that
+25:4725 minutes, 47 secondssnowball. And if he would needed to actually use the shield for the snowball, he would have just deflected it back in her face. As you can see right here after the snowball leaves,
+25:5425 minutes, 54 secondsit's not like he's going to continuously engage. Like this in his brain is not a hard engage right now. This is just a pressure so that while these people are
+26:0226 minutes, 2 secondsgetting pressured by Cap, the rest of the enemy team isn't getting healed.
+26:0526 minutes, 5 secondsThey only have Ultron heals for the rest of this now, too. So this whole idea is he's not going for these crazy plays to kill right away. He's looking to put out
+26:1326 minutes, 13 secondsfires and pressure support alts like this through just normal pressure. So through this entire game plan, what did Paulie get? Not only did Paulie get a
+26:2126 minutes, 21 secondspick on the front line with Magneto because he was pressuring supports, he also kept the enemy supports alive long enough to force them into this ultimatum. Do you want to keep trying to
+26:2926 minutes, 29 secondsfight here or do you want to use a support? So he got a support on as well.
+26:3226 minutes, 32 secondsAnd also his team with all this space that he made actually got the point. So this entire fight for red is not looking good. They have to win this fight or
+26:4126 minutes, 41 secondsthey're probably going to lose the game because they're losing progress as well.
+26:4526 minutes, 45 secondsSo, all in all, I actually am very impressed with Paulie. And I'm surprised that no one is talking about this dude's Captain America outside of like the pro
+26:5326 minutes, 53 secondsplayers. Like, the pro players know because they play against the cap, but this Captain America is very solid. I'm surprised that they actually let the cap through, but I'm sure there's other
+27:0027 minutesbands like Magneto that probably went through, Venom, stuff like that. Yeah, Venom and Emma. That makes sense. I mean, all in all though, I do think Cap is a very strong tank and Paulie has
+27:0827 minutes, 8 secondsproved that to us today with just the amazing gameplay. Again, look at Citadel Gaming. This is where Paulie plays.
+27:1527 minutes, 15 secondsAlso, other good players that I recognize, Melio, I'm pretty sure ALX played Overwatch. A bunch of great characters, just great players here on different difficult characters. So,
+27:2427 minutes, 24 secondsdefinitely going to be looking out for more um of poly more of Melio. And uh let's just close out the guide. Thank you guys for watching. And that closes out today's guide for Captain America
+Chapter 16: THANKS FOR WATCHING! SUBSCREEB :D
+27:3227 minutes, 32 secondsand Marvel Rivals. If you have any questions, make sure to send them in the comments down below, as well as asking me live right now here on YouTube or on Twitch at twitch.tv/padsswagger.
+27:4127 minutes, 41 secondsI try to stream every single day I upload, so be sure to check me out to learn more about everything I talked about today. Thank you guys all so much for watching, but until next time, I've
+Chapter 17: Outro
+27:4927 minutes, 49 secondsgot to peace out and pass out. I'll see you in the next one.
