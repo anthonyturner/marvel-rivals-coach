@@ -6,7 +6,11 @@
     "definition": "The hero required for a Team-Up to become active. The anchor usually receives a stat bonus while enabling one or more allies to gain Team-Up effects.",
     "coachNote": "Check anchor requirements before building around a Team-Up. If the anchor swaps, the Team-Up plan disappears.",
     "example": "Doctor Strange can anchor Arcane Order for Scarlet Witch and Magik.",
-    "relatedTerms": ["Team-Up", "Secondary Hero", "Team-Up Ability"],
+    "relatedTerms": [
+      "Team-Up",
+      "Secondary Hero",
+      "Team-Up Ability"
+    ],
     "sourceName": "Marvel Rivals Wiki - Team-Ups",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Team-Ups"
   },
@@ -17,7 +21,10 @@
     "definition": "A hero who benefits from an active Team-Up when the Anchor Hero is present, often gaining a new active or passive Team-Up ability.",
     "coachNote": "Secondary Heroes are the payoff pieces. Pick them when your team is already committed to the anchor.",
     "example": "Scarlet Witch and Magik are Secondary Heroes in Arcane Order.",
-    "relatedTerms": ["Anchor Hero", "Team-Up Ability"],
+    "relatedTerms": [
+      "Anchor Hero",
+      "Team-Up Ability"
+    ],
     "sourceName": "Marvel Rivals Wiki - Team-Ups",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Team-Ups"
   },
@@ -28,7 +35,11 @@
     "definition": "A Marvel Rivals mechanic where specific heroes combine powers to grant buffs, extra abilities, or passive effects.",
     "coachNote": "Treat Team-Ups as draft incentives, not automatic win conditions. The comp still needs frontline, damage, healing, and map control.",
     "example": "Planet X Pals lets Rocket Raccoon and Jeff the Land Shark ride on Groot.",
-    "relatedTerms": ["Anchor Hero", "Secondary Hero", "Team-Up Ability"],
+    "relatedTerms": [
+      "Anchor Hero",
+      "Secondary Hero",
+      "Team-Up Ability"
+    ],
     "sourceName": "Marvel Rivals Wiki - Team-Ups",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Team-Ups"
   },
@@ -39,7 +50,11 @@
     "definition": "A close-range teamfight style built around durable heroes, sustain, and forcing the enemy to fight in your effective range.",
     "coachNote": "Brawl comps want short paths, cover, and committed pushes. Do not slowly walk through long poke sightlines.",
     "example": "Hulk, The Thing, Wolverine, and Rogue are examples of heroes that can support brawl plans.",
-    "relatedTerms": ["Sustain", "Tank", "Choke"],
+    "relatedTerms": [
+      "Sustain",
+      "Tank",
+      "Choke"
+    ],
     "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
   },
@@ -50,7 +65,11 @@
     "definition": "A narrow map area where defenders can concentrate damage and abilities into limited space.",
     "coachNote": "Do not trickle through a choke. Rotate, use cover, force cooldowns, or push together with defensive resources.",
     "example": "A doorway into an objective room can become a choke if the defending team controls every exit angle.",
-    "relatedTerms": ["Brawl", "Poke", "Crowd Control"],
+    "relatedTerms": [
+      "Brawl",
+      "Poke",
+      "Crowd Control"
+    ],
     "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
   },
@@ -61,7 +80,11 @@
     "definition": "Abilities that limit enemy movement, interrupt actions, prevent ability use, or otherwise disrupt control of a hero.",
     "coachNote": "Track crowd-control cooldowns before diving or using an ultimate that can be interrupted.",
     "example": "Stuns, immobilizes, knock downs, and charms are common crowd-control effects.",
-    "relatedTerms": ["Dive", "Peeling", "Choke Point"],
+    "relatedTerms": [
+      "Dive",
+      "Peeling",
+      "Choke Point"
+    ],
     "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
   },
@@ -72,7 +95,11 @@
     "definition": "A high-mobility attack where heroes collapse onto a single target, often a Strategist, then escape or reset before the enemy team can punish.",
     "coachNote": "Call the target before diving. One hero jumping alone is usually feeding; two or three jumping together is pressure.",
     "example": "Spider-Man, Black Panther, Magik, and Daredevil are examples of dive-friendly heroes.",
-    "relatedTerms": ["Flanking", "Peeling", "Backline"],
+    "relatedTerms": [
+      "Flanking",
+      "Peeling",
+      "Backline"
+    ],
     "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
   },
@@ -83,7 +110,11 @@
     "definition": "Attacking from the side or behind, usually bypassing the Vanguard line to pressure Strategists or long-range damage heroes.",
     "coachNote": "A flank is strongest when your frontline is already pulling attention. If nobody is looking at your team, they will all look at you.",
     "example": "A Duelist wrapping behind the fight to threaten supports is flanking.",
-    "relatedTerms": ["Dive", "Backline", "Off-Angle"],
+    "relatedTerms": [
+      "Dive",
+      "Backline",
+      "Off-Angle"
+    ],
     "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
   },
@@ -94,7 +125,11 @@
     "definition": "A hero who can stay airborne for extended periods or indefinitely, changing how teams must control vertical space.",
     "coachNote": "Against flyers, assign hitscan pressure or force objectives where vertical angles are less valuable.",
     "example": "Iron Man, Storm, Ultron, and Angela are examples of heroes with sustained flight.",
-    "relatedTerms": ["Hitscan", "Poke", "High Ground"],
+    "relatedTerms": [
+      "Hitscan",
+      "Poke",
+      "High Ground"
+    ],
     "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
   },
@@ -105,7 +140,10 @@
     "definition": "A ranged attack that reaches its target immediately when fired instead of traveling as a projectile.",
     "coachNote": "Hitscan pressure is valuable into flyers and fast flankers because there is no projectile travel time to lead.",
     "example": "The wiki lists examples such as Hela, Phoenix, and Ultron attacks.",
-    "relatedTerms": ["Flyer", "Poke"],
+    "relatedTerms": [
+      "Flyer",
+      "Poke"
+    ],
     "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
   },
@@ -116,7 +154,11 @@
     "definition": "Helping an ally who is under attack, usually by damaging, blocking, healing, crowd-controlling, or bodyguarding the threat.",
     "coachNote": "Peel is not only a support job. Vanguards and Duelists should turn when the backline is being collapsed on.",
     "example": "Using a stun or shield to save Luna Snow from Spider-Man is peeling.",
-    "relatedTerms": ["Dive", "Backline", "Crowd Control"],
+    "relatedTerms": [
+      "Dive",
+      "Backline",
+      "Crowd Control"
+    ],
     "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
   },
@@ -127,7 +169,11 @@
     "definition": "Dealing damage from distance, ideally from outside the enemy team's effective range, to make engagement safer for the attacker.",
     "coachNote": "Poke wins by patience and angle control. It loses value when forced into cramped close-range fights.",
     "example": "Hela, Phoenix, Hawkeye, Iron Man, Black Widow, Moon Knight, and Squirrel Girl are listed as poke examples.",
-    "relatedTerms": ["Choke Point", "Hitscan", "Off-Angle"],
+    "relatedTerms": [
+      "Choke Point",
+      "Hitscan",
+      "Off-Angle"
+    ],
     "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
   },
@@ -138,7 +184,11 @@
     "definition": "A hero's ability to stay alive through health, self-healing, shields, damage reduction, or repeated support.",
     "coachNote": "High sustain lets a team hold space longer, but burst damage or anti-heal timing can still break it.",
     "example": "A Vanguard with high health and defensive cooldowns has strong sustain.",
-    "relatedTerms": ["Brawl", "Tank", "Support"],
+    "relatedTerms": [
+      "Brawl",
+      "Tank",
+      "Support"
+    ],
     "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
   },
@@ -149,7 +199,11 @@
     "definition": "A common player term used interchangeably with Vanguard.",
     "coachNote": "When someone asks for a tank, they usually mean a Vanguard who can start fights, protect space, or absorb pressure.",
     "example": "Hulk, Groot, and Doctor Strange are Vanguards.",
-    "relatedTerms": ["Vanguard", "Brawl", "Sustain"],
+    "relatedTerms": [
+      "Vanguard",
+      "Brawl",
+      "Sustain"
+    ],
     "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
   },
@@ -160,7 +214,11 @@
     "definition": "A common player term used interchangeably with Strategist.",
     "coachNote": "Support does not only mean healing. Strategists often bring tempo tools, control, damage boosts, and fight-saving ultimates.",
     "example": "Luna Snow, Mantis, and Rocket Raccoon are Strategists.",
-    "relatedTerms": ["Strategist", "Peeling", "Backline"],
+    "relatedTerms": [
+      "Strategist",
+      "Peeling",
+      "Backline"
+    ],
     "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
   },
@@ -171,7 +229,11 @@
     "definition": "Damage per second; commonly used by players as another word for Duelist.",
     "coachNote": "DPS picks still need a job: poke, dive, flank, brawl, anti-air, or objective pressure.",
     "example": "Hela, Spider-Man, and The Punisher are Duelists.",
-    "relatedTerms": ["Duelist", "Poke", "Dive"],
+    "relatedTerms": [
+      "Duelist",
+      "Poke",
+      "Dive"
+    ],
     "sourceName": "Marvel Rivals Wiki - Gameplay Terms",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
   },
@@ -182,7 +244,11 @@
     "definition": "The safer rear area of a team formation where Strategists and long-range heroes often play.",
     "coachNote": "Backline players should keep escape routes and line of sight to allies. Frontline players should notice when the backline is pressured.",
     "example": "A Luna Snow positioned behind Groot and Punisher is playing in the backline.",
-    "relatedTerms": ["Peeling", "Dive", "Flanking"],
+    "relatedTerms": [
+      "Peeling",
+      "Dive",
+      "Flanking"
+    ],
     "sourceName": "Coach definition informed by Marvel Rivals role terminology",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
   },
@@ -193,7 +259,11 @@
     "definition": "The forward pressure line where Vanguards and close-range heroes contest space, block routes, and start engagements.",
     "coachNote": "Frontline is about space, not just standing first. Good frontline play creates safe angles for the rest of the team.",
     "example": "A Groot walling a doorway while allies rotate is controlling the frontline.",
-    "relatedTerms": ["Tank", "Brawl", "Choke Point"],
+    "relatedTerms": [
+      "Tank",
+      "Brawl",
+      "Choke Point"
+    ],
     "sourceName": "Coach definition informed by Marvel Rivals role terminology",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
   },
@@ -204,7 +274,11 @@
     "definition": "A side angle that pressures the enemy from somewhere other than the main team position without fully committing to a deep flank.",
     "coachNote": "Use off-angles to split attention, then leave before the enemy can isolate you.",
     "example": "Hela taking a side balcony while her team pushes main is playing an off-angle.",
-    "relatedTerms": ["Flanking", "Poke", "High Ground"],
+    "relatedTerms": [
+      "Flanking",
+      "Poke",
+      "High Ground"
+    ],
     "sourceName": "Coach definition informed by Marvel Rivals positioning terms",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
   },
@@ -215,7 +289,11 @@
     "definition": "An elevated position that improves sightlines, cover options, and pressure over enemies below.",
     "coachNote": "High ground is valuable until the objective or enemy rotation makes it irrelevant. Do not stay up there after the fight moves away.",
     "example": "A Punisher holding a balcony above a choke can pressure enemies before they reach point.",
-    "relatedTerms": ["Poke", "Flyer", "Off-Angle"],
+    "relatedTerms": [
+      "Poke",
+      "Flyer",
+      "Off-Angle"
+    ],
     "sourceName": "Coach definition informed by Marvel Rivals map-control terms",
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Gameplay_Terms"
   },
@@ -226,7 +304,12 @@
     "definition": "A map location that gives a player or team multiple options to pressure objective, control lanes, scout enemy movement, and leave safely.",
     "coachNote": "Do not treat a power position as a fixed camping spot. Use it to create passive pressure, force enemy cooldowns, then rotate or drop when the fight asks for it.",
     "example": "A central high-ground room that sees objective and connects to both side lanes can be a power position.",
-    "relatedTerms": ["Lane Control", "High Ground", "Off-Angle", "Choke Point"],
+    "relatedTerms": [
+      "Lane Control",
+      "High Ground",
+      "Off-Angle",
+      "Choke Point"
+    ],
     "sourceName": "Power Positions guide notes",
     "sourceUrl": "/power-positions"
   },
@@ -237,7 +320,12 @@
     "definition": "The ability to influence which routes, sightlines, and side paths the enemy can safely use during a fight.",
     "coachNote": "Think in main lane and side lanes. Strong teams do not only walk the shortest route; they open side pressure and make enemies answer multiple directions.",
     "example": "Taking a power position that sees main and a side doorway gives your team lane control without standing on point.",
-    "relatedTerms": ["Power Position", "Off-Angle", "Poke", "Choke Point"],
+    "relatedTerms": [
+      "Power Position",
+      "Off-Angle",
+      "Poke",
+      "Choke Point"
+    ],
     "sourceName": "Power Positions guide notes",
     "sourceUrl": "/power-positions"
   },
@@ -248,7 +336,12 @@
     "definition": "Value created by a strong position before committing abilities, because the enemy must respect your angle, movement options, or threat.",
     "coachNote": "Passive pressure is not passive play. You are playing aggressively with position while staying patient with cooldowns and cover.",
     "example": "Rocket Raccoon holding an off-angle can force Luna Snow to panic-use a cooldown before Rocket fully commits.",
-    "relatedTerms": ["Power Position", "Off-Angle", "Cooldown Trade", "Scouting"],
+    "relatedTerms": [
+      "Power Position",
+      "Off-Angle",
+      "Cooldown Trade",
+      "Scouting"
+    ],
     "sourceName": "Power Positions guide notes",
     "sourceUrl": "/power-positions"
   },
@@ -259,7 +352,11 @@
     "definition": "Using cover and distance from a cover edge so the enemy can see and shoot as little of your character model as possible.",
     "coachNote": "Being near cover is not enough. If your full body is visible, you are giving the enemy too many chances to hit you.",
     "example": "Backing up behind horizontal cover until only your head is visible is hitbox minimization.",
-    "relatedTerms": ["Cover", "Peeking", "One-Angle Rule"],
+    "relatedTerms": [
+      "Cover",
+      "Peeking",
+      "One-Angle Rule"
+    ],
     "sourceName": "Strategic Cover guide notes",
     "sourceUrl": "/strategic-cover"
   },
@@ -270,7 +367,11 @@
     "definition": "Adjusting your angle so the enemy is more exposed from your perspective while you still keep your own cover.",
     "coachNote": "Small left-right position changes can turn a nearly hidden enemy into a hittable target without making you wide open.",
     "example": "Shifting slightly left around a corner so you can see more of an enemy trying to hide behind cover.",
-    "relatedTerms": ["Cover", "Off-Angle", "Sightline"],
+    "relatedTerms": [
+      "Cover",
+      "Off-Angle",
+      "Sightline"
+    ],
     "sourceName": "Strategic Cover guide notes",
     "sourceUrl": "/strategic-cover"
   },
@@ -281,7 +382,12 @@
     "definition": "A cover principle where you try to expose yourself to only the angle you are actively fighting instead of several threats at once.",
     "coachNote": "If you are shooting one target, it usually makes no sense to be visible to three other enemies. Reposition until cover blocks the extra angles.",
     "example": "Moving behind a wall so you can shoot the enemy on the right while the enemy on main cannot see you.",
-    "relatedTerms": ["Cover", "Peeking", "Choke Point", "Sightline"],
+    "relatedTerms": [
+      "Cover",
+      "Peeking",
+      "Choke Point",
+      "Sightline"
+    ],
     "sourceName": "Strategic Cover guide notes",
     "sourceUrl": "/strategic-cover"
   },
@@ -292,7 +398,12 @@
     "definition": "Gathering information about enemy location, movement, and cooldowns before committing damage, mobility, or a full engage.",
     "coachNote": "Scout from safety before you peek or dive. Good scouting makes mechanics easier because you are not surprised by the target's movement.",
     "example": "A Black Widow checking where Spider-Man is moving before charging and peeking for the shot.",
-    "relatedTerms": ["Cover", "Power Position", "Target Priority", "Engage"],
+    "relatedTerms": [
+      "Cover",
+      "Power Position",
+      "Target Priority",
+      "Engage"
+    ],
     "sourceName": "Strategic Cover guide notes",
     "sourceUrl": "/strategic-cover"
   },
@@ -303,7 +414,11 @@
     "definition": "A peek where you move sideways along the cover edge instead of walking forward into the enemy sightline.",
     "coachNote": "Parallel peeking makes you harder to hit and gives you a cleaner return path back behind cover.",
     "example": "Peeking left from a wall, firing, then strafing back behind the same wall instead of walking toward the enemy.",
-    "relatedTerms": ["Cover", "Peeking", "Hitbox Minimization"],
+    "relatedTerms": [
+      "Cover",
+      "Peeking",
+      "Hitbox Minimization"
+    ],
     "sourceName": "Strategic Cover guide notes",
     "sourceUrl": "/strategic-cover"
   },
@@ -314,7 +429,12 @@
     "definition": "An exchange where one team's position or pressure forces enemy abilities, creating a window to punish with your own cooldowns afterward.",
     "coachNote": "Power positions are strong because they can make enemies spend resources first. Survive the response, then punish while their tools are missing.",
     "example": "A Strategist angle forces enemy mobility and a defensive cooldown, then your Vanguard engages while those tools are down.",
-    "relatedTerms": ["Power Position", "Passive Pressure", "Sustain", "Engage"],
+    "relatedTerms": [
+      "Power Position",
+      "Passive Pressure",
+      "Sustain",
+      "Engage"
+    ],
     "sourceName": "Power Positions guide notes",
     "sourceUrl": "/power-positions"
   },
@@ -325,7 +445,12 @@
     "definition": "Map geometry or objects that block line of sight, reduce visible hitbox, and create a safe reset point during pressure trades.",
     "coachNote": "Cover is your default state, not a panic button. Peek with a purpose, then return before the enemy gets repeated shots.",
     "example": "A wall, payload corner, high-ground ledge, doorway, or box can all function as cover depending on the angle.",
-    "relatedTerms": ["Hitbox Minimization", "One-Angle Rule", "Parallel Peek", "Sightline"],
+    "relatedTerms": [
+      "Hitbox Minimization",
+      "One-Angle Rule",
+      "Parallel Peek",
+      "Sightline"
+    ],
     "sourceName": "Strategic Cover guide notes",
     "sourceUrl": "/strategic-cover"
   },
@@ -336,7 +461,12 @@
     "definition": "A line of vision between two points that determines who can see, shoot, heal, or threaten whom.",
     "coachNote": "Control sightlines deliberately. A strong sightline pressures enemies; a careless one exposes you to damage you are not ready to answer.",
     "example": "Holding a balcony that sees the choke creates a sightline enemies must respect before they can reach objective.",
-    "relatedTerms": ["Cover", "High Ground", "Off-Angle", "Lane Control"],
+    "relatedTerms": [
+      "Cover",
+      "High Ground",
+      "Off-Angle",
+      "Lane Control"
+    ],
     "sourceName": "Strategic Cover guide notes",
     "sourceUrl": "/strategic-cover"
   },
@@ -347,7 +477,12 @@
     "definition": "Briefly exposing yourself from cover to gather information, apply pressure, or take a shot before returning to safety.",
     "coachNote": "Peek with a purpose. Wide peeking or walking forward into the enemy sightline makes your movement easy to punish.",
     "example": "A player shoulder-peeks from a doorway, fires one shot, then returns behind the wall.",
-    "relatedTerms": ["Cover", "Parallel Peek", "Hitbox Minimization", "Scouting"],
+    "relatedTerms": [
+      "Cover",
+      "Parallel Peek",
+      "Hitbox Minimization",
+      "Scouting"
+    ],
     "sourceName": "Strategic Cover guide notes",
     "sourceUrl": "/strategic-cover"
   },
@@ -358,7 +493,12 @@
     "definition": "The moment a team or player commits into a fight with pressure, mobility, cooldowns, or an ultimate.",
     "coachNote": "A good engage has a target, a timing trigger, and an exit or follow-up plan. Going in alone is usually not an engage; it is a feed.",
     "example": "Thor jumping the backline as his Duelists open side angles is an engage.",
-    "relatedTerms": ["Dive", "Timing", "Target Priority", "Cooldown Trade"],
+    "relatedTerms": [
+      "Dive",
+      "Timing",
+      "Target Priority",
+      "Cooldown Trade"
+    ],
     "sourceName": "Power Positions guide notes",
     "sourceUrl": "/power-positions"
   },
@@ -369,7 +509,12 @@
     "definition": "The decision of which enemy should be pressured first based on isolation, cooldowns, health, position, and fight win condition.",
     "coachNote": "The best target is not always the closest target. Look for enemies who are exposed, low-resource, or already forced to look away.",
     "example": "Punishing a Strategist who used mobility early can be better than shooting a full-health Vanguard.",
-    "relatedTerms": ["Engage", "Scouting", "Cooldown Trade", "Dive"],
+    "relatedTerms": [
+      "Engage",
+      "Scouting",
+      "Cooldown Trade",
+      "Dive"
+    ],
     "sourceName": "Coach definition from tutorial library",
     "sourceUrl": "/techniques"
   },
@@ -380,7 +525,13 @@
     "definition": "A plan for emphasizing one part of a hero's kit through team composition, playstyle, cooldown priority, positioning, and fight timing.",
     "coachNote": "Marvel Rivals does not use item builds like a MOBA. A build is usually a coaching plan: what ability gets protected, what cooldown starts fights, what stat matters, and what teammates make that plan stronger.",
     "example": "Building Rocket Raccoon around revive, armor packs, and lane support is different from building him around damage uptime.",
-    "relatedTerms": ["Utility Build", "Damage Build", "Sustain Build", "Mobility Build", "Ultimate Build"],
+    "relatedTerms": [
+      "Utility Build",
+      "Damage Build",
+      "Sustain Build",
+      "Mobility Build",
+      "Ultimate Build"
+    ],
     "sourceName": "Coach definition for Marvel Rivals build planning",
     "sourceUrl": "/glossary"
   },
@@ -391,7 +542,13 @@
     "definition": "A build plan that prioritizes a hero's non-damage fight tools: crowd control, revive, shields, walls, cleanse-like saves, scouting, disruption, damage boosts, or cooldown denial.",
     "coachNote": "A utility build asks, 'What tool wins the fight if I keep it for the right moment?' You play around timing, line of sight, and cooldown discipline instead of spending every ability for raw damage.",
     "example": "An Adam Warlock utility build protects Karmic Revival and Soul Bond timing so the team can survive burst and re-engage.",
-    "relatedTerms": ["Hero Build", "Cooldown Trade", "Peeling", "Crowd Control", "Sustain Build"],
+    "relatedTerms": [
+      "Hero Build",
+      "Cooldown Trade",
+      "Peeling",
+      "Crowd Control",
+      "Sustain Build"
+    ],
     "sourceName": "Coach definition for Marvel Rivals build planning",
     "sourceUrl": "/glossary"
   },
@@ -402,7 +559,13 @@
     "definition": "A build plan centered on maximizing damage uptime, burst windows, target pressure, and finishing power.",
     "coachNote": "Damage builds still need setup. The mistake is treating damage as constant spam instead of pairing it with angles, forced cooldowns, and target priority.",
     "example": "A Hela damage build plays for clean sightlines, off-angles, and burst timing after enemy defensive tools are spent.",
-    "relatedTerms": ["Hero Build", "Target Priority", "Off-Angle", "Poke", "Cooldown Trade"],
+    "relatedTerms": [
+      "Hero Build",
+      "Target Priority",
+      "Off-Angle",
+      "Poke",
+      "Cooldown Trade"
+    ],
     "sourceName": "Coach definition for Marvel Rivals build planning",
     "sourceUrl": "/glossary"
   },
@@ -413,7 +576,13 @@
     "definition": "A build plan that emphasizes staying power through healing, shields, armor, damage reduction, revive value, or repeated defensive resources.",
     "coachNote": "Sustain builds are strongest when they help your team hold or retake space. They lose value if the team only survives without creating pressure.",
     "example": "A Groot sustain build focuses on walls, body blocking, and cover cycling so allies can stabilize and keep fighting.",
-    "relatedTerms": ["Hero Build", "Sustain", "Brawl", "Frontline", "Utility Build"],
+    "relatedTerms": [
+      "Hero Build",
+      "Sustain",
+      "Brawl",
+      "Frontline",
+      "Utility Build"
+    ],
     "sourceName": "Coach definition for Marvel Rivals build planning",
     "sourceUrl": "/glossary"
   },
@@ -424,7 +593,13 @@
     "definition": "A build plan centered on movement tools, rotations, chase routes, escape paths, vertical access, and fast target swaps.",
     "coachNote": "Mobility builds are not just about moving more. They are about arriving first, leaving safely, and forcing enemies to turn at the wrong time.",
     "example": "A Spider-Man mobility build uses web movement to scout, isolate a backline target, and reset before peel arrives.",
-    "relatedTerms": ["Hero Build", "Dive", "Flanking", "Scouting", "Engage"],
+    "relatedTerms": [
+      "Hero Build",
+      "Dive",
+      "Flanking",
+      "Scouting",
+      "Engage"
+    ],
     "sourceName": "Coach definition for Marvel Rivals build planning",
     "sourceUrl": "/glossary"
   },
@@ -435,7 +610,13 @@
     "definition": "A build plan focused on charging, protecting, and converting a hero's ultimate into a fight-winning timing window.",
     "coachNote": "Ultimate builds should not hold the whole team hostage. Use regular cooldowns to force enemy answers first, then spend the ultimate when follow-up is ready.",
     "example": "A Luna Snow ultimate build plays safe before the enemy engage, then uses Fate of Both Worlds to swing the committed fight.",
-    "relatedTerms": ["Hero Build", "Engage", "Cooldown Trade", "Sustain Build", "Utility Build"],
+    "relatedTerms": [
+      "Hero Build",
+      "Engage",
+      "Cooldown Trade",
+      "Sustain Build",
+      "Utility Build"
+    ],
     "sourceName": "Coach definition for Marvel Rivals build planning",
     "sourceUrl": "/glossary"
   },
@@ -446,8 +627,373 @@
     "definition": "A ranked-ladder distortion where smurfs or alternate accounts temporarily add high-skill players into lower visible ranks, making those ranks feel harder or more populated with strong players than they really are.",
     "coachNote": "Do not read every hard lobby as proof you belong lower. Smurfs can make a rank feel uneven because the account rank and the player's real skill do not match.",
     "example": "A Diamond-level player on a fresh Gold account can inflate Gold by playing far above the lobby's expected skill while climbing through it.",
-    "relatedTerms": ["Smurf", "Matchmaking", "Ranked", "Ladder"],
+    "relatedTerms": [
+      "Smurf",
+      "Matchmaking",
+      "Ranked",
+      "Ladder"
+    ],
     "sourceName": "Coach definition for Marvel Rivals ranked discussion",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "gg",
+    "term": "gg",
+    "category": "Gaming Chat",
+    "definition": "Good game. Usually said after a match ends.",
+    "coachNote": "Good game.",
+    "example": "gg team",
+    "relatedTerms": [
+      "Chat",
+      "Match End"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "glhf",
+    "term": "glhf",
+    "category": "Gaming Chat",
+    "definition": "Good luck, have fun. A friendly phrase used at the start of a match.",
+    "coachNote": "Good luck, have fun.",
+    "example": "glhf everyone",
+    "relatedTerms": [
+      "Sportsmanship",
+      "Chat",
+      "Match Start"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "lol",
+    "term": "lol",
+    "category": "Internet Slang",
+    "definition": "Laughing out loud. Used to show something is funny or unserious.",
+    "coachNote": "Laughing out loud.",
+    "example": "lol that was wild",
+    "relatedTerms": [
+      "Chat",
+      "Humor"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "lol-ig",
+    "term": "lol ig",
+    "category": "Internet Slang",
+    "definition": "Laughing out loud, I guess. A casual phrase used to show mild amusement, uncertainty, awkward agreement, or reluctant acceptance.",
+    "coachNote": "Laughing out loud, I guess.",
+    "example": "lol ig that works",
+    "relatedTerms": [
+      "Chat",
+      "Humor",
+      "Uncertainty"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "brb",
+    "term": "brb",
+    "category": "Internet Slang",
+    "definition": "Be right back. Used when someone steps away briefly.",
+    "coachNote": "Be right back.",
+    "example": "brb one sec",
+    "relatedTerms": [
+      "Chat",
+      "Away"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "afk",
+    "term": "afk",
+    "category": "Gaming Chat",
+    "definition": "Away from keyboard. The player is not currently active.",
+    "coachNote": "Away from keyboard.",
+    "example": "our healer is afk",
+    "relatedTerms": [
+      "Chat",
+      "Status"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "nt",
+    "term": "nt",
+    "category": "Gaming Chat",
+    "definition": "Nice try. Used to encourage someone after a failed play or close round.",
+    "coachNote": "Nice try.",
+    "example": "nt, we almost had it",
+    "relatedTerms": [
+      "Chat",
+      "Sportsmanship"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "wp",
+    "term": "wp",
+    "category": "Gaming Chat",
+    "definition": "Well played. A compliment for a good move, round, or match.",
+    "coachNote": "Well played.",
+    "example": "wp on point",
+    "relatedTerms": [
+      "Chat",
+      "Sportsmanship"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "diff",
+    "term": "diff",
+    "category": "Competitive Gaming",
+    "definition": "Short for difference. Often used to say one player or role outperformed the other side.",
+    "coachNote": "A performance gap between players or roles.",
+    "example": "tank diff",
+    "relatedTerms": [
+      "Competitive",
+      "Chat"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "inting",
+    "term": "inting",
+    "category": "Competitive Gaming",
+    "definition": "Intentionally feeding, or playing so recklessly that it looks intentional.",
+    "coachNote": "Playing recklessly or intentionally feeding.",
+    "example": "stop inting mid",
+    "relatedTerms": [
+      "Competitive",
+      "Behavior"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "tilted",
+    "term": "tilted",
+    "category": "Competitive Gaming",
+    "definition": "Frustrated enough that emotions are hurting decision-making.",
+    "coachNote": "Frustrated and playing worse because of it.",
+    "example": "I am tilted after that loss",
+    "relatedTerms": [
+      "Mindset",
+      "Competitive"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "meta",
+    "term": "meta",
+    "category": "Competitive Gaming",
+    "definition": "The currently favored strategies, characters, builds, or tactics in a game.",
+    "coachNote": "What is currently considered strong or optimal.",
+    "example": "that comp is meta",
+    "relatedTerms": [
+      "Strategy",
+      "Competitive"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "nerf",
+    "term": "nerf",
+    "category": "Competitive Gaming",
+    "definition": "A balance change that makes a character, weapon, ability, or strategy weaker.",
+    "coachNote": "A change that makes something weaker.",
+    "example": "they nerfed that hero",
+    "relatedTerms": [
+      "Balance",
+      "Patch"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "buff",
+    "term": "buff",
+    "category": "Competitive Gaming",
+    "definition": "A balance change or effect that makes a character, weapon, ability, or strategy stronger.",
+    "coachNote": "A change or effect that makes something stronger.",
+    "example": "the patch buffed tanks",
+    "relatedTerms": [
+      "Balance",
+      "Patch"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "gank",
+    "term": "gank",
+    "category": "Competitive Gaming",
+    "definition": "To ambush an enemy, usually with help from another player or from an unexpected angle.",
+    "coachNote": "An ambush on an enemy player.",
+    "example": "watch for the gank",
+    "relatedTerms": [
+      "Strategy",
+      "Combat"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "peel",
+    "term": "peel",
+    "category": "Competitive Gaming",
+    "definition": "To protect a teammate by pushing away, controlling, or damaging enemies who are attacking them.",
+    "coachNote": "Protecting a teammate from pressure.",
+    "example": "peel for supports",
+    "relatedTerms": [
+      "Teamplay",
+      "Defense"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "ult",
+    "term": "ult",
+    "category": "Competitive Gaming",
+    "definition": "Short for ultimate ability, usually a powerful ability charged over time.",
+    "coachNote": "Ultimate ability.",
+    "example": "save ult for next fight",
+    "relatedTerms": [
+      "Ability",
+      "Combat"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "cd",
+    "term": "cd",
+    "category": "Competitive Gaming",
+    "definition": "Cooldown. The time before an ability or item can be used again.",
+    "coachNote": "Cooldown.",
+    "example": "heal is on cd",
+    "relatedTerms": [
+      "Ability",
+      "Timing"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "aoe",
+    "term": "aoe",
+    "category": "Competitive Gaming",
+    "definition": "Area of effect. Describes damage, healing, or control that affects an area instead of one target.",
+    "coachNote": "Area of effect.",
+    "example": "avoid the aoe",
+    "relatedTerms": [
+      "Ability",
+      "Combat"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "cc",
+    "term": "cc",
+    "category": "Competitive Gaming",
+    "definition": "Crowd control. Effects that limit enemy movement or actions, such as stuns, slows, or knockbacks.",
+    "coachNote": "Crowd control.",
+    "example": "save cc for their ult",
+    "relatedTerms": [
+      "Ability",
+      "Control"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "wood-players-need-cas-to-get-dope",
+    "term": "#wood players need cas to get dope",
+    "category": "Heard In Game",
+    "definition": "Likely a trash-talk phrase aimed at lower-skill players. In context, it probably means \"low-rank players need casual matches, carry help, or easy lobbies to get good rewards or look good.\" The wording is not standard, so treat it as heard-in-game slang rather than a fixed gaming term.",
+    "coachNote": "Likely trash talk about lower-skill players needing easy help to get good results.",
+    "example": "#wood players need cas to get dope",
+    "relatedTerms": [
+      "Chat",
+      "Trash Talk",
+      "Rank",
+      "Uncertain"
+    ],
+    "sourceName": "User heard in game",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "wood-players",
+    "term": "wood players",
+    "category": "Competitive Gaming",
+    "definition": "A likely insult for very low-rank or low-skill players. It is similar to calling someone \"bronze\" or \"low elo,\" but with \"wood\" implying a rank below normal competitive tiers.",
+    "coachNote": "Trash talk for very low-rank or low-skill players.",
+    "example": "wood players need help",
+    "relatedTerms": [
+      "Chat",
+      "Trash Talk",
+      "Rank"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "cas",
+    "term": "cas",
+    "category": "Gaming Chat",
+    "definition": "Usually short for casual or casuals, depending on context. In game chat it can mean casual matches, casual players, or non-ranked play.",
+    "coachNote": "Usually casual or casuals.",
+    "example": "play cas first",
+    "relatedTerms": [
+      "Chat",
+      "Mode",
+      "Casual"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "dope",
+    "term": "dope",
+    "category": "Internet Slang",
+    "definition": "Slang for something good, cool, impressive, or desirable. In gaming chat it may describe rewards, cosmetics, plays, or gear.",
+    "coachNote": "Cool, good, impressive, or desirable.",
+    "example": "that skin is dope",
+    "relatedTerms": [
+      "Chat",
+      "Compliment",
+      "Slang"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
+    "id": "angle",
+    "term": "Angle",
+    "category": "Marvel Rivals",
+    "definition": "A position or line of attack that changes who can see, shoot, heal, or threaten whom. In Marvel Rivals coaching, an angle is usually about creating pressure from a useful direction while still having cover or an escape path.",
+    "coachNote": "A position or line of attack that creates pressure from a useful direction.",
+    "example": "Taking the balcony angle lets Hela pressure the enemy backline while her team walks main.",
+    "relatedTerms": [
+      "Marvel Rivals",
+      "Positioning",
+      "Sightline",
+      "Off Angle",
+      "Cover"
+    ],
+    "sourceName": "Coach definition informed by Marvel Rivals positioning terms",
     "sourceUrl": "/glossary"
   }
 ]
