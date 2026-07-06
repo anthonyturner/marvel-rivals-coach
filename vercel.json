@@ -13,5 +13,15 @@
       "path": "/api/sync/home-news",
       "schedule": "0 */6 * * *"
     }
+  ],
+  "headers": [
+    {
+      "source": "/api/glossary",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+      ]
+    }
   ]
 }
