@@ -1878,6 +1878,38 @@
     "sourceUrl": "https://marvelrivals.fandom.com/wiki/Competitive"
   },
   {
+    "id": "rank-grandmaster",
+    "term": "Grandmaster",
+    "category": "Ranked",
+    "definition": "A high Marvel Rivals competitive rank below Celestial and above Diamond.",
+    "coachNote": "Grandmaster games usually punish loose ultimates, late rotations, and unclear target calls. Climbing here often means tightening teamfight planning.",
+    "example": "A Grandmaster player should understand when to save resources for the next objective fight instead of chasing stagger kills.",
+    "relatedTerms": [
+      "Diamond",
+      "Celestial",
+      "Ranked",
+      "Competitive"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Competitive",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Competitive"
+  },
+  {
+    "id": "rank-diamond",
+    "term": "Diamond",
+    "category": "Ranked",
+    "definition": "A Marvel Rivals competitive rank above Platinum and below Grandmaster.",
+    "coachNote": "Diamond is where good mechanics need cleaner decisions behind them. Track ultimates, rotate with purpose, and avoid autopilot engages.",
+    "example": "A Diamond team can lose a winnable match by staggering before every objective fight.",
+    "relatedTerms": [
+      "Platinum",
+      "Grandmaster",
+      "Ranked",
+      "Ladder"
+    ],
+    "sourceName": "Marvel Rivals Wiki - Competitive",
+    "sourceUrl": "https://marvelrivals.fandom.com/wiki/Competitive"
+  },
+  {
     "id": "rank-platinum",
     "term": "Platinum",
     "category": "Ranked",
