@@ -40,6 +40,7 @@ export const NAVIGATION_CATEGORIES: NavigationCategory[] = [
     items: [
       { label: 'Media Tutorials', path: '/media-tutorials', description: 'Browse coaching videos by topic.', enabled: true },
       { label: 'Game Stats', path: '/game-stats', description: 'Review the numbers behind the roster.', enabled: true },
+      { label: 'Tier List', path: '/tier-list', description: 'Compare synced hero tiers by season and rank.', enabled: true },
       { label: 'Glossary', path: '/glossary', description: 'Translate common hero-shooter terms quickly.', enabled: true },
     ],
   },

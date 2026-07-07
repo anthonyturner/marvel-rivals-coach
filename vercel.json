@@ -12,6 +12,10 @@
     {
       "path": "/api/sync/home-news",
       "schedule": "0 */6 * * *"
+    },
+    {
+      "path": "/api/sync/tier-list",
+      "schedule": "20 */6 * * *"
     }
   ],
   "headers": [
@@ -25,6 +29,14 @@
     },
     {
       "source": "/api/heroes",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+      ]
+    },
+    {
+      "source": "/api/tier-list",
       "headers": [
         { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "Access-Control-Allow-Methods", "value": "GET, OPTIONS" },

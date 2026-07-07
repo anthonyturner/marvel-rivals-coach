@@ -16,8 +16,10 @@ import {
   getHeroesFromDatabase,
   getHomeContentBlocksFromDatabase,
   getHomePortalsFromDatabase,
+  getTierListFromDatabase,
 } from './content-database';
 import { syncHomeNews } from './home-news-sync';
+import { syncTierList } from './tier-list-sync';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -69,6 +71,24 @@ app.get('/api/sync/home-news', (req, res) => {
 
 app.get('/api/glossary', (_req, res) => {
   handleApiResponse(res, () => getGlossaryTermsFromDatabase());
+});
+
+app.get('/api/tier-list', (req, res) => {
+  handleApiResponse(res, () => {
+    const season = typeof req.query['season'] === 'string' ? Number(req.query['season']) : undefined;
+    const rank = typeof req.query['rank'] === 'string' ? req.query['rank'] : '5+';
+
+    return getTierListFromDatabase(Number.isFinite(season) ? season : undefined, rank);
+  });
+});
+
+app.get('/api/sync/tier-list', (req, res) => {
+  if (!isAuthorizedSyncRequest(req)) {
+    res.status(401).json({ message: 'Missing sync authorization' });
+    return;
+  }
+
+  handleApiResponse(res, () => syncTierList());
 });
 
 app.get('/api/external-sources/:sourceKey', (req, res) => {

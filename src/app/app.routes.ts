@@ -18,6 +18,7 @@ import { StrategicCoverPageComponent } from './strategic-cover/strategic-cover-p
 import { TeamBuilderPageComponent } from './team-builder/team-builder-page.component';
 import { TechniquesPageComponent } from './techniques/techniques-page.component';
 import { WatchNextPageComponent } from './watch-next/watch-next-page.component';
+import { TierListPageComponent } from './tier-list/tier-list-page.component';
 
 export const routes: Routes = [
   {
@@ -90,6 +91,10 @@ export const routes: Routes = [
   {
     path: 'game-stats',
     component: GameStatsPageComponent,
+  },
+  {
+    path: 'tier-list',
+    component: TierListPageComponent,
   },
   {
     path: 'watch-next',

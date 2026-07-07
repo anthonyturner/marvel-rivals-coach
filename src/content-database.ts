@@ -3,6 +3,7 @@ import { createClient, type Client } from '@tursodatabase/serverless/compat';
 import { GlossaryTerm } from './app/glossary/glossary.model.js';
 import { HomeContent, PortalCard } from './app/home/home-content.model.js';
 import { Hero, HeroVideo } from './app/heroes/hero.model.js';
+import { TierListResponse } from './tier-list.model.js';
 
 const nodeProcess = process as typeof process & {
   loadEnvFile?: (path?: string) => void;
@@ -24,6 +25,8 @@ type ContentStatus = {
   heroVideos: number;
   homePortals: number;
   homeContentBlocks: number;
+  tierListSeasons: number;
+  tierListItems: number;
 };
 
 let client: Client | undefined;
@@ -97,6 +100,39 @@ export async function getExternalSourceFromDatabase(sourceKey: string): Promise<
   return row ? JSON.parse(row.payload_json) : undefined;
 }
 
+export async function getTierListFromDatabase(
+  seasonId?: number,
+  rankFilter = '5+',
+): Promise<TierListResponse | undefined> {
+  try {
+    const selectedSeasonId = seasonId ?? await getLatestTierListSeasonId();
+    const row = await queryOne<{ payload_json: string }>(
+      `SELECT payload_json
+      FROM tier_list_rank_snapshots
+      WHERE season_id = ? AND rank_filter = ?`,
+      selectedSeasonId,
+      rankFilter,
+    );
+
+    if (row) {
+      return JSON.parse(row.payload_json) as TierListResponse;
+    }
+
+    const fallback = await queryOne<{ payload_json: string }>(
+      `SELECT payload_json
+      FROM tier_list_rank_snapshots
+      WHERE season_id = ?
+      ORDER BY rank_filter = '5+' DESC, updated_at DESC
+      LIMIT 1`,
+      selectedSeasonId,
+    );
+
+    return fallback ? JSON.parse(fallback.payload_json) as TierListResponse : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 export async function getContentStatusFromDatabase(): Promise<ContentStatus> {
   return {
     databaseProvider: 'turso',
@@ -108,6 +144,8 @@ export async function getContentStatusFromDatabase(): Promise<ContentStatus> {
     heroVideos: await getCount('hero_videos'),
     homePortals: await getCount('home_portals'),
     homeContentBlocks: await getCount('home_content_blocks'),
+    tierListSeasons: await getOptionalCount('tier_list_seasons'),
+    tierListItems: await getOptionalCount('tier_list_items'),
   };
 }
 
@@ -127,6 +165,25 @@ async function getCount(tableName: string): Promise<number> {
   const row = await queryOne<{ count: number }>(`SELECT COUNT(*) AS count FROM ${tableName}`);
 
   return row?.count ?? 0;
+}
+
+async function getOptionalCount(tableName: string): Promise<number> {
+  try {
+    return await getCount(tableName);
+  } catch {
+    return 0;
+  }
+}
+
+async function getLatestTierListSeasonId(): Promise<number | undefined> {
+  const row = await queryOne<{ source_season_id: number }>(
+    `SELECT source_season_id
+    FROM tier_list_seasons
+    ORDER BY source_season_id DESC
+    LIMIT 1`,
+  );
+
+  return row?.source_season_id;
 }
 
 function getClient(): Client {

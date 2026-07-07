@@ -14,6 +14,7 @@
     "sync:home-news": "node --experimental-strip-types scripts/sync-home-news.mjs",
     "sync:glossary": "node scripts/sync-glossary.mjs",
     "sync:heroes": "node scripts/sync-heroes.mjs",
+    "sync:tier-list": "node --experimental-strip-types scripts/sync-tier-list.mjs",
     "refresh:counters": "node scripts/refresh-counter-picks.mjs",
     "refresh:playstyles": "node scripts/refresh-playstyles.mjs",
     "refresh:build-profiles": "node scripts/refresh-build-profiles.mjs",
