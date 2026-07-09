@@ -67,6 +67,8 @@ Important files:
 | `scripts/sync-heroes.mjs` | Fetches and updates Turso hero data from Marvel Rivals Fandom |
 | `scripts/sync-external-sources.mjs` | Caches external source payloads in Turso |
 | `scripts/sync-home-news.mjs` | Refreshes home page news cards from Steam News and BattlePass data |
+| `scripts/sync-glossary-missing.mjs` | Inserts glossary terms that exist in local JSON but are missing from Turso |
+| `scripts/sync-glossary-terms.mjs` | Upserts specific glossary terms by ID or term text |
 | `scripts/refresh-counter-picks.mjs` | Rebuilds the curated "who stops this hero" counter matrix |
 | `scripts/refresh-playstyles.mjs` | Regenerates hero playstyle copy from current Turso content |
 | `src/app/data/hero-videos.mock.json` | Seed data for hero-specific and role-fallback video embeds |
@@ -155,6 +157,18 @@ Refresh the home page Season and BattlePass notes:
 npm.cmd run sync:home-news
 ```
 
+Insert glossary terms that exist in `src/app/data/glossary.mock.json` but are missing from Turso:
+
+```powershell
+npm.cmd run sync:glossary:missing
+```
+
+Upsert one or more glossary terms without a full reseed:
+
+```powershell
+npm.cmd run sync:glossary:terms -- glnm another-term-id
+```
+
 Refresh the curated hero counter picks:
 
 ```powershell
@@ -215,6 +229,39 @@ npm.cmd run refresh:playstyles
 ```
 
 Restart the dev server after updating the database if you already had it running.
+
+## Vercel Deployment
+
+Vercel reads `vercel.json` and runs:
+
+```powershell
+npm run vercel:build
+```
+
+That command runs the normal Angular/API build first:
+
+```powershell
+npm run build
+```
+
+Then it runs a production-only missing glossary sync:
+
+```powershell
+npm run sync:glossary:missing -- --vercel-production-only
+```
+
+The glossary sync only writes during production Vercel builds (`VERCEL_ENV=production`). Preview builds and local runs of `vercel:build` skip that database write. The sync inserts glossary rows whose IDs exist in `src/app/data/glossary.mock.json` but are missing from Turso. It does not update existing glossary rows and does not delete anything.
+
+Deploys do not run the full seed or content refresh pipeline. These commands remain manual/admin operations:
+
+```text
+npm run db:seed
+npm run content:update
+npm run sync:glossary
+npm run sync:glossary:terms -- glnm
+```
+
+For routing, `/api/*` files deploy as Vercel serverless functions. Non-API routes are rewritten to `index.csr.html`, so Angular handles app navigation.
 
 ## Turso Setup
 
