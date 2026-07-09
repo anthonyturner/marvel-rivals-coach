@@ -3,7 +3,6 @@
   --modal-gold: #ffd866;
   --heroes-box-shadow: inset 1px 0 var(--modal-gold), inset 0 1px rgba(255, 255, 255, 0.14);
 }
-
 .heroes-page {
   --heroes-glass: rgba(83, 82, 1, 0.336);
   --heroes-glass-soft: rgba(255, 234, 116, 0.12);
@@ -11,14 +10,12 @@
   min-height: 100%;
   padding: 32px;
 }
-
 .page-header,
 .toolbar,
 .heroes-layout {
   width: 100%;
   margin: 0 auto;
 }
-
 .page-header {
   position: relative;
   isolation: isolate;
@@ -426,21 +423,18 @@ h1 {
   font-weight: 800;
   cursor: pointer;
 }
-
 .detail-pop-button {
   border: 1px solid rgba(138, 98, 0, 0.28);
   background: rgba(255, 248, 203, 0.86);
   color: #1d220b;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.72), 0 8px 18px rgba(83, 82, 1, 0.08);
 }
-
 .modal-close-button {
   border: 1px solid rgba(17, 24, 39, 0.16);
   background: rgba(255, 255, 255, 0.82);
   color: #111827;
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12), inset 0 1px rgba(255, 255, 255, 0.86);
 }
-
 .detail-pop-button:hover,
 .modal-close-button:hover {
   background: #ffffff;
@@ -1628,11 +1622,9 @@ ul {
     display: grid;
     background: rgb(255 255 255);
   }
-
   .technical-details {
     grid-template-columns: 1fr;
   }
-
   .technical-details .stat-card,
   .technical-details .stat-card:nth-last-child(1):nth-child(3n + 1),
   .technical-details .stat-card:nth-last-child(2):nth-child(3n + 1),
@@ -1640,5 +1632,4 @@ ul {
   .technical-details .stat-card:nth-last-child(1):nth-child(2n + 1) {
     grid-column: 1 / -1;
   }
-
 }
