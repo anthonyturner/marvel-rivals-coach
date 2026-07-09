@@ -666,6 +666,22 @@
     "sourceUrl": "/glossary"
   },
   {
+    "id": "glnm",
+    "term": "glnm",
+    "category": "Gaming Chat",
+    "definition": "Good luck next match. A friendly phrase used after a game to wish someone better luck in their next queue.",
+    "coachNote": "Good luck next match.",
+    "example": "glnm, you got this",
+    "relatedTerms": [
+      "Sportsmanship",
+      "Chat",
+      "Match End",
+      "gg"
+    ],
+    "sourceName": "Manual seed data",
+    "sourceUrl": "/glossary"
+  },
+  {
     "id": "lol",
     "term": "lol",
     "category": "Internet Slang",
