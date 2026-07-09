@@ -64,6 +64,9 @@ h2 {
 .guide-group {
   display: grid;
   gap: 14px;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 6px;
 }
 
 .group-heading {

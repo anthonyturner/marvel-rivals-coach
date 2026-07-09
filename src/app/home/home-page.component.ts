@@ -22,4 +22,26 @@ export class HomePageComponent {
     const image = event.target as HTMLImageElement;
     image.src = '/images/heroes/doctor-strange.png';
   }
+
+  onHeroAvatarError(event: Event): void {
+    const image = event.target as HTMLImageElement;
+    image.src = '/images/heroes/default-hero.png';
+  }
+
+  isReportedHero(label: string): boolean {
+    const normalizedLabel = label.toLowerCase();
+
+    return normalizedLabel.includes('reported hero') || normalizedLabel.includes('latest hero');
+  }
+
+  heroImagePath(heroName: string): string {
+    const slug = heroName
+      .toLowerCase()
+      .replace(/&/g, 'and')
+      .replace(/['.]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+
+    return `/images/heroes/${slug || 'default-hero'}.png`;
+  }
 }

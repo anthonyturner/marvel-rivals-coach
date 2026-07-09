@@ -160,6 +160,7 @@ h1 {
   gap: 16px;
   align-items: end;
   margin-top: 18px;
+  margin-bottom: 18px;
   padding: 16px;
   border: 1px solid rgba(83, 82, 1, 0.18);
   border-radius: 8px;
@@ -235,31 +236,27 @@ h1 {
 
 .heroes-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
   align-items: start;
   padding: 20px 0 40px;
 }
 
 .hero-container {
-  order: -1;
+  grid-column: 2;
   min-width: 0;
 }
 
 .hero-detail-panel {
-  position: static;
-  max-height: none;
-  overflow: visible;
+  grid-column: 1;
 }
 
 .heroes-layout>.hero-detail:last-child {
-  position: static;
-  max-height: none;
-  overflow: visible;
+  grid-column: 2;
 }
 
 .heroes-layout>.hero-detail:last-child .video-list {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr 1fr;
 }
 
 .detail-hero-container {
@@ -271,9 +268,14 @@ h1 {
   border-radius: 8px;
 }
 
-.heroes-layout.detail-modal-open .hero-grid,
-.heroes-layout.detail-modal-open>.hero-detail:last-child {
-  animation: slide-left 280ms ease both;
+.heroes-layout.detail-modal-open {
+  grid-template-columns: minmax(0, 1fr)
+}
+
+.detail-modal-open .hero-container,
+.detail-modal-open>.hero-detail:last-child {
+  grid-column: 1;
+  animation: slide-left 280ms ease both
 }
 
 .hero-grid {
@@ -325,8 +327,11 @@ h1 {
 }
 
 .hero-card-copy>span:last-child {
+  display: -webkit-box;
+  overflow: hidden;
   color: var(--text-muted);
-  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .thumb-grid .hero-card {
@@ -480,12 +485,11 @@ h1 {
   z-index: 2;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: end;
   gap: 10px;
   align-items: center;
   padding: 2px 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.62));
-  backdrop-filter: blur(18px);
+  background: none;
 }
 
 .modal-actions .modal-close-button {
@@ -1400,8 +1404,9 @@ ul {
 }
 
 .video-list {
-  display: grid;
+  display: flex;
   gap: 10px;
+  flex-direction: column;
 }
 
 .video-card {
@@ -1478,12 +1483,18 @@ ul {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .heroes-layout.detail-modal-open {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
   .heroes-layout>.hero-detail:last-child {
     grid-column: auto;
+  }
+
+  .hero-container {
+    grid-column: auto;
+    order: -1;
+  }
+
+  .hero-detail-panel {
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .heroes-layout>.hero-detail:last-child .video-list {

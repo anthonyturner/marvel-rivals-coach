@@ -1,66 +1,81 @@
 <section class="home-page">
-  <header class="hero scroll-reveal">
-    <div class="hero-copy">
-      <p class="eyebrow">Marvel Rivals Coach</p>
-      <h1>Plan cleaner fights before you queue.</h1>
-      <p class="lede">
-        Browse heroes, learn map-control fundamentals, watch curated tutorials, and turn guide
-        notes into practical drills for your next ranked block.
-      </p>
-      <div class="hero-actions">
-        <a routerLink="/beginner-interactive-guide">Start beginner guide</a>
-        <a routerLink="/watch-next">Find what to watch</a>
-        <a routerLink="/techniques">Browse techniques</a>
-      </div>
-    </div>
-
-    <aside class="command-window" aria-label="Current coaching dashboard">
-      <div class="window-bar" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <div class="prompt-row">
-        <div>
-          <span>Coach prompt</span>
-          <p>What should I improve before my next match?</p>
-        </div>
-        <a routerLink="/watch-next">Plan</a>
-      </div>
-
-      <div class="command-card">
-        <div class="command-header">
-          <span>Current Focus</span>
-          <strong>{{ content().currentFocusTitle }}</strong>
-          <p>{{ content().currentFocusDescription }}</p>
-        </div>
-
-        <div class="season-list" aria-label="Current season quick links">
-          @for (item of content().quickLinks; track item.label) {
-            <div>
-              <small>{{ item.label }}</small>
-              <strong>{{ item.value }}</strong>
-            </div>
-          }
-        </div>
-      </div>
-
-      <p class="source-status">
-        {{ content().sourceMode === 'database' ? 'Live content database' : 'Curated fallback data' }}
-        - {{ content().lastChecked }}
-      </p>
-    </aside>
-  </header>
-
-  <section class="stats scroll-reveal" aria-label="Site stats">
-    @for (stat of content().heroStats; track stat.label) {
+  <div class="header-container">
+    <aside class="stats scroll-reveal" aria-label="Site stats">
+      @for (stat of content().heroStats; track stat.label) {
       <article>
-        <strong>{{ stat.value }}</strong>
         <span>{{ stat.label }}</span>
+        <strong>{{ stat.value }}</strong>
       </article>
-    }
-  </section>
+      }
+    </aside>
+
+    <header class="hero scroll-reveal">
+      <div class="hero-copy">
+        <p class="eyebrow">Marvel Rivals Coach</p>
+        <h1>Plan cleaner fights before you queue.</h1>
+        <p class="lede">
+          Browse heroes, learn map-control fundamentals, watch curated tutorials, and turn guide
+          notes into practical drills for your next ranked block.
+        </p>
+        <div class="hero-actions">
+          <a routerLink="/beginner-interactive-guide">Start beginner guide</a>
+          <a routerLink="/watch-next">Find what to watch</a>
+          <a routerLink="/techniques">Browse techniques</a>
+        </div>
+      </div>
+
+      <aside class="command-window" aria-label="Current coaching dashboard">
+        <div class="window-bar" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="prompt-row">
+          <div>
+            <span>Coach prompt</span>
+            <p>What should I improve before my next match?</p>
+          </div>
+          <a routerLink="/watch-next">Plan</a>
+        </div>
+
+        <div class="command-card">
+          <div class="command-header">
+            <span>Current Focus</span>
+            <strong>{{ content().currentFocusTitle }}</strong>
+            <p>{{ content().currentFocusDescription }}</p>
+          </div>
+        </div>
+
+        <p class="source-status">
+          {{ content().sourceMode === 'database' ? 'Live content database' : 'Curated fallback data' }}
+          - {{ content().lastChecked }}
+        </p>
+      </aside>
+    </header>
+
+    <aside class="season-list" aria-label="Current season quick links">
+      @for (item of content().quickLinks; track item.label) {
+      <div [class.has-hero-avatar]="isReportedHero(item.label)">
+        
+        <span class="quick-link-copy">
+          <small>{{ item.label }}</small>
+          <strong>{{ item.value }}</strong>
+          
+        </span>
+        @if (isReportedHero(item.label)) {
+        <img
+          class="quick-link-avatar"
+          [src]="heroImagePath(item.value)"
+          [alt]="item.value + ' hero avatar'"
+          loading="lazy"
+          (error)="onHeroAvatarError($event)"
+        />
+        }
+      </div>
+      }
+    </aside>
+  </div>
 
   <section class="stack-section" aria-labelledby="stack-title">
     <div class="stack-intro scroll-reveal">
@@ -144,13 +159,13 @@
 
       <div class="portal-grid">
         @for (portal of content().portals; track portal.title) {
-          <a class="portal-card" [routerLink]="portal.path">
-            <img [src]="portal.image" [alt]="portal.title" loading="lazy" />
-            <div>
-              <h3>{{ portal.title }}</h3>
-              <p>{{ portal.description }}</p>
-            </div>
-          </a>
+        <a class="portal-card" [routerLink]="portal.path">
+          <img [src]="portal.image" [alt]="portal.title" loading="lazy" />
+          <div>
+            <h3>{{ portal.title }}</h3>
+            <p>{{ portal.description }}</p>
+          </div>
+        </a>
         }
       </div>
     </section>
@@ -163,11 +178,11 @@
 
       <div class="guide-list">
         @for (guide of content().featuredGuides; track guide.title) {
-          <a [routerLink]="guide.path">
-            <span>{{ guide.tag }}</span>
-            <h3>{{ guide.title }}</h3>
-            <p>{{ guide.description }}</p>
-          </a>
+        <a [routerLink]="guide.path">
+          <span>{{ guide.tag }}</span>
+          <h3>{{ guide.title }}</h3>
+          <p>{{ guide.description }}</p>
+        </a>
         }
       </div>
     </aside>
@@ -180,21 +195,16 @@
 
       <div class="news-list">
         @for (item of content().latestNews; track item.title) {
-          <article>
-            <img
-              class="news-thumbnail"
-              [src]="item.thumbnailUrl"
-              [alt]="item.thumbnailAlt"
-              loading="lazy"
-              (error)="onNewsImageError($event)"
-            />
-            <div class="news-copy">
-              <span>{{ item.label }}</span>
-              <h3>{{ item.title }}</h3>
-              <p>{{ item.description }}</p>
-              <a [href]="item.sourceUrl" target="_blank" rel="noopener">Source</a>
-            </div>
-          </article>
+        <article>
+          <img class="news-thumbnail" [src]="item.thumbnailUrl" [alt]="item.thumbnailAlt" loading="lazy"
+            (error)="onNewsImageError($event)" />
+          <div class="news-copy">
+            <span>{{ item.label }}</span>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+            <a [href]="item.sourceUrl" target="_blank" rel="noopener">Source</a>
+          </div>
+        </article>
         }
       </div>
     </section>

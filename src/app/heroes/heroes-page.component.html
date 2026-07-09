@@ -41,30 +41,7 @@
       }
     </div>
   </section>
-  <main class="heroes-layout" [class.detail-modal-open]="isHeroDetailModalOpen()">
-    <!-- Selected Hero details -->
-    @if (selectedHero(); as hero) {
-    @if (!isHeroDetailModalOpen()) {
-    <aside class="hero-detail hero-detail-panel" [@fadeIn] [ngClass]="roleClass(heroRoleLabel(hero))"
-      aria-label="Selected hero details">
-      <button class="detail-pop-button" type="button" (click)="openHeroDetailModal()">Open profile</button>
-      @if (roleAbilityKits(hero).length > 0) {
-      <section class="role-pool-switcher" aria-label="Ability role pool">
-        <div class="ability-role-tabs">
-          @for (kit of roleAbilityKits(hero); track kit.role) {
-          <button type="button" [class.active]="selectedAbilityKit(hero)?.role === kit.role"
-            (click)="selectAbilityKit(kit.role)">
-            {{ kit.label }}
-          </button>
-          }
-        </div>
-      </section>
-      }
-      <ng-container [ngTemplateOutlet]="heroDetailsTemplate"
-        [ngTemplateOutletContext]="{ $implicit: hero }"></ng-container>
-    </aside>
-    }
-    }
+  
     <section class="hero-container">
       <div class="view-toggle" aria-label="Hero card layout">
         <button type="button" [class.active]="heroGridMode() === 'rows'" (click)="selectHeroGridMode('rows')">
@@ -95,6 +72,30 @@
         }
       </div>
     </section>
+  <main class="heroes-layout" [class.detail-modal-open]="isHeroDetailModalOpen()">
+    <!-- Selected Hero details -->
+    @if (selectedHero(); as hero) {
+    @if (!isHeroDetailModalOpen()) {
+    <aside class="hero-detail hero-detail-panel" [@fadeIn] [ngClass]="roleClass(heroRoleLabel(hero))"
+      aria-label="Selected hero details">
+      <button class="detail-pop-button" type="button" (click)="openHeroDetailModal()">Open profile</button>
+      @if (roleAbilityKits(hero).length > 0) {
+      <section class="role-pool-switcher" aria-label="Ability role pool">
+        <div class="ability-role-tabs">
+          @for (kit of roleAbilityKits(hero); track kit.role) {
+          <button type="button" [class.active]="selectedAbilityKit(hero)?.role === kit.role"
+            (click)="selectAbilityKit(kit.role)">
+            {{ kit.label }}
+          </button>
+          }
+        </div>
+      </section>
+      }
+      <ng-container [ngTemplateOutlet]="heroDetailsTemplate"
+        [ngTemplateOutletContext]="{ $implicit: hero }"></ng-container>
+    </aside>
+    }
+    }
     <aside class="hero-detail">
       <section class="video-searches" aria-label="YouTube videos for selected hero">
         <div class="section-heading">
