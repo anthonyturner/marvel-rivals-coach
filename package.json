@@ -13,6 +13,7 @@
     "db:sync": "node scripts/sync-external-sources.mjs",
     "sync:home-news": "node --experimental-strip-types scripts/sync-home-news.mjs",
     "sync:glossary": "node scripts/sync-glossary.mjs",
+    "sync:glossary:terms": "node scripts/sync-glossary-terms.mjs",
     "sync:heroes": "node scripts/sync-heroes.mjs",
     "sync:tier-list": "node --experimental-strip-types scripts/sync-tier-list.mjs",
     "refresh:counters": "node scripts/refresh-counter-picks.mjs",
