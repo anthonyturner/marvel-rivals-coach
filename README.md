@@ -375,6 +375,10 @@ Run unit tests:
 npm.cmd test
 ```
 
+## Agile Workflow
+
+Project planning lives in `docs/agile`. Start with `docs/agile/README.md`, then use `backlog.md` and `sprint-board.md` for day-to-day work. GitHub integration details for issues, pull requests, Actions, labels, and agents live in `docs/agile/github-integration.md`.
+
 ## Notes
 
 - The app depends on Turso for runtime content.

@@ -1,0 +1,34 @@
+name: Feature
+description: Plan a user-facing improvement
+title: "[Feature]: "
+labels: ["feature", "needs-refinement"]
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: User story
+      description: Who needs this, what do they need, and why?
+      placeholder: As a visitor, I want..., so that...
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: List testable outcomes.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: input
+    id: area
+    attributes:
+      label: Area
+      placeholder: Route, component, API, script, or data file
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks or notes
+      placeholder: Layout, data, deploy, or build concerns
+
