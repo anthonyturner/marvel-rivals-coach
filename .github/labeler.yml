@@ -1,0 +1,42 @@
+area:home:
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/app/home/**
+          - src/app/data/home-*.json
+
+area:heroes:
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/app/heroes/**
+          - src/app/hero-guides/**
+          - src/app/data/heroes.mock.json
+          - src/app/data/hero-videos.mock.json
+          - public/images/heroes/**
+
+area:api:
+  - changed-files:
+      - any-glob-to-any-file:
+          - api/**
+          - src/server.ts
+          - src/content-database.ts
+
+area:database:
+  - changed-files:
+      - any-glob-to-any-file:
+          - scripts/**
+          - src/app/data/**
+
+area:docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - README.md
+          - docs/**
+          - .github/**
+
+area:ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/workflows/**
+          - package.json
+          - package-lock.json
+
