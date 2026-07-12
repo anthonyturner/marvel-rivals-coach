@@ -12,6 +12,19 @@ export interface HeroAbility {
   technicalDetails?: HeroAbilityTechnicalDetail[];
 }
 
+export interface HeroOfficialSource {
+  id?: string;
+  sourceUrl: string;
+  subtitle?: string;
+  fetchedFrom?: string;
+  baseStats?: HeroAbilityTechnicalDetail[];
+  baseStatKits?: {
+    role?: HeroRole;
+    label: string;
+    stats: HeroAbilityTechnicalDetail[];
+  }[];
+}
+
 export interface HeroRoleAbilityKit {
   role: HeroRole;
   label: string;
@@ -92,5 +105,6 @@ export interface Hero {
   playstyles?: HeroPlaystyleGuide[];
   buildProfile?: HeroBuildProfile;
   buildProfileRationale?: HeroBuildProfileRationale;
+  officialSource?: HeroOfficialSource;
   imageUrl: string;
 }

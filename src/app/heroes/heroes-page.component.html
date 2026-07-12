@@ -172,9 +172,24 @@
 
       <section class="deadpool-upgrades" aria-label="Marvel Rivals Fandom overview">
         <div class="section-heading">
-          <h3>Fandom Overview</h3>
-          <a [href]="fandomHeroUrl(hero)" target="_blank" rel="noopener noreferrer">Source</a>
+          <h3>{{ hero.officialSource ? 'Official Overview' : 'Fandom Overview' }}</h3>
+          <a [href]="officialHeroSourceUrl(hero)" target="_blank" rel="noopener noreferrer">Source</a>
         </div>
+        @if (officialBaseStats(hero).length) {
+        <dl class="technical-details" aria-label="Official base stats">
+          @for (detail of officialBaseStats(hero); track detail.label + detail.value) {
+          <div [class]="'stat-card stat-' + technicalDetailType(detail.label)">
+            <span class="stat-icon" aria-hidden="true">
+              <i [class]="technicalDetailIcon(detail.label)"></i>
+            </span>
+            <div class="stat-copy">
+              <dt>{{ detail.label }}</dt>
+              <dd>{{ detail.value }}</dd>
+            </div>
+          </div>
+          }
+        </dl>
+        }
         @for (section of fandomOverviewSections(hero); track section.title) {
         <article class="overview-section">
           <strong>{{ section.title }}</strong>
@@ -335,10 +350,10 @@
             <h3>Normal Abilities</h3>
           </div>
           <div class="ability-tabs" role="tablist" aria-label="Ability tabs">
-            @for (ability of activeAbilities(hero); track ability.name) {
+            @for (ability of normalAbilities(hero); track ability.name) {
             <button type="button" role="tab"
-              [class.active]="selectedAbilityTab(hero, activeAbilities(hero))?.name === ability.name"
-              [attr.aria-selected]="selectedAbilityTab(hero, activeAbilities(hero))?.name === ability.name"
+              [class.active]="selectedAbilityTab(hero, normalAbilities(hero))?.name === ability.name"
+              [attr.aria-selected]="selectedAbilityTab(hero, normalAbilities(hero))?.name === ability.name"
               [attr.aria-controls]="abilityAnchorId(hero, ability)" (click)="selectAbilityTab(hero, ability)">
               <span>{{ ability.type }}</span>
               <small>{{ ability.name }}</small>
@@ -346,7 +361,7 @@
             }
           </div>
 
-          @if (selectedAbilityTab(hero, activeAbilities(hero)); as ability) {
+          @if (selectedAbilityTab(hero, normalAbilities(hero)); as ability) {
           <article [id]="abilityAnchorId(hero, ability)" role="tabpanel"
             [class.highlighted]="activeAbilityAnchorId() === abilityAnchorId(hero, ability)">
             <span>{{ ability.type }}</span>
@@ -371,6 +386,49 @@
           </article>
           }
         </section>
+        @if (teamUpAbilities(hero).length > 0) {
+        <section class="abilities">
+          <div class="section-heading ability-heading">
+            <h3>Team-Up Abilities</h3>
+          </div>
+          <div class="ability-tabs" role="tablist" aria-label="Team-up ability tabs">
+            @for (ability of teamUpAbilities(hero); track ability.name) {
+            <button type="button" role="tab"
+              [class.active]="selectedAbilityTab(hero, teamUpAbilities(hero))?.name === ability.name"
+              [attr.aria-selected]="selectedAbilityTab(hero, teamUpAbilities(hero))?.name === ability.name"
+              [attr.aria-controls]="abilityAnchorId(hero, ability)" (click)="selectAbilityTab(hero, ability)">
+              <span>{{ ability.type }}</span>
+              <small>{{ ability.name }}</small>
+            </button>
+            }
+          </div>
+
+          @if (selectedAbilityTab(hero, teamUpAbilities(hero)); as ability) {
+          <article [id]="abilityAnchorId(hero, ability)" role="tabpanel"
+            [class.highlighted]="activeAbilityAnchorId() === abilityAnchorId(hero, ability)">
+            <span>{{ ability.type }}</span>
+            <strong>{{ ability.name }}</strong>
+            <p [innerHTML]="highlightedAbilityText(hero, ability.description)"></p>
+            @if (ability.technicalDetails?.length) {
+            <h4>Stats & formulas</h4>
+            <dl class="technical-details" aria-label="Team-up ability technical details">
+              @for (detail of ability.technicalDetails; track detail.label + detail.value) {
+              <div [class]="'stat-card stat-' + technicalDetailType(detail.label)">
+                <span class="stat-icon" aria-hidden="true">
+                  <i [class]="technicalDetailIcon(detail.label)"></i>
+                </span>
+                <div class="stat-copy">
+                  <dt>{{ detail.label }}</dt>
+                  <dd>{{ detail.value }}</dd>
+                </div>
+              </div>
+              }
+            </dl>
+            }
+          </article>
+          }
+        </section>
+        }
       </section>
 
 

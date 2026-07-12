@@ -65,6 +65,7 @@ Important files:
 | `scripts/sqlite-schema.sql` | SQLite table schema |
 | `scripts/seed-sqlite.mjs` | Seeds Turso from local mock JSON |
 | `scripts/sync-heroes.mjs` | Fetches and updates Turso hero data from Marvel Rivals Fandom |
+| `scripts/sync-official-heroes.mjs` | Fetches official Marvel Rivals hero descriptions, Season 9 abilities, and team-up abilities |
 | `scripts/sync-external-sources.mjs` | Caches external source payloads in Turso |
 | `scripts/sync-home-news.mjs` | Refreshes home page news cards from Steam News and BattlePass data |
 | `scripts/sync-glossary-missing.mjs` | Inserts glossary terms that exist in local JSON but are missing from Turso |
@@ -179,6 +180,24 @@ Pull current hero data and ability details from Fandom into Turso:
 
 ```powershell
 npm.cmd run sync:heroes
+```
+
+Pull official Season 9 hero descriptions, ability kits, and team-up abilities into Turso:
+
+```powershell
+npm.cmd run sync:official-heroes
+```
+
+Check the official heroes page for added, changed, or removed hero data without applying hero row updates:
+
+```powershell
+npm.cmd run check:official-heroes
+```
+
+Run the same official-site update loop every three days from a long-lived shell:
+
+```powershell
+npm.cmd run watch:official-heroes
 ```
 
 Refresh generated hero playstyle text from current Turso data:

@@ -17,11 +17,14 @@
     "sync:glossary:missing": "node scripts/sync-glossary-missing.mjs",
     "sync:glossary:terms": "node scripts/sync-glossary-terms.mjs",
     "sync:heroes": "node scripts/sync-heroes.mjs",
+    "sync:official-heroes": "node scripts/sync-official-heroes.mjs",
+    "check:official-heroes": "node scripts/sync-official-heroes.mjs --check",
+    "watch:official-heroes": "node scripts/sync-official-heroes.mjs --watch --interval-days 3",
     "sync:tier-list": "node --experimental-strip-types scripts/sync-tier-list.mjs",
     "refresh:counters": "node scripts/refresh-counter-picks.mjs",
     "refresh:playstyles": "node scripts/refresh-playstyles.mjs",
     "refresh:build-profiles": "node scripts/refresh-build-profiles.mjs",
-    "content:update": "npm run db:seed && npm run db:sync && npm run sync:home-news && npm run sync:heroes && npm run refresh:counters",
+    "content:update": "npm run db:seed && npm run db:sync && npm run sync:home-news && npm run sync:heroes && npm run sync:official-heroes && npm run refresh:counters",
     "serve:ssr:marvel-rivals-coach": "node dist/marvel-rivals-coach/server/server.mjs"
   },
   "prettier": {
