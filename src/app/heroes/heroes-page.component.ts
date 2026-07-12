@@ -28,6 +28,7 @@ import {
 import {
   Hero,
   HeroAbility,
+  HeroAbilityTechnicalDetail,
   HeroBuildProfileRationale,
   HeroPlaystyleGuide,
   HeroRole,
@@ -587,6 +588,31 @@ export class HeroesPageComponent implements OnInit {
 
   passiveAbilities(hero: Hero): HeroAbility[] {
     return this.displayedAbilities(hero).filter((ability) => this.isPassiveAbility(ability));
+  }
+
+  teamUpAbilities(hero: Hero): HeroAbility[] {
+    const displayedTeamUps = this.displayedAbilities(hero).filter((ability) => ability.type === 'Team-Up Ability');
+
+    if (displayedTeamUps.length > 0) {
+      return displayedTeamUps;
+    }
+
+    return hero.abilities.filter((ability) => ability.type === 'Team-Up Ability');
+  }
+
+  normalAbilities(hero: Hero): HeroAbility[] {
+    return this.activeAbilities(hero).filter((ability) => ability.type !== 'Team-Up Ability');
+  }
+
+  officialBaseStats(hero: Hero): HeroAbilityTechnicalDetail[] {
+    const selectedRole = this.selectedAbilityKit(hero)?.role ?? this.heroRoleLabel(hero);
+    const roleKit = hero.officialSource?.baseStatKits?.find((kit) => kit.role === selectedRole);
+
+    return roleKit?.stats ?? hero.officialSource?.baseStats ?? [];
+  }
+
+  officialHeroSourceUrl(hero: Hero): string {
+    return hero.officialSource?.sourceUrl ?? this.fandomHeroUrl(hero);
   }
 
   selectedAbilityTab(hero: Hero, abilities: HeroAbility[]): HeroAbility | undefined {
