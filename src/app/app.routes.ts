@@ -1,112 +1,133 @@
 import { Routes } from '@angular/router';
 
-import { BeginnerGuidePageComponent } from './beginner-guide/beginner-guide-page.component';
-import { BuildTheoryPageComponent } from './build-theory/build-theory-page.component';
-import { CountersPageComponent } from './counters/counters-page.component';
-import { GameStatsPageComponent } from './game-stats/game-stats-page.component';
-import { FirstTimeGuidePageComponent } from './hero-guides/first-time-guide-page.component';
-import { HeroGuideDetailPageComponent } from './hero-guides/hero-guide-detail-page.component';
-import { GlossaryPageComponent } from './glossary/glossary-page.component';
-import { HeroGuidesPageComponent } from './hero-guides/hero-guides-page.component';
-import { HeroesPageComponent } from './heroes/heroes-page.component';
-import { HomePageComponent } from './home/home-page.component';
-import { LearningPathsPageComponent } from './learning-paths/learning-paths-page.component';
-import { MediaTutorialsPageComponent } from './media-tutorials/media-tutorials-page.component';
-import { NAVIGATION_CATEGORIES, NavigationCategoryPageComponent } from './navigation-category/navigation-category-page.component';
-import { PowerPositionsPageComponent } from './power-positions/power-positions-page.component';
-import { StrategicCoverPageComponent } from './strategic-cover/strategic-cover-page.component';
-import { TeamBuilderPageComponent } from './team-builder/team-builder-page.component';
-import { TechniquesPageComponent } from './techniques/techniques-page.component';
-import { WatchNextPageComponent } from './watch-next/watch-next-page.component';
-import { TierListPageComponent } from './tier-list/tier-list-page.component';
+import { NAVIGATION_CATEGORIES } from './navigation-category/navigation-category.data';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomePageComponent,
+    loadComponent: () =>
+      import('./home/home-page.component').then((module) => module.HomePageComponent),
   },
   {
     path: 'heroes',
-    component: HeroesPageComponent,
+    loadComponent: () =>
+      import('./heroes/heroes-page.component').then((module) => module.HeroesPageComponent),
   },
-  {
-    path: 'learn',
-    component: NavigationCategoryPageComponent,
-    data: { category: NAVIGATION_CATEGORIES[0] },
-  },
-  {
-    path: 'resources',
-    component: NavigationCategoryPageComponent,
-    data: { category: NAVIGATION_CATEGORIES[1] },
-  },
-  {
-    path: 'tools',
-    component: NavigationCategoryPageComponent,
-    data: { category: NAVIGATION_CATEGORIES[2] },
-  },
+  ...NAVIGATION_CATEGORIES.map((category) => ({
+    path: category.path.slice(1),
+    loadComponent: () =>
+      import('./navigation-category/navigation-category-page.component').then(
+        (module) => module.NavigationCategoryPageComponent,
+      ),
+    data: { category },
+  })),
   {
     path: 'hero-guides',
-    component: HeroGuidesPageComponent,
+    loadComponent: () =>
+      import('./hero-guides/hero-guides-page.component').then(
+        (module) => module.HeroGuidesPageComponent,
+      ),
   },
   {
     path: 'hero-guides/first-time',
-    component: FirstTimeGuidePageComponent,
+    loadComponent: () =>
+      import('./hero-guides/first-time-guide-page.component').then(
+        (module) => module.FirstTimeGuidePageComponent,
+      ),
   },
   {
     path: 'hero-guides/:heroId',
-    component: HeroGuideDetailPageComponent,
+    loadComponent: () =>
+      import('./hero-guides/hero-guide-detail-page.component').then(
+        (module) => module.HeroGuideDetailPageComponent,
+      ),
   },
   {
     path: 'glossary',
-    component: GlossaryPageComponent,
+    loadComponent: () =>
+      import('./glossary/glossary-page.component').then((module) => module.GlossaryPageComponent),
   },
   {
     path: 'techniques',
-    component: TechniquesPageComponent,
+    loadComponent: () =>
+      import('./techniques/techniques-page.component').then(
+        (module) => module.TechniquesPageComponent,
+      ),
   },
   {
     path: 'beginner-interactive-guide',
-    component: BeginnerGuidePageComponent,
+    loadComponent: () =>
+      import('./beginner-guide/beginner-guide-page.component').then(
+        (module) => module.BeginnerGuidePageComponent,
+      ),
   },
   {
     path: 'build-theory',
-    component: BuildTheoryPageComponent,
+    loadComponent: () =>
+      import('./build-theory/build-theory-page.component').then(
+        (module) => module.BuildTheoryPageComponent,
+      ),
   },
   {
     path: 'power-positions',
-    component: PowerPositionsPageComponent,
+    loadComponent: () =>
+      import('./power-positions/power-positions-page.component').then(
+        (module) => module.PowerPositionsPageComponent,
+      ),
   },
   {
     path: 'strategic-cover',
-    component: StrategicCoverPageComponent,
+    loadComponent: () =>
+      import('./strategic-cover/strategic-cover-page.component').then(
+        (module) => module.StrategicCoverPageComponent,
+      ),
   },
   {
     path: 'learning-paths',
-    component: LearningPathsPageComponent,
+    loadComponent: () =>
+      import('./learning-paths/learning-paths-page.component').then(
+        (module) => module.LearningPathsPageComponent,
+      ),
   },
   {
     path: 'media-tutorials',
-    component: MediaTutorialsPageComponent,
+    loadComponent: () =>
+      import('./media-tutorials/media-tutorials-page.component').then(
+        (module) => module.MediaTutorialsPageComponent,
+      ),
   },
   {
     path: 'game-stats',
-    component: GameStatsPageComponent,
+    loadComponent: () =>
+      import('./game-stats/game-stats-page.component').then(
+        (module) => module.GameStatsPageComponent,
+      ),
   },
   {
     path: 'tier-list',
-    component: TierListPageComponent,
+    loadComponent: () =>
+      import('./tier-list/tier-list-page.component').then(
+        (module) => module.TierListPageComponent,
+      ),
   },
   {
     path: 'watch-next',
-    component: WatchNextPageComponent,
+    loadComponent: () =>
+      import('./watch-next/watch-next-page.component').then(
+        (module) => module.WatchNextPageComponent,
+      ),
   },
   {
     path: 'counters',
-    component: CountersPageComponent,
+    loadComponent: () =>
+      import('./counters/counters-page.component').then((module) => module.CountersPageComponent),
   },
   {
     path: 'team-builder',
-    component: TeamBuilderPageComponent,
+    loadComponent: () =>
+      import('./team-builder/team-builder-page.component').then(
+        (module) => module.TeamBuilderPageComponent,
+      ),
   },
   {
     path: '**',

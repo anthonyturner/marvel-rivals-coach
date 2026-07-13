@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { NAVIGATION_CATEGORIES } from '../../navigation-category/navigation-category-page.component';
+import { NAVIGATION_CATEGORIES } from '../../navigation-category/navigation-category.data';
 
 @Component({
   selector: 'app-nav',

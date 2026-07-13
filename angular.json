@@ -19,10 +19,19 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "{battery-half,burst,chart-simple,clock-rotate-left,crosshairs,gauge-high,handshake-angle,heart-pulse,person-running,shield-halved,star,wand-magic-sparkles}.svg",
+                "input": "node_modules/@fortawesome/fontawesome-free/svgs/solid",
+                "output": "icons/fontawesome/solid"
+              },
+              {
+                "glob": "hourglass-half.svg",
+                "input": "node_modules/@fortawesome/fontawesome-free/svgs/regular",
+                "output": "icons/fontawesome/regular"
               }
             ],
             "styles": [
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/styles.css"
             ],
             "server": "src/main.server.ts",
@@ -78,10 +87,19 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "{battery-half,burst,chart-simple,clock-rotate-left,crosshairs,gauge-high,handshake-angle,heart-pulse,person-running,shield-halved,star,wand-magic-sparkles}.svg",
+                "input": "node_modules/@fortawesome/fontawesome-free/svgs/solid",
+                "output": "icons/fontawesome/solid"
+              },
+              {
+                "glob": "hourglass-half.svg",
+                "input": "node_modules/@fortawesome/fontawesome-free/svgs/regular",
+                "output": "icons/fontawesome/regular"
               }
             ],
             "styles": [
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/styles.css"
             ]
           }

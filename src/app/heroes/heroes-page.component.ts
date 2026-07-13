@@ -807,15 +807,15 @@ export class HeroesPageComponent implements OnInit {
 
   technicalDetailIcon(label: string): string {
     const iconClasses: Record<string, string> = {
-      damage: 'fa-solid fa-burst',
-      cooldown: 'fa-solid fa-clock-rotate-left',
-      duration: 'fa-regular fa-hourglass-half',
-      healing: 'fa-solid fa-heart-pulse',
-      utility: 'fa-solid fa-wand-magic-sparkles',
-      range: 'fa-solid fa-crosshairs',
-      speed: 'fa-solid fa-gauge-high',
-      resource: 'fa-solid fa-battery-half',
-      stat: 'fa-solid fa-chart-simple',
+      damage: '/icons/fontawesome/solid/burst.svg',
+      cooldown: '/icons/fontawesome/solid/clock-rotate-left.svg',
+      duration: '/icons/fontawesome/regular/hourglass-half.svg',
+      healing: '/icons/fontawesome/solid/heart-pulse.svg',
+      utility: '/icons/fontawesome/solid/wand-magic-sparkles.svg',
+      range: '/icons/fontawesome/solid/crosshairs.svg',
+      speed: '/icons/fontawesome/solid/gauge-high.svg',
+      resource: '/icons/fontawesome/solid/battery-half.svg',
+      stat: '/icons/fontawesome/solid/chart-simple.svg',
     };
 
     return iconClasses[this.technicalDetailType(label)] ?? iconClasses['stat'];
@@ -899,30 +899,30 @@ export class HeroesPageComponent implements OnInit {
     const normalized = synergy.toLowerCase();
 
     if (/heal|support|sustain|strategist|restore/.test(normalized)) {
-      return 'fa-solid fa-heart-pulse';
+      return '/icons/fontawesome/solid/heart-pulse.svg';
     }
 
     if (/shield|barrier|protect|vanguard|tank|frontline/.test(normalized)) {
-      return 'fa-solid fa-shield-halved';
+      return '/icons/fontawesome/solid/shield-halved.svg';
     }
 
     if (/damage|duelist|burst|pressure|poke|finisher/.test(normalized)) {
-      return 'fa-solid fa-burst';
+      return '/icons/fontawesome/solid/burst.svg';
     }
 
     if (/dive|mobile|mobility|flank|speed|rotation/.test(normalized)) {
-      return 'fa-solid fa-person-running';
+      return '/icons/fontawesome/solid/person-running.svg';
     }
 
     if (/control|stun|slow|root|trap|zone|setup/.test(normalized)) {
-      return 'fa-solid fa-crosshairs';
+      return '/icons/fontawesome/solid/crosshairs.svg';
     }
 
     if (/ultimate|combo|team-up|team up/.test(normalized)) {
-      return 'fa-solid fa-star';
+      return '/icons/fontawesome/solid/star.svg';
     }
 
-    return 'fa-solid fa-handshake-angle';
+    return '/icons/fontawesome/solid/handshake-angle.svg';
   }
 
   scoreTone(value: number, max = 10): string {
