@@ -24,7 +24,7 @@ export function parseHeroCards(html) {
 
   while ((match = anchorPattern.exec(html))) {
     const attrs = parseAttributes(match[1]);
-    const name = cleanText(attrs.title || attrs['data-name']);
+    const name = cleanText(attrs['data-name'] || attrs.title);
     const url = absoluteUrl(attrs['data-url']);
 
     if (!name || !url) {

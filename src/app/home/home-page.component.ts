@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
+import {heroImagePath as heroImagePathFn} from "../utilities/string-utils";
 
 import { HomeContentService } from './home-content.service';
 
@@ -12,6 +13,7 @@ import { HomeContentService } from './home-content.service';
   styleUrl: './home-page.component.css',
 })
 export class HomePageComponent {
+  heroImagePath = heroImagePathFn;
   private readonly homeContentService = inject(HomeContentService);
 
   readonly content = toSignal(this.homeContentService.getHomeContent(), {
@@ -34,14 +36,4 @@ export class HomePageComponent {
     return normalizedLabel.includes('reported hero') || normalizedLabel.includes('latest hero');
   }
 
-  heroImagePath(heroName: string): string {
-    const slug = heroName
-      .toLowerCase()
-      .replace(/&/g, 'and')
-      .replace(/['.]/g, '')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, '');
-
-    return `/images/heroes/${slug || 'default-hero'}.png`;
-  }
 }

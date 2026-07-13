@@ -1,27 +1,5 @@
 import { createClient } from '@tursodatabase/serverless/compat';
 
-type SteamNewsItem = {
-  title?: string;
-  url?: string;
-  contents?: string;
-  date?: number;
-  feedlabel?: string;
-};
-
-type SteamNewsResponse = {
-  appnews?: {
-    newsitems?: SteamNewsItem[];
-  };
-};
-
-type FandomParseResponse = {
-  parse?: {
-    wikitext?: {
-      '*': string;
-    };
-  };
-};
-
 type NewsItem = {
   label: string;
   title: string;
@@ -34,11 +12,15 @@ type NewsItem = {
 type QuickLink = {
   label: string;
   value: string;
+  imageUrl?: string;
 };
 
 type BattlePassSnapshot = {
   currentSeason: string;
   battlePass: string;
+  seasonStory?: string;
+  latestHero?: string;
+  latestHeroImageUrl?: string;
 };
 
 export type HomeNewsSyncResult = {
@@ -48,22 +30,18 @@ export type HomeNewsSyncResult = {
   steamItemsRead: number;
 };
 
-const steamNewsSource = {
-  key: 'steam-marvel-rivals-news',
-  name: 'Steam Marvel Rivals News',
-  url: 'https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=2767030&count=8&maxlength=1200&format=json',
+const officialHomeSource = {
+  key: 'official-marvel-rivals-home',
+  name: 'Official Marvel Rivals Home',
+  url: 'https://www.marvelrivals.com/index.html',
 };
 
-const battlePassSource = {
-  key: 'fandom-battlepasses',
-  name: 'Marvel Rivals Fandom BattlePasses',
-  url: 'https://marvelrivals.fandom.com/api.php?action=parse&page=BattlePasses&prop=wikitext&format=json&origin=*',
-};
-
-const minimumCurrentSeason = 8;
 const fallbackBattlePassSnapshot: BattlePassSnapshot = {
-  currentSeason: 'Season 8.5',
-  battlePass: 'Project: Heroic Age',
+  currentSeason: 'Season 9',
+  battlePass: 'The Mystery of Thebes',
+  seasonStory: 'The Mystery of Thebes',
+  latestHero: 'Jubilee',
+  latestHeroImageUrl: '/images/heroes/jubilee.png',
 };
 const fallbackThumbnail = '/images/site/heroes-banner.jpg';
 
@@ -86,22 +64,14 @@ export async function syncHomeNews(): Promise<HomeNewsSyncResult> {
   const runId = await insertSyncRun(db, 'home-news', startedAt);
 
   try {
-    const [steamNews, battlePass] = await Promise.all([
-      fetchJson<SteamNewsResponse>(steamNewsSource.url),
-      fetchJson<FandomParseResponse>(battlePassSource.url),
-    ]);
+    const officialHomeHtml = await fetchText(officialHomeSource.url);
     const fetchedAt = new Date().toISOString();
-    const battlePassSnapshot = parseBattlePassSnapshot(
-      battlePass.parse?.wikitext?.['*'] ?? '',
-    );
-    const latestNews = buildLatestNewsCards(
-      steamNews.appnews?.newsitems ?? [],
-      battlePassSnapshot,
-    );
+    const officialSnapshot = parseOfficialHomeSnapshot(officialHomeHtml);
+    const battlePassSnapshot = officialSnapshot.battlePass;
+    const latestNews = buildLatestNewsCards(officialSnapshot.news, battlePassSnapshot);
 
     await Promise.all([
-      upsertExternalSource(db, steamNewsSource, steamNews, fetchedAt, 'success', null),
-      upsertExternalSource(db, battlePassSource, battlePass, fetchedAt, 'success', null),
+      upsertExternalSource(db, officialHomeSource, officialSnapshot, fetchedAt, 'success', null),
       upsertContentBlock(db, 'latestNews', latestNews, fetchedAt),
       upsertContentBlock(db, 'quickLinks', await buildQuickLinks(db, battlePassSnapshot), fetchedAt),
       upsertContentBlock(db, 'currentFocusTitle', focusTitle(latestNews), fetchedAt),
@@ -115,7 +85,7 @@ export async function syncHomeNews(): Promise<HomeNewsSyncResult> {
       updatedAt: fetchedAt,
       latestNews,
       battlePass: battlePassSnapshot,
-      steamItemsRead: steamNews.appnews?.newsitems?.length ?? 0,
+      steamItemsRead: officialSnapshot.news.length,
     };
   } catch (error) {
     const finishedAt = new Date().toISOString();
@@ -128,10 +98,10 @@ export async function syncHomeNews(): Promise<HomeNewsSyncResult> {
   }
 }
 
-async function fetchJson<T>(url: string): Promise<T> {
+async function fetchText(url: string): Promise<string> {
   const response = await fetch(url, {
     headers: {
-      accept: 'application/json',
+      accept: 'text/html,application/xhtml+xml',
       'user-agent': 'marvel-rivals-coach-content-sync/1.0',
     },
   });
@@ -140,35 +110,19 @@ async function fetchJson<T>(url: string): Promise<T> {
     throw new Error(`Fetch failed for ${url}: HTTP ${response.status} ${response.statusText}`);
   }
 
-  return response.json() as Promise<T>;
+  return response.text();
 }
 
 function buildLatestNewsCards(
-  steamItems: SteamNewsItem[],
+  officialNews: NewsItem[],
   battlePass: BattlePassSnapshot,
 ): NewsItem[] {
-  const battlePassCard: NewsItem = {
-    label: 'Battle Pass',
-    title: `${battlePass.battlePass} is the current ${battlePass.currentSeason} BattlePass`,
-    description: `${battlePass.currentSeason} BattlePass coverage is refreshed from the cached wiki source, while the surrounding news cards come from the official Steam news feed.`,
-    sourceUrl: 'https://marvelrivals.fandom.com/wiki/BattlePasses',
-    thumbnailUrl: fallbackThumbnail,
-    thumbnailAlt: `${battlePass.battlePass} BattlePass artwork`,
-  };
-  const steamCards = steamItems
-    .filter((item) => Boolean(item.title && item.url))
-    .sort((a, b) => (b.date ?? 0) - (a.date ?? 0))
-    .slice(0, 3)
-    .map((item) => ({
-      label: labelForNews(item),
-      title: item.title?.trim() ?? 'Marvel Rivals Update',
-      description: summarizeNews(item.contents ?? ''),
-      sourceUrl: item.url ?? 'https://store.steampowered.com/news/app/2767030',
-      thumbnailUrl: firstImageFromContents(item.contents ?? '') ?? fallbackThumbnail,
-      thumbnailAlt: `${item.title?.trim() ?? 'Marvel Rivals update'} thumbnail`,
-    }));
+  const seasonCard = officialNews.find((item) => item.title.includes(battlePass.currentSeason));
+  const cards = seasonCard
+    ? [seasonCard, ...officialNews.filter((item) => item !== seasonCard)]
+    : officialNews;
 
-  return [battlePassCard, ...steamCards];
+  return cards.slice(0, 4);
 }
 
 async function buildQuickLinks(
@@ -180,10 +134,27 @@ async function buildQuickLinks(
     ? existing
     : [
         { label: 'Current Season', value: battlePass.currentSeason },
-        { label: 'BattlePass', value: battlePass.battlePass },
+        { label: 'Season Story', value: battlePass.seasonStory ?? battlePass.battlePass },
+        {
+          label: 'Latest Hero',
+          value: battlePass.latestHero ?? 'Jubilee',
+          imageUrl: battlePass.latestHeroImageUrl,
+        },
       ];
+  const normalizedLinks = [
+    { label: 'Current Season', value: battlePass.currentSeason },
+    { label: 'Season Story', value: battlePass.seasonStory ?? battlePass.battlePass },
+    {
+      label: 'Latest Hero',
+      value: battlePass.latestHero ?? 'Jubilee',
+      imageUrl: battlePass.latestHeroImageUrl,
+    },
+    ...quickLinks.filter((item) =>
+      !['Current Season', 'Mid-Season', 'BattlePass', 'Season Story', 'Latest Hero', 'Latest Reported Hero'].includes(item.label),
+    ),
+  ];
 
-  return quickLinks.map((item) => {
+  return normalizedLinks.map((item) => {
     if (item.label === 'Current Season') {
       return { ...item, value: battlePass.currentSeason };
     }
@@ -192,73 +163,111 @@ async function buildQuickLinks(
       return { ...item, value: battlePass.battlePass };
     }
 
+    if (item.label === 'Season Story') {
+      return { ...item, value: battlePass.seasonStory ?? battlePass.battlePass };
+    }
+
+    if (item.label === 'Latest Hero' || item.label === 'Latest Reported Hero') {
+      return {
+        ...item,
+        label: 'Latest Hero',
+        value: battlePass.latestHero ?? 'Jubilee',
+        imageUrl: battlePass.latestHeroImageUrl,
+      };
+    }
+
     return item;
   });
 }
 
-function parseBattlePassSnapshot(wikitext: string): BattlePassSnapshot {
-  const seasonBattlePassMatch = wikitext.match(
-    /\[\[(Season\s+\d+(?:\.\d+)?(?::\s+[^\]|]+)?)(?:\|[^\]]+)?\]\]\s*-\s*\[\[([^\]|]+)(?:\|[^\]]+)?\]\]/gi,
-  );
-  const snapshots = (seasonBattlePassMatch ?? [])
-    .map((match) =>
-      match.match(
-        /\[\[(Season\s+\d+(?:\.\d+)?(?::\s+[^\]|]+)?)(?:\|[^\]]+)?\]\]\s*-\s*\[\[([^\]|]+)(?:\|[^\]]+)?\]\]/i,
-      ),
-    )
-    .filter((match): match is RegExpMatchArray => Boolean(match))
-    .map((match) => ({
-      currentSeason: match[1]?.trim() ?? '',
-      battlePass: match[2]?.trim() ?? '',
-    }))
-    .filter((snapshot) => seasonNumber(snapshot.currentSeason) >= minimumCurrentSeason)
-    .sort((a, b) => seasonNumber(b.currentSeason) - seasonNumber(a.currentSeason));
+function parseOfficialHomeSnapshot(html: string): { news: NewsItem[]; battlePass: BattlePassSnapshot } {
+  const news = parseOfficialNewsCards(html);
+  const seasonNews = news.find((item) => /Season\s+\d+/i.test(item.title));
+  const seasonTitle = seasonNews?.title.match(/(Season\s+\d+(?:\.\d+)?)(?::\s*([^/]+?))?(?:\s*\/\/|$)/i);
+  const currentSeason = seasonTitle?.[1]?.trim() ?? fallbackBattlePassSnapshot.currentSeason;
+  const seasonStory = seasonTitle?.[2]?.trim() ?? fallbackBattlePassSnapshot.seasonStory;
+  const latestHero = parseLatestOfficialHero(html);
 
-  return snapshots[0] ?? fallbackBattlePassSnapshot;
+  return {
+    news,
+    battlePass: {
+      currentSeason,
+      battlePass: seasonStory ?? currentSeason,
+      seasonStory,
+      latestHero: latestHero?.name ?? fallbackBattlePassSnapshot.latestHero,
+      latestHeroImageUrl: latestHero?.imageUrl ?? fallbackBattlePassSnapshot.latestHeroImageUrl,
+    },
+  };
 }
 
-function labelForNews(item: SteamNewsItem): string {
-  const text = `${item.feedlabel ?? ''} ${item.title ?? ''}`.toLowerCase();
+function parseOfficialNewsCards(html: string): NewsItem[] {
+  const banner = html.match(/<div class="banner">([\s\S]*?)<\/div>\s*<div class="list">/i)?.[1] ?? '';
+  const cards: NewsItem[] = [];
+  const anchorPattern = /<a\b([^>]*)>([\s\S]*?)<\/a>/gi;
+  let match: RegExpExecArray | null;
+
+  while ((match = anchorPattern.exec(banner))) {
+    const attrs = parseAttributes(match[1]);
+    const body = match[2];
+    const title = cleanText(extractByClass(body, 'title'));
+    const description = cleanText(extractByClass(body, 'desc'));
+
+    if (!title) {
+      continue;
+    }
+
+    cards.push({
+      label: labelForOfficialNews(title),
+      title,
+      description: description || 'Read the latest official Marvel Rivals announcement.',
+      sourceUrl: absoluteUrl(attrs['href'] ?? officialHomeSource.url),
+      thumbnailUrl: firstImage(body) ?? fallbackThumbnail,
+      thumbnailAlt: `${title} thumbnail`,
+    });
+  }
+
+  return cards.length > 0 ? cards : [{
+    label: 'Season Update',
+    title: 'Season 9: The Mystery of Thebes',
+    description: 'Official Marvel Rivals Season 9 coverage is available on the Marvel Rivals site.',
+    sourceUrl: officialHomeSource.url,
+    thumbnailUrl: fallbackThumbnail,
+    thumbnailAlt: 'Marvel Rivals Season 9 thumbnail',
+  }];
+}
+
+function parseLatestOfficialHero(html: string): { name: string; imageUrl?: string } | undefined {
+  const heroMatch = html.match(/<div class="heroNewsList">\s*<a\b([^>]*)>([\s\S]*?)<\/a>/i);
+
+  if (!heroMatch) {
+    return undefined;
+  }
+
+  const attrs = parseAttributes(heroMatch[1]);
+  const name = titleCaseName(attrs['data-name'] ?? attrs['title']);
+
+  return {
+    name,
+    imageUrl: firstImage(heroMatch[2]) ?? `/images/heroes/${slugifyHeroName(name)}.png`,
+  };
+}
+
+function labelForOfficialNews(title: string): string {
+  const text = title.toLowerCase();
+
+  if (text.includes('balance')) {
+    return 'Balance Update';
+  }
 
   if (text.includes('patch') || text.includes('version')) {
     return 'Patch Notes';
-  }
-
-  if (text.includes('event')) {
-    return 'Event';
   }
 
   if (text.includes('season')) {
     return 'Season Update';
   }
 
-  return item.feedlabel?.trim() || 'Official News';
-}
-
-function summarizeNews(contents: string): string {
-  const clean = contents
-    .replace(/\{STEAM_CLAN_IMAGE\}\/\S+/g, ' ')
-    .replace(/\[\/?[^}\]]+\]/g, ' ')
-    .replace(/<[^>]*>/g, ' ')
-    .replace(/https?:\/\/\S+/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-
-  if (!clean) {
-    return 'Read the latest official Marvel Rivals announcement on Steam.';
-  }
-
-  return clean.length > 220 ? `${clean.slice(0, 217).trim()}...` : clean;
-}
-
-function firstImageFromContents(contents: string): string | undefined {
-  const steamImage = contents.match(/\{STEAM_CLAN_IMAGE\}\/([^\s\]]+)/i)?.[1];
-
-  if (steamImage) {
-    return `https://clan.akamai.steamstatic.com/images/${steamImage}`;
-  }
-
-  return contents.match(/https?:\/\/[^\s\]]+\.(?:jpg|jpeg|png|webp)/i)?.[0];
+  return 'Official News';
 }
 
 function focusTitle(newsItems: NewsItem[]): string {
@@ -268,7 +277,7 @@ function focusTitle(newsItems: NewsItem[]): string {
 function focusDescription(newsItems: NewsItem[]): string {
   const lead = newsItems.find((item) => item.label !== 'Battle Pass');
 
-  return lead?.description ?? 'Latest news is refreshed from the official Steam feed and cached in Turso.';
+  return lead?.description ?? 'Latest news is refreshed from the official Marvel Rivals site and cached in Turso.';
 }
 
 async function getContentBlock<T>(
@@ -353,10 +362,6 @@ async function finishSyncRun(
   );
 }
 
-function seasonNumber(value: string): number {
-  return Number.parseFloat(value.match(/Season\s+(\d+(?:\.\d+)?)/i)?.[1] ?? '0');
-}
-
 function requireEnv(name: string): string {
   const value = process.env[name];
 
@@ -365,4 +370,76 @@ function requireEnv(name: string): string {
   }
 
   return value;
+}
+
+function extractByClass(html: string, className: string): string {
+  const match = html.match(new RegExp(`<[^>]*class="${className}"[^>]*>([\\s\\S]*?)<\\/[^>]+>`, 'i'));
+
+  return match?.[1] ?? '';
+}
+
+function firstImage(html: string): string | undefined {
+  const match = html.match(/<img\b[^>]*\bsrc="([^"]+)"/i);
+
+  return match ? absoluteUrl(decodeHtml(match[1])) : undefined;
+}
+
+function parseAttributes(value: string): Record<string, string> {
+  const attrs: Record<string, string> = {};
+  const attrPattern = /([a-zA-Z0-9_-]+)="([^"]*)"/g;
+  let match: RegExpExecArray | null;
+
+  while ((match = attrPattern.exec(value))) {
+    attrs[match[1]] = decodeHtml(match[2]);
+  }
+
+  return attrs;
+}
+
+function absoluteUrl(value: string): string {
+  if (value.startsWith('//')) {
+    return `https:${value}`;
+  }
+
+  if (value.startsWith('/')) {
+    return `https://www.marvelrivals.com${value}`;
+  }
+
+  return value;
+}
+
+function cleanText(value: string): string {
+  return decodeHtml(value)
+    .replace(/<br\s*\/?>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function decodeHtml(value: string): string {
+  return value
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
+}
+
+function titleCaseName(value: string): string {
+  return cleanText(value)
+    .toLowerCase()
+    .split(/(\s+|-|&)/)
+    .map((part) => /^[a-z]/.test(part) ? part[0].toUpperCase() + part.slice(1) : part)
+    .join('')
+    .replace(/\bAnd\b/g, '&');
+}
+
+function slugifyHeroName(value: string): string {
+  return cleanText(value)
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/['.]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
 }

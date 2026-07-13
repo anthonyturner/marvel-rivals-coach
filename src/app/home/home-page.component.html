@@ -66,7 +66,7 @@
         @if (isReportedHero(item.label)) {
         <img
           class="quick-link-avatar"
-          [src]="heroImagePath(item.value)"
+          [src]="item.imageUrl || heroImagePath(item.value)"
           [alt]="item.value + ' hero avatar'"
           loading="lazy"
           (error)="onHeroAvatarError($event)"

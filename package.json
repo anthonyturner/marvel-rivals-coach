@@ -18,6 +18,7 @@
     "sync:glossary:terms": "node scripts/sync-glossary-terms.mjs",
     "sync:heroes": "node scripts/sync-heroes.mjs",
     "sync:official-heroes": "node scripts/sync-official-heroes.mjs",
+    "sync:official-hero-images": "node scripts/sync-official-hero-images.mjs",
     "check:official-heroes": "node scripts/sync-official-heroes.mjs --check",
     "watch:official-heroes": "node scripts/sync-official-heroes.mjs --watch --interval-days 3",
     "sync:tier-list": "node --experimental-strip-types scripts/sync-tier-list.mjs",

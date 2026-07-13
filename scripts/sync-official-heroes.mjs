@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -12,11 +12,16 @@ import {
 } from './official-heroes-source.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const projectRoot = join(__dirname, '..');
 const schemaPath = join(__dirname, 'sqlite-schema.sql');
+const heroImagesPath = join(projectRoot, 'public', 'images', 'heroes');
 const args = new Set(process.argv.slice(2));
 const checkOnly = args.has('--check') || args.has('--check-only');
 const watch = args.has('--watch');
 const intervalDays = getNumberArg('--interval-days', 3);
+const legacyOfficialHeroIds = {
+  jubilee: 'jubilation-lee',
+};
 
 if (watch) {
   await runOnce();
@@ -78,7 +83,9 @@ async function runOnce() {
 }
 
 async function saveOfficialHero(db, officialHero) {
-  const existing = await getExistingHero(db, officialHero.id);
+  const legacyHeroId = legacyOfficialHeroIds[officialHero.id];
+  const existing = await getExistingHero(db, officialHero.id)
+    ?? (legacyHeroId ? await getExistingHero(db, legacyHeroId) : undefined);
   const existingHero = existing ? JSON.parse(existing.raw_json) : undefined;
   const officialAbilities = officialHero.abilities.map(({ iconUrl, source, ...ability }) => ability);
   const mergedHero = {
@@ -102,7 +109,7 @@ async function saveOfficialHero(db, officialHero) {
     weaknesses: existingHero?.weaknesses ?? fallbackWeaknesses(officialHero.role),
     counters: existingHero?.counters ?? [],
     synergies: officialTeamUpNames(officialAbilities, existingHero?.synergies ?? []),
-    imageUrl: existingHero?.imageUrl ?? '/images/heroes/default-hero.png',
+    imageUrl: getImageUrl(officialHero.id, existingHero?.imageUrl),
   };
   const heroWithComputedFields = withBuildProfile({
     ...mergedHero,
@@ -112,6 +119,20 @@ async function saveOfficialHero(db, officialHero) {
   await upsertHero(db, heroWithComputedFields);
   await db.execute('DELETE FROM hero_abilities WHERE hero_id = ?', [heroWithComputedFields.id]);
   await insertAbilities(db, heroWithComputedFields.id, null, null, heroWithComputedFields.abilities);
+
+  if (legacyHeroId && legacyHeroId !== heroWithComputedFields.id) {
+    await db.execute('DELETE FROM heroes WHERE id = ?', [legacyHeroId]);
+  }
+}
+
+function getImageUrl(heroId, existingImageUrl) {
+  if (existingImageUrl && !existingImageUrl.includes('default-hero')) {
+    return existingImageUrl;
+  }
+
+  return existsSync(join(heroImagesPath, `${heroId}.png`))
+    ? `/images/heroes/${heroId}.png`
+    : '/images/heroes/default-hero.png';
 }
 
 function withBuildProfile(hero) {

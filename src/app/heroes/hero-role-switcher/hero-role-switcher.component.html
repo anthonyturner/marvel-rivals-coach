@@ -1,0 +1,13 @@
+<section class="role-pool-switcher" aria-label="Ability role pool">
+  <div class="ability-role-tabs" [class.align-start]="align === 'start'">
+    @for (kit of controller.roleAbilityKits(hero); track kit.role) {
+      <button
+        type="button"
+        [class.active]="controller.selectedAbilityKit(hero)?.role === kit.role"
+        (click)="controller.selectAbilityKit(kit.role)"
+      >
+        {{ kit.label }}
+      </button>
+    }
+  </div>
+</section>
