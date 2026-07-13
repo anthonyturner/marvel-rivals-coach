@@ -215,7 +215,7 @@
 
 @media (max-width: 560px) {
   .toolbar {
-    padding: 14px;
+    padding: var(--mobile-panel-padding);
   }
   .hero-card {
     grid-template-columns: 58px 1fr;

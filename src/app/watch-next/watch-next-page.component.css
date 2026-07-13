@@ -299,13 +299,13 @@ h1 {
 
 @media (max-width: 560px) {
   .quiz-page {
-    padding: 14px;
+    padding: var(--mobile-page-gutter);
   }
 
   .question-card,
   .answer-panel,
   .result-card {
-    padding: 14px;
+    padding: var(--mobile-panel-padding);
   }
 
   .option-grid {

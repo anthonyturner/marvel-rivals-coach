@@ -329,13 +329,13 @@ h1 {
 
 @media (max-width: 560px) {
   .media-page {
-    padding: 14px;
+    padding: var(--mobile-page-gutter);
   }
 
   .featured,
   .toolbar,
   .tutorial-card {
-    padding: 14px;
+    padding: var(--mobile-panel-padding);
   }
 
   .tutorial-grid {

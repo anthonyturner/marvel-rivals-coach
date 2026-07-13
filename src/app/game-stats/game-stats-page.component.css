@@ -353,7 +353,7 @@ h2 {
 
 @media (max-width: 560px) {
   .stats-page {
-    padding: 14px;
+    padding: var(--mobile-page-gutter);
   }
 
   .hero-metrics,

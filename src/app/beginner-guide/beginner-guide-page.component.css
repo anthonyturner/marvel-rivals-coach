@@ -431,14 +431,14 @@ dl div {
 
 @media (max-width: 560px) {
   .beginner-page {
-    padding: 14px;
+    padding: var(--mobile-page-gutter);
   }
 
   .role-panel,
   .lesson-panel,
   .feedback-panel,
   .practice-card {
-    padding: 14px;
+    padding: var(--mobile-panel-padding);
   }
 
   .role-grid,

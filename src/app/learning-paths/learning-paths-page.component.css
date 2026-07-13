@@ -356,13 +356,13 @@ dt {
 
 @media (max-width: 560px) {
   .paths-page {
-    padding: 14px;
+    padding: var(--mobile-page-gutter);
   }
 
   .toolbar,
   .path-card,
   .drill-card {
-    padding: 14px;
+    padding: var(--mobile-panel-padding);
   }
 
   .path-grid,

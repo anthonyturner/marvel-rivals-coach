@@ -27,6 +27,8 @@
   --purple: #7257c8;
   --focus-ring: rgba(3, 159, 159, 0.2);
   --shadow-soft: 0 18px 45px rgba(17, 35, 57, 0.12);
+  --mobile-page-gutter: 8px;
+  --mobile-panel-padding: 12px;
 }
 
 html,

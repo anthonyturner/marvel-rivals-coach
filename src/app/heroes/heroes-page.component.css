@@ -30,6 +30,6 @@ app-hero-content {
 
 @media (max-width: 560px) {
   .heroes-page {
-    padding: 14px;
+    padding: var(--mobile-page-gutter);
   }
 }

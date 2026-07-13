@@ -332,7 +332,7 @@ select:focus {
 
 @media (max-width: 760px) {
   .tier-page {
-    padding: 16px;
+    padding: var(--mobile-page-gutter);
   }
 
   .tier-hero {

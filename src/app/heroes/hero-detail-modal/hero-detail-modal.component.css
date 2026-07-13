@@ -100,3 +100,15 @@
     overflow-y: auto;
   }
 }
+
+@media (max-width: 560px) {
+  .hero-detail-backdrop {
+    padding: var(--mobile-page-gutter);
+  }
+
+  .hero-detail-modal {
+    gap: 12px;
+    max-height: calc(100dvh - (2 * var(--mobile-page-gutter)));
+    padding: var(--mobile-panel-padding);
+  }
+}

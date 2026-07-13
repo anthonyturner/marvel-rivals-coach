@@ -363,7 +363,7 @@ h1 {
 
 @media (max-width: 780px) {
   .guide-detail-page {
-    padding: 18px;
+    padding: var(--mobile-page-gutter);
   }
 
   .detail-hero,
@@ -383,7 +383,7 @@ h1 {
   }
 
   .guide-sections article {
-    padding: 16px;
+    padding: var(--mobile-panel-padding);
   }
 }
 
