@@ -198,11 +198,11 @@ h1 {
 
 @media (max-width: 560px) {
   .first-time-guide {
-    padding: 14px;
+    padding: var(--mobile-page-gutter);
   }
 
   .guide-section {
     grid-template-columns: 1fr;
-    padding: 14px;
+    padding: var(--mobile-panel-padding);
   }
 }

@@ -108,7 +108,7 @@ h1 {
 
 @media (max-width: 760px) {
   .category-page {
-    width: min(100% - 28px, 1180px);
+    width: min(100% - (2 * var(--mobile-page-gutter)), 1180px);
     padding: 48px 0 64px;
   }
 

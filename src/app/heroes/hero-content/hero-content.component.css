@@ -149,7 +149,7 @@ h3 {
 
 @media (max-width: 560px) {
   .hero-detail {
-    padding: 14px;
+    padding: var(--mobile-panel-padding);
   }
 }
 

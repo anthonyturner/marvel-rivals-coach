@@ -271,12 +271,12 @@ h3 {
 
 @media (max-width: 560px) {
   .glossary-page {
-    padding: 14px;
+    padding: var(--mobile-page-gutter);
   }
 
   .toolbar,
   .term-card {
-    padding: 14px;
+    padding: var(--mobile-panel-padding);
   }
 
   .term-grid {

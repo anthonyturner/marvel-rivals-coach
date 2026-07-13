@@ -529,12 +529,12 @@ h1 {
 
 @media (max-width: 540px) {
   .counters-page {
-    padding: 14px;
+    padding: var(--mobile-page-gutter);
   }
 
   .page-header,
   .toolbar {
-    padding: 16px;
+    padding: var(--mobile-panel-padding);
   }
 
   .hero-tile {

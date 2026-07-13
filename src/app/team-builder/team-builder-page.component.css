@@ -444,7 +444,7 @@ meter {
 
 @media (max-width: 640px) {
   .team-builder-page {
-    padding: 14px;
+    padding: var(--mobile-page-gutter);
   }
 
   .page-hero {

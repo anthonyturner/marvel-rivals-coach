@@ -772,7 +772,7 @@ h1 {
 
 @media (max-width: 620px) {
   .home-page {
-    padding: 20px 14px 44px;
+    padding: 20px var(--mobile-page-gutter) 44px;
   }
 
   .hero {
@@ -803,7 +803,7 @@ h1 {
   .portal-panel,
   .news-panel,
   .guide-panel {
-    padding: 14px;
+    padding: var(--mobile-panel-padding);
   }
 
   .command-window {

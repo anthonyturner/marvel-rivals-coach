@@ -293,13 +293,13 @@ ul {
 
 @media (max-width: 560px) {
   .cover-page {
-    padding: 14px;
+    padding: var(--mobile-page-gutter);
   }
 
   .guide-section,
   .support-card,
   .quick-check {
-    padding: 14px;
+    padding: var(--mobile-panel-padding);
   }
 
   .section-grid {

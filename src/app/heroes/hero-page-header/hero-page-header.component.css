@@ -136,6 +136,6 @@ h1 {
 }
 @media (max-width: 560px) {
   .page-header {
-    padding: 14px;
+    padding: var(--mobile-panel-padding);
   }
 }

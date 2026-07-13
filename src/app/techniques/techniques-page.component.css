@@ -463,7 +463,7 @@ h1 {
 
 @media (max-width: 560px) {
   .techniques-page {
-    padding: 14px;
+    padding: var(--mobile-page-gutter);
   }
 
   .guide-card,
