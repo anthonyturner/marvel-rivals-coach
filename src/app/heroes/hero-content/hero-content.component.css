@@ -10,7 +10,7 @@ h3 {
 
 .heroes-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
   gap: 20px;
   align-items: start;
   width: 100%;
@@ -23,9 +23,6 @@ h3 {
 .heroes-layout > .hero-detail:last-child {
   grid-column: 2;
 }
-.heroes-layout > .hero-detail:last-child .video-list {
-  grid-template-columns: 1fr 1fr;
-}
 .heroes-layout.detail-modal-open {
   grid-template-columns: minmax(0, 1fr);
 }
@@ -34,12 +31,8 @@ h3 {
   animation: slide-left 280ms ease both;
 }
 .hero-detail {
-  position: sticky;
-  top: 74px;
   display: grid;
   gap: 20px;
-  max-height: calc(100dvh - 98px);
-  overflow-y: auto;
   padding: 20px;
   border: 1px solid rgba(83, 82, 1, 0.18);
   border-radius: 8px;
@@ -141,7 +134,7 @@ h3 {
   text-decoration: underline;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1080px) {
   .heroes-layout {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -151,26 +144,6 @@ h3 {
   .hero-detail-panel {
     grid-column: auto;
     grid-row: auto;
-  }
-  .heroes-layout > .hero-detail:last-child .video-list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 920px) {
-  .heroes-layout {
-    grid-template-columns: 1fr;
-  }
-  .hero-detail {
-    position: static;
-    max-height: none;
-    overflow: visible;
-  }
-  .heroes-layout > .hero-detail:last-child {
-    grid-column: auto;
-  }
-  .heroes-layout > .hero-detail:last-child .video-list {
-    grid-template-columns: 1fr;
   }
 }
 

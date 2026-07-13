@@ -10,6 +10,36 @@
   gap: 1rem;
   border-radius: 8px;
 }
+.hero-build-profile,
+.ultimate-strategies,
+.deadpool-upgrades,
+.abilities {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid rgba(224, 169, 0, 0.24);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 248, 203, 0.38)),
+    rgb(255 255 255);
+  box-shadow: var(--heroes-box-shadow);
+}
+.hero-build-profile > .section-heading,
+.ultimate-strategies > .section-heading,
+.deadpool-upgrades > .section-heading,
+.abilities > .section-heading {
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(224, 169, 0, 0.18);
+}
+.ultimate-strategies article,
+.deadpool-upgrades article,
+.build-profile-source,
+.abilities article {
+  border: 1px solid rgba(224, 169, 0, 0.24);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: inset 4px 0 var(--accent);
+}
 .hero-image {
   width: 74px;
   aspect-ratio: 1;
@@ -22,10 +52,34 @@
   height: 108px;
 }
 .detail-hero {
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  padding: 16px;
+  border: 1px solid rgba(224, 169, 0, 0.22);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 248, 203, 0.42), rgba(255, 255, 255, 0.82)),
+    rgb(255 255 255);
+  box-shadow: var(--heroes-box-shadow);
+}
+.detail-hero-profile {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+.detail-hero-media {
   display: flex;
-  gap: 16px;
-  background: rgb(255 255 255);
+  flex-wrap: wrap;
+  gap: 12px;
   align-items: center;
+  align-content: start;
+}
+.detail-hero-summary {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
 }
 h2 {
   color: var(--text);
@@ -50,14 +104,6 @@ h3 {
   font-weight: 850;
   letter-spacing: 0.12em;
 }
-:host-context(.hero-detail-modal) .playstyle {
-  color: var(--modal-text);
-  padding: 14px 16px;
-  border-radius: 8px;
-  border: 1px solid var(--modal-border);
-  background: rgb(255 255 255);
-  box-shadow: var(--heroes-box-shadow);
-}
 .difficulty {
   display: flex;
   gap: 5px;
@@ -72,19 +118,64 @@ h3 {
 .difficulty span.filled {
   background: var(--accent);
 }
-.playstyle {
+.overview-panel {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid rgba(224, 169, 0, 0.24);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 248, 203, 0.48)),
+    rgba(255, 255, 255, 0.78);
+  box-shadow:
+    inset 4px 0 rgba(3, 159, 159, 0.45),
+    inset 0 1px rgba(255, 255, 255, 0.86),
+    0 14px 28px rgba(83, 82, 1, 0.08);
+}
+.overview-panel .section-heading {
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(224, 169, 0, 0.18);
+}
+.overview-section {
+  display: grid;
+  gap: 6px;
+}
+.overview-section strong {
+  color: var(--accent-strong);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.overview-section p {
   color: var(--text);
-  font-size: 1rem;
-  line-height: 1.65;
+  line-height: 1.55;
+}
+:host-context(.hero-detail-modal) .detail-hero {
+  border-color: var(--modal-border);
+  background: rgb(255 255 255);
+}
+:host-context(.hero-detail-modal) .overview-panel {
+  border-color: var(--modal-border);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 247, 213, 0.34)),
+    rgb(255 255 255);
+  box-shadow:
+    inset 4px 0 var(--modal-gold),
+    inset 0 1px rgba(255, 255, 255, 0.88),
+    0 12px 24px rgba(10, 14, 26, 0.08);
+}
+:host-context(.hero-detail-modal) .overview-panel .section-heading {
+  border-bottom-color: var(--modal-border);
+}
+:host-context(.hero-detail-modal) .overview-section strong {
+  color: var(--modal-gold);
+}
+:host-context(.hero-detail-modal) .overview-section p {
+  color: var(--modal-text);
 }
 .hero-build-profile {
-  display: grid;
-  gap: 10px;
-  padding: 12px;
-  border: 1px solid rgba(3, 159, 159, 0.22);
-  border-radius: 8px;
-  background: rgba(232, 247, 251, 0.62);
-  box-shadow: var(--heroes-box-shadow);
 }
 .hero-build-profile .section-heading {
   margin: 0;
@@ -103,6 +194,10 @@ h3 {
   grid-template-columns: 76px minmax(0, 1fr) 24px;
   gap: 8px;
   align-items: center;
+  padding: 10px;
+  border: 1px solid rgba(224, 169, 0, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
 }
 .build-profile-bars span,
 .build-profile-bars strong {
@@ -114,32 +209,69 @@ h3 {
   width: 100%;
   height: 11px;
 }
+.build-profile-note,
+.build-profile-source {
+  color: var(--text);
+  line-height: 1.5;
+}
+.build-profile-note {
+  padding-left: 10px;
+  border-left: 3px solid var(--accent);
+  color: var(--text-soft);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+.build-profile-source {
+  display: grid;
+  gap: 6px;
+  padding: 14px;
+}
+.build-profile-source strong {
+  color: var(--accent-strong);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.build-profile-source a {
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 750;
+  text-decoration: none;
+  text-transform: uppercase;
+}
 :host-context(.hero-detail-modal) .hero-build-profile {
   border-color: var(--modal-border);
   background: rgb(255 255 255);
 }
+:host-context(.hero-detail-modal) .hero-build-profile .section-heading {
+  border-bottom-color: var(--modal-border);
+}
+:host-context(.hero-detail-modal) .build-profile-bars div,
+:host-context(.hero-detail-modal) .build-profile-source {
+  border-color: rgba(138, 98, 0, 0.22);
+  background: #ffffff;
+}
+:host-context(.hero-detail-modal) .build-profile-source {
+  box-shadow: inset 4px 0 var(--modal-gold);
+}
 :host-context(.hero-detail-modal) .hero-build-profile .section-heading p,
 :host-context(.hero-detail-modal) .build-profile-bars span,
-:host-context(.hero-detail-modal) .build-profile-bars strong {
+:host-context(.hero-detail-modal) .build-profile-bars strong,
+:host-context(.hero-detail-modal) .build-profile-note,
+:host-context(.hero-detail-modal) .build-profile-source p {
   color: var(--modal-text);
 }
+:host-context(.hero-detail-modal) .build-profile-source strong,
+:host-context(.hero-detail-modal) .build-profile-source a {
+  color: var(--modal-gold);
+}
 .ultimate-strategies {
-  display: grid;
-  gap: 10px;
-  padding: 12px;
-  border-color: var(--modal-border);
-  background: rgb(255 255 255);
-  border-radius: 8px;
-  box-shadow: var(--heroes-box-shadow);
 }
 .ultimate-strategies article {
   display: grid;
   gap: 7px;
   padding: 14px;
-  border: 1px solid var(--modal-border);
-  border-radius: 8px;
-  background: rgb(255 255 255);
-  box-shadow: inset 4px 0 var(--accent);
 }
 .ultimate-strategies article span {
   color: var(--accent-strong);
@@ -151,6 +283,16 @@ h3 {
 .ultimate-strategies article p {
   color: var(--text);
   line-height: 1.55;
+}
+.ultimate-strategies .strategy-playstyle {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(255, 248, 203, 0.42));
+  box-shadow:
+    inset 4px 0 var(--accent),
+    var(--heroes-box-shadow);
+}
+.ultimate-strategies .strategy-playstyle p {
+  font-size: 1rem;
+  line-height: 1.65;
 }
 .ultimate-strategies article .ultimate-source {
   padding: 10px 12px;
@@ -182,10 +324,10 @@ h3 {
   display: grid;
   gap: 12px;
   padding: 14px;
-  border: 1px solid rgba(154, 106, 0, 0.28);
+  border: 1px solid rgba(224, 169, 0, 0.24);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.82);
-  box-shadow: var(--heroes-box-shadow);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: inset 4px 0 var(--accent);
 }
 .ultimate-paths .section-heading p {
   margin-top: 4px;
@@ -202,7 +344,7 @@ h3 {
 .ultimate-path-tabs button {
   min-height: 44px;
   padding: 8px 10px;
-  border: 1px solid rgba(154, 106, 0, 0.22);
+  border: 1px solid rgba(224, 169, 0, 0.24);
   border-radius: 6px;
   background: rgba(255, 248, 203, 0.74);
   color: var(--text);
@@ -222,7 +364,7 @@ h3 {
   display: grid;
   gap: 10px;
   padding: 14px;
-  border: 1px solid rgba(154, 106, 0, 0.18);
+  border: 1px solid rgba(224, 169, 0, 0.24);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.72);
 }
@@ -246,9 +388,9 @@ h3 {
 }
 .ultimate-path-grid section {
   padding: 12px;
-  border: 1px solid rgba(154, 106, 0, 0.16);
+  border: 1px solid rgba(224, 169, 0, 0.18);
   border-radius: 8px;
-  background: rgba(255, 248, 203, 0.54);
+  background: rgba(255, 255, 255, 0.72);
 }
 .ultimate-path-grid h4 {
   margin: 0;
@@ -279,7 +421,9 @@ h3 {
   color: var(--modal-gold);
 }
 .aggressive-paths {
-  background: rgba(255, 248, 203, 0.86);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 248, 203, 0.38)),
+    rgb(255 255 255);
 }
 .aggressive-path-tabs {
   display: grid;
@@ -289,7 +433,7 @@ h3 {
 .aggressive-path-tabs button {
   min-height: 42px;
   padding: 8px 10px;
-  border: 1px solid rgba(154, 106, 0, 0.2);
+  border: 1px solid rgba(224, 169, 0, 0.24);
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.72);
   color: var(--text);
@@ -317,13 +461,6 @@ h3 {
   line-height: 1.5;
 }
 .deadpool-upgrades {
-  display: grid;
-  gap: 10px;
-  padding: 14px;
-  border: 1px solid rgba(154, 106, 0, 0.28);
-  border-radius: 8px;
-  background: rgb(255 255 255);
-  box-shadow: var(--heroes-box-shadow);
 }
 .deadpool-upgrades .section-heading p {
   margin-top: 4px;
@@ -339,12 +476,17 @@ h3 {
   padding: 0;
   list-style: none;
 }
+.deadpool-upgrades article {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+}
 .deadpool-upgrades li {
   display: grid;
   grid-template-columns: 34px minmax(0, 1fr);
   gap: 10px;
   padding: 10px;
-  border: 1px solid rgba(154, 106, 0, 0.16);
+  border: 1px solid rgba(224, 169, 0, 0.18);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.62);
 }
@@ -374,11 +516,27 @@ h3 {
   color: var(--text-muted);
   font-weight: 700;
 }
+.deadpool-upgrades article > a {
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 750;
+  text-decoration: none;
+  text-transform: uppercase;
+}
 .upgrade-source {
   padding-left: 10px;
   border-left: 3px solid var(--accent);
   font-size: 0.82rem;
   font-weight: 750;
+}
+:host-context(.hero-detail-modal) .deadpool-upgrades {
+  border-color: var(--modal-border);
+  background: rgb(255 255 255);
+}
+:host-context(.hero-detail-modal) .deadpool-upgrades article,
+:host-context(.hero-detail-modal) .deadpool-upgrades li {
+  border-color: rgba(138, 98, 0, 0.22);
+  background: #ffffff;
 }
 :host-context(.hero-detail-modal) .aggressive-path-tabs button {
   border-color: rgba(138, 98, 0, 0.22);
@@ -393,13 +551,13 @@ h3 {
   gap: 14px;
 }
 .detail-columns section,
-.matchup-row section,
-.abilities article {
+.matchup-row section {
   padding: 14px;
-  border: 1px solid rgba(3, 159, 159, 0.18);
+  border: 1px solid rgba(224, 169, 0, 0.24);
   border-radius: 8px;
-  border-color: rgba(224, 169, 0, 0.42);
-  background: rgb(255 255 255);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 248, 203, 0.38)),
+    rgb(255 255 255);
   box-shadow: var(--heroes-box-shadow);
 }
 :host-context(.hero-detail-modal) .detail-columns section,
@@ -434,13 +592,7 @@ ul {
   color: var(--modal-text);
 }
 .abilities {
-  display: grid;
-  gap: 10px;
-  padding: 12px;
-  border: 1px solid rgba(14, 116, 144, 0.18);
-  border-radius: 8px;
   backdrop-filter: blur(14px) saturate(130%);
-  box-shadow: var(--heroes-box-shadow);
 }
 :host-context(.hero-detail-modal) .abilities {
   border-color: var(--modal-border);
@@ -452,14 +604,14 @@ ul {
 .ability-tabs {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 132px), 1fr));
-  gap: 8px;
+  gap: 10px;
 }
 .ability-tabs button {
   display: grid;
   gap: 5px;
   align-content: center;
   min-height: 58px;
-  padding: 9px 10px;
+  padding: 11px 12px;
   border: 1px solid rgba(224, 169, 0, 0.24);
   border-radius: 7px;
   background: rgba(255, 255, 255, 0.76);
@@ -503,12 +655,12 @@ ul {
 }
 .passive-abilities {
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.62), rgba(224, 169, 0, 0.14)),
-    rgba(255, 248, 203, 0.72);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 248, 203, 0.38)),
+    rgb(255 255 255);
 }
 .passive-abilities article {
   box-shadow:
-    inset 4px 0 #6d6724,
+    inset 4px 0 var(--accent),
     var(--heroes-box-shadow);
 }
 :host-context(.hero-detail-modal) .passive-abilities {
@@ -538,10 +690,8 @@ ul {
   position: relative;
   display: grid;
   overflow: hidden;
-  gap: 7px;
-  border-color: rgba(224, 169, 0, 0.42);
-  background: rgba(255, 248, 203, 0.74);
-  box-shadow: var(--heroes-box-shadow);
+  gap: 10px;
+  padding: 16px;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   scroll-margin-top: 90px;
@@ -568,42 +718,6 @@ ul {
     0 0 0 3px rgba(138, 98, 0, 0.14),
     0 18px 34px rgba(83, 82, 1, 0.16);
 }
-:host ::ng-deep .ability-text-link {
-  padding: 1px 4px;
-  border-radius: 4px;
-  background: rgb(0 0 0 / 73%);
-  color: #f9ff00;
-  font-weight: 800;
-  text-decoration: none;
-}
-:host ::ng-deep .ability-text-link:hover {
-  background: #1e1a07;
-  color: #ffffff;
-}
-:host ::ng-deep .combat-highlight {
-  display: inline;
-  padding: 1px 5px;
-  border: 1px solid transparent;
-  border-radius: 5px;
-  font-weight: 850;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-:host ::ng-deep .damage-highlight {
-  border-color: rgba(180, 35, 24, 0.2);
-  background: rgba(255, 231, 230, 0.92);
-  color: #9f1d14;
-}
-:host ::ng-deep .healing-highlight {
-  border-color: rgba(22, 121, 76, 0.2);
-  background: rgba(222, 247, 232, 0.92);
-  color: #12683f;
-}
-:host ::ng-deep .utility-highlight {
-  border-color: rgba(114, 87, 200, 0.2);
-  background: rgba(238, 233, 255, 0.92);
-  color: #5c45ad;
-}
 .abilities article::after {
   position: absolute;
   inset: 0;
@@ -617,9 +731,10 @@ ul {
   pointer-events: none;
 }
 .abilities article span {
-  color: #000000;
+  color: var(--accent-strong);
   font-size: 0.72rem;
-  font-weight: 750;
+  font-weight: 850;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 :host-context(.hero-detail-modal) .abilities article span {
@@ -633,7 +748,7 @@ ul {
 }
 .abilities article p {
   color: var(--text);
-  line-height: 1.5;
+  line-height: 1.58;
 }
 :host-context(.hero-detail-modal) .abilities article p {
   color: var(--modal-text);
@@ -654,6 +769,9 @@ ul {
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 8px;
 }
+.hero-base-stats {
+  grid-template-columns: 1fr;
+}
 .technical-details .stat-card {
   --stat-color: #0f7182;
   display: grid;
@@ -661,10 +779,16 @@ ul {
   grid-template-columns: 30px 1fr;
   gap: 9px;
   align-items: start;
-  padding: 8px;
+  padding: 10px;
   border: 1px solid rgba(15, 159, 186, 0.18);
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.7);
+}
+.hero-base-stats .stat-card,
+.hero-base-stats .stat-card:nth-last-child(1):nth-child(3n + 1),
+.hero-base-stats .stat-card:nth-last-child(2):nth-child(3n + 1),
+.hero-base-stats .stat-card:nth-last-child(1):nth-child(3n + 2) {
+  grid-column: 1 / -1;
 }
 .technical-details .stat-card:nth-last-child(1):nth-child(3n + 1) {
   grid-column: 1 / -1;
