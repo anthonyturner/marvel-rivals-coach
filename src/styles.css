@@ -71,6 +71,54 @@ body {
   font-size: 1rem;
 }
 
+.ability-text-link {
+  padding: 1px 5px;
+  border: 1px solid rgba(3, 159, 159, 0.18);
+  border-radius: 4px;
+  background: rgba(232, 247, 251, 0.82);
+  color: var(--accent-strong);
+  font-weight: 700;
+  text-decoration: none;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.ability-text-link:hover {
+  border-color: rgba(3, 159, 159, 0.34);
+  background: rgba(255, 248, 203, 0.92);
+  color: var(--text);
+}
+
+.combat-highlight {
+  display: inline;
+  padding: 1px 5px;
+  border: 1px solid rgba(3, 159, 159, 0.18);
+  border-radius: 5px;
+  background: rgba(232, 247, 251, 0.82);
+  color: var(--accent-strong);
+  font-weight: 700;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.damage-highlight {
+  border-color: rgba(3, 159, 159, 0.18);
+  background: rgba(232, 247, 251, 0.82);
+  color: var(--accent-strong);
+}
+
+.healing-highlight {
+  border-color: rgba(3, 159, 159, 0.18);
+  background: rgba(232, 247, 251, 0.82);
+  color: var(--accent-strong);
+}
+
+.utility-highlight {
+  border-color: rgba(3, 159, 159, 0.18);
+  background: rgba(232, 247, 251, 0.82);
+  color: var(--accent-strong);
+}
+
 button,
 input {
   font: inherit;
