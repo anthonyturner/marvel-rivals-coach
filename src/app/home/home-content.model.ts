@@ -29,6 +29,7 @@ export interface GuideSpotlight {
 export interface QuickLink {
   label: string;
   value: string;
+  imageUrl?: string;
 }
 
 export interface HomeContent {

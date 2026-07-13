@@ -8,3 +8,14 @@
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-|-$/g, '');
   }
+
+  export function heroImagePath(heroName: string): string {
+    const slug = heroName
+      .toLowerCase()
+      .replace(/&/g, 'and')
+      .replace(/['.]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+
+    return `/images/heroes/${slug || 'default-hero'}.png`;
+  }

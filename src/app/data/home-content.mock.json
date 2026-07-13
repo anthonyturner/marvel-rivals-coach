@@ -6,36 +6,20 @@
   ],
   "latestNews": [
     {
-      "label": "Season 8.5",
-      "title": "Cyclops enters the roster",
-      "description": "The mid-season update is reported to add Cyclops as a Duelist with optic blast pressure, ricochet-style beams, mobility back toward cover, and an ultimate built around removing the visor.",
-      "sourceUrl": "https://timesofindia.indiatimes.com/sports/esports/news/marvel-rivals-season-8-5-release-date-new-hero-game-mode-and-more/articleshow/131622861.cms",
-      "thumbnailUrl": "https://static.toiimg.com/thumb/msid-131622874,imgsize-1511588,width-400,height-225,resizemode-4/marvel-rivals-season-85.jpg",
-      "thumbnailAlt": "Marvel Rivals Season 8.5 artwork featuring Cyclops"
+      "label": "Season Update",
+      "title": "Season 9: The Mystery of Thebes // Dev Vision Vol. 19",
+      "description": "Official Season 9 coverage kicks off The Mystery of Thebes with fresh changes, the latest hero, and a brand-new map.",
+      "sourceUrl": "https://www.marvelrivals.com/20260708/41525_1306827.html",
+      "thumbnailUrl": "https://r.res.easebar.com/pic/20260708/5e2e02f2-008c-4db8-a031-42c89ef8b6bb.jpg",
+      "thumbnailAlt": "Season 9 The Mystery of Thebes thumbnail"
     },
     {
-      "label": "Battle Pass",
-      "title": "Project: Heroic Age is the current Season 8.5 BattlePass",
-      "description": "The current home page focus is Season 8.5, with Project: Heroic Age shown as the active BattlePass coverage item.",
-      "sourceUrl": "https://marvelrivals.fandom.com/wiki/BattlePasses",
-      "thumbnailUrl": "https://cdn5.idcgames.com/storage/image/1542/season-8-battle-pass-project-heroic-age/default.png",
-      "thumbnailAlt": "Project: Heroic Age Season 8 Battle Pass promotional artwork"
-    },
-    {
-      "label": "Mode Update",
-      "title": "Bounty Annihilation and K'un-Lun Shenloong Arena",
-      "description": "Season 8.5 coverage reports an 18v18 mode and dedicated K'un-Lun Shenloong Arena map arriving with the mid-season patch.",
-      "sourceUrl": "https://timesofindia.indiatimes.com/sports/esports/news/marvel-rivals-season-8-5-release-date-new-hero-game-mode-and-more/articleshow/131622861.cms",
-      "thumbnailUrl": "https://esportsinsider.com/wp-content/uploads/2025/12/Marvel-Rivals-Annihilation-Mode-Guide-large.jpg",
-      "thumbnailAlt": "Marvel Rivals 18 versus 18 Annihilation mode artwork"
-    },
-    {
-      "label": "Events",
-      "title": "Summer Festival, 616 Day Vault, and Path to Doomsday updates",
-      "description": "Reported mid-season items include a summer event with free Units, a limited 616 Day Vault return, and revised timing for Path to Doomsday phases.",
-      "sourceUrl": "https://timesofindia.indiatimes.com/sports/esports/news/marvel-rivals-season-8-5-release-date-new-hero-game-mode-and-more/articleshow/131622861.cms",
-      "thumbnailUrl": "/images/heroes/emma-frost.png",
-      "thumbnailAlt": "Emma Frost hero artwork used as a Summer Festival thumbnail"
+      "label": "Patch Notes",
+      "title": "Marvel Rivals Version 20260710 Patch Notes - Season 9 Arrives",
+      "description": "Official patch notes announce the Season 9 arrival and the latest gameplay updates.",
+      "sourceUrl": "https://www.marvelrivals.com/20260708/41525_1306959.html",
+      "thumbnailUrl": "https://r.res.easebar.com/pic/20260708/5062f9bf-1b70-4237-9ec6-6ee6b2103f7e.png",
+      "thumbnailAlt": "Marvel Rivals Season 9 patch notes thumbnail"
     }
   ],
   "featuredGuides": [
@@ -59,12 +43,11 @@
     }
   ],
   "quickLinks": [
-    { "label": "Current Season", "value": "Season 8: Sins of Alchemax" },
-    { "label": "Mid-Season", "value": "Season 8.5" },
-    { "label": "BattlePass", "value": "Project: Heroic Age" },
-    { "label": "Latest Reported Hero", "value": "Cyclops" }
+    { "label": "Current Season", "value": "Season 9" },
+    { "label": "Season Story", "value": "The Mystery of Thebes" },
+    { "label": "Latest Hero", "value": "Jubilee", "imageUrl": "/images/heroes/jubilee.png" }
   ],
-  "currentFocusTitle": "Season 8.5 Update",
-  "currentFocusDescription": "Mid-season coverage highlights Cyclops, Bounty Annihilation, K'un-Lun Shenloong Arena, Summer Festival rewards, and the returning 616 Day Vault.",
-  "lastChecked": "2026-06-14"
+  "currentFocusTitle": "Season 9: The Mystery of Thebes // Dev Vision Vol. 19",
+  "currentFocusDescription": "Official Season 9 coverage highlights The Mystery of Thebes, fresh gameplay changes, Jubilee, and a brand-new map.",
+  "lastChecked": "2026-07-12"
 }

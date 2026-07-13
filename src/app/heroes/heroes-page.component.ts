@@ -1,24 +1,15 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  computed,
-  HostListener,
-  inject,
-  OnInit,
-  signal,
-} from '@angular/core';
-import {
-  trigger,
-  transition,
-  style,
-  animate,
-} from '@angular/animations';
+import { Component, computed, HostListener, inject, OnInit, signal } from '@angular/core';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 
 import { HERO_GUIDES, HeroUltimateGuide } from '../hero-guides/hero-guide-data';
 import { HeroDataService } from './hero-data.service';
+import { HeroContentComponent } from './hero-content/hero-content.component';
+import { HeroDetailModalComponent } from './hero-detail-modal/hero-detail-modal.component';
+import { HeroGridComponent, HeroGridMode, HeroRoleFilter } from './hero-grid/hero-grid.component';
+import { HeroPageHeaderComponent } from './hero-page-header/hero-page-header.component';
 import {
   buildHeroBuildProfileRationale,
   computeHeroBuildProfile,
@@ -38,10 +29,7 @@ import {
   HeroVideoType,
 } from './hero.model';
 
-import {slugify, escapeRegExp} from '../utilities/string-utils';
-
-type HeroRoleFilter = HeroRole | 'All';
-type HeroGridMode = 'rows' | 'thumbs';
+import { slugify, escapeRegExp } from '../utilities/string-utils';
 
 interface HeroVideoSearch {
   label: string;
@@ -84,41 +72,15 @@ interface FandomOverviewSection {
 
 @Component({
   selector: 'app-heroes-page',
-  imports: [CommonModule, RouterLink],
+  imports: [
+    CommonModule,
+    HeroContentComponent,
+    HeroDetailModalComponent,
+    HeroGridComponent,
+    HeroPageHeaderComponent,
+  ],
   templateUrl: './heroes-page.component.html',
   styleUrl: './heroes-page.component.css',
-  animations: [
-    trigger('fadeIn', [
-      transition(':enter', [
-        style({
-          opacity: 0,
-          transform: 'translateY(8px)',
-        }),
-        animate('400ms ease-out', style({
-          opacity: 1,
-          transform: 'translateY(0)',
-        })),
-      ]),
-    ]),
-    trigger('modalZoom', [
-      transition(':enter', [
-        style({
-          opacity: 0,
-          transform: 'translateY(24px) scale(0.92)',
-        }),
-        animate('260ms cubic-bezier(0.2, 0.8, 0.2, 1)', style({
-          opacity: 1,
-          transform: 'translateY(0) scale(1)',
-        })),
-      ]),
-      transition(':leave', [
-        animate('180ms ease-in', style({
-          opacity: 0,
-          transform: 'translateY(18px) scale(0.96)',
-        })),
-      ]),
-    ]),
-  ],
 })
 export class HeroesPageComponent implements OnInit {
   private readonly heroDataService = inject(HeroDataService);
@@ -139,6 +101,7 @@ export class HeroesPageComponent implements OnInit {
   readonly activeUltimatePathName = signal('');
   readonly activeAggressivePathId = signal('');
   readonly buildTypes = heroBuildTypes();
+  readonly detailsController = this;
   readonly deadpoolUltimatePaths: DeadpoolUltimatePath[] = [
     {
       ...this.tankpoolUltimateGuide('The Ban Hammer / Gun Ultimate'),
@@ -186,13 +149,15 @@ export class HeroesPageComponent implements OnInit {
         {
           rank: 1,
           name: 'Hazardous Hijinks',
-          reason: 'Starts the route with early pressure, six charges, bunny bounce value, movement, and fast style-up ranks.',
+          reason:
+            'Starts the route with early pressure, six charges, bunny bounce value, movement, and fast style-up ranks.',
           note: 'Use the extra movement to dash in and out, stay on Strategists or exposed targets, and keep momentum rolling while your ultimate is still weaker.',
         },
         {
           rank: 2,
           name: 'Dual Desert Eagles',
-          reason: 'Stabilizes the route with reliable ranged pressure and fast ultimate charge before you hard commit.',
+          reason:
+            'Stabilizes the route with reliable ranged pressure and fast ultimate charge before you hard commit.',
           note: 'Pair upgraded Deagles with Deadpool In Your Area attack speed to spray grouped enemies and build more than half an ultimate safely.',
         },
         {
@@ -204,13 +169,15 @@ export class HeroesPageComponent implements OnInit {
         {
           rank: 4,
           name: 'Deadpool In Your Area',
-          reason: 'Locks the aggressive route together with damage reduction, ally protection, attack speed, and sustain during the ultimate window.',
+          reason:
+            'Locks the aggressive route together with damage reduction, ally protection, attack speed, and sustain during the ultimate window.',
           note: 'Drop it before or during The Big Test challenge completion so damage reduction, healing, bonus health, and faster attacks stack together.',
         },
         {
           rank: 5,
           name: 'Kick@$$ Katana',
-          reason: 'Improves committed melee damage after the core pressure and ultimate engine are online.',
+          reason:
+            'Improves committed melee damage after the core pressure and ultimate engine are online.',
           note: 'Faster swings, crit potential, and more reliable close-range damage help once you are already brawling in their space.',
         },
         {
@@ -222,7 +189,8 @@ export class HeroesPageComponent implements OnInit {
         {
           rank: 7,
           name: 'The Ban Hammer',
-          reason: 'Lowest priority in this path because the aggressive Vanguard plan is built around movement, Deagles, ultimate pressure, and sustain.',
+          reason:
+            'Lowest priority in this path because the aggressive Vanguard plan is built around movement, Deagles, ultimate pressure, and sustain.',
           note: 'Still useful in specific situations, but the transcript says it is not the focus for Vanguard play.',
         },
       ],
@@ -240,19 +208,22 @@ export class HeroesPageComponent implements OnInit {
         {
           rank: 1,
           name: 'Dual Desert Eagles',
-          reason: 'Starts with safe ranged damage and reliable ultimate charge while you absorb front-line pressure on defense.',
+          reason:
+            'Starts with safe ranged damage and reliable ultimate charge while you absorb front-line pressure on defense.',
           note: 'Spray grouped enemies with base Deadpool In Your Area to build charge quickly without stepping too far forward.',
         },
         {
           rank: 2,
           name: 'Deadpool In Your Area',
-          reason: 'Becomes the defensive backbone: 40% damage reduction for you and 20% for nearby allies.',
+          reason:
+            'Becomes the defensive backbone: 40% damage reduction for you and 20% for nearby allies.',
           note: 'Use it to stabilize the front line or peel a dive on your Strategists so the fight has time to flip.',
         },
         {
           rank: 3,
           name: 'Hazardous Hijinks',
-          reason: 'Adds mobility and burst style generation after defensive pressure and ultimate charge are already online.',
+          reason:
+            'Adds mobility and burst style generation after defensive pressure and ultimate charge are already online.',
           note: 'Use the six charges to finish ultimate, reposition quickly, or punish overextensions without forcing a full commit.',
         },
         {
@@ -264,7 +235,8 @@ export class HeroesPageComponent implements OnInit {
         {
           rank: 5,
           name: 'Kick@$$ Katana',
-          reason: 'Improves close-range cleanup and pressure once enemies have committed into your space.',
+          reason:
+            'Improves close-range cleanup and pressure once enemies have committed into your space.',
           note: 'On defense, the transcript frames Katana less as an opener and more as cleanup or close-range pressure.',
         },
         {
@@ -276,7 +248,8 @@ export class HeroesPageComponent implements OnInit {
         {
           rank: 7,
           name: 'The Ban Hammer',
-          reason: 'Lowest priority because the defensive path mostly uses Katana ultimate and team-stabilizing tools.',
+          reason:
+            'Lowest priority because the defensive path mostly uses Katana ultimate and team-stabilizing tools.',
           note: 'The transcript says 90 to 95% of the time this path uses Katana ultimate instead.',
         },
       ],
@@ -301,7 +274,8 @@ export class HeroesPageComponent implements OnInit {
       {
         rank: 5,
         name: 'Deadpool In Your Area',
-        reason: 'Best early space tool: 12s cooldown, AoE vision disruption, attack speed, and ally damage reduction.',
+        reason:
+          'Best early space tool: 12s cooldown, AoE vision disruption, attack speed, and ally damage reduction.',
         note: 'Take first when you need to walk space.',
       },
       {
@@ -383,7 +357,8 @@ export class HeroesPageComponent implements OnInit {
       {
         rank: 7,
         name: 'Final Exam',
-        reason: 'Huge teamfight swing: 80/s healing, 120/s completed healing, and 3000 bonus health.',
+        reason:
+          'Huge teamfight swing: 80/s healing, 120/s completed healing, and 3000 bonus health.',
         note: 'Strong when completion is realistic.',
       },
       {
@@ -454,11 +429,7 @@ export class HeroesPageComponent implements OnInit {
     const gameplay = this.pazGameplayVideo(hero);
     const countersAndCombos = this.pazCountersCombosVideo(hero);
 
-    return [
-      guide,
-      gameplay,
-      countersAndCombos,
-    ];
+    return [guide, gameplay, countersAndCombos];
   });
 
   readonly selectedHeroYoutubeUrl = computed(() =>
@@ -474,7 +445,8 @@ export class HeroesPageComponent implements OnInit {
         buildProfile: hero.buildProfile ?? computeHeroBuildProfile(hero),
       }));
       const requestedHeroId = this.route.snapshot.queryParamMap.get('hero') ?? '';
-      const initialHero = hydratedHeroes.find((hero) => hero.id === requestedHeroId) ?? hydratedHeroes[0];
+      const initialHero =
+        hydratedHeroes.find((hero) => hero.id === requestedHeroId) ?? hydratedHeroes[0];
 
       this.heroes.set(hydratedHeroes);
       this.heroVideos.set(heroVideos);
@@ -505,7 +477,11 @@ export class HeroesPageComponent implements OnInit {
 
   updateSearch(event: Event): void {
     const input = event.target as HTMLInputElement;
-    this.searchTerm.set(input.value);
+    this.updateSearchTerm(input.value);
+  }
+
+  updateSearchTerm(searchTerm: string): void {
+    this.searchTerm.set(searchTerm);
     this.selectedHeroId.set(this.filteredHeroes()[0]?.id ?? '');
     this.closeHeroDetailModal();
   }
@@ -591,7 +567,9 @@ export class HeroesPageComponent implements OnInit {
   }
 
   teamUpAbilities(hero: Hero): HeroAbility[] {
-    const displayedTeamUps = this.displayedAbilities(hero).filter((ability) => ability.type === 'Team-Up Ability');
+    const displayedTeamUps = this.displayedAbilities(hero).filter(
+      (ability) => ability.type === 'Team-Up Ability',
+    );
 
     if (displayedTeamUps.length > 0) {
       return displayedTeamUps;
@@ -622,7 +600,10 @@ export class HeroesPageComponent implements OnInit {
 
     const selectedId = this.selectedAbilityTabId();
 
-    return abilities.find((ability) => this.abilityAnchorId(hero, ability) === selectedId) ?? abilities[0];
+    return (
+      abilities.find((ability) => this.abilityAnchorId(hero, ability) === selectedId) ??
+      abilities[0]
+    );
   }
 
   selectAbilityTab(hero: Hero, ability: HeroAbility): void {
@@ -648,7 +629,9 @@ export class HeroesPageComponent implements OnInit {
   displayedPlaystyleGuides(hero: Hero): HeroPlaystyleGuide[] {
     const role = this.selectedAbilityKit(hero)?.role ?? this.heroRoleLabel(hero);
 
-    return (hero.playstyles ?? []).filter((playstyle) => !playstyle.role || playstyle.role === role);
+    return (hero.playstyles ?? []).filter(
+      (playstyle) => !playstyle.role || playstyle.role === role,
+    );
   }
 
   ultimateStrategies(hero: Hero): UltimateStrategy[] {
@@ -661,11 +644,13 @@ export class HeroesPageComponent implements OnInit {
       return [];
     }
 
-    return [{
-      ability: ultimate,
-      sourceDescription: this.cleanAbilityDescription(ultimate.description),
-      strategy: this.buildUltimateStrategy(hero, role, ultimate),
-    }];
+    return [
+      {
+        ability: ultimate,
+        sourceDescription: this.cleanAbilityDescription(ultimate.description),
+        strategy: this.buildUltimateStrategy(hero, role, ultimate),
+      },
+    ];
   }
 
   deadpoolUpgradeOrder(hero: Hero): DeadpoolUpgradeStep[] {
@@ -735,7 +720,9 @@ export class HeroesPageComponent implements OnInit {
   }
 
   highlightedAbilityText(hero: Hero, text: string): SafeHtml {
-    return this.sanitizer.bypassSecurityTrustHtml(this.highlightCombatTerms(this.linkAbilityText(hero, text)));
+    return this.sanitizer.bypassSecurityTrustHtml(
+      this.highlightCombatTerms(this.linkAbilityText(hero, text)),
+    );
   }
 
   highlightedOverviewText(hero: Hero, text: string): SafeHtml {
@@ -743,12 +730,16 @@ export class HeroesPageComponent implements OnInit {
   }
 
   private linkAbilityText(hero: Hero, text: string): string {
-    const abilities = [...this.displayedAbilities(hero)].sort((a, b) => b.name.length - a.name.length);
+    const abilities = [...this.displayedAbilities(hero)].sort(
+      (a, b) => b.name.length - a.name.length,
+    );
     const html = this.escapeHtml(text);
     let linkedHtml = html;
 
     if (abilities.length > 0) {
-      const abilityLookup = new Map(abilities.map((ability) => [this.escapeHtml(ability.name).toLowerCase(), ability]));
+      const abilityLookup = new Map(
+        abilities.map((ability) => [this.escapeHtml(ability.name).toLowerCase(), ability]),
+      );
       const names = abilities.map((ability) => escapeRegExp(this.escapeHtml(ability.name)));
       const pattern = new RegExp(`(^|[^a-zA-Z0-9])(${names.join('|')})(?=[^a-zA-Z0-9]|$)`, 'gi');
 
@@ -775,7 +766,11 @@ export class HeroesPageComponent implements OnInit {
   technicalDetailType(label: string): string {
     const normalized = label.toLowerCase();
 
-    if (/boost|buff|debuff|vulnerability|damage reduction|movement|speed|slow|stun|knock|launch|pull|root|blind|reveal|scan|purify|cleanse/.test(normalized)) {
+    if (
+      /boost|buff|debuff|vulnerability|damage reduction|movement|speed|slow|stun|knock|launch|pull|root|blind|reveal|scan|purify|cleanse/.test(
+        normalized,
+      )
+    ) {
       return 'utility';
     }
 
@@ -841,41 +836,53 @@ export class HeroesPageComponent implements OnInit {
   }
 
   strategyGuide(hero: Hero): HeroStrategyGuide {
-    return hero.strategyGuide ?? {
-      sourceTitle: `${hero.name} coach strategy`,
-      sourceUrl: this.fandomHeroUrl(hero),
-      summary: this.displayedPlaystyle(hero),
-      paragraphs: [
-        this.displayedPlaystyle(hero),
-        `${hero.name}'s fight plan should be built around ${this.displayedAbilities(hero).slice(0, 2).map((ability) => ability.name).join(' and ') || 'their strongest cooldowns'}.`,
-      ],
-      situations: this.fallbackStrategySituations(hero),
-    };
+    return (
+      hero.strategyGuide ?? {
+        sourceTitle: `${hero.name} coach strategy`,
+        sourceUrl: this.fandomHeroUrl(hero),
+        summary: this.displayedPlaystyle(hero),
+        paragraphs: [
+          this.displayedPlaystyle(hero),
+          `${hero.name}'s fight plan should be built around ${
+            this.displayedAbilities(hero)
+              .slice(0, 2)
+              .map((ability) => ability.name)
+              .join(' and ') || 'their strongest cooldowns'
+          }.`,
+        ],
+        situations: this.fallbackStrategySituations(hero),
+      }
+    );
   }
 
   fandomOverviewSections(hero: Hero): FandomOverviewSection[] {
     const overview = (hero.overview ?? hero.summary).trim();
-    const headingPattern = /\b(Strengths|Weaknesses|Abilities|Tips|Strategy|Trivia|Lore|Overview)\s*:/g;
+    const headingPattern =
+      /\b(Strengths|Weaknesses|Abilities|Tips|Strategy|Trivia|Lore|Overview)\s*:/g;
     const matches = [...overview.matchAll(headingPattern)];
 
     if (matches.length === 0) {
-      return [{
-        title: 'Overview',
-        paragraphs: this.fandomOverviewParagraphs(hero, overview),
-      }];
+      return [
+        {
+          title: 'Overview',
+          paragraphs: this.fandomOverviewParagraphs(hero, overview),
+        },
+      ];
     }
 
-    return matches.map((match, index) => {
-      const title = match[1];
-      const bodyStart = (match.index ?? 0) + match[0].length;
-      const bodyEnd = matches[index + 1]?.index ?? overview.length;
-      const body = overview.slice(bodyStart, bodyEnd).trim();
+    return matches
+      .map((match, index) => {
+        const title = match[1];
+        const bodyStart = (match.index ?? 0) + match[0].length;
+        const bodyEnd = matches[index + 1]?.index ?? overview.length;
+        const body = overview.slice(bodyStart, bodyEnd).trim();
 
-      return {
-        title,
-        paragraphs: this.fandomOverviewParagraphs(hero, body),
-      };
-    }).filter((section) => section.paragraphs.length > 0);
+        return {
+          title,
+          paragraphs: this.fandomOverviewParagraphs(hero, body),
+        };
+      })
+      .filter((section) => section.paragraphs.length > 0);
   }
 
   fandomHeroUrl(hero: Hero): string {
@@ -937,15 +944,19 @@ export class HeroesPageComponent implements OnInit {
   }
 
   private tankpoolUltimateGuide(name: string): HeroUltimateGuide {
-    const guide = HERO_GUIDES.find((heroGuide) => heroGuide.heroId === 'deadpool' && heroGuide.role === 'Vanguard');
+    const guide = HERO_GUIDES.find(
+      (heroGuide) => heroGuide.heroId === 'deadpool' && heroGuide.role === 'Vanguard',
+    );
     const ultimate = guide?.ultimates.find((path) => path.name === name);
 
-    return ultimate ?? {
-      name,
-      plan: 'Use this path when its fight job solves the current enemy pressure.',
-      goodAgainst: [],
-      avoidInto: [],
-    };
+    return (
+      ultimate ?? {
+        name,
+        plan: 'Use this path when its fight job solves the current enemy pressure.',
+        goodAgainst: [],
+        avoidInto: [],
+      }
+    );
   }
 
   private normalizeHeroName(value: string): string {
@@ -966,7 +977,8 @@ export class HeroesPageComponent implements OnInit {
   }
 
   private highlightCombatTerms(html: string): string {
-    const termPattern = /\b(damage reduction|movement boost|attack speed|speed boost|knock back|launch up|damage over time|bonus damage|bonus health|life steal|damage|damaging|damages|damaged|burst|critical|crit|headshot|explosion|explode|detonate|vulnerability|heal|heals|healing|healed|restore|restores|restoring|regenerate|regeneration|recovery|recover|lifesteal|overhealth|utility|boost|boosts|boosted|buff|debuff|slow|stun|knockback|launch|root|blind|reveal|scan|purify|cleanse|shield|barrier|protect|invincibility|unstoppable)\b/gi;
+    const termPattern =
+      /\b(damage reduction|movement boost|attack speed|speed boost|knock back|launch up|damage over time|bonus damage|bonus health|life steal|damage|damaging|damages|damaged|burst|critical|crit|headshot|explosion|explode|detonate|vulnerability|heal|heals|healing|healed|restore|restores|restoring|regenerate|regeneration|recovery|recover|lifesteal|overhealth|utility|boost|boosts|boosted|buff|debuff|slow|stun|knockback|launch|root|blind|reveal|scan|purify|cleanse|shield|barrier|protect|invincibility|unstoppable)\b/gi;
 
     return html
       .split(/(<[^>]+>)/g)
@@ -987,11 +999,19 @@ export class HeroesPageComponent implements OnInit {
   private combatHighlightClass(term: string): string {
     const normalized = term.toLowerCase();
 
-    if (/heal|restore|regenerate|recovery|recover|lifesteal|life steal|bonus health|overhealth/.test(normalized)) {
+    if (
+      /heal|restore|regenerate|recovery|recover|lifesteal|life steal|bonus health|overhealth/.test(
+        normalized,
+      )
+    ) {
       return 'healing-highlight';
     }
 
-    if (/utility|boost|buff|debuff|damage reduction|attack speed|speed boost|movement boost|slow|stun|knock|launch|root|blind|reveal|scan|purify|cleanse|shield|barrier|protect|invincibility|unstoppable/.test(normalized)) {
+    if (
+      /utility|boost|buff|debuff|damage reduction|attack speed|speed boost|movement boost|slow|stun|knock|launch|root|blind|reveal|scan|purify|cleanse|shield|barrier|protect|invincibility|unstoppable/.test(
+        normalized,
+      )
+    ) {
       return 'utility-highlight';
     }
 
@@ -1002,22 +1022,48 @@ export class HeroesPageComponent implements OnInit {
     switch (this.heroRoleLabel(hero)) {
       case 'Vanguard':
         return [
-          { label: 'Bait cooldowns', description: 'Show pressure, draw defensive tools or crowd control, then reset before the enemy can punish.' },
-          { label: 'Take space', description: 'Move first when teammates can follow so your pressure turns into a real team angle.' },
+          {
+            label: 'Bait cooldowns',
+            description:
+              'Show pressure, draw defensive tools or crowd control, then reset before the enemy can punish.',
+          },
+          {
+            label: 'Take space',
+            description:
+              'Move first when teammates can follow so your pressure turns into a real team angle.',
+          },
         ];
       case 'Duelist':
         return [
-          { label: 'Finish windows', description: 'Commit after enemy mobility, shields, or sustain tools are unavailable.' },
-          { label: 'Split attention', description: 'Use off-angles to make the enemy look away from your frontline without taking a losing isolated duel.' },
+          {
+            label: 'Finish windows',
+            description: 'Commit after enemy mobility, shields, or sustain tools are unavailable.',
+          },
+          {
+            label: 'Split attention',
+            description:
+              'Use off-angles to make the enemy look away from your frontline without taking a losing isolated duel.',
+          },
         ];
       case 'Strategist':
         return [
-          { label: 'Peel and stabilize', description: 'Hold key utility for the enemy engage and keep line of sight on teammates under pressure.' },
-          { label: 'Resource pacing', description: 'Spend burst healing or defensive tools when damage actually lands.' },
+          {
+            label: 'Peel and stabilize',
+            description:
+              'Hold key utility for the enemy engage and keep line of sight on teammates under pressure.',
+          },
+          {
+            label: 'Resource pacing',
+            description: 'Spend burst healing or defensive tools when damage actually lands.',
+          },
         ];
       default:
         return [
-          { label: 'Choose the job', description: 'Decide whether the fight needs engage, peel, damage, or sustain before committing your kit.' },
+          {
+            label: 'Choose the job',
+            description:
+              'Decide whether the fight needs engage, peel, damage, or sustain before committing your kit.',
+          },
         ];
     }
   }
@@ -1031,7 +1077,10 @@ export class HeroesPageComponent implements OnInit {
       return [text.trim()].filter(Boolean);
     }
 
-    const abilityPattern = new RegExp(`(^|\\s)(?=(${abilityNames.map((name) => escapeRegExp(name)).join('|')})\\b)`, 'g');
+    const abilityPattern = new RegExp(
+      `(^|\\s)(?=(${abilityNames.map((name) => escapeRegExp(name)).join('|')})\\b)`,
+      'g',
+    );
 
     return text
       .replace(/\s+\*/g, ' ')
@@ -1041,7 +1090,6 @@ export class HeroesPageComponent implements OnInit {
       .filter(Boolean);
   }
 
-
   private buildPlaystyle(hero: Hero, role: HeroRole, abilities: HeroAbility[]): string {
     if (hero.id === 'deadpool' && role === 'Vanguard') {
       return 'Force attention, make the enemy team uncomfortable, build style points, and cycle in and out of pressure without exploding.';
@@ -1050,7 +1098,8 @@ export class HeroesPageComponent implements OnInit {
     const primary = abilities[0]?.name ?? hero.name;
     const utility =
       abilities.find((ability) => ability.type === 'Ability')?.name ??
-      abilities.find((ability) => ability.type !== 'Normal Attack' && ability.type !== 'Ultimate')?.name ??
+      abilities.find((ability) => ability.type !== 'Normal Attack' && ability.type !== 'Ultimate')
+        ?.name ??
       abilities[1]?.name ??
       primary;
     const weakness = hero.weaknesses[0]?.replace(/\.$/, '').toLowerCase();
@@ -1087,20 +1136,23 @@ export class HeroesPageComponent implements OnInit {
       return undefined;
     }
 
-    return abilities.find((ability) =>
-      ability.type !== 'Normal Attack' &&
-      ability.type !== 'Mobility' &&
-      ability.type !== 'Team-Up Ability' &&
-      ability.type !== 'Passive',
+    return abilities.find(
+      (ability) =>
+        ability.type !== 'Normal Attack' &&
+        ability.type !== 'Mobility' &&
+        ability.type !== 'Team-Up Ability' &&
+        ability.type !== 'Passive',
     );
   }
 
   private hasUltimateSignal(ability: HeroAbility): boolean {
     const technicalDetails = ability.technicalDetails ?? [];
 
-    return /ultimate/i.test(ability.type) ||
+    return (
+      /ultimate/i.test(ability.type) ||
       /ultimate/i.test(ability.description) ||
-      technicalDetails.some((detail) => /energy cost/i.test(detail.label));
+      technicalDetails.some((detail) => /energy cost/i.test(detail.label))
+    );
   }
 
   private buildUltimateStrategy(hero: Hero, role: HeroRole, ability: HeroAbility): string {
@@ -1202,7 +1254,6 @@ export class HeroesPageComponent implements OnInit {
     return this.pazVideo(hero, 'paz-gameplay');
   }
 
-
   private pazCountersCombosVideo(hero: Hero): HeroVideoSearch {
     return this.pazVideo(hero, 'paz-counters-combos');
   }
@@ -1210,10 +1261,17 @@ export class HeroesPageComponent implements OnInit {
   private pazVideo(hero: Hero, videoType: HeroVideoType): HeroVideoSearch {
     const video = this.findHeroVideo(hero, videoType);
     const isHeroSpecific = video?.heroId === hero.id;
-    const label = videoType === 'paz-gameplay'
-      ? isHeroSpecific ? 'PAZ hero gameplay' : `PAZ ${hero.role} gameplay`
-      : isHeroSpecific ? 'PAZ counters and combos' : `PAZ ${hero.role} counters and combos`;
-    const query = video?.title ?? `Marvel Rivals ${hero.name} ${videoType === 'paz-gameplay' ? 'PAZ gameplay' : 'counters combos'}`;
+    const label =
+      videoType === 'paz-gameplay'
+        ? isHeroSpecific
+          ? 'PAZ hero gameplay'
+          : `PAZ ${hero.role} gameplay`
+        : isHeroSpecific
+          ? 'PAZ counters and combos'
+          : `PAZ ${hero.role} counters and combos`;
+    const query =
+      video?.title ??
+      `Marvel Rivals ${hero.name} ${videoType === 'paz-gameplay' ? 'PAZ gameplay' : 'counters combos'}`;
 
     if (!video) {
       return {
@@ -1234,10 +1292,11 @@ export class HeroesPageComponent implements OnInit {
   private findHeroVideo(hero: Hero, videoType: HeroVideoType): HeroVideo | undefined {
     const videos = this.heroVideos().filter((video) => video.videoType === videoType);
 
-    return videos.find((video) => video.heroId === hero.id)
-      ?? videos.find((video) => !video.heroId && video.role === hero.role);
+    return (
+      videos.find((video) => video.heroId === hero.id) ??
+      videos.find((video) => !video.heroId && video.role === hero.role)
+    );
   }
-
 
   private youtubeVideoEmbedUrl(videoId: string): SafeResourceUrl {
     const url = `https://www.youtube.com/embed/${videoId}`;
