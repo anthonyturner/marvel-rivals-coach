@@ -18,7 +18,7 @@
   height: 760px;
   overflow: hidden;
   background: #07111f url('/images/site/heroes-banner.jpg') center / cover no-repeat;
-  pointer-events: none;
+  cursor: zoom-in;
 }
 
 .home-page-background::after {
@@ -35,6 +35,92 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  pointer-events: none;
+}
+
+.home-page-background.is-foreground {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  width: 100%;
+  height: 100dvh;
+  place-items: center;
+  padding: clamp(16px, 4vw, 56px);
+  background: rgba(3, 7, 18, 0.94);
+  cursor: zoom-out;
+}
+
+.home-page-background.is-foreground::after {
+  display: none;
+}
+
+.home-page-background.is-foreground .home-page-background-video {
+  width: min(1280px, 100%);
+  height: auto;
+  max-height: calc(100dvh - 32px);
+  border-radius: 8px;
+  object-fit: contain;
+  pointer-events: auto;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.7);
+}
+
+.home-page-background.is-popout:not(.is-foreground) {
+  position: fixed;
+  z-index: 50;
+  inset: auto 24px 24px auto;
+  width: min(420px, calc(100vw - 48px));
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  background: #07111f;
+  box-shadow: 0 24px 70px rgba(3, 7, 18, 0.48);
+  animation: video-popout-in 220ms ease-out both;
+}
+
+.home-page-background.is-popout:not(.is-foreground)::after {
+  background: linear-gradient(180deg, transparent 62%, rgba(3, 7, 18, 0.46));
+}
+
+@keyframes video-popout-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.home-page-video-close {
+  position: fixed;
+  z-index: 1001;
+  top: 20px;
+  right: 24px;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 999px;
+  background: rgba(7, 17, 31, 0.82);
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 820;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+}
+
+.home-page-video-close:hover {
+  border-color: rgba(255, 216, 102, 0.7);
+  background: #111827;
+}
+
+.home-page-video-close:focus-visible {
+  outline: 3px solid #ffd866;
+  outline-offset: 3px;
 }
 
 .home-page-sound-toggle {
@@ -684,6 +770,7 @@ h1 {
   }
 
   .scroll-reveal,
+  .home-page-background.is-popout,
   .portal-card,
   .guide-list a,
   .hero-actions a,
@@ -812,6 +899,12 @@ h1 {
   .home-page-sound-toggle {
     top: 28px;
     right: calc(var(--mobile-page-gutter) + 8px);
+  }
+
+  .home-page-background.is-popout:not(.is-foreground) {
+    right: var(--mobile-page-gutter);
+    bottom: var(--mobile-page-gutter);
+    width: min(340px, calc(100vw - (2 * var(--mobile-page-gutter))));
   }
 
   .hero {

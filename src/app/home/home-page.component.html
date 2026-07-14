@@ -1,9 +1,20 @@
 <section class="home-page">
-  <div class="home-page-background" aria-hidden="true">
+  <div
+    class="home-page-background"
+    [class.is-foreground]="backgroundVideoForeground"
+    [class.is-popout]="backgroundVideoPoppedOut"
+    [attr.role]="backgroundVideoForeground ? 'dialog' : 'button'"
+    [attr.aria-modal]="backgroundVideoForeground ? 'true' : null"
+    [attr.aria-label]="backgroundVideoForeground ? 'Developer Vision video player' : backgroundVideoPoppedOut ? 'Open the floating video player' : 'Play the background video in the foreground'"
+    [attr.tabindex]="backgroundVideoForeground ? -1 : 0"
+    (click)="onBackgroundVideoSurfaceClick(backgroundVideo)"
+    (keydown)="onBackgroundVideoKeydown($event, backgroundVideo)"
+  >
     <video
       #backgroundVideo
       class="home-page-background-video"
       autoplay
+      [controls]="backgroundVideoForeground"
       [muted]="backgroundVideoMuted"
       loop
       playsinline
@@ -11,6 +22,8 @@
       poster="/images/site/heroes-banner.jpg"
       tabindex="-1"
       (canplay)="startBackgroundVideo(backgroundVideo)"
+      (click)="onForegroundVideoClick($event)"
+      (volumechange)="syncBackgroundVideoSound(backgroundVideo)"
     >
       <source
         src="/videos/home/dev-vision-vol-19.mp4"
@@ -18,6 +31,18 @@
       />
       Your browser does not support embedded video playback.
     </video>
+
+    @if (backgroundVideoForeground) {
+    <button
+      class="home-page-video-close"
+      type="button"
+      aria-label="Close foreground video"
+      autofocus
+      (click)="$event.stopPropagation(); closeBackgroundVideo()"
+    >
+      Close
+    </button>
+    }
   </div>
 
   <button
@@ -40,7 +65,7 @@
       }
     </aside>
 
-    <header class="hero scroll-reveal">
+    <header #heroBanner class="hero scroll-reveal">
       <div class="hero-copy">
         <p class="eyebrow">Marvel Rivals Coach · Season 9</p>
         <h1>Welcome to The Mystery of Thebes.</h1>
