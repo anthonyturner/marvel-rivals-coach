@@ -3,11 +3,163 @@
 }
 
 .home-page {
+  position: relative;
+  isolation: isolate;
   min-height: 100%;
   padding: 24px 32px 96px;
-  background:
-    linear-gradient(180deg, #07111f 0 620px, var(--bg) 620px);
+  overflow: hidden;
+  background: var(--bg);
 }
+
+.home-page-background {
+  position: absolute;
+  z-index: 0;
+  inset: 0 0 auto;
+  height: 760px;
+  overflow: hidden;
+  background: #07111f url('/images/site/heroes-banner.jpg') center / cover no-repeat;
+  cursor: zoom-in;
+}
+
+.home-page-background::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background:
+    linear-gradient(90deg, rgba(7, 17, 31, 0.62), rgba(7, 17, 31, 0.18) 50%, rgba(7, 17, 31, 0.5)),
+    linear-gradient(180deg, rgba(7, 17, 31, 0.06), rgba(7, 17, 31, 0.42) 72%, var(--bg) 100%);
+}
+
+.home-page-background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+.home-page-background.is-foreground {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  width: 100%;
+  height: 100dvh;
+  place-items: center;
+  padding: clamp(16px, 4vw, 56px);
+  background: rgba(3, 7, 18, 0.94);
+  cursor: zoom-out;
+}
+
+.home-page-background.is-foreground::after {
+  display: none;
+}
+
+.home-page-background.is-foreground .home-page-background-video {
+  width: min(1280px, 100%);
+  height: auto;
+  max-height: calc(100dvh - 32px);
+  border-radius: 8px;
+  object-fit: contain;
+  pointer-events: auto;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.7);
+}
+
+.home-page-background.is-popout:not(.is-foreground) {
+  position: fixed;
+  z-index: 50;
+  inset: auto 24px 24px auto;
+  width: min(420px, calc(100vw - 48px));
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  background: #07111f;
+  box-shadow: 0 24px 70px rgba(3, 7, 18, 0.48);
+  animation: video-popout-in 220ms ease-out both;
+}
+
+.home-page-background.is-popout:not(.is-foreground)::after {
+  background: linear-gradient(180deg, transparent 62%, rgba(3, 7, 18, 0.46));
+}
+
+@keyframes video-popout-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.home-page-video-close {
+  position: fixed;
+  z-index: 1001;
+  top: 20px;
+  right: 24px;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 999px;
+  background: rgba(7, 17, 31, 0.82);
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 820;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+}
+
+.home-page-video-close:hover {
+  border-color: rgba(255, 216, 102, 0.7);
+  background: #111827;
+}
+
+.home-page-video-close:focus-visible {
+  outline: 3px solid #ffd866;
+  outline-offset: 3px;
+}
+
+.home-page-sound-toggle {
+  position: absolute;
+  z-index: 2;
+  top: 40px;
+  right: 48px;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+  background: rgba(7, 17, 31, 0.68);
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 820;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.home-page-sound-toggle:hover {
+  border-color: rgba(255, 216, 102, 0.7);
+  background: rgba(7, 17, 31, 0.88);
+  transform: translateY(-1px);
+}
+
+.home-page-sound-toggle:focus-visible {
+  outline: 3px solid #ffd866;
+  outline-offset: 3px;
+}
+
+.header-container,
+.stack-section,
+.dashboard-grid {
+  position: relative;
+  z-index: 1;
+}
+
 .header-container {
   display: grid;
   grid-template-columns: minmax(220px, 0.28fr) minmax(0, 1180px) minmax(220px, 0.28fr);
@@ -45,11 +197,8 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 8px;
   background-image:
-    linear-gradient(90deg, rgba(7, 17, 31, 0.96), rgba(7, 17, 31, 0.74) 47%, rgba(7, 17, 31, 0.3)),
-    linear-gradient(180deg, rgba(7, 17, 31, 0.08), rgba(7, 17, 31, 0.88)),
-    url('/images/site/heroes-banner.jpg');
-  background-position: center;
-  background-size: cover;
+    linear-gradient(90deg, rgba(7, 17, 31, 0.78), rgba(7, 17, 31, 0.46) 47%, rgba(7, 17, 31, 0.14)),
+    linear-gradient(180deg, rgba(7, 17, 31, 0.04), rgba(7, 17, 31, 0.7));
   box-shadow: 0 34px 90px rgba(3, 7, 18, 0.34), inset 0 1px rgba(255, 255, 255, 0.18);
   color: #ffffff;
   text-align: center;
@@ -80,7 +229,6 @@ p {
 }
 
 .eyebrow,
-.command-header span,
 .prompt-row span,
 .news-list span,
 .guide-list span {
@@ -94,7 +242,7 @@ p {
 h1 {
   max-width: 760px;
   color: #ffffff;
-  font-size: 5.4rem;
+  font-size: 2.4rem;
   line-height: 0.96;
   font-weight: 850;
   letter-spacing: 0;
@@ -184,11 +332,10 @@ h1 {
   align-self: center;
   width: min(760px, 100%);
   padding: 16px;
-  border-color: rgba(255, 255, 255, 0.24);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(232, 247, 251, 0.7)),
-    rgba(255, 255, 255, 0.72);
-  box-shadow: 0 24px 70px rgba(3, 7, 18, 0.28), inset 0 1px rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 70px rgba(3, 7, 18, 0.3), inset 0 1px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(18px) saturate(120%);
   text-align: left;
 }
 
@@ -206,11 +353,10 @@ h1 {
   background: #c7d2fe;
 }
 
-.prompt-row,
-.command-card {
-  border: 1px solid rgba(42, 67, 101, 0.1);
+.prompt-row {
+  border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 8px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.16);
 }
 
 .prompt-row {
@@ -223,44 +369,17 @@ h1 {
 
 .prompt-row p {
   margin-top: 4px;
-  color: #111827;
+  color: #ffffff;
   font-size: 1.18rem;
   font-weight: 780;
+  text-shadow: 0 2px 12px rgba(3, 7, 18, 0.4);
 }
 
-.command-card {
-  display: grid;
-  padding: 22px;
-}
-
-.command-header {
-  display: grid;
-  gap: 8px;
-  min-width: 0;
-}
-
-.command-header strong {
-  overflow-wrap: anywhere;
-  color: #111827;
-  font-size: 2rem;
-  line-height: 1.04;
-  font-weight: 820;
-}
-
-.command-header p,
 .portal-card p,
 .news-list p,
 .guide-list p {
   color: #526174;
   line-height: 1.58;
-}
-
-.command-header p {
-  display: -webkit-box;
-  overflow: hidden;
-  overflow-wrap: anywhere;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
 }
 
 .season-list {
@@ -278,9 +397,11 @@ h1 {
   display: grid;
   gap: 4px;
   padding: 12px;
-  border: 1px solid rgba(42, 67, 101, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.26);
   border-radius: 8px;
-  background: #f8fbff;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 42px rgba(3, 7, 18, 0.22), inset 0 1px rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(16px) saturate(120%);
 }
 
 .season-list div.has-hero-avatar {
@@ -312,9 +433,8 @@ h1 {
 }
 
 .season-list small,
-.source-status,
 .stats span {
-  color: #64748b;
+  color: rgba(255, 255, 255, 0.72);
   font-size: 0.78rem;
   font-weight: 820;
   text-transform: uppercase;
@@ -323,14 +443,10 @@ h1 {
 .season-list strong {
   display: block;
   overflow-wrap: anywhere;
-  color: #111827;
+  color: #ffffff;
   font-weight: 820;
   line-height: 1.2;
-}
-
-.source-status {
-  padding: 0 4px 2px;
-  text-transform: none;
+  text-shadow: 0 2px 12px rgba(3, 7, 18, 0.4);
 }
 
 .stats {
@@ -350,19 +466,20 @@ h1 {
   min-width: 0;
   align-self: start;
   padding: 12px;
-  border-color: rgba(42, 67, 101, 0.1);
-  background: #f8fbff;
-  box-shadow: none;
-  backdrop-filter: none;
+  border-color: rgba(255, 255, 255, 0.26);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 42px rgba(3, 7, 18, 0.22), inset 0 1px rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(16px) saturate(120%);
 }
 
 .stats strong {
   display: block;
-  color: #111827;
+  color: #ffffff;
   font-size: 1rem;
   font-weight: 820;
   line-height: 1.2;
   overflow-wrap: anywhere;
+  text-shadow: 0 2px 12px rgba(3, 7, 18, 0.4);
 }
 
 .stats span {
@@ -648,7 +765,12 @@ h1 {
 
 @media (prefers-reduced-motion: reduce) {
 
+  .home-page-background-video {
+    display: block;
+  }
+
   .scroll-reveal,
+  .home-page-background.is-popout,
   .portal-card,
   .guide-list a,
   .hero-actions a,
@@ -720,7 +842,6 @@ h1 {
 
   .dashboard-grid,
   .portal-grid,
-  .command-card,
   .stack-section {
     grid-template-columns: 1fr;
   }
@@ -775,6 +896,17 @@ h1 {
     padding: 20px var(--mobile-page-gutter) 44px;
   }
 
+  .home-page-sound-toggle {
+    top: 28px;
+    right: calc(var(--mobile-page-gutter) + 8px);
+  }
+
+  .home-page-background.is-popout:not(.is-foreground) {
+    right: var(--mobile-page-gutter);
+    bottom: var(--mobile-page-gutter);
+    width: min(340px, calc(100vw - (2 * var(--mobile-page-gutter))));
+  }
+
   .hero {
     gap: 28px;
     padding: 34px 18px;
@@ -799,7 +931,6 @@ h1 {
   }
 
   .command-window,
-  .command-card,
   .portal-panel,
   .news-panel,
   .guide-panel {
@@ -811,9 +942,7 @@ h1 {
   }
 
   .prompt-row,
-  .command-card,
-  .season-list,
-  .source-status {
+  .season-list {
     grid-column: auto;
     grid-row: auto;
   }

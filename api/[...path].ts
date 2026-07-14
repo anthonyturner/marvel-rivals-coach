@@ -12,6 +12,7 @@ import {
   getTierListFromDatabase,
 } from '../src/content-database.js';
 import gameStatsHandler from './game-stats.js';
+import gameStatsSyncHandler from './sync/game-stats.js';
 import homeNewsSyncHandler from './sync/home-news.js';
 import tierListSyncHandler from './sync/tier-list.js';
 
@@ -42,6 +43,11 @@ export default async function handler(req: VercelRequest, res: ServerResponse) {
 
     if (route === 'game-stats') {
       await gameStatsHandler(req, res);
+      return;
+    }
+
+    if (route === 'sync/game-stats') {
+      await gameStatsSyncHandler(req, res);
       return;
     }
 

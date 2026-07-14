@@ -7,38 +7,12 @@
 <nav id="primary-navigation" aria-label="Primary navigation" [class.is-open]="isMenuOpen()">
     @for (item of primaryNavItems; track item.label) {
     @if (item.enabled) {
-    <div class="nav-group">
-        <a class="nav-link" [routerLink]="item.path" routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: item.path === '/' }" (click)="closeMenu()">
-            {{ item.label }}
-        </a>
-    </div>
+    <a class="nav-link" [routerLink]="item.path" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: item.path === '/' }" (click)="closeMenu()">
+        {{ item.label }}
+    </a>
     } @else {
     <span class="disabled">{{ item.label }}</span>
     }
-    }
-
-    @for (group of navGroups; track group.label) {
-    <div class="nav-group">
-        <div class="nav-group-heading">
-            <a class="nav-group-link" [routerLink]="group.path" routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
-                {{ group.label }}
-            </a>
-        </div>
-
-        <div class="nav-menu" [id]="'nav-group-' + group.label.toLowerCase()"
-            [class.is-open]="openGroup() === group.label">
-            @for (item of group.items; track item.label) {
-            @if (item.enabled) {
-            <a [routerLink]="item.path" routerLinkActive="active" (click)="closeMenu()">
-                {{ item.label }}
-            </a>
-            } @else {
-            <span class="disabled">{{ item.label }}</span>
-            }
-            }
-        </div>
-    </div>
     }
 </nav>

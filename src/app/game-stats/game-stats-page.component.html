@@ -13,6 +13,11 @@
       <span>Snapshot</span>
       <strong>{{ snapshotDate() }}</strong>
       <small>Live current players fetched {{ fetchedAt() }}</small>
+      @if (previousSnapshotLabel(); as previousLabel) {
+        <small>Compared with {{ previousLabel }}</small>
+      } @else {
+        <small>First stored snapshot; comparisons begin with the next capture</small>
+      }
     </div>
   </header>
 
@@ -86,17 +91,36 @@
             <strong>{{ game.name }}</strong>
             <small>{{ game.category }}</small>
           </span>
-          <span>{{ formatNumber(game.currentPlayers) }}</span>
-          <span>{{ formatNumber(game.dailyPeak) }}</span>
-          <span>{{ formatNumber(game.allTimePeak) }}</span>
-          <span>{{ game.steamDailyRank }} DAU / {{ game.topSellerRank }}</span>
-          <span>
-            @if (game.name === marvelRivals().name) {
-              Baseline
-            } @else {
-              Rivals is {{ marvelComparisonRatio(game) }}% of this 24h peak
+          <span class="metric-cell">
+            {{ formatNumber(game.currentPlayers) }}
+            @if (metricComparison(game, 'currentPlayers'); as comparison) {
+              <small class="trend" [ngClass]="trendClass(comparison)">{{ formatMetricChange(comparison) }}</small>
             }
           </span>
+          <span class="metric-cell">
+            {{ formatNumber(game.dailyPeak) }}
+            @if (metricComparison(game, 'dailyPeak'); as comparison) {
+              <small class="trend" [ngClass]="trendClass(comparison)">{{ formatMetricChange(comparison) }}</small>
+            }
+          </span>
+          <span class="metric-cell">
+            {{ formatNumber(game.allTimePeak) }}
+            @if (metricComparison(game, 'allTimePeak'); as comparison) {
+              <small class="trend" [ngClass]="trendClass(comparison)">{{ formatMetricChange(comparison) }}</small>
+            }
+          </span>
+          <span class="metric-cell">
+            {{ game.steamDailyRank }} DAU / {{ game.topSellerRank }}
+            @if (game.comparison; as comparison) {
+              <small class="trend" [ngClass]="trendClass(comparison.steamDailyRank)">
+                DAU: {{ formatRankChange(comparison.steamDailyRank) }}
+              </small>
+              <small class="trend" [ngClass]="trendClass(comparison.topSellerRank)">
+                Sellers: {{ formatRankChange(comparison.topSellerRank) }}
+              </small>
+            }
+          </span>
+          <span>{{ comparisonRead(game) }}</span>
         </a>
       }
     </div>

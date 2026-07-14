@@ -27,6 +27,8 @@ type ContentStatus = {
   homeContentBlocks: number;
   tierListSeasons: number;
   tierListItems: number;
+  gameStatSnapshots: number;
+  gameStatSnapshotGames: number;
 };
 
 let client: Client | undefined;
@@ -146,6 +148,8 @@ export async function getContentStatusFromDatabase(): Promise<ContentStatus> {
     homeContentBlocks: await getCount('home_content_blocks'),
     tierListSeasons: await getOptionalCount('tier_list_seasons'),
     tierListItems: await getOptionalCount('tier_list_items'),
+    gameStatSnapshots: await getOptionalCount('game_stat_snapshots'),
+    gameStatSnapshotGames: await getOptionalCount('game_stat_snapshot_games'),
   };
 }
 

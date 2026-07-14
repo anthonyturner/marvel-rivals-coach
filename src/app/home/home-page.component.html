@@ -1,4 +1,60 @@
 <section class="home-page">
+  <div
+    class="home-page-background"
+    [class.is-foreground]="backgroundVideoForeground"
+    [class.is-popout]="backgroundVideoPoppedOut"
+    [attr.role]="backgroundVideoForeground ? 'dialog' : 'button'"
+    [attr.aria-modal]="backgroundVideoForeground ? 'true' : null"
+    [attr.aria-label]="backgroundVideoForeground ? 'Developer Vision video player' : backgroundVideoPoppedOut ? 'Open the floating video player' : 'Play the background video in the foreground'"
+    [attr.tabindex]="backgroundVideoForeground ? -1 : 0"
+    (click)="onBackgroundVideoSurfaceClick(backgroundVideo)"
+    (keydown)="onBackgroundVideoKeydown($event, backgroundVideo)"
+  >
+    <video
+      #backgroundVideo
+      class="home-page-background-video"
+      autoplay
+      [controls]="backgroundVideoForeground"
+      [muted]="backgroundVideoMuted"
+      loop
+      playsinline
+      preload="metadata"
+      poster="/images/site/heroes-banner.jpg"
+      tabindex="-1"
+      (canplay)="startBackgroundVideo(backgroundVideo)"
+      (click)="onForegroundVideoClick($event)"
+      (volumechange)="syncBackgroundVideoSound(backgroundVideo)"
+    >
+      <source
+        src="/videos/home/dev-vision-vol-19.mp4"
+        type="video/mp4"
+      />
+      Your browser does not support embedded video playback.
+    </video>
+
+    @if (backgroundVideoForeground) {
+    <button
+      class="home-page-video-close"
+      type="button"
+      aria-label="Close foreground video"
+      autofocus
+      (click)="$event.stopPropagation(); closeBackgroundVideo()"
+    >
+      Close
+    </button>
+    }
+  </div>
+
+  <button
+    class="home-page-sound-toggle"
+    type="button"
+    [attr.aria-label]="backgroundVideoMuted ? 'Unmute background video' : 'Mute background video'"
+    [attr.aria-pressed]="!backgroundVideoMuted"
+    (click)="toggleBackgroundVideoSound(backgroundVideo)"
+  >
+    <span aria-hidden="true">{{ backgroundVideoMuted ? 'Sound off' : 'Sound on' }}</span>
+  </button>
+
   <div class="header-container">
     <aside class="stats scroll-reveal" aria-label="Site stats">
       @for (stat of content().heroStats; track stat.label) {
@@ -9,13 +65,13 @@
       }
     </aside>
 
-    <header class="hero scroll-reveal">
+    <header #heroBanner class="hero scroll-reveal">
       <div class="hero-copy">
-        <p class="eyebrow">Marvel Rivals Coach</p>
-        <h1>Plan cleaner fights before you queue.</h1>
+        <p class="eyebrow">Marvel Rivals Coach · Season 9</p>
+        <h1>Welcome to The Mystery of Thebes.</h1>
         <p class="lede">
-          Browse heroes, learn map-control fundamentals, watch curated tutorials, and turn guide
-          notes into practical drills for your next ranked block.
+          Jubilee has arrived, a killer is hiding in the shadows, and the battlefield has changed.
+          Explore the new season, sharpen your game plan, and enter your next match prepared.
         </p>
         <div class="hero-actions">
           <a routerLink="/beginner-interactive-guide">Start beginner guide</a>
@@ -39,18 +95,6 @@
           <a routerLink="/watch-next">Plan</a>
         </div>
 
-        <div class="command-card">
-          <div class="command-header">
-            <span>Current Focus</span>
-            <strong>{{ content().currentFocusTitle }}</strong>
-            <p>{{ content().currentFocusDescription }}</p>
-          </div>
-        </div>
-
-        <p class="source-status">
-          {{ content().sourceMode === 'database' ? 'Live content database' : 'Curated fallback data' }}
-          - {{ content().lastChecked }}
-        </p>
       </aside>
     </header>
 

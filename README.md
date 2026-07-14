@@ -15,6 +15,7 @@ Marvel Rivals Coach is an Angular companion site for learning heroes, matchups, 
 - Guide pages for Power Positions and Strategic Cover Usage.
 - Media tutorials with embedded YouTube videos and related guide links.
 - Learning paths, practice-oriented coaching content, and a "What Should I Watch Next?" quiz.
+- Hourly database-backed game-stat snapshots with previous-snapshot trend comparisons.
 
 ## Main Pages
 
@@ -29,6 +30,7 @@ Marvel Rivals Coach is an Angular companion site for learning heroes, matchups, 
 | `/learning-paths` | Curated learning paths for improving at the game |
 | `/media-tutorials` | Embedded tutorial videos and related guide links |
 | `/watch-next` | Quiz that recommends what to study next |
+| `/game-stats` | Current Steam snapshot with stored historical comparisons |
 
 ## Tech Stack
 
@@ -68,6 +70,7 @@ Important files:
 | `scripts/sync-official-heroes.mjs` | Fetches official Marvel Rivals hero descriptions, Season 9 abilities, and team-up abilities |
 | `scripts/sync-external-sources.mjs` | Caches external source payloads in Turso |
 | `scripts/sync-home-news.mjs` | Refreshes home page news cards from Steam News and BattlePass data |
+| `scripts/sync-game-stats.mjs` | Captures an hourly game-stat snapshot and compares it with the previous sample |
 | `scripts/sync-glossary-missing.mjs` | Inserts glossary terms that exist in local JSON but are missing from Turso |
 | `scripts/sync-glossary-terms.mjs` | Upserts specific glossary terms by ID or term text |
 | `scripts/refresh-counter-picks.mjs` | Rebuilds the curated "who stops this hero" counter matrix |
@@ -239,6 +242,24 @@ For local refreshes, run:
 ```powershell
 npm.cmd run sync:home-news
 ```
+
+## Game Stats Snapshot History
+
+Game Stats captures at most one database snapshot per UTC hour. Each snapshot stores the tracked games' current players, 24-hour peak, all-time peak, Steam daily rank, seller rank, review signal, and source URL. The API compares the incoming values with the immediately preceding stored snapshot and returns metric deltas plus a plain-language read.
+
+Vercel calls the protected sync endpoint hourly:
+
+```text
+/api/sync/game-stats
+```
+
+For a manual local capture, run:
+
+```powershell
+npm.cmd run sync:game-stats
+```
+
+The first capture establishes the baseline. Starting with the next hourly capture, `/api/game-stats` and the Game Stats page show changes against the previous sample. The runtime sync creates its tables when needed; `scripts/sqlite-schema.sql` also contains them for new database setup.
 
 Typical hero-content refresh:
 
