@@ -1,10 +1,11 @@
-import { CommonModule } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import {
   AfterViewInit,
   Component,
   ElementRef,
   HostListener,
+  PLATFORM_ID,
   ViewChild,
   inject,
 } from '@angular/core';
@@ -12,24 +13,19 @@ import { RouterLink } from '@angular/router';
 import { catchError, of } from 'rxjs';
 
 import type { TierListHero, TierListResponse } from '../../tier-list.model';
-
-interface SeasonUpdate {
-  category: string;
-  date: string;
-  title: string;
-  description: string;
-  sourceUrl: string;
-}
-
-interface SeasonHighlight {
-  label: string;
-  title: string;
-  description: string;
-}
+import type { SeasonHighlight, SeasonUpdate } from './home-season.model';
+import { HeroUsageSectionComponent } from './sections/hero-usage-section/hero-usage-section.component';
+import { HighlightCardsSectionComponent } from './sections/highlight-cards-section/highlight-cards-section.component';
+import { SeasonUpdatesSectionComponent } from './sections/season-updates-section/season-updates-section.component';
 
 @Component({
   selector: 'app-home-page',
-  imports: [CommonModule, RouterLink],
+  imports: [
+    RouterLink,
+    HeroUsageSectionComponent,
+    HighlightCardsSectionComponent,
+    SeasonUpdatesSectionComponent,
+  ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
@@ -40,6 +36,7 @@ export class HomePageComponent implements AfterViewInit {
   backgroundVideoForeground = false;
   backgroundVideoPoppedOut = false;
   private readonly http = inject(HttpClient);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   readonly seasonUpdates: SeasonUpdate[] = [
     {
@@ -184,18 +181,22 @@ export class HomePageComponent implements AfterViewInit {
   metaUpdatedLabel = 'Season 9 current snapshot';
 
   constructor() {
-    this.loadSeasonMeta();
+    if (this.isBrowser) {
+      this.loadSeasonMeta();
+    }
   }
 
   ngAfterViewInit(): void {
-    this.updateBackgroundVideoPopout();
+    if (this.isBrowser) {
+      this.updateBackgroundVideoPopout();
+    }
   }
 
   @HostListener('window:scroll')
   updateBackgroundVideoPopout(): void {
     const hero = this.heroBanner?.nativeElement;
 
-    if (!hero) {
+    if (!this.isBrowser || !hero || typeof hero.getBoundingClientRect !== 'function') {
       return;
     }
 
@@ -265,16 +266,6 @@ export class HomePageComponent implements AfterViewInit {
     if (this.backgroundVideoForeground) {
       this.closeBackgroundVideo();
     }
-  }
-
-  formatRate(value: number): string {
-    return `${value.toFixed(2)}%`;
-  }
-
-  formatMatches(value: number): string {
-    return new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 }).format(
-      value,
-    );
   }
 
   onHeroAvatarError(event: Event): void {

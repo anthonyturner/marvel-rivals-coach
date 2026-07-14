@@ -1,0 +1,118 @@
+.section-meta {
+  display: grid;
+  gap: 7px;
+  min-width: max-content;
+  color: #64748b;
+  font-size: 0.82rem;
+  text-align: right;
+}
+
+.section-meta a {
+  color: #264bce;
+  font-weight: 820;
+  text-decoration: none;
+}
+
+.hero-usage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.usage-card {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  border: 1px solid rgba(42, 67, 101, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 30px rgba(17, 35, 57, 0.08);
+}
+
+.usage-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  object-position: top center;
+  background: #0b1525;
+}
+
+.usage-rank {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: 10px;
+  display: grid;
+  width: 38px;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(7, 17, 31, 0.84);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 850;
+}
+
+.usage-copy {
+  padding: 16px;
+}
+.usage-copy > span {
+  color: #039f9f;
+  font-size: 0.75rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+.usage-copy h3 {
+  min-height: 2.4em;
+  margin: 5px 0 0;
+  color: #111827;
+  font-size: 1.1rem;
+  font-weight: 840;
+  line-height: 1.2;
+}
+.usage-copy dl {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 0;
+}
+.usage-copy dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #e8edf4;
+}
+.usage-copy dt {
+  color: #718096;
+  font-size: 0.76rem;
+}
+.usage-copy dd {
+  margin: 0;
+  color: #111827;
+  font-size: 0.82rem;
+  font-weight: 840;
+}
+
+@media (max-width: 1080px) {
+  .hero-usage-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .section-meta {
+    min-width: 0;
+    text-align: left;
+  }
+  .hero-usage-grid {
+    grid-template-columns: 1fr;
+  }
+  .usage-card {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+  }
+  .usage-card img {
+    height: 100%;
+    min-height: 190px;
+  }
+}
