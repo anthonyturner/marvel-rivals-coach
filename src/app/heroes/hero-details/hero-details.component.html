@@ -22,7 +22,11 @@
           @for (detail of controller.officialBaseStats(hero); track detail.label + detail.value) {
             <div [class]="'stat-card stat-' + controller.technicalDetailType(detail.label)">
               <span class="stat-icon" aria-hidden="true">
-                <i [class]="controller.technicalDetailIcon(detail.label)"></i>
+                <img
+                  class="inline-icon"
+                  [src]="controller.technicalDetailIcon(detail.label)"
+                  alt=""
+                />
               </span>
               <div class="stat-copy">
                 <dt>{{ detail.label }}</dt>
@@ -150,7 +154,12 @@
               [title]="synergy"
               [attr.aria-label]="synergy"
             >
-              <i [class]="controller.synergyIcon(synergy)" aria-hidden="true"></i>
+              <img
+                class="inline-icon"
+                [src]="controller.synergyIcon(synergy)"
+                alt=""
+                aria-hidden="true"
+              />
             </span>
           }
         }
@@ -203,7 +212,11 @@
                 @for (detail of ability.technicalDetails; track detail.label + detail.value) {
                   <div [class]="'stat-card stat-' + controller.technicalDetailType(detail.label)">
                     <span class="stat-icon" aria-hidden="true">
-                      <i [class]="controller.technicalDetailIcon(detail.label)"></i>
+                      <img
+                        class="inline-icon"
+                        [src]="controller.technicalDetailIcon(detail.label)"
+                        alt=""
+                      />
                     </span>
                     <div class="stat-copy">
                       <dt>{{ detail.label }}</dt>
@@ -256,7 +269,11 @@
               @for (detail of ability.technicalDetails; track detail.label + detail.value) {
                 <div [class]="'stat-card stat-' + controller.technicalDetailType(detail.label)">
                   <span class="stat-icon" aria-hidden="true">
-                    <i [class]="controller.technicalDetailIcon(detail.label)"></i>
+                    <img
+                      class="inline-icon"
+                      [src]="controller.technicalDetailIcon(detail.label)"
+                      alt=""
+                    />
                   </span>
                   <div class="stat-copy">
                     <dt>{{ detail.label }}</dt>
@@ -309,7 +326,11 @@
                 @for (detail of ability.technicalDetails; track detail.label + detail.value) {
                   <div [class]="'stat-card stat-' + controller.technicalDetailType(detail.label)">
                     <span class="stat-icon" aria-hidden="true">
-                      <i [class]="controller.technicalDetailIcon(detail.label)"></i>
+                      <img
+                        class="inline-icon"
+                        [src]="controller.technicalDetailIcon(detail.label)"
+                        alt=""
+                      />
                     </span>
                     <div class="stat-copy">
                       <dt>{{ detail.label }}</dt>

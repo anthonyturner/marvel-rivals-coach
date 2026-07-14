@@ -16,6 +16,10 @@
     {
       "path": "/api/sync/tier-list",
       "schedule": "20 */6 * * *"
+    },
+    {
+      "path": "/api/sync/game-stats",
+      "schedule": "10 * * * *"
     }
   ],
   "headers": [

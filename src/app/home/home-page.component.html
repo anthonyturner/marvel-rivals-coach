@@ -1,4 +1,35 @@
 <section class="home-page">
+  <div class="home-page-background" aria-hidden="true">
+    <video
+      #backgroundVideo
+      class="home-page-background-video"
+      autoplay
+      [muted]="backgroundVideoMuted"
+      loop
+      playsinline
+      preload="metadata"
+      poster="/images/site/heroes-banner.jpg"
+      tabindex="-1"
+      (canplay)="startBackgroundVideo(backgroundVideo)"
+    >
+      <source
+        src="/videos/home/dev-vision-vol-19.mp4"
+        type="video/mp4"
+      />
+      Your browser does not support embedded video playback.
+    </video>
+  </div>
+
+  <button
+    class="home-page-sound-toggle"
+    type="button"
+    [attr.aria-label]="backgroundVideoMuted ? 'Unmute background video' : 'Mute background video'"
+    [attr.aria-pressed]="!backgroundVideoMuted"
+    (click)="toggleBackgroundVideoSound(backgroundVideo)"
+  >
+    <span aria-hidden="true">{{ backgroundVideoMuted ? 'Sound off' : 'Sound on' }}</span>
+  </button>
+
   <div class="header-container">
     <aside class="stats scroll-reveal" aria-label="Site stats">
       @for (stat of content().heroStats; track stat.label) {
@@ -11,11 +42,11 @@
 
     <header class="hero scroll-reveal">
       <div class="hero-copy">
-        <p class="eyebrow">Marvel Rivals Coach</p>
-        <h1>Plan cleaner fights before you queue.</h1>
+        <p class="eyebrow">Marvel Rivals Coach · Season 9</p>
+        <h1>Welcome to The Mystery of Thebes.</h1>
         <p class="lede">
-          Browse heroes, learn map-control fundamentals, watch curated tutorials, and turn guide
-          notes into practical drills for your next ranked block.
+          Jubilee has arrived, a killer is hiding in the shadows, and the battlefield has changed.
+          Explore the new season, sharpen your game plan, and enter your next match prepared.
         </p>
         <div class="hero-actions">
           <a routerLink="/beginner-interactive-guide">Start beginner guide</a>
@@ -39,18 +70,6 @@
           <a routerLink="/watch-next">Plan</a>
         </div>
 
-        <div class="command-card">
-          <div class="command-header">
-            <span>Current Focus</span>
-            <strong>{{ content().currentFocusTitle }}</strong>
-            <p>{{ content().currentFocusDescription }}</p>
-          </div>
-        </div>
-
-        <p class="source-status">
-          {{ content().sourceMode === 'database' ? 'Live content database' : 'Curated fallback data' }}
-          - {{ content().lastChecked }}
-        </p>
       </aside>
     </header>
 

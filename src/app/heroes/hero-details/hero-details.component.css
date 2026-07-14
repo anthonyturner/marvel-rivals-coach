@@ -839,8 +839,13 @@ ul {
 .stat-resource {
   --stat-color: #6d6724;
 }
-.stat-icon i {
-  font-size: 0.82rem;
+.inline-icon {
+  display: block;
+  width: 0.9rem;
+  height: 0.9rem;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%);
+  opacity: 0.78;
 }
 .technical-details dt {
   color: #0f7182;
