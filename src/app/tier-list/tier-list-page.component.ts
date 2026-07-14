@@ -33,7 +33,9 @@ export class TierListPageComponent implements OnInit {
   loadTierList(): void {
     this.isLoading.set(true);
 
-    let params = new HttpParams().set('rank', this.selectedRankFilter());
+    let params = new HttpParams()
+      .set('rank', this.selectedRankFilter())
+      .set('dataVersion', 'season-9');
     const seasonId = this.selectedSeasonId();
 
     if (seasonId) {
