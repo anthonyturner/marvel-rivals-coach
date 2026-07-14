@@ -76,6 +76,14 @@ Stores cached payloads from external APIs such as Fandom. This lets the app read
 
 Stores update history for external sync jobs.
 
+### `game_stat_snapshots`
+
+Stores one game-stat capture header per UTC hour. The unique `capture_bucket` prevents page traffic and cron retries from creating duplicate hourly snapshots.
+
+### `game_stat_snapshot_games`
+
+Stores the per-game values for each snapshot, including current players, 24-hour peak, all-time peak, daily rank, seller rank, review text, and source URL. The Game Stats API joins the latest incoming values with the preceding snapshot to calculate historical deltas.
+
 ## API Routes
 
 The Express SSR server exposes read-only routes:
@@ -88,6 +96,8 @@ The Express SSR server exposes read-only routes:
 - `GET /api/home/portals`
 - `GET /api/glossary`
 - `GET /api/external-sources/:sourceKey`
+- `GET /api/game-stats`
+- `GET /api/sync/game-stats` (cron or authorized manual sync)
 
 ## Update Flow
 

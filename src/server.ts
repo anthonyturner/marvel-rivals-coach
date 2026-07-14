@@ -19,6 +19,7 @@ import {
   getTierListFromDatabase,
 } from './content-database';
 import { syncHomeNews } from './home-news-sync';
+import { syncGameStats } from './game-stats-sync';
 import { syncTierList } from './tier-list-sync';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
@@ -71,6 +72,19 @@ app.get('/api/sync/home-news', (req, res) => {
 
 app.get('/api/glossary', (_req, res) => {
   handleApiResponse(res, () => getGlossaryTermsFromDatabase());
+});
+
+app.get('/api/game-stats', (_req, res) => {
+  handleApiResponse(res, () => syncGameStats());
+});
+
+app.get('/api/sync/game-stats', (req, res) => {
+  if (!isAuthorizedSyncRequest(req)) {
+    res.status(401).json({ message: 'Missing sync authorization' });
+    return;
+  }
+
+  handleApiResponse(res, () => syncGameStats());
 });
 
 app.get('/api/tier-list', (req, res) => {

@@ -1,14 +1,12 @@
 :host {
   display: block;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .tier-page {
   min-height: 100%;
-  padding: 28px;
-  background:
-    linear-gradient(180deg, rgba(246, 248, 251, 0.94), rgba(231, 236, 243, 0.9)),
-    radial-gradient(circle at 16% 12%, rgba(225, 65, 84, 0.14), transparent 30%),
-    radial-gradient(circle at 84% 18%, rgba(30, 119, 173, 0.16), transparent 32%);
+  padding: 32px;
 }
 
 .tier-hero,
@@ -16,16 +14,16 @@
 .meta-strip,
 .tiers,
 .empty-state {
-  width: min(1240px, 100%);
-  margin: 0 auto;
+  width: min(1220px, 100%);
+  margin-inline: auto;
 }
 
 .tier-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
-  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+  gap: 20px;
   align-items: end;
-  padding: 18px 0 20px;
+  padding: 24px 0 28px;
 }
 
 .kicker,
@@ -39,26 +37,26 @@ dd {
 
 .kicker {
   margin-bottom: 8px;
-  color: #a32036;
+  color: var(--accent-strong);
   font-size: 0.78rem;
   font-weight: 850;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 h1 {
-  color: #121827;
-  font-size: clamp(2.1rem, 4vw, 3.4rem);
-  line-height: 1.02;
-  font-weight: 900;
+  max-width: 850px;
+  color: var(--text);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 850;
+  line-height: 1.04;
 }
 
 .lede {
-  max-width: 760px;
-  margin-top: 12px;
-  color: #4a5568;
-  font-size: 1rem;
-  line-height: 1.55;
+  max-width: 790px;
+  margin-top: 16px;
+  color: var(--text-soft);
+  font-size: 1.04rem;
+  line-height: 1.6;
 }
 
 .season-card,
@@ -66,32 +64,31 @@ h1 {
 .meta-strip,
 .tier-row,
 .empty-state {
-  border: 1px solid rgba(28, 40, 62, 0.12);
+  min-width: 0;
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 18px 34px rgba(31, 42, 68, 0.1);
+  background: var(--bg-elevated);
+  box-shadow: 0 14px 28px rgba(17, 35, 57, 0.08);
 }
 
 .season-card {
   display: grid;
   gap: 5px;
   padding: 18px;
-  background:
-    linear-gradient(135deg, rgba(18, 24, 39, 0.92), rgba(32, 48, 78, 0.92)),
-    #121827;
+  border-color: rgba(224, 169, 0, 0.34);
+  background: linear-gradient(135deg, #fff9df, #ffffff);
 }
 
 .season-card span,
 .season-card small {
-  color: rgba(237, 242, 247, 0.66);
+  color: var(--text-muted);
   font-size: 0.75rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .season-card strong {
-  color: #ffd166;
+  color: var(--accent-strong);
   font-size: 1.5rem;
 }
 
@@ -100,55 +97,54 @@ h1 {
   flex-wrap: wrap;
   gap: 12px;
   align-items: end;
-  padding: 14px;
+  padding: 16px;
 }
 
 .toolbar label {
   display: grid;
   gap: 6px;
-  min-width: 190px;
+  min-width: min(190px, 100%);
 }
 
 .toolbar span {
-  color: #526071;
+  color: var(--text-muted);
   font-size: 0.76rem;
   font-weight: 850;
-  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 select {
-  min-height: 40px;
-  border: 1px solid #c9d2df;
-  border-radius: 7px;
-  background: #ffffff;
-  color: #172033;
-  font: inherit;
-  font-weight: 750;
+  min-height: 42px;
   padding: 0 34px 0 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: 7px;
+  background: var(--bg-elevated);
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
 }
 
 select:focus {
-  border-color: #1e77ad;
-  outline: 3px solid rgba(30, 119, 173, 0.16);
+  border-color: var(--teal);
+  outline: 3px solid var(--focus-ring);
 }
 
 .source-link {
   margin-left: auto;
   padding: 10px 12px;
-  border: 1px solid rgba(30, 119, 173, 0.26);
+  border: 1px solid rgba(3, 159, 159, 0.25);
   border-radius: 7px;
-  background: rgba(30, 119, 173, 0.08);
-  color: #155e89;
+  background: rgba(232, 247, 251, 0.82);
+  color: #087b7b;
   font-size: 0.86rem;
-  font-weight: 850;
+  font-weight: 800;
   text-decoration: none;
 }
 
 .source-link:hover {
-  border-color: rgba(163, 32, 54, 0.28);
-  background: rgba(163, 32, 54, 0.08);
-  color: #a32036;
+  border-color: rgba(224, 169, 0, 0.48);
+  background: #fff9df;
+  color: var(--accent-strong);
 }
 
 .meta-strip {
@@ -156,16 +152,16 @@ select:focus {
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 12px;
-  padding: 10px 12px;
-  color: #4a5568;
+  padding: 12px;
+  color: var(--text-soft);
   font-size: 0.85rem;
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .meta-strip span {
   padding: 5px 8px;
   border-radius: 6px;
-  background: #eef3f8;
+  background: var(--surface);
 }
 
 .tiers {
@@ -179,8 +175,9 @@ select:focus {
 }
 
 .tier-row {
+  --tier-color: var(--surface-3);
   display: grid;
-  grid-template-columns: 82px minmax(0, 1fr);
+  grid-template-columns: 76px minmax(0, 1fr);
   min-height: 126px;
   overflow: hidden;
 }
@@ -190,52 +187,38 @@ select:focus {
   place-items: center;
   align-content: center;
   gap: 4px;
-  color: #111827;
+  border-right: 1px solid var(--border);
+  background: color-mix(in srgb, var(--tier-color) 38%, white);
+  color: var(--text);
 }
 
 .tier-label strong {
-  font-size: 2.2rem;
-  font-weight: 950;
+  font-size: 2.1rem;
+  font-weight: 900;
   line-height: 1;
 }
 
 .tier-label span {
+  color: var(--text-muted);
   font-size: 0.74rem;
-  font-weight: 900;
-  opacity: 0.66;
+  font-weight: 850;
 }
 
-.tier-S .tier-label {
-  background: #ff7f7f;
-}
-
-.tier-A .tier-label {
-  background: #ffbf7f;
-}
-
-.tier-B .tier-label {
-  background: #f8d86f;
-}
-
-.tier-C .tier-label {
-  background: #bce96f;
-}
-
-.tier-D .tier-label {
-  background: #77d9eb;
-}
-
-.tier-F .tier-label {
-  background: #b9c1cf;
-}
+.tier-S { --tier-color: #f27078; }
+.tier-A { --tier-color: #eea64f; }
+.tier-B { --tier-color: #e0c044; }
+.tier-C { --tier-color: #8fca59; }
+.tier-D { --tier-color: #4db8cd; }
+.tier-F { --tier-color: #9aa8b8; }
 
 .hero-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 10px;
   align-content: start;
+  min-width: 0;
   padding: 12px;
-  background: rgba(18, 24, 39, 0.94);
+  background: var(--surface);
 }
 
 .hero-card {
@@ -243,19 +226,21 @@ select:focus {
   grid-template-columns: 54px minmax(0, 1fr);
   gap: 9px 10px;
   align-items: center;
+  min-width: 0;
   min-height: 108px;
   padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--tier-color);
   border-radius: 8px;
-  background: #1b2435;
-  color: #f8fafc;
+  background: var(--bg-elevated);
+  color: var(--text);
 }
 
 .hero-card img {
   width: 54px;
   height: 54px;
   border-radius: 7px;
-  background: #0f172a;
+  background: var(--surface-2);
   object-fit: cover;
 }
 
@@ -274,9 +259,9 @@ select:focus {
 
 .hero-card span {
   margin-top: 3px;
-  color: #a9b4c5;
+  color: var(--text-muted);
   font-size: 0.78rem;
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .hero-card dl {
@@ -287,30 +272,30 @@ select:focus {
 }
 
 .hero-card dl div {
+  min-width: 0;
   padding: 6px;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--surface);
 }
 
 .hero-card dt {
-  color: #91a0b7;
+  color: var(--text-muted);
   font-size: 0.66rem;
-  font-weight: 900;
-  letter-spacing: 0.04em;
+  font-weight: 850;
   text-transform: uppercase;
 }
 
 .hero-card dd {
   margin-top: 2px;
-  color: #ffd166;
+  color: var(--accent-strong);
   font-size: 0.8rem;
   font-weight: 850;
 }
 
 .empty-tier {
   align-self: center;
-  color: #a9b4c5;
-  font-weight: 750;
+  color: var(--text-muted);
+  font-weight: 700;
 }
 
 .empty-state {
@@ -321,12 +306,12 @@ select:focus {
 }
 
 .empty-state h2 {
-  color: #172033;
+  color: var(--text);
   font-size: 1.35rem;
 }
 
 .empty-state p:last-child {
-  color: #4a5568;
+  color: var(--text-soft);
   line-height: 1.55;
 }
 
@@ -337,22 +322,35 @@ select:focus {
 
   .tier-hero {
     grid-template-columns: 1fr;
+    padding: 24px 0;
+  }
+
+  .toolbar {
+    align-items: stretch;
+    padding: var(--mobile-panel-padding);
+  }
+
+  .toolbar label,
+  select,
+  .source-link {
+    width: 100%;
   }
 
   .source-link {
     margin-left: 0;
+    text-align: center;
   }
 
   .tier-row {
-    grid-template-columns: 58px minmax(0, 1fr);
+    grid-template-columns: 54px minmax(0, 1fr);
   }
 
   .tier-label strong {
-    font-size: 1.65rem;
+    font-size: 1.55rem;
   }
 
   .hero-grid {
     grid-template-columns: 1fr;
-    padding: 10px;
+    padding: 8px;
   }
 }

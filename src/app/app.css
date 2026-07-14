@@ -4,7 +4,10 @@
 }
 
 .app-shell {
+  width: 100%;
+  max-width: 100%;
   min-height: 100vh;
+  overflow-x: clip;
   background: var(--bg);
 }
 
@@ -13,6 +16,9 @@
   top: 0;
   z-index: 10;
   display: flex;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   align-items: center;
   justify-content: space-between;
   gap: 24px;

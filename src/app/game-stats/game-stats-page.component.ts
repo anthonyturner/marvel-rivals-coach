@@ -3,27 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { catchError, of } from 'rxjs';
 
-interface GameComparison {
-  appId: number;
-  name: string;
-  category: string;
-  currentPlayers: number;
-  dailyPeak: number;
-  allTimePeak: number;
-  steamDailyRank: string;
-  topSellerRank: string;
-  twitchViewers: number;
-  reviewSummary: string;
-  sourceUrl: string;
-}
-
-interface GameStatsResponse {
-  snapshotDate: string;
-  fetchedAt: string;
-  currentPlayerSource: string;
-  currentPlayerSourceUrl: string;
-  games: GameComparison[];
-}
+import type {
+  GameComparison,
+  GameSnapshotComparison,
+  GameStatsResponse,
+  MetricComparison,
+  RankComparison,
+} from '../../game-stats.model';
 
 interface Milestone {
   value: string;
@@ -45,6 +31,11 @@ export class GameStatsPageComponent implements OnInit {
     fetchedAt: 'Static snapshot',
     currentPlayerSource: 'Valve ISteamUserStats GetNumberOfCurrentPlayers',
     currentPlayerSourceUrl: 'https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/',
+    snapshot: {
+      snapshotDate: 'June 19, 2026',
+      capturedAt: '2026-06-19T00:00:00.000Z',
+      persisted: false,
+    },
     games: [
       {
         appId: 2767030,
@@ -117,6 +108,11 @@ export class GameStatsPageComponent implements OnInit {
   readonly gameStats = signal<GameStatsResponse>(this.fallbackStats);
   readonly snapshotDate = computed(() => this.gameStats().snapshotDate);
   readonly fetchedAt = computed(() => this.formatFetchedAt(this.gameStats().fetchedAt));
+  readonly previousSnapshotLabel = computed(() => {
+    const previous = this.gameStats().previousSnapshot;
+
+    return previous ? this.formatFetchedAt(previous.capturedAt) : undefined;
+  });
   readonly comparisons = computed(() => this.gameStats().games);
   readonly marvelRivals = computed(() =>
     this.comparisons().find((game) => game.name === 'Marvel Rivals') ?? this.fallbackStats.games[0],
@@ -184,6 +180,53 @@ export class GameStatsPageComponent implements OnInit {
 
   marvelComparisonRatio(game: GameComparison): number {
     return Math.round((this.marvelRivals().dailyPeak / game.dailyPeak) * 100);
+  }
+
+  formatMetricChange(comparison: MetricComparison): string {
+    if (comparison.change === 0) {
+      return `Unchanged from ${this.formatNumber(comparison.previous)}`;
+    }
+
+    const sign = comparison.change > 0 ? '+' : '-';
+    const percentage = comparison.changePercent === undefined
+      ? ''
+      : ` (${sign}${Math.abs(comparison.changePercent).toFixed(2)}%)`;
+
+    return `${sign}${this.formatNumber(Math.abs(comparison.change))}${percentage} vs previous`;
+  }
+
+  formatRankChange(comparison: RankComparison): string {
+    const positions = comparison.positionsChanged;
+
+    if (!positions) {
+      return `Unchanged from ${comparison.previous}`;
+    }
+
+    const direction = positions > 0 ? 'Improved' : 'Slipped';
+    const count = Math.abs(positions);
+
+    return `${direction} ${count} ${count === 1 ? 'place' : 'places'} from ${comparison.previous}`;
+  }
+
+  trendClass(comparison: MetricComparison | RankComparison): string {
+    return `trend-${comparison.trend}`;
+  }
+
+  comparisonRead(game: GameComparison): string {
+    if (game.comparison) {
+      return game.comparison.read;
+    }
+
+    return game.name === this.marvelRivals().name
+      ? 'Baseline; waiting for another stored snapshot.'
+      : `Rivals is ${this.marvelComparisonRatio(game)}% of this 24h peak; waiting for snapshot history.`;
+  }
+
+  metricComparison(
+    game: GameComparison,
+    metric: keyof Pick<GameSnapshotComparison, 'currentPlayers' | 'dailyPeak' | 'allTimePeak'>,
+  ): MetricComparison | undefined {
+    return game.comparison?.[metric];
   }
 
   private formatFetchedAt(value: string): string {

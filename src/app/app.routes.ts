@@ -13,6 +13,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./heroes/heroes-page.component').then((module) => module.HeroesPageComponent),
   },
+  {
+    path: 'learn',
+    redirectTo: 'hero-guides',
+    pathMatch: 'full',
+  },
   ...NAVIGATION_CATEGORIES.map((category) => ({
     path: category.path.slice(1),
     loadComponent: () =>
@@ -69,6 +74,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'triple-support-counter',
+    loadComponent: () =>
+      import('./triple-support/triple-support-guide-page.component').then(
+        (module) => module.TripleSupportGuidePageComponent,
+      ),
+  },
+  {
     path: 'power-positions',
     loadComponent: () =>
       import('./power-positions/power-positions-page.component').then(
@@ -94,6 +106,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./media-tutorials/media-tutorials-page.component').then(
         (module) => module.MediaTutorialsPageComponent,
+      ),
+  },
+  {
+    path: 'user-highlights',
+    loadComponent: () =>
+      import('./user-highlights/user-highlights-page.component').then(
+        (module) => module.UserHighlightsPageComponent,
       ),
   },
   {
