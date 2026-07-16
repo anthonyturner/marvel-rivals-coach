@@ -23,7 +23,7 @@ There are three separate jobs in the content system.
 | Job | What It Does | Main Files |
 | --- | --- | --- |
 | Seed | Copies local JSON data into Turso | `scripts/seed-sqlite.mjs` |
-| Sync | Fetches outside data from Fandom/wiki APIs | `scripts/sync-external-sources.mjs` |
+| Sync | Fetches outside data from official, stats, and Fandom/wiki sources | `scripts/sync-external-sources.mjs`, `scripts/sync-home-news.mjs`, `scripts/sync-tier-list.mjs` |
 | Hero Sync | Finds current Fandom heroes and updates Turso heroes | `scripts/sync-heroes.mjs` |
 | Read | Lets Angular pages get data from Turso | `src/server.ts`, `src/content-database.ts` |
 
@@ -239,19 +239,23 @@ Already database-backed:
 
 - Heroes page
 - Glossary page
-
-Still needs cleanup:
-
-- Home page battle pass/news data
-
-The home page still has a direct Fandom call in `HomeContentService`. The cleaner version is:
+- Home page most-used heroes, official updates, latest tuning, and events/rewards
 
 ```mermaid
 flowchart LR
-  HomePage["Home Page"] --> HomeService["HomeContentService"]
-  HomeService --> Api["/api/external-sources/fandom-battlepasses"]
-  Api --> DB["Turso cached Fandom response"]
+  Official["Official Marvel Rivals site"] --> HomeSync["6-hour home news sync"]
+  Stats["Rivals Meta"] --> TierSync["6-hour tier-list sync"]
+  HomeSync --> DB["Turso cached content"]
+  TierSync --> DB
+  DB --> Api["/api/home/content + /api/tier-list"]
+  Api --> HomePage["Home Page"]
 ```
+
+The season dashboard and season glance render only content returned by `/api/home/content` and
+`/api/tier-list`; neither contains local content fallbacks.
+`SeasonGlanceService` composes the cached official content for the glance component, while
+`SeasonDashboardService` composes cached official content with the tier-list endpoint for the
+dashboard component. `HomePageComponent` only composes those components and owns video behavior.
 
 That would make the home page use the same database-backed flow as the rest of the site.
 

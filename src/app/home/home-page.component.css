@@ -126,8 +126,7 @@
   outline-offset: 3px;
 }
 
-.season-hero,
-.season-dashboard {
+.season-hero {
   position: relative;
   z-index: 1;
   width: min(1320px, 100%);
@@ -148,8 +147,7 @@
   max-width: 810px;
 }
 
-.eyebrow,
-.season-glance span {
+.eyebrow {
   margin: 0;
   color: #43d8cd;
   font-size: 0.75rem;
@@ -222,70 +220,6 @@ h1 {
   color: #111827;
 }
 
-.season-glance {
-  display: grid;
-  gap: 12px;
-}
-
-.season-glance article {
-  display: grid;
-  gap: 6px;
-  padding: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 8px;
-  background: rgba(7, 17, 31, 0.28);
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(16px) saturate(125%);
-}
-
-.season-glance .newest-hero-card {
-  grid-template-columns: 72px minmax(0, 1fr);
-  align-items: center;
-}
-
-.newest-hero-card img {
-  width: 72px;
-  aspect-ratio: 1;
-  border-radius: 8px;
-  object-fit: cover;
-  object-position: top center;
-  background: #07111f;
-}
-
-.newest-hero-card div {
-  display: grid;
-  gap: 6px;
-  min-width: 0;
-}
-
-.season-glance strong {
-  font-size: 1.25rem;
-}
-
-.season-glance small {
-  color: rgba(255, 255, 255, 0.67);
-}
-
-.season-dashboard {
-  display: grid;
-  gap: 28px;
-  padding-top: 54px;
-  isolation: isolate;
-}
-
-.season-dashboard::before {
-  position: absolute;
-  z-index: -1;
-  inset: 20px -72px -64px;
-  border-radius: 18px;
-  content: '';
-  background:
-    radial-gradient(circle at 18% 12%, rgba(255, 216, 102, 0.28), transparent 34%),
-    radial-gradient(circle at 82% 58%, rgba(3, 159, 159, 0.2), transparent 36%),
-    url('/images/site/heroes-fandom-background.png') center 120px / min(1050px, 88vw) auto repeat-y;
-  opacity: 0.22;
-}
-
 @keyframes video-popout-in {
   from {
     opacity: 0;
@@ -302,10 +236,6 @@ h1 {
   .season-hero {
     grid-template-columns: 1fr;
     align-items: end;
-  }
-
-  .season-glance {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -328,11 +258,6 @@ h1 {
   h1 {
     font-size: clamp(3rem, 15vw, 4.6rem);
   }
-
-  .season-glance {
-    grid-template-columns: 1fr;
-  }
-
   .home-page-background.is-popout:not(.is-foreground) {
     right: var(--mobile-page-gutter);
     bottom: var(--mobile-page-gutter);
