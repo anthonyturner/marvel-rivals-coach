@@ -80,68 +80,7 @@
         <a routerLink="/hero-guides">Browse guides</a>
       </div>
     </div>
-
-    <aside class="season-glance" aria-label="Season 9 at a glance">
-      <article>
-        <span>Season status</span>
-        <strong>Live now</strong>
-        <small>July 10 – August 7, 2026</small>
-      </article>
-      <article class="newest-hero-card">
-        <img
-          src="/images/heroes/jubilee.png"
-          alt="Jubilee"
-          width="72"
-          height="72"
-          (error)="onHeroAvatarError($event)"
-        />
-        <div>
-          <span>Newest hero</span>
-          <strong>Jubilee</strong>
-          <small>Duelist · Season 9 launch</small>
-        </div>
-      </article>
-      <article>
-        <span>Latest tuning</span>
-        <strong>July 11 hotfix</strong>
-        <small>Post-launch balance update</small>
-      </article>
-    </aside>
+    <app-season-glance />
   </header>
-
-  <main class="season-dashboard">
-    <app-hero-usage-section
-      eyebrow="Early Season 9 meta"
-      title="Most-used heroes"
-      description="All-ranks pick rate, with mirror matches excluded from win-rate calculations."
-      [heroes]="mostPickedHeroes"
-      [metaLabel]="metaUpdatedLabel"
-    />
-
-    <app-highlight-cards-section
-      headingId="season-patch-title"
-      eyebrow="Version 20260710"
-      title="What changed this season"
-      description="The launch patch is one of the broadest combat updates since release."
-      sourceLabel="Full balance post"
-      sourceUrl="https://www.marvelrivals.com/balancepost/20260706/41667_1306647.html"
-      [columns]="4"
-      [highlights]="patchHighlights"
-    />
-
-    <app-season-updates-section
-      eyebrow="Official updates"
-      title="Season 9 news and patch notes"
-      description="The most relevant announcements for the current season, newest first."
-      [updates]="seasonUpdates"
-    />
-
-    <app-highlight-cards-section
-      headingId="season-events-title"
-      eyebrow="In season now"
-      title="Events and rewards"
-      description="Current objectives and unlocks tied directly to The Mystery of Thebes."
-      [highlights]="seasonEvents"
-    />
-  </main>
+  <app-season-dashboard />
 </section>

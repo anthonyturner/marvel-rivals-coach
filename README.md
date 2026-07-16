@@ -69,7 +69,7 @@ Important files:
 | `scripts/sync-heroes.mjs` | Fetches and updates Turso hero data from Marvel Rivals Fandom |
 | `scripts/sync-official-heroes.mjs` | Fetches official Marvel Rivals hero descriptions, Season 9 abilities, and team-up abilities |
 | `scripts/sync-external-sources.mjs` | Caches external source payloads in Turso |
-| `scripts/sync-home-news.mjs` | Refreshes home page news cards from Steam News and BattlePass data |
+| `scripts/sync-home-news.mjs` | Refreshes official updates, tuning, and events from the Marvel Rivals site |
 | `scripts/sync-game-stats.mjs` | Captures an hourly game-stat snapshot and compares it with the previous sample |
 | `scripts/sync-glossary-missing.mjs` | Inserts glossary terms that exist in local JSON but are missing from Turso |
 | `scripts/sync-glossary-terms.mjs` | Upserts specific glossary terms by ID or term text |
@@ -220,10 +220,10 @@ npm.cmd run content:update
 The home page `Season and BattlePass notes` section is database-backed. The refresh flow is:
 
 ```text
-Steam GetNewsForApp + Marvel Rivals Fandom BattlePasses -> Turso -> /api/home/content -> Angular home page
+Official Marvel Rivals news and patch notes -> Turso -> /api/home/content -> Angular home page
 ```
 
-Steam is used for official announcement cards through `ISteamNews/GetNewsForApp` for app `2767030`. The Fandom BattlePasses page is used for structured season/BattlePass names, with the app keeping a safe fallback if the wiki source lags behind the current site focus.
+The official Marvel Rivals homepage supplies the newest announcements and latest balance post. The newest official patch note supplies current event and reward cards. The app keeps safe fallback content if the source or cached API is temporarily unavailable. Most-used heroes come from the separately cached Rivals Meta tier-list feed.
 
 For production, `vercel.json` includes a cron that calls:
 

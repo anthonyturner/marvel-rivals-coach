@@ -1,3 +1,5 @@
+import type { SeasonHighlight, SeasonUpdate } from './home-season.model.js';
+
 export interface HomeStat {
   value: string;
   label: string;
@@ -17,6 +19,7 @@ export interface NewsItem {
   sourceUrl: string;
   thumbnailUrl: string;
   thumbnailAlt: string;
+  publishedAt?: string;
 }
 
 export interface GuideSpotlight {
@@ -32,6 +35,41 @@ export interface QuickLink {
   imageUrl?: string;
 }
 
+export interface SeasonDashboardSection {
+  eyebrow: string;
+  title: string;
+  description: string;
+}
+
+export interface SeasonDashboardLinkedSection extends SeasonDashboardSection {
+  sourceLabel: string;
+  sourceUrl: string;
+}
+
+export interface SeasonDashboardContent {
+  heroUsage: SeasonDashboardSection;
+  officialUpdates: SeasonDashboardSection;
+  events: SeasonDashboardLinkedSection;
+}
+
+export interface SeasonGlanceContent {
+  ariaLabel: string;
+  status: {
+    label: string;
+    value: string;
+  };
+  latestHero: {
+    label: string;
+    name: string;
+    detail: string;
+    imageUrl: string;
+  };
+  tuning: {
+    label: string;
+    sourceLabel: string;
+  };
+}
+
 export interface HomeContent {
   heroStats: HomeStat[];
   portals: PortalCard[];
@@ -41,5 +79,11 @@ export interface HomeContent {
   currentFocusTitle: string;
   currentFocusDescription: string;
   lastChecked: string;
+  seasonUpdates: SeasonUpdate[];
+  latestTuning: SeasonUpdate | null;
+  seasonEvents: SeasonHighlight[];
+  seasonEventsSourceUrl: string;
+  seasonDashboard: SeasonDashboardContent | null;
+  seasonGlance: SeasonGlanceContent | null;
   sourceMode: 'database' | 'fallback';
 }
