@@ -39,6 +39,16 @@ export class HeroGridComponent {
     return role.toLowerCase();
   }
 
+  gameplayArchetype(hero: Hero): string {
+    const displayedRole = this.heroRoleLabel(hero);
+
+    return (
+      hero.gameplayArchetypes?.find((archetype) => archetype.role === displayedRole)?.label ??
+      hero.gameplayArchetypes?.[0]?.label ??
+      ''
+    );
+  }
+
   private heroMatchesRole(hero: Hero, role: HeroRole): boolean {
     return hero.role === role || (hero.roleAbilityKits ?? []).some((kit) => kit.role === role);
   }

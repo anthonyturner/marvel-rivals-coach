@@ -1,0 +1,327 @@
+<article class="win-rates-page">
+  <header class="report-hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Season 9 · Week 1 report</p>
+      <h1>What the win-rate curves say about every hero.</h1>
+      <p class="lede">
+        A structured companion to Nerfpool’s roster-wide analysis: approximate rank-by-rank
+        results, the pick-rate meta map, role performance, one-trick recommendations, and a
+        gameplay archetype for every hero.
+      </p>
+
+      <div class="hero-actions">
+        <a class="primary-action" [href]="videoUrl" target="_blank" rel="noopener noreferrer">
+          Watch the source video
+        </a>
+        <a routerLink="/heroes">Open the hero roster</a>
+      </div>
+
+      <p class="source-note">
+        Rates are approximate values spoken or shown in the Season 9 Week 1 video. This is a
+        historical snapshot and interpretation—not a live official leaderboard.
+      </p>
+    </div>
+
+    <div class="video-shell">
+      <iframe
+        src="https://www.youtube.com/embed/VB6OIA-ChmA"
+        title="I Analyzed Every Marvel Rivals Hero's Win Rate So You Don't Have To"
+        loading="lazy"
+        allow="
+          accelerometer;
+          autoplay;
+          clipboard-write;
+          encrypted-media;
+          gyroscope;
+          picture-in-picture;
+          web-share;
+        "
+        allowfullscreen
+      ></iframe>
+      <div>
+        <span>Nerfpool</span>
+        <strong>Every Hero’s Win Rate · S9 Week 1</strong>
+        <small>55:45 roster and meta breakdown</small>
+      </div>
+    </div>
+  </header>
+
+  <main class="report-content">
+    <section class="finding-grid" aria-label="Key findings">
+      <article>
+        <span>Best climb role</span>
+        <strong>Vanguard</strong>
+        <p>Tanks lead average win rate from Gold onward and reach roughly 52% at Celestial.</p>
+      </article>
+      <article>
+        <span>Best composition</span>
+        <strong>2 · 2 · 2</strong>
+        <p>Two tanks, two DPS, and two supports remain the most played and highest-winning setup.</p>
+      </article>
+      <article>
+        <span>Best opportunity</span>
+        <strong>Sleepers</strong>
+        <p>Low-pick, high-win heroes offer strong value before the wider ladder catches on.</p>
+      </article>
+      <article>
+        <span>Core lesson</span>
+        <strong>Stay alive</strong>
+        <p>Uptime, deployable clearing, and coordinated follow-up explain many of the sharpest curves.</p>
+      </article>
+    </section>
+
+    <section class="report-section meta-map" aria-labelledby="meta-map-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Pick rate × win rate</p>
+          <h2 id="meta-map-title">The week-one meta map</h2>
+        </div>
+        <p>
+          A win rate gains meaning when paired with popularity. The four boxes separate proven
+          power from sleepers, traps, and low-impact picks.
+        </p>
+      </div>
+
+      <div class="quadrant-grid">
+        @for (quadrant of metaQuadrants(); track quadrant.id) {
+          <article [class]="'quadrant ' + quadrant.id">
+            <div>
+              <span>{{ quadrant.definition }}</span>
+              <strong>{{ quadrant.label }}</strong>
+              <b>{{ quadrant.count }} heroes</b>
+            </div>
+            <p>{{ quadrant.note }}</p>
+            <ul>
+              @for (hero of quadrant.heroes; track hero) {
+                <li>{{ hero }}</li>
+              }
+            </ul>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="report-section role-war" aria-labelledby="role-war-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">The role war</p>
+          <h2 id="role-war-title">Tank value scales with the lobby.</h2>
+        </div>
+        <p>
+          Space creation matters more as teammates improve. DPS gets harder when opponents hold
+          angles correctly, while support retains a reliable baseline simply by sustaining the team.
+        </p>
+      </div>
+
+      <div class="role-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Vanguard</th>
+              <th>Strategist</th>
+              <th>Duelist</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of roleLadder(); track row.rank) {
+              <tr>
+                <th>{{ row.rank }}</th>
+                <td>{{ row.vanguard }}</td>
+                <td>{{ row.strategist }}</td>
+                <td>{{ row.duelist }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <aside class="composition-callout">
+        <div>
+          <span>2–2–2 usage</span>
+          <strong>67%</strong>
+          <small>Diamond</small>
+        </div>
+        <div>
+          <span>2–2–2 usage</span>
+          <strong>71%</strong>
+          <small>Grandmaster</small>
+        </div>
+        <div>
+          <span>2–2–2 usage</span>
+          <strong>74%</strong>
+          <small>Celestial</small>
+        </div>
+        <p>
+          The roster is built around paired tanks: one Vanguard rarely holds the same line or
+          survives the same pressure as two complementary tank jobs.
+        </p>
+      </aside>
+    </section>
+
+    <section class="report-section" aria-labelledby="one-tricks-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Consistency over hype</p>
+          <h2 id="one-tricks-title">The best one-trick commitments</h2>
+        </div>
+        <p>
+          One-tricking rewards repeatable value across maps and lobbies—not merely the strongest
+          theoretical pick in one matchup.
+        </p>
+      </div>
+
+      <div class="one-trick-grid">
+        @for (pick of oneTricks(); track pick.hero) {
+          <a [routerLink]="['/heroes']" [queryParams]="{ hero: pick.heroId }">
+            <img
+              [src]="'/images/heroes/' + pick.heroId + '.png'"
+              [alt]="pick.hero"
+              (error)="onImageError($event)"
+            />
+            <span>{{ pick.role }}</span>
+            <strong>{{ pick.hero }}</strong>
+            <p>{{ pick.reason }}</p>
+          </a>
+        }
+      </div>
+    </section>
+
+    <section class="report-section roster-report" aria-labelledby="roster-report-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">54 hero-role snapshots</p>
+          <h2 id="roster-report-title">Find your hero’s curve and fight job.</h2>
+        </div>
+        <p>
+          “Archetype” translates the video’s described job into a practical label such as
+          Off-Tank, Anchor Tank, Flyer, Main Healer, Flanker, or Flexible DPS.
+        </p>
+      </div>
+
+      <div class="report-filters">
+        <label>
+          <span>Search</span>
+          <input
+            type="search"
+            placeholder="Hero, archetype, or takeaway"
+            [value]="searchTerm()"
+            (input)="updateSearch($event)"
+          />
+        </label>
+
+        <div>
+          <span>Role</span>
+          <div class="filter-buttons">
+            @for (role of roleFilters; track role) {
+              <button
+                type="button"
+                [class.active]="selectedRole() === role"
+                (click)="selectRole(role)"
+              >
+                {{ role }}
+              </button>
+            }
+          </div>
+        </div>
+
+        <div>
+          <span>Curve</span>
+          <div class="filter-buttons">
+            @for (trend of trendFilters; track trend) {
+              <button
+                type="button"
+                [class.active]="selectedTrend() === trend"
+                (click)="selectTrend(trend)"
+              >
+                {{ trend }}
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+
+      <p class="result-count">{{ filteredInsights().length }} hero-role snapshots shown</p>
+
+      <div class="hero-report-grid">
+        @for (insight of filteredInsights(); track insight.displayName + insight.role) {
+          <article class="hero-report-card">
+            <header>
+              <img
+                [src]="insight.imageUrl"
+                [alt]="insight.displayName"
+                loading="lazy"
+                (error)="onImageError($event)"
+              />
+              <div>
+                <span>{{ insight.role }}</span>
+                <h3>{{ insight.displayName }}</h3>
+                <strong>{{ insight.archetype }}</strong>
+              </div>
+              <em [class]="'trend ' + insight.trend.toLowerCase()">{{ insight.trend }}</em>
+            </header>
+
+            <dl>
+              <div>
+                <dt>Low ranks</dt>
+                <dd>{{ insight.lowRanks }}</dd>
+              </div>
+              <div>
+                <dt>Grandmaster</dt>
+                <dd>{{ insight.grandmaster }}</dd>
+              </div>
+              <div>
+                <dt>Celestial</dt>
+                <dd>{{ insight.celestial }}</dd>
+              </div>
+            </dl>
+
+            <p>{{ insight.takeaway }}</p>
+
+            <footer>
+              <a [routerLink]="['/heroes']" [queryParams]="{ hero: insight.heroId }">Hero profile</a>
+              <a [href]="insight.videoUrl" target="_blank" rel="noopener noreferrer">
+                Video · {{ insight.timestamp }}
+              </a>
+            </footer>
+          </article>
+        } @empty {
+          <div class="empty-state">
+            <strong>No matching hero snapshots</strong>
+            <p>Clear a filter or try another hero or archetype.</p>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="report-section climb-plan" aria-labelledby="climb-plan-title">
+      <div>
+        <p class="eyebrow">The practical read</p>
+        <h2 id="climb-plan-title">Three decisions to take into queue</h2>
+      </div>
+      <ol>
+        <li>
+          <span>01</span>
+          <div>
+            <strong>Look in the sleeper box.</strong>
+            <p>Ultron, Storm, and other low-pick winners offer value without fighting over the fashionable lock.</p>
+          </div>
+        </li>
+        <li>
+          <span>02</span>
+          <div>
+            <strong>One-trick consistency, not hype.</strong>
+            <p>Choose a repeatable hero, learn every angle and cooldown, and let familiarity compound.</p>
+          </div>
+        </li>
+        <li>
+          <span>03</span>
+          <div>
+            <strong>Run two tanks and clear deployables.</strong>
+            <p>Complementary tank jobs and basic nest or turret discipline solve a surprising amount below Diamond.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+  </main>
+</article>

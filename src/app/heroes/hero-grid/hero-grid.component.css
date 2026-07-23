@@ -130,6 +130,13 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
+.archetype-label {
+  color: var(--accent-strong);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 .thumb-grid .hero-card {
   grid-template-columns: 1fr;
   align-content: start;

@@ -8,10 +8,15 @@ import {
   ViewChild,
   inject,
 } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
+import { map } from 'rxjs';
 
+import { HomeContentService } from './home-content.service';
 import { SeasonDashboardComponent } from './season-dashboard/season-dashboard.component';
 import { SeasonGlanceComponent } from './season-glance/season-glance.component';
+
+const seasonLaunchPatchUrl = 'https://www.marvelrivals.com/20260708/41525_1306959.html';
 
 @Component({
   selector: 'app-home-page',
@@ -26,6 +31,16 @@ export class HomePageComponent implements AfterViewInit {
   backgroundVideoForeground = false;
   backgroundVideoPoppedOut = false;
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+  readonly latestPatchUrl = toSignal(
+    inject(HomeContentService).getHomeContent().pipe(
+      map(
+        (content) =>
+          content.latestNews.find((item) => item.label === 'Patch Notes')?.sourceUrl ??
+          seasonLaunchPatchUrl,
+      ),
+    ),
+    { initialValue: seasonLaunchPatchUrl },
+  );
 
   ngAfterViewInit(): void {
     if (this.isBrowser) {

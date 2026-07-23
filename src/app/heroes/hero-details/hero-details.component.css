@@ -847,6 +847,60 @@ ul {
   filter: brightness(0) saturate(100%);
   opacity: 0.78;
 }
+.gameplay-archetypes {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid rgba(3, 159, 159, 0.22);
+  border-radius: 8px;
+  background: rgba(232, 247, 251, 0.62);
+}
+.gameplay-archetypes .section-heading > div {
+  display: grid;
+  gap: 3px;
+}
+.gameplay-archetypes .eyebrow {
+  color: var(--accent-strong);
+  font-size: 0.65rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.archetype-grid {
+  display: grid;
+  gap: 8px;
+}
+.archetype-grid article {
+  display: grid;
+  gap: 5px;
+  padding: 11px;
+  border: 1px solid rgba(3, 159, 159, 0.18);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.78);
+}
+.archetype-grid span {
+  color: var(--accent-strong);
+  font-size: 0.66rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.archetype-grid p,
+.archetype-note {
+  color: var(--text-soft);
+  line-height: 1.48;
+}
+.archetype-grid a {
+  color: var(--accent-strong);
+  font-size: 0.72rem;
+  font-weight: 850;
+  text-decoration: none;
+}
+.archetype-note {
+  font-size: 0.72rem;
+}
+:host-context(.hero-detail-modal) .gameplay-archetypes {
+  border-color: var(--modal-border);
+  background: #fff9df;
+}
 .technical-details dt {
   color: #0f7182;
   font-size: 0.66rem;

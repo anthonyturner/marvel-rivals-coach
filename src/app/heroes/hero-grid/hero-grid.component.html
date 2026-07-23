@@ -57,6 +57,9 @@
                 {{ heroRoleLabel(hero) }}
               </span>
             </span>
+            @if (gameplayArchetype(hero); as archetype) {
+              <span class="archetype-label">{{ archetype }}</span>
+            }
             <span>{{ hero.summary }}</span>
           </span>
         </button>

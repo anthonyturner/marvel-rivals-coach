@@ -404,6 +404,9 @@ export class HeroesPageComponent implements OnInit {
         searchTerm.length === 0 ||
         hero.name.toLowerCase().includes(searchTerm) ||
         hero.summary.toLowerCase().includes(searchTerm) ||
+        (hero.gameplayArchetypes ?? []).some((archetype) =>
+          `${archetype.label} ${archetype.description}`.toLowerCase().includes(searchTerm),
+        ) ||
         hero.strengths.some((strength) => strength.toLowerCase().includes(searchTerm));
 
       return matchesRole && matchesSearch;
@@ -488,6 +491,16 @@ export class HeroesPageComponent implements OnInit {
 
   roleClass(role: HeroRole): string {
     return role.toLowerCase();
+  }
+
+  gameplayArchetype(hero: Hero): string {
+    const selectedRole = this.heroRoleLabel(hero);
+
+    return (
+      hero.gameplayArchetypes?.find((archetype) => archetype.role === selectedRole)?.label ??
+      hero.gameplayArchetypes?.[0]?.label ??
+      ''
+    );
   }
 
   heroInitials(hero: Hero): string {
