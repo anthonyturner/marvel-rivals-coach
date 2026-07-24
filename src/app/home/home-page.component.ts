@@ -1,39 +1,58 @@
-import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, HostListener, ViewChild, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostListener,
+  PLATFORM_ID,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
-import {heroImagePath as heroImagePathFn} from "../utilities/string-utils";
+import { map } from 'rxjs';
 
 import { HomeContentService } from './home-content.service';
+import { SeasonDashboardComponent } from './season-dashboard/season-dashboard.component';
+import { SeasonGlanceComponent } from './season-glance/season-glance.component';
+
+const seasonLaunchPatchUrl = 'https://www.marvelrivals.com/20260708/41525_1306959.html';
 
 @Component({
   selector: 'app-home-page',
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink, SeasonDashboardComponent, SeasonGlanceComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
 export class HomePageComponent implements AfterViewInit {
   @ViewChild('heroBanner') private heroBanner?: ElementRef<HTMLElement>;
 
-  heroImagePath = heroImagePathFn;
   backgroundVideoMuted = true;
   backgroundVideoForeground = false;
   backgroundVideoPoppedOut = false;
-  private readonly homeContentService = inject(HomeContentService);
-
-  readonly content = toSignal(this.homeContentService.getHomeContent(), {
-    initialValue: this.homeContentService.fallbackContent,
-  });
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+  readonly latestPatchUrl = toSignal(
+    inject(HomeContentService).getHomeContent().pipe(
+      map(
+        (content) =>
+          content.latestNews.find((item) => item.label === 'Patch Notes')?.sourceUrl ??
+          seasonLaunchPatchUrl,
+      ),
+    ),
+    { initialValue: seasonLaunchPatchUrl },
+  );
 
   ngAfterViewInit(): void {
-    this.updateBackgroundVideoPopout();
+    if (this.isBrowser) {
+      this.updateBackgroundVideoPopout();
+    }
   }
 
   @HostListener('window:scroll')
   updateBackgroundVideoPopout(): void {
     const hero = this.heroBanner?.nativeElement;
 
-    if (!hero) {
+    if (!this.isBrowser || !hero || typeof hero.getBoundingClientRect !== 'function') {
       return;
     }
 
@@ -104,21 +123,4 @@ export class HomePageComponent implements AfterViewInit {
       this.closeBackgroundVideo();
     }
   }
-
-  onNewsImageError(event: Event): void {
-    const image = event.target as HTMLImageElement;
-    image.src = '/images/heroes/doctor-strange.png';
-  }
-
-  onHeroAvatarError(event: Event): void {
-    const image = event.target as HTMLImageElement;
-    image.src = '/images/heroes/default-hero.png';
-  }
-
-  isReportedHero(label: string): boolean {
-    const normalizedLabel = label.toLowerCase();
-
-    return normalizedLabel.includes('reported hero') || normalizedLabel.includes('latest hero');
-  }
-
 }

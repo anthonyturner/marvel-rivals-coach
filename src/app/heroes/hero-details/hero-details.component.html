@@ -36,6 +36,36 @@
           }
         </dl>
       }
+
+      @if (hero.gameplayArchetypes?.length) {
+        <section class="gameplay-archetypes" aria-labelledby="gameplay-archetypes-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Season 9 fight jobs</p>
+              <h3 id="gameplay-archetypes-title">Gameplay Archetype</h3>
+            </div>
+            <a routerLink="/season-9-win-rates">Full report</a>
+          </div>
+
+          <div class="archetype-grid">
+            @for (archetype of hero.gameplayArchetypes; track archetype.role + archetype.label) {
+              <article>
+                <span>{{ archetype.role }}</span>
+                <strong>{{ archetype.label }}</strong>
+                <p>{{ archetype.description }}</p>
+                <a [href]="archetype.sourceUrl" target="_blank" rel="noopener noreferrer">
+                  Video · {{ archetype.timestamp }}
+                </a>
+              </article>
+            }
+          </div>
+
+          <p class="archetype-note">
+            These are practical fight-job labels interpreted from the source analysis, not official
+            Marvel Rivals classes.
+          </p>
+        </section>
+      }
     </div>
 
     <div class="detail-hero-summary">
