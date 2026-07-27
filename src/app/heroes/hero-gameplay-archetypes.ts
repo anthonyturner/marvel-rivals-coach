@@ -233,12 +233,15 @@ export const HERO_GAMEPLAY_ARCHETYPES: Readonly<Record<string, HeroGameplayArche
     ),
   ],
   jubilee: [
-    archetype(
-      'Strategist',
-      'Utility Support',
-      'A new support whose visual pressure and utility were still being learned in the first week of Season 9.',
-      '22:45',
-    ),
+    {
+      role: 'Strategist',
+      label: 'Brawl Tempo Healer',
+      description:
+        'Leapfrogs charged healing zones with a grouped frontline, then chains detonations and Sparkle Marks to maintain enhanced healing and damage.',
+      sourceTitle: 'The ULTIMATE ADVANCED Jubilee Guide in Marvel Rivals',
+      sourceUrl: 'https://www.youtube.com/watch?v=-XnynKZDHls&t=1453s',
+      timestamp: '24:13',
+    },
   ],
   'luna-snow': [
     archetype(

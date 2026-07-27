@@ -462,6 +462,136 @@ export const HERO_GUIDES: HeroGuide[] = [
     ],
   },
   {
+    heroId: 'jubilee',
+    heroName: 'Jubilee',
+    category: 'hero',
+    role: 'Strategist',
+    image: '/images/heroes/jubilee.png',
+    sourceLabel: 'True Vanguard advanced Jubilee guide',
+    sourceUrl: 'https://www.youtube.com/watch?v=-XnynKZDHls',
+    relatedImages: [
+      { src: '/images/heroes/the-thing.png', alt: 'The Thing', label: 'Brawl anchor' },
+      { src: '/images/heroes/magneto.png', alt: 'Magneto', label: 'Frontline partner' },
+      { src: '/images/heroes/emma-frost.png', alt: 'Emma Frost', label: 'Frontline partner' },
+      { src: '/images/heroes/devil-dinosaur.png', alt: 'Devil Dinosaur', label: 'Frontline partner' },
+      { src: '/images/heroes/blade.png', alt: 'Blade', label: 'Vampiric Kin' },
+    ],
+    summary:
+      'Jubilee is an active brawl and tempo Strategist who leapfrogs charged Blooming Balls with her frontline, detonates them for burst sustain and utility, and chains Sparkle Marks to keep enhanced Energy Plasmoids running.',
+    poolJob:
+      'Move the team forward one healing zone at a time, maintain the orb-detonation-mark loop, add damage while enhanced, and use Sparking Sprint to preserve momentum or escape danger.',
+    pickWhen:
+      'Pick Jubilee with a durable, grouped frontline that can occupy her Blooming Balls. Be cautious when your team is built around flyers, flankers, and multiple dive heroes who spread beyond her area healing.',
+    sections: [
+      {
+        title: 'Playstyle: leapfrog the frontline',
+        points: [
+          'The guide describes Jubilee as a constant game of leapfrog: place a healing orb ahead of your Vanguards, let them step into it, charge and detonate it, then place the next orb farther forward.',
+          'Each new Blooming Ball marks the next piece of space your team can safely occupy. Your healing layout should encourage forward movement instead of trailing behind the fight.',
+          'Jubilee is not a passive healbot. She needs continuous involvement and clean ability sequencing to avoid low-output gaps.',
+          'Think of her kit as a merry-go-round: build momentum with Sparking Sprint, ride that momentum through Sparkle Marks, then restart the cycle before it slows down.',
+          'Her best fights are grouped brawls where healing, damage, detonations, buffs, and enemy debuffs can all affect several heroes at once.',
+        ],
+      },
+      {
+        title: 'Blooming Ball: feed the orb correctly',
+        points: [
+          'Blooming Ball starts as a smaller healing and damage field, then grows in radius and healing output as it affects targets or receives Jubilee fire.',
+          'Your goal is to fully charge each useful orb. A full orb covers more space, provides stronger sustain, creates a larger detonation, and refreshes its remaining lifetime.',
+          'The fastest charge method is placing the orb on an injured ally and shooting that ally. The ally receives direct healing and orb healing while the same shots rapidly feed the orb.',
+          'If nobody inside needs healing, activate Sparking Sprint and shoot the orb with enhanced Energy Plasmoids. Shooting it with normal primary fire is the slowest option.',
+          'Do not abandon an orb after the frontline moves. Recall it from within range, even through a wall, to shorten the next cooldown and redeploy it where the fight is going.',
+          'Detonation requires line of sight to the orb, while recall does not. Position with that difference in mind before you lose the angle.',
+        ],
+      },
+      {
+        title: 'Dazzling Detonation and Sparkle Marks',
+        points: [
+          'Detonate the largest practical orb so the explosion reaches more allies and enemies.',
+          'Allies receive burst healing, healing over time, and movement speed. Enemies take damage, become blinded, and receive Vulnerability.',
+          'A well-timed blind can disrupt an enemy ultimate that depends on vision or aim. Keep the option in mind instead of detonating only for healing numbers.',
+          'Every affected target receives a Sparkle Mark. Shoot a marked ally or enemy to consume the mark and activate enhanced Energy Plasmoids.',
+          'Consuming an allied mark grants bonus health and increases incoming healing, creating Jubilee strongest single-target stabilization window.',
+          'Consuming an enemy mark adds burst damage. Choose the mark that solves the current fight rather than automatically shooting the nearest target.',
+          'When several marks are available, consume one immediately and stagger the others before they expire to refresh enhanced fire instead of spending every mark at once.',
+        ],
+      },
+      {
+        title: 'Core rotation: keep the loop spinning',
+        points: [
+          'Open the fight by placing Blooming Ball just ahead of the frontline so it tracks a Vanguard instead of drifting back to Jubilee.',
+          'Activate Sparking Sprint and use enhanced Energy Plasmoids on an injured ally inside the orb, or on the orb itself, until it is fully charged.',
+          'Cancel Sparking Sprint once the charge is complete so its resource begins recovering.',
+          'Detonate the charged orb, then immediately consume one of the new Sparkle Marks to reactivate enhanced fire.',
+          'Place the next orb ahead of the frontline and rapidly charge it with enhanced Energy Plasmoids.',
+          'Heal an ally, pressure an enemy, or consume another mark while waiting for Dazzling Detonation to return, then detonate the new orb and repeat.',
+          'The shorthand is: orb, sprint, charge, detonate, consume a mark, new orb, charge, repeat.',
+        ],
+      },
+      {
+        title: 'Energy Plasmoids: play for the enhanced state',
+        points: [
+          'Normal Energy Plasmoids provide modest healing and damage. Jubilee output rises when Sparking Sprint or a consumed Sparkle Mark activates the enhanced version.',
+          'Enhanced fire shoots much faster, consumes no ammo, and raises both healing and damage output, so the entire ability loop should maximize its uptime.',
+          'Use the enhanced stream to burst-heal a marked ally, charge the next orb, help burn the enemy frontline, or punish an exposed flyer.',
+          'Do not reload during a window where enhanced fire is available. Hold the trigger and turn that temporary state into as much useful output as the fight allows.',
+          'During quiet but unsafe moments, shoot the active orb to keep it charged. If the fight is truly over, recall it and recover resources instead.',
+        ],
+      },
+      {
+        title: 'Sparking Sprint: start, conserve, escape',
+        points: [
+          'Sparking Sprint provides movement speed, enhanced fire, and a boosted jump, making it both the starter for Jubilee rotation and her escape tool.',
+          'The ability uses a resource meter. Cancel it as soon as the charge or reposition is complete instead of draining the entire meter.',
+          'The boosted jump can quickly return Jubilee to her team, leave dangerous ground effects, or escape an enemy ultimate.',
+          'When Sparking Sprint ends, Jubilee creates a small explosion that knocks back nearby enemies and heals nearby allies, including herself.',
+          'Stay aware of the exit burst in close brawls, but do not remain in danger merely to force it. Survival keeps the full healing loop available.',
+        ],
+      },
+      {
+        title: 'Positioning and team composition',
+        points: [
+          'In a committed brawl, play near the Vanguards and inside your own Blooming Balls rather than defaulting to a distant backline position.',
+          'Sharing the orb gives Jubilee self-sustain while her enhanced fire and detonations pressure enemies around the same frontline.',
+          'A sturdy anchor such as The Thing, Magneto, Emma Frost, or Devil Dinosaur gives the orbs a reliable center and makes the leapfrog plan easy to read.',
+          'If both Vanguards dive away, attach the plan to the most reliable grounded ally who can function as a temporary frontline.',
+          'Jubilee loses efficiency when flyers, flankers, and dive tanks scatter in several directions because one area cannot sustain all of them.',
+          'Use enhanced primary fire to briefly help an ally outside the main orb, then return attention to the grouped frontline before its sustain collapses.',
+        ],
+      },
+      {
+        title: 'Team-Ups and common mistakes',
+        points: [
+          'The guide strongly favors The Hood Team-Up because enhanced Energy Plasmoids become hitscan, can critically hit, and provide self-healing through damage.',
+          'That passive benefit matches Jubilee goal of near-constant enhanced-fire uptime and helps her survive while contributing meaningful frontline damage.',
+          'Blade Vampiric Kin can grant nearby allies Life Steal and becomes stronger with Blade, but the guide considers its cooldown-based value less consistent than The Hood passive.',
+          'Do not shoot a healthy ally to charge an orb; no missing health means those shots cannot feed it through healing.',
+          'Do not let old orbs expire behind the team. Recall and redeploy them.',
+          'Do not consume every Sparkle Mark immediately. Stagger marks to extend enhanced fire.',
+          'Do not stand far behind a grouped brawl, but also do not follow a scattered composition into several disconnected fights.',
+        ],
+      },
+    ],
+    ultimates: [
+      {
+        name: 'Firework Finale',
+        plan:
+          'Use the fast-charging ultimate proactively to establish or take space. Keep allies inside its healing ring, pressure enemies with enhanced fire, and contract or expand the ring only when the displacement is worth interrupting your normal actions.',
+        goodAgainst: [
+          'The first major team fight before enemy support ultimates are ready',
+          'Grouped brawls where healing and damage can affect several targets',
+          'Enemies holding a support ultimate field or a tight objective space',
+          'Frontlines that can advance behind repeated knockback pressure',
+        ],
+        avoidInto: [
+          'Contracting the ring when allies urgently need its healing',
+          'Repeated ring animations when enhanced fire could secure eliminations',
+          'Casting after the team has already scattered or lost the fight',
+        ],
+      },
+    ],
+  },
+  {
     heroId: 'deadpool',
     heroName: 'Deadpool',
     category: 'hero',

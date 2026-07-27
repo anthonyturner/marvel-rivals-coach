@@ -1110,6 +1110,22 @@
     "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
   },
   {
+    "id": "off-healer",
+    "term": "Off-Healer",
+    "category": "Role",
+    "definition": "A Strategist archetype that provides supplemental healing while contributing more damage, utility, control, or playmaking than the team's primary healer.",
+    "coachNote": "Off-healer does not mean ignoring injured teammates. Support the main healer, use your utility proactively, and shift back to healing when pressure spikes.",
+    "example": "The off-healer helps secure a pick, then shifts back to healing when the frontline takes pressure.",
+    "relatedTerms": [
+      "Strategist",
+      "Support",
+      "Main Healer",
+      "Utility Build"
+    ],
+    "sourceName": "Manual glossary entry",
+    "sourceUrl": "/glossary"
+  },
+  {
     "id": "convoy",
     "term": "Convoy",
     "category": "Game Mode",
