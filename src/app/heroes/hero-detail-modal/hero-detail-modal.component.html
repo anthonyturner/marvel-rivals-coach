@@ -9,6 +9,8 @@
     (click)="controller.handleAbilityLinkClick($event); $event.stopPropagation()"
   >
     <div class="modal-actions">
+      <h1 class="modal-heading">Hero Details</h1>
+
       @if (controller.roleAbilityKits(hero).length > 0) {
         <app-hero-role-switcher
           class="modal-role-switcher"

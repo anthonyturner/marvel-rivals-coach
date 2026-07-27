@@ -1110,6 +1110,23 @@
     "sourceUrl": "https://en.wikipedia.org/wiki/Marvel_Rivals"
   },
   {
+    "id": "primary-healer",
+    "term": "Primary Healer",
+    "category": "Role",
+    "definition": "Also called a main healer, a Strategist who can provide reliable, repeatable healing as the team's primary source of sustain through normal fights.",
+    "coachNote": "Primary healer does not mean healbot. Stabilize urgent damage first, then use your utility or damage when the team is safe enough to support the shift.",
+    "example": "The primary healer keeps the frontline stable while the second Strategist contributes utility and damage.",
+    "relatedTerms": [
+      "Main Healer",
+      "Off-Healer",
+      "Strategist",
+      "Sustain Healer",
+      "Burst Healer"
+    ],
+    "sourceName": "Marvel Rivals healer-role discussion and competitive guide usage",
+    "sourceUrl": "https://www.pcgamer.com/games/third-person-shooter/marvel-rivals-tier-list-best-characters/"
+  },
+  {
     "id": "off-healer",
     "term": "Off-Healer",
     "category": "Role",
@@ -1119,11 +1136,91 @@
     "relatedTerms": [
       "Strategist",
       "Support",
-      "Main Healer",
+      "Primary Healer",
       "Utility Build"
     ],
     "sourceName": "Manual glossary entry",
     "sourceUrl": "/glossary"
+  },
+  {
+    "id": "burst-healer",
+    "term": "Burst Healer",
+    "category": "Role",
+    "definition": "A healer who can restore a large amount of health in a short window, often by spending a cooldown, charge, or limited resource.",
+    "coachNote": "Save burst healing for real damage spikes. Spending it on minor chip damage can leave no answer when an ally suddenly becomes critical.",
+    "example": "The burst healer holds a charge to rescue a Vanguard when focused damage lands.",
+    "relatedTerms": [
+      "Primary Healer",
+      "Sustain Healer",
+      "Cooldown Trade",
+      "Burst"
+    ],
+    "sourceName": "PC Gamer Marvel Rivals healer and team-composition analysis",
+    "sourceUrl": "https://www.pcgamer.com/games/third-person-shooter/marvel-rivals-tier-list-best-characters/"
+  },
+  {
+    "id": "sustain-healer",
+    "term": "Sustain Healer",
+    "category": "Role",
+    "definition": "A healer built around steady, repeatable healing that keeps allies stable through prolonged pressure rather than relying only on large emergency bursts.",
+    "coachNote": "Sustain healing works best before health bars collapse. Maintain uptime, but tell allies to use cover because steady healing may not beat concentrated burst damage.",
+    "example": "A sustain healer keeps healing active through a long frontline trade.",
+    "relatedTerms": [
+      "Primary Healer",
+      "Burst Healer",
+      "Healing Over Time",
+      "Sustain"
+    ],
+    "sourceName": "MarvelRivals.gg Strategist healing analysis",
+    "sourceUrl": "https://marvelrivals.gg/ultron-guide/"
+  },
+  {
+    "id": "area-healer",
+    "term": "Area Healer",
+    "category": "Role",
+    "definition": "Also called an AoE healer, a healer whose abilities restore health to multiple allies inside an area, field, beam path, or other shared zone.",
+    "coachNote": "Area healing gains value when the team groups without stacking recklessly. Spread-out flyers and flankers can force the healer to choose which cluster receives support.",
+    "example": "The team groups inside the healing field so the area healer can stabilize several allies at once.",
+    "relatedTerms": [
+      "AoE",
+      "Sustain Healer",
+      "Brawl",
+      "Positioning"
+    ],
+    "sourceName": "MarvelRivals.gg grouped-healing Strategist guides",
+    "sourceUrl": "https://marvelrivals.gg/jeff-the-land-shark-guide/"
+  },
+  {
+    "id": "flexible-healer",
+    "term": "Flexible Healer",
+    "category": "Role",
+    "definition": "A healer who can shift between primary sustain, burst recovery, utility, and offensive contribution as the team composition or fight changes.",
+    "coachNote": "Flexibility requires a clear priority. Identify whether the current fight needs more healing, utility, survival, or pressure instead of trying to do everything at once.",
+    "example": "The flexible healer handles routine sustain, then switches to utility when the team starts its engage.",
+    "relatedTerms": [
+      "Primary Healer",
+      "Off-Healer",
+      "Burst Healer",
+      "Utility Build"
+    ],
+    "sourceName": "PC Gamer Marvel Rivals team-composition analysis",
+    "sourceUrl": "https://www.pcgamer.com/games/third-person-shooter/marvel-rivals-tier-list-best-characters/"
+  },
+  {
+    "id": "pocket-healer",
+    "term": "Pocket Healer",
+    "category": "Role",
+    "definition": "A healer who concentrates most of their attention and resources on one teammate for a period of time, usually a frontline anchor or carry.",
+    "coachNote": "Pocketing can enable a strong play, but do not abandon the rest of the team or follow the pocket target into an unwinnable position.",
+    "example": "The pocket healer stays ready to support the solo Vanguard through the next engage.",
+    "relatedTerms": [
+      "Primary Healer",
+      "Target Priority",
+      "Frontline",
+      "Peeling"
+    ],
+    "sourceName": "MarvelRivals.gg Jeff the Land Shark guide",
+    "sourceUrl": "https://marvelrivals.gg/jeff-the-land-shark-guide/"
   },
   {
     "id": "convoy",
