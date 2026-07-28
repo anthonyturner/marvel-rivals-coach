@@ -16,6 +16,142 @@
     </div>
   </header>
 
+  <section class="dive-lab" aria-labelledby="dive-lab-title">
+    <div class="dive-lab-heading">
+      <div>
+        <span class="kicker">Composition Tool</span>
+        <h2 id="dive-lab-title">Dive Response Planner</h2>
+        <p>
+          Select the enemy engage core. The planner finds picks that cover multiple threats and gives the team a
+          shared response order instead of six separate duels.
+        </p>
+      </div>
+      <span class="scenario-badge">Jubilee case study</span>
+    </div>
+
+    <div class="case-study">
+      <div class="team-lineup allies">
+        <span>Your team</span>
+        <strong>Magneto · The Thing · Spider-Man · White Fox · Phoenix · Jubilee</strong>
+      </div>
+      <div class="case-verdict">
+        <span>Read</span>
+        <strong>Playable draft, weak peel discipline</strong>
+      </div>
+      <div class="team-lineup enemies">
+        <span>Enemy pressure</span>
+        <strong>Angela · Black Cat · Spider-Man · Storm + another flank threat</strong>
+      </div>
+    </div>
+
+    <div class="dive-lab-grid">
+      <section class="threat-selector" aria-label="Select enemy dive threats">
+        <div class="lab-section-heading">
+          <span>Step 1</span>
+          <h3>Build the dive package</h3>
+          <p>Choose up to four enemies that are reaching your backline together.</p>
+        </div>
+
+        <div class="threat-options">
+          @for (hero of diveThreatChoices(); track hero.id) {
+            <button
+              type="button"
+              [class.selected]="isDiveThreatSelected(hero.id)"
+              [attr.aria-pressed]="isDiveThreatSelected(hero.id)"
+              (click)="toggleDiveThreat(hero.id)"
+            >
+              <img [src]="hero.imageUrl" [alt]="hero.name" />
+              <span>{{ hero.name }}</span>
+            </button>
+          }
+        </div>
+
+        <div class="threat-reads">
+          @for (hero of selectedDiveThreats(); track hero.id) {
+            <article>
+              <img [src]="hero.imageUrl" [alt]="hero.name" />
+              <div>
+                <strong>{{ hero.name }}</strong>
+                <p>{{ threatInstruction(hero.name) }}</p>
+              </div>
+            </article>
+          } @empty {
+            <p class="muted">Select at least one enemy threat to build a response.</p>
+          }
+        </div>
+      </section>
+
+      <section class="response-panel" aria-label="Anti-dive response">
+        <div class="lab-section-heading">
+          <span>Step 2</span>
+          <h3>Choose overlap, then assign jobs</h3>
+          <p>
+            The best swap is usually the hero who disrupts more than one member of the enemy dive. Results combine
+            current-season checks with the app’s coaching mappings.
+          </p>
+        </div>
+
+        <div class="overlap-grid">
+          @for (answer of multiThreatAnswers(); track answer.hero.id; let index = $index) {
+            <button type="button" (click)="selectHero(answer.hero.id)">
+              <span class="answer-rank">{{ index + 1 }}</span>
+              <img [src]="answer.hero.imageUrl" [alt]="answer.hero.name" />
+              <span class="answer-copy">
+                <strong>{{ answer.hero.name }}</strong>
+                <small>{{ coverageLabel(answer) }}</small>
+              </span>
+              <em>{{ answer.coveredThreats.length }}/{{ selectedDiveThreats().length }}</em>
+            </button>
+          } @empty {
+            <p class="muted">No shared direct counter is mapped yet. Use the response order below.</p>
+          }
+        </div>
+
+        <div class="response-order">
+          <article>
+            <span>01</span>
+            <div>
+              <strong>Collapse before contact</strong>
+              <p>Jubilee and White Fox play one piece of hard cover inside Magneto and The Thing’s peel range.</p>
+            </div>
+          </article>
+          <article>
+            <span>02</span>
+            <div>
+              <strong>Catch the first commit</strong>
+              <p>Magneto protects the focused ally; The Thing marks the entry lane. Everyone shoots the same diver.</p>
+            </div>
+          </article>
+          <article>
+            <span>03</span>
+            <div>
+              <strong>Turn only after the reset is denied</strong>
+              <p>Finish the trapped target, restore formation, then pressure the enemy’s lone Strategist. Do not chase Angela upward.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <aside class="jubilee-callout">
+      <div>
+        <span>Playing Jubilee</span>
+        <strong>Make your frontline the trap.</strong>
+      </div>
+      <p>
+        Place Blooming Ball on the Magneto–Thing anchor, keep Sparking Sprint for the enemy commit, and detonate while
+        the divers are grouped in your team—not before they arrive. If you spend Sprint to start a routine rotation
+        while Angela is missing, Spider-Man and Black Cat get the opening they want.
+      </p>
+      <p>
+        Your cleanest draft adjustment was Phoenix into Namor first. Phoenix was vulnerable to their dive, while Namor
+        adds persistent pressure on Spider-Man and Black Cat without leaving Jubilee; The Thing remains the assigned
+        Angela check. Your Spider-Man could attack the enemy’s solo support only after your backline survived the
+        opener; otherwise he also needed to swap or stay home for the first few seconds.
+      </p>
+    </aside>
+  </section>
+
   <section class="toolbar" aria-label="Counter filters">
     <label class="search-field">
       <span>Search</span>
