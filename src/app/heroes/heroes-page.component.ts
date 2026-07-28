@@ -868,6 +868,21 @@ export class HeroesPageComponent implements OnInit {
     );
   }
 
+  strategyPlaystyleNotes(hero: Hero, strategy: HeroStrategyGuide): string[] {
+    const seen = new Set([this.normalizeStrategyText(this.displayedPlaystyle(hero))]);
+
+    return [strategy.summary, ...strategy.paragraphs].filter((paragraph) => {
+      const normalized = this.normalizeStrategyText(paragraph);
+
+      if (!normalized || seen.has(normalized)) {
+        return false;
+      }
+
+      seen.add(normalized);
+      return true;
+    });
+  }
+
   fandomOverviewSections(hero: Hero): FandomOverviewSection[] {
     const overview = (hero.overview ?? hero.summary).trim();
     const headingPattern =
@@ -1101,6 +1116,14 @@ export class HeroesPageComponent implements OnInit {
       .split(/\n+/)
       .map((paragraph) => paragraph.trim())
       .filter(Boolean);
+  }
+
+  private normalizeStrategyText(value: string): string {
+    return value
+      .replace(/\s+/g, ' ')
+      .trim()
+      .toLocaleLowerCase()
+      .replace(/[.!?]+$/, '');
   }
 
   private buildPlaystyle(hero: Hero, role: HeroRole, abilities: HeroAbility[]): string {

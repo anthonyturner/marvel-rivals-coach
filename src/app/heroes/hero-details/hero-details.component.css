@@ -344,6 +344,11 @@ h3 {
   line-height: 1.65;
 }
 
+.ultimate-strategies .strategy-playstyle .strategy-playstyle-lead {
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
 .ultimate-strategies article .ultimate-source {
   padding: 10px 12px;
   border: 1px solid rgba(138, 98, 0, 0.16);
