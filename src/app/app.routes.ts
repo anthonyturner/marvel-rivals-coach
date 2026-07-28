@@ -109,6 +109,20 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'strategist-guides',
+    loadComponent: () =>
+      import('./strategist-guides/strategist-guides-page.component').then(
+        (module) => module.StrategistGuidesPageComponent,
+      ),
+  },
+  {
+    path: 'strategist-guides/:guideId',
+    loadComponent: () =>
+      import('./strategist-guides/strategist-guide-detail-page.component').then(
+        (module) => module.StrategistGuideDetailPageComponent,
+      ),
+  },
+  {
     path: 'user-highlights',
     loadComponent: () =>
       import('./user-highlights/user-highlights-page.component').then(

@@ -22,6 +22,7 @@ export const NAVIGATION_CATEGORIES: NavigationCategory[] = [
       'Quick references for concepts, current numbers, and lessons you can watch when you need an example.',
     items: [
       { label: 'Media Tutorials', path: '/media-tutorials', description: 'Browse coaching videos by topic.', enabled: true },
+      { label: 'Strategist Guides', path: '/strategist-guides', description: 'Study transcript-built support lessons and practice drills.', enabled: true },
       { label: 'User Highlights', path: '/user-highlights', description: 'Review community plays one decision at a time.', enabled: true },
       { label: 'Game Stats', path: '/game-stats', description: 'Review the numbers behind the roster.', enabled: true },
       { label: 'Tier List', path: '/tier-list', description: 'Compare synced hero tiers by season and rank.', enabled: true },

@@ -828,6 +828,54 @@
     "sourceUrl": "/glossary"
   },
   {
+    "id": "bussing",
+    "term": "Bussing",
+    "category": "Competitive Gaming",
+    "definition": "Intentionally teaming up with a cheater so the cheater can carry you to wins and artificially raise your rank. Simply being matched with a cheater by chance is not bussing.",
+    "coachNote": "Bussing is dishonest boosting, not an ordinary skilled player carrying a teammate. Use the report option when there is evidence that someone knowingly and repeatedly queued with a cheater.",
+    "example": "A player repeatedly parties with an aimbot user to climb Competitive is bussing.",
+    "relatedTerms": [
+      "Boosting",
+      "Cheating",
+      "Colluding",
+      "Ranked"
+    ],
+    "sourceName": "Gfinity Esports - Marvel Rivals Bussing",
+    "sourceUrl": "https://www.gfinityesports.com/article/marvel-rivals-what-does-bussing-mean"
+  },
+  {
+    "id": "colluding",
+    "term": "Colluding",
+    "category": "Competitive Gaming",
+    "definition": "Secretly cooperating with players on the opposing team to manipulate the match, usually by arranging for one side to lose or giving the opponents an unfair advantage.",
+    "coachNote": "Colluding requires coordination across opposing teams. A teammate playing badly or throwing on their own is not enough evidence of collusion.",
+    "example": "A player deliberately feeds friends on the enemy team and gives them objectives as part of a planned win trade.",
+    "relatedTerms": [
+      "Win Trading",
+      "Throwing",
+      "Bussing",
+      "Cheating"
+    ],
+    "sourceName": "Marvel Rivals Championship Rules",
+    "sourceUrl": "https://www.marvelrivals.com/MarvelRivalsChampionshipS1Global.pdf"
+  },
+  {
+    "id": "pun-ily",
+    "term": "pun ily",
+    "category": "Heard In Game",
+    "definition": "Usually short for \"Punisher, I love you.\" In match chat, \"Pun\" refers to The Punisher and \"ily\" means \"I love you,\" often expressing playful gratitude or praise.",
+    "coachNote": "Read the phrase in context because \"Pun\" could also be a player's name. It is normally a friendly compliment, not a tactical call or literal romantic declaration.",
+    "example": "After The Punisher wins a difficult teamfight, a teammate types, \"pun ily.\"",
+    "relatedTerms": [
+      "The Punisher",
+      "ILY",
+      "Gaming Chat",
+      "Compliment"
+    ],
+    "sourceName": "Manual glossary entry",
+    "sourceUrl": "/glossary"
+  },
+  {
     "id": "gas-lighting",
     "term": "gas-lighting",
     "category": "Internet Slang",
