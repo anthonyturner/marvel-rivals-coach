@@ -88,19 +88,12 @@
 
     <article class="strategy-playstyle">
       <span>Playstyle</span>
-      <p [innerHTML]="controller.highlightedAbilityText(hero, controller.displayedPlaystyle(hero))"></p>
-    </article>
-
-    <article>
-      <span>Main job</span>
-      <p [innerHTML]="controller.highlightedOverviewText(hero, strategy.summary)"></p>
-    </article>
-
-    <article>
-      <span>Strategy notes</span>
-      @for (paragraph of strategy.paragraphs; track paragraph) {
+      <p
+        class="strategy-playstyle-lead"
+        [innerHTML]="controller.highlightedAbilityText(hero, controller.displayedPlaystyle(hero))"
+      ></p>
+      @for (paragraph of controller.strategyPlaystyleNotes(hero, strategy); track paragraph) {
       <p [innerHTML]="controller.highlightedOverviewText(hero, paragraph)"></p>
-      <br aria-hidden="true" />
       }
     </article>
 
