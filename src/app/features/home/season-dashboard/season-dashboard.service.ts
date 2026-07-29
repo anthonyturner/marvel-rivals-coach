@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { forkJoin, map, Observable } from 'rxjs';
 
-import type { TierListHero } from '../../../tier-list.model';
+import type { TierListHero } from '../../../../contracts/tier-list.model';
 import type { SeasonDashboardContent } from '../home-content.model';
 import { HomeContentService } from '../home-content.service';
 import type { SeasonHighlight, SeasonUpdate } from '../home-season.model';

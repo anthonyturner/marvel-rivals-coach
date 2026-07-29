@@ -4,7 +4,7 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { catchError, of } from 'rxjs';
 
-import { TierListResponse } from '../../tier-list.model';
+import { TierListResponse } from '../../../../contracts/tier-list.model';
 
 @Component({
   selector: 'app-tier-list-page',

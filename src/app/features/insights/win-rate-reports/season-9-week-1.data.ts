@@ -1,5 +1,5 @@
-import { HERO_GAMEPLAY_ARCHETYPES } from '../heroes/hero-gameplay-archetypes';
-import type { HeroRole } from '../heroes/hero.model';
+import { HERO_GAMEPLAY_ARCHETYPES } from '../../heroes/hero-gameplay-archetypes';
+import type { HeroRole } from '../../heroes/hero.model';
 
 export const COMPETITIVE_RANKS = [
   'Bronze',

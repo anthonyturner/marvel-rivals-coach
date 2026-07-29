@@ -84,7 +84,7 @@ For each hero below, follow these steps:
 ## Technical Details
 
 ### Data Model
-The `Hero` interface in [src/app/heroes/hero.model.ts](src/app/heroes/hero.model.ts) now includes:
+The `Hero` interface in [src/app/features/heroes/hero.model.ts](src/app/features/heroes/hero.model.ts) now includes:
 ```typescript
 export interface Hero {
   // ... other properties
@@ -93,7 +93,7 @@ export interface Hero {
 ```
 
 ### Mock Data
-All heroes in [src/app/data/heroes.mock.json](src/app/data/heroes.mock.json) now have an `imageUrl` field:
+All heroes in [data/seeds/heroes.mock.json](data/seeds/heroes.mock.json) now have an `imageUrl` field:
 ```json
 {
   "id": "adam-warlock",
@@ -103,12 +103,12 @@ All heroes in [src/app/data/heroes.mock.json](src/app/data/heroes.mock.json) now
 ```
 
 ### Component Changes
-The [heroes-page.component.html](src/app/heroes/heroes-page.component.html) now uses:
+The [heroes-page.component.html](src/app/features/heroes/heroes-page.component.html) now uses:
 - Grid view: `<img class="hero-image" [src]="hero.imageUrl" [alt]="hero.name" />`
 - Detail panel: `<img class="hero-image large" [src]="hero.imageUrl" [alt]="hero.name" />`
 
 ### CSS Styling
-Updated [heroes-page.component.css](src/app/heroes/heroes-page.component.css) with:
+Updated [heroes-page.component.css](src/app/features/heroes/heroes-page.component.css) with:
 ```css
 .hero-image {
   width: 74px;

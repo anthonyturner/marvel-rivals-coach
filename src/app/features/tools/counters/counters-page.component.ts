@@ -3,8 +3,8 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { CounterEngineService } from './counter-engine.service';
-import { HeroDataService } from '../heroes/hero-data.service';
-import { Hero, HeroRole } from '../heroes/hero.model';
+import { HeroDataService } from '../../heroes/hero-data.service';
+import { Hero, HeroRole } from '../../heroes/hero.model';
 
 type RoleFilter = HeroRole | 'All';
 

@@ -5,9 +5,9 @@ import {
   computeHeroBuildProfile,
   heroBuildTypes,
   HeroBuildType,
-} from '../heroes/hero-build-profile';
-import { HeroDataService } from '../heroes/hero-data.service';
-import { Hero, HeroRole } from '../heroes/hero.model';
+} from '../../heroes/hero-build-profile';
+import { HeroDataService } from '../../heroes/hero-data.service';
+import { Hero, HeroRole } from '../../heroes/hero.model';
 import { TeamCompositionEngineService } from './team-composition-engine.service';
 
 @Component({

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import type { TierListHero } from '../../../../tier-list.model';
+import type { TierListHero } from '../../../../../contracts/tier-list.model';
 
 @Component({
   selector: 'app-hero-usage-section',

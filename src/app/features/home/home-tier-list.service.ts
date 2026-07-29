@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, Observable, of, shareReplay } from 'rxjs';
 
-import type { TierListResponse } from '../../tier-list.model';
+import type { TierListResponse } from '../../../contracts/tier-list.model';
 
 @Injectable({ providedIn: 'root' })
 export class HomeTierListService {

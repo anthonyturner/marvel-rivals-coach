@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Hero, HeroRole } from '../heroes/hero.model';
+import { Hero, HeroRole } from '../../heroes/hero.model';
 
 type RoleFilter = HeroRole | 'All';
 type ThreatProfile = 'backline' | 'dive' | 'flyer' | 'sniper' | 'summon' | 'tank' | 'general';

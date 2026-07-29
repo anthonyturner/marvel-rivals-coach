@@ -9,7 +9,7 @@ import type {
   GameStatsResponse,
   MetricComparison,
   RankComparison,
-} from '../../game-stats.model';
+} from '../../../../contracts/game-stats.model';
 
 interface Milestone {
   value: string;

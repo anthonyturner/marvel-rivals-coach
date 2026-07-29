@@ -33,8 +33,8 @@ Seed data is your starting content.
 
 These files are seed data:
 
-- `src/app/data/heroes.mock.json`
-- `src/app/data/glossary.mock.json`
+- `data/seeds/heroes.mock.json`
+- `data/seeds/glossary.mock.json`
 
 They are not the main runtime source anymore.
 

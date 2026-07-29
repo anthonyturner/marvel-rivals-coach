@@ -4,7 +4,10 @@ import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-brows
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 
-import { HERO_GUIDES, HeroUltimateGuide } from '../guides/hero-guides/hero-guide-data';
+import {
+  HERO_GUIDES,
+  HeroUltimateGuide,
+} from '../learning/guides/hero-guides/hero-guide-data';
 import { HeroDataService } from './hero-data.service';
 import { HeroContentComponent } from './hero-content/hero-content.component';
 import { HeroDetailModalComponent } from './hero-detail-modal/hero-detail-modal.component';
@@ -29,7 +32,7 @@ import {
   HeroVideoType,
 } from './hero.model';
 
-import { slugify, escapeRegExp } from '../utilities/string-utils';
+import { slugify, escapeRegExp } from '../../shared/utilities/string-utils';
 
 interface HeroVideoSearch {
   label: string;
