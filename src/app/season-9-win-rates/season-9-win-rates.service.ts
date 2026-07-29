@@ -1,35 +1,19 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import { catchError, map, Observable, of, shareReplay } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
-import type { Season9ReportPayload } from './season-9-win-rates.data';
-
-interface Season9ExternalSourcePayload extends Season9ReportPayload {
-  season: number;
-  week: number;
-  sourceUrl: string;
-}
+import {
+  SEASON_9_WEEK_1_REPORT,
+  type WinRateReportSnapshot,
+} from './season-9-win-rates.data';
+import { SEASON_9_WEEK_2_REPORT } from './season-9-week-2.data';
 
 @Injectable({ providedIn: 'root' })
-export class Season9WinRatesService {
-  private readonly http = inject(HttpClient);
-  private readonly report$ = this.http
-    .get<Season9ExternalSourcePayload>('/api/external-sources/nerfpool-s9-week1')
-    .pipe(
-      map((payload) => ({
-        heroInsights: payload.heroInsights,
-        metaQuadrants: payload.metaQuadrants,
-        roleLadder: payload.roleLadder,
-        oneTricks: payload.oneTricks,
-      })),
-      catchError((error) => {
-        console.error('Failed to load the Season 9 win-rate report from the content database', error);
-        return of(null);
-      }),
-      shareReplay({ bufferSize: 1, refCount: false }),
-    );
+export class SeasonWinRatesService {
+  private readonly reportsBySeason = new Map<number, readonly WinRateReportSnapshot[]>([
+    [9, [SEASON_9_WEEK_1_REPORT, SEASON_9_WEEK_2_REPORT]],
+  ]);
 
-  getReport(): Observable<Season9ReportPayload | null> {
-    return this.report$;
+  getReports(season: number): Observable<readonly WinRateReportSnapshot[]> {
+    return of(this.reportsBySeason.get(season) ?? []);
   }
 }

@@ -18,6 +18,7 @@
 
 .report-hero {
   display: grid;
+  box-sizing: border-box;
   grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
   gap: 34px;
   align-items: center;
@@ -70,6 +71,41 @@ h1 {
 
 .hero-actions {
   margin-top: 24px;
+}
+
+.report-selectors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.report-selectors label,
+.unavailable-report label {
+  display: grid;
+  gap: 5px;
+}
+
+.report-selectors label > span,
+.unavailable-report label > span {
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.report-selectors select,
+.unavailable-report select {
+  min-width: 150px;
+  min-height: 42px;
+  padding: 0 34px 0 11px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 6px;
+  background: #fff;
+  color: #07111f;
+  font: inherit;
+  font-weight: 800;
 }
 
 .hero-actions a,
@@ -518,6 +554,73 @@ tbody td {
   margin: 0;
 }
 
+.rank-curve {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.rank-point {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  padding: 7px 2px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.rank-point img {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.rank-point strong {
+  overflow: hidden;
+  font-size: 0.68rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rank-point.elite {
+  border-color: #99d8b5;
+  background: #e3f6eb;
+  color: #12633e;
+}
+
+.rank-point.positive {
+  border-color: #a8dbd8;
+  background: #e4f7f5;
+  color: #0f6667;
+}
+
+.rank-point.negative {
+  border-color: #ecd39d;
+  background: #fff4d9;
+  color: #805400;
+}
+
+.rank-point.critical {
+  border-color: #efb8b3;
+  background: #fde9e7;
+  color: #94251d;
+}
+
+.rank-point.unavailable {
+  border-color: var(--border);
+  background: var(--bg-panel-soft);
+  color: var(--text-muted);
+}
+
+.rank-table-icon {
+  display: block;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
 .hero-report-card dl div {
   display: grid;
   gap: 3px;
@@ -598,6 +701,30 @@ tbody td {
   color: rgba(255, 255, 255, 0.68);
 }
 
+.unavailable-report {
+  display: grid;
+  gap: 15px;
+  min-height: 70vh;
+  place-content: center;
+  padding: 48px var(--mobile-page-gutter);
+  background:
+    radial-gradient(circle at 82% 12%, rgba(3, 159, 159, 0.2), transparent 30%),
+    linear-gradient(125deg, #07111f, #102b44 68%, #123f4a);
+  color: #fff;
+  text-align: center;
+}
+
+.unavailable-report p:not(.eyebrow) {
+  max-width: 620px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+}
+
+.unavailable-report label {
+  justify-self: center;
+  margin-top: 8px;
+}
+
 @media (max-width: 1040px) {
   .report-hero,
   .section-heading,
@@ -625,7 +752,25 @@ tbody td {
 
 @media (max-width: 680px) {
   .report-hero {
+    width: 100%;
     padding: 34px var(--mobile-page-gutter);
+  }
+
+  .hero-copy,
+  .report-selectors,
+  .video-shell {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .report-selectors {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .report-selectors select {
+    width: 100%;
+    min-width: 0;
   }
 
   .report-content {
@@ -645,6 +790,12 @@ tbody td {
 
   h1 {
     font-size: clamp(2.1rem, 11vw, 3rem);
+  }
+
+  h1,
+  .lede,
+  .source-note {
+    overflow-wrap: anywhere;
   }
 
   .hero-actions {

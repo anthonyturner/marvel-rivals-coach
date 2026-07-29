@@ -1,25 +1,40 @@
 import { HERO_GAMEPLAY_ARCHETYPES } from '../heroes/hero-gameplay-archetypes';
 import type { HeroRole } from '../heroes/hero.model';
 
-export type Season9Trend = 'Climbing' | 'Stable' | 'Falling' | 'Volatile';
-export type Season9CoreRole = Exclude<HeroRole, 'Multi-Role'>;
+export const COMPETITIVE_RANKS = [
+  'Bronze',
+  'Silver',
+  'Gold',
+  'Platinum',
+  'Diamond',
+  'Grandmaster',
+  'Celestial',
+] as const;
 
-export interface Season9HeroInsight {
+export type CompetitiveRank = (typeof COMPETITIVE_RANKS)[number];
+export type WinRateTrend = 'Climbing' | 'Stable' | 'Falling' | 'Volatile';
+export type WinRateCoreRole = Exclude<HeroRole, 'Multi-Role'>;
+
+export interface RankWinRate {
+  rank: CompetitiveRank;
+  value: string;
+  percentage: number | null;
+}
+
+export interface HeroWinRateInsight {
   heroId: string;
   displayName: string;
-  role: Season9CoreRole;
+  role: WinRateCoreRole;
   archetype: string;
-  lowRanks: string;
-  grandmaster: string;
-  celestial: string;
-  trend: Season9Trend;
+  rankWinRates: readonly RankWinRate[];
+  trend: WinRateTrend;
   takeaway: string;
   imageUrl: string;
   videoUrl: string;
   timestamp: string;
 }
 
-export interface Season9MetaQuadrant {
+export interface WinRateMetaQuadrant {
   id: 'oppressive' | 'sleepers' | 'traps' | 'dead';
   label: string;
   count: number;
@@ -28,25 +43,50 @@ export interface Season9MetaQuadrant {
   note: string;
 }
 
-export interface Season9RoleLadderRow {
-  rank: string;
+export interface WinRateRoleLadderRow {
+  rank: CompetitiveRank;
   vanguard: string;
   strategist: string;
   duelist: string;
 }
 
-export interface Season9OneTrick {
-  role: Season9CoreRole;
+export interface WinRateOneTrick {
+  role: WinRateCoreRole;
   hero: string;
   heroId: string;
   reason: string;
 }
 
-export interface Season9ReportPayload {
-  heroInsights: readonly Season9HeroInsight[];
-  metaQuadrants: readonly Season9MetaQuadrant[];
-  roleLadder: readonly Season9RoleLadderRow[];
-  oneTricks: readonly Season9OneTrick[];
+export interface WinRateReportPayload {
+  heroInsights: readonly HeroWinRateInsight[];
+  metaQuadrants: readonly WinRateMetaQuadrant[];
+  roleLadder: readonly WinRateRoleLadderRow[];
+  oneTricks: readonly WinRateOneTrick[];
+}
+
+export interface WinRateReportCallout {
+  label: string;
+  value: string;
+  description: string;
+}
+
+export interface WinRateReportAction {
+  title: string;
+  description: string;
+}
+
+export interface WinRateReportSnapshot extends WinRateReportPayload {
+  season: number;
+  week: number;
+  title: string;
+  description: string;
+  sourceLabel: string;
+  sourceUrl: string;
+  videoId: string;
+  duration: string;
+  methodology: string;
+  callouts: readonly WinRateReportCallout[];
+  actions: readonly WinRateReportAction[];
 }
 
 const videoUrl = 'https://www.youtube.com/watch?v=VB6OIA-ChmA';
@@ -60,14 +100,14 @@ function timestampUrl(timestamp: string): string {
 function insight(
   heroId: string,
   displayName: string,
-  role: Season9CoreRole,
+  role: WinRateCoreRole,
   lowRanks: string,
   grandmaster: string,
   celestial: string,
-  trend: Season9Trend,
+  trend: WinRateTrend,
   takeaway: string,
   timestamp: string,
-): Season9HeroInsight {
+): HeroWinRateInsight {
   const archetype =
     HERO_GAMEPLAY_ARCHETYPES[heroId]?.find((profile) => profile.role === role)?.label ??
     'Flexible';
@@ -77,9 +117,15 @@ function insight(
     displayName,
     role,
     archetype,
-    lowRanks,
-    grandmaster,
-    celestial,
+    rankWinRates: [
+      rankValue('Bronze', lowRanks),
+      rankValue('Silver', lowRanks),
+      rankValue('Gold', lowRanks),
+      rankValue('Platinum', 'Not stated'),
+      rankValue('Diamond', 'Not stated'),
+      rankValue('Grandmaster', grandmaster),
+      rankValue('Celestial', celestial),
+    ],
     trend,
     takeaway,
     imageUrl: `/images/heroes/${heroId}.png`,
@@ -88,7 +134,17 @@ function insight(
   };
 }
 
-export const SEASON_9_HERO_INSIGHTS: readonly Season9HeroInsight[] = [
+export function rankValue(rank: CompetitiveRank, value: string): RankWinRate {
+  const match = value.replace(',', '.').match(/(\d+(?:\.\d+)?)/);
+
+  return {
+    rank,
+    value,
+    percentage: match ? Number(match[1]) : null,
+  };
+}
+
+export const SEASON_9_HERO_INSIGHTS: readonly HeroWinRateInsight[] = [
   insight(
     'peni-parker',
     'Peni Parker',
@@ -685,7 +741,7 @@ export const SEASON_9_HERO_INSIGHTS: readonly Season9HeroInsight[] = [
   ),
 ];
 
-export const SEASON_9_META_QUADRANTS: readonly Season9MetaQuadrant[] = [
+export const SEASON_9_META_QUADRANTS: readonly WinRateMetaQuadrant[] = [
   {
     id: 'oppressive',
     label: 'Oppressive',
@@ -748,7 +804,7 @@ export const SEASON_9_META_QUADRANTS: readonly Season9MetaQuadrant[] = [
   },
 ];
 
-export const SEASON_9_ROLE_LADDER: readonly Season9RoleLadderRow[] = [
+export const SEASON_9_ROLE_LADDER: readonly WinRateRoleLadderRow[] = [
   { rank: 'Bronze', vanguard: '≈50%', strategist: '≈50%', duelist: '≈48%' },
   { rank: 'Silver', vanguard: 'Bunched', strategist: 'Slight lead', duelist: 'Bunched' },
   { rank: 'Gold', vanguard: '≈51%', strategist: 'Middle', duelist: '≈49.9%' },
@@ -756,7 +812,7 @@ export const SEASON_9_ROLE_LADDER: readonly Season9RoleLadderRow[] = [
   { rank: 'Celestial', vanguard: '≈52%', strategist: 'Middle', duelist: '≈48%' },
 ] as const;
 
-export const SEASON_9_ONE_TRICKS: readonly Season9OneTrick[] = [
+export const SEASON_9_ONE_TRICKS: readonly WinRateOneTrick[] = [
   {
     role: 'Vanguard',
     hero: 'Peni Parker',
@@ -776,3 +832,64 @@ export const SEASON_9_ONE_TRICKS: readonly Season9OneTrick[] = [
     reason: 'The safest support curve across ranks and compositions.',
   },
 ] as const;
+
+export const SEASON_9_WEEK_1_REPORT: WinRateReportSnapshot = {
+  season: 9,
+  week: 1,
+  title: 'What the win-rate curves say about every hero',
+  description:
+    'Approximate rank-by-rank results, the pick-rate meta map, role performance, one-trick recommendations, and a gameplay archetype for every hero.',
+  sourceLabel: 'Every Hero’s Win Rate · S9 Week 1',
+  sourceUrl: videoUrl,
+  videoId: 'VB6OIA-ChmA',
+  duration: '55:45',
+  methodology:
+    'Rates are approximate values spoken or shown in the Season 9 Week 1 video. Repeated low-rank bands are shown across Bronze through Gold; ranks the video did not state are marked unavailable.',
+  callouts: [
+    {
+      label: 'Best climb role',
+      value: 'Vanguard',
+      description:
+        'Tanks lead average win rate from Gold onward and reach roughly 52% at Celestial.',
+    },
+    {
+      label: 'Best composition',
+      value: '2 · 2 · 2',
+      description:
+        'Two tanks, two DPS, and two supports remain the most played and highest-winning setup.',
+    },
+    {
+      label: 'Best opportunity',
+      value: 'Sleepers',
+      description:
+        'Low-pick, high-win heroes offer strong value before the wider ladder catches on.',
+    },
+    {
+      label: 'Core lesson',
+      value: 'Stay alive',
+      description:
+        'Uptime, deployable clearing, and coordinated follow-up explain many of the sharpest curves.',
+    },
+  ],
+  actions: [
+    {
+      title: 'Look in the sleeper box.',
+      description:
+        'Ultron, Storm, and other low-pick winners offer value without fighting over the fashionable lock.',
+    },
+    {
+      title: 'One-trick consistency, not hype.',
+      description:
+        'Choose a repeatable hero, learn every angle and cooldown, and let familiarity compound.',
+    },
+    {
+      title: 'Run two tanks and clear deployables.',
+      description:
+        'Complementary tank jobs and basic nest or turret discipline solve a surprising amount below Diamond.',
+    },
+  ],
+  heroInsights: SEASON_9_HERO_INSIGHTS,
+  metaQuadrants: SEASON_9_META_QUADRANTS,
+  roleLadder: SEASON_9_ROLE_LADDER,
+  oneTricks: SEASON_9_ONE_TRICKS,
+};

@@ -145,9 +145,19 @@ export const routes: Routes = [
   },
   {
     path: 'season-9-win-rates',
+    redirectTo: 'win-rates/9',
+    pathMatch: 'full',
+  },
+  {
+    path: 'win-rates',
+    redirectTo: 'win-rates/9',
+    pathMatch: 'full',
+  },
+  {
+    path: 'win-rates/:season',
     loadComponent: () =>
       import('./season-9-win-rates/season-9-win-rates-page.component').then(
-        (module) => module.Season9WinRatesPageComponent,
+        (module) => module.SeasonWinRatesPageComponent,
       ),
   },
   {
