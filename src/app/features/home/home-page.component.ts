@@ -12,6 +12,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { map } from 'rxjs';
 
+import { FeaturedContentComponent } from './featured-content/featured-content.component';
 import { HomeContentService } from './home-content.service';
 import { SeasonDashboardComponent } from './season-dashboard/season-dashboard.component';
 import { SeasonGlanceComponent } from './season-glance/season-glance.component';
@@ -20,7 +21,12 @@ const seasonLaunchPatchUrl = 'https://www.marvelrivals.com/20260708/41525_130695
 
 @Component({
   selector: 'app-home-page',
-  imports: [RouterLink, SeasonDashboardComponent, SeasonGlanceComponent],
+  imports: [
+    FeaturedContentComponent,
+    RouterLink,
+    SeasonDashboardComponent,
+    SeasonGlanceComponent,
+  ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })

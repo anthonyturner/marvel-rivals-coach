@@ -1,70 +1,34 @@
 <article class="win-rates-page">
   @if (report(); as activeReport) {
-  <header class="report-hero">
-    <div class="hero-copy">
-      <p class="eyebrow">Season {{ activeReport.season }} · Week {{ activeReport.week }} report</p>
-      <h1>{{ activeReport.title }}</h1>
-      <p class="lede">{{ activeReport.description }}</p>
-
-      <div class="report-selectors" aria-label="Choose win-rate report">
-        <label>
-          <span>Season</span>
-          <select [value]="season()" (change)="selectSeason($event)">
-            @for (seasonOption of availableSeasons; track seasonOption) {
-              <option [value]="seasonOption" [selected]="seasonOption === season()">
-                Season {{ seasonOption }}
-              </option>
-            }
-          </select>
-        </label>
-        <label>
-          <span>Week</span>
-          <select [value]="selectedWeek()" (change)="selectWeek($event)">
-            @for (week of availableWeeks(); track week) {
-              <option [value]="week" [selected]="week === selectedWeek()">Week {{ week }}</option>
-            }
-          </select>
-        </label>
-      </div>
-
-      <div class="hero-actions">
-        <a
-          class="primary-action"
-          [href]="activeReport.sourceUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Watch the source video
-        </a>
-        <a routerLink="/heroes">Open the hero roster</a>
-      </div>
-
-      <p class="source-note">{{ activeReport.methodology }}</p>
+  <app-report-hero
+    [eyebrow]="'Season ' + activeReport.season + ' · Week ' + activeReport.week + ' report'"
+    [title]="activeReport.title"
+    [description]="activeReport.description"
+    [actions]="reportHeroActions()"
+    [media]="reportHeroMedia()"
+    [sourceNote]="activeReport.methodology"
+  >
+    <div reportHeroControls class="report-selectors" aria-label="Choose win-rate report">
+      <label>
+        <span>Season</span>
+        <select [value]="season()" (change)="selectSeason($event)">
+          @for (seasonOption of availableSeasons; track seasonOption) {
+            <option [value]="seasonOption" [selected]="seasonOption === season()">
+              Season {{ seasonOption }}
+            </option>
+          }
+        </select>
+      </label>
+      <label>
+        <span>Week</span>
+        <select [value]="selectedWeek()" (change)="selectWeek($event)">
+          @for (week of availableWeeks(); track week) {
+            <option [value]="week" [selected]="week === selectedWeek()">Week {{ week }}</option>
+          }
+        </select>
+      </label>
     </div>
-
-    <div class="video-shell">
-      <iframe
-        [src]="videoEmbedUrl()"
-        [title]="activeReport.sourceLabel"
-        loading="lazy"
-        allow="
-          accelerometer;
-          autoplay;
-          clipboard-write;
-          encrypted-media;
-          gyroscope;
-          picture-in-picture;
-          web-share;
-        "
-        allowfullscreen
-      ></iframe>
-      <div>
-        <span>Nerfpool</span>
-        <strong>{{ activeReport.sourceLabel }}</strong>
-        <small>{{ activeReport.duration }} roster and meta breakdown</small>
-      </div>
-    </div>
-  </header>
+  </app-report-hero>
 
   <main class="report-content">
     <section class="finding-grid" aria-label="Key findings">
