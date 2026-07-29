@@ -1,9 +1,13 @@
 import { Component, DestroyRef, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { map, switchMap, tap } from 'rxjs';
 
+import {
+  ReportHeroComponent,
+  type ReportHeroAction,
+  type ReportHeroMedia,
+} from '../../../shared/components/report-hero/report-hero.component';
 import {
   type CompetitiveRank,
   type WinRateCoreRole,
@@ -19,7 +23,7 @@ const CURRENT_SEASON = 9;
 
 @Component({
   selector: 'app-season-win-rates-page',
-  imports: [RouterLink],
+  imports: [ReportHeroComponent, RouterLink],
   templateUrl: './season-win-rates-page.component.html',
   styleUrl: './season-win-rates-page.component.css',
 })
@@ -27,7 +31,6 @@ export class SeasonWinRatesPageComponent {
   private readonly reportService = inject(SeasonWinRatesService);
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
-  private readonly sanitizer = inject(DomSanitizer);
   private readonly destroyRef = inject(DestroyRef);
 
   readonly availableSeasons = Array.from(
@@ -44,11 +47,34 @@ export class SeasonWinRatesPageComponent {
       null,
   );
   readonly availableWeeks = computed(() => this.reports().map((report) => report.week));
-  readonly videoEmbedUrl = computed(() => {
-    const videoId = this.report()?.videoId;
+  readonly reportHeroActions = computed<readonly ReportHeroAction[]>(() => {
+    const report = this.report();
 
-    return videoId
-      ? this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${videoId}`)
+    return report
+      ? [
+          {
+            label: 'Watch the source video',
+            href: report.sourceUrl,
+            primary: true,
+          },
+          {
+            label: 'Open the hero roster',
+            routerLink: '/heroes',
+          },
+        ]
+      : [];
+  });
+  readonly reportHeroMedia = computed<ReportHeroMedia | null>(() => {
+    const report = this.report();
+
+    return report
+      ? {
+          kind: 'video',
+          videoId: report.videoId,
+          label: 'Nerfpool',
+          title: report.sourceLabel,
+          meta: `${report.duration} roster and meta breakdown`,
+        }
       : null;
   });
   readonly metaQuadrants = computed(() => this.report()?.metaQuadrants ?? []);
