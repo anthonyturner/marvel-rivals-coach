@@ -2,8 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { HERO_GUIDES } from './hero-guide-data';
-import { HeroGuide } from './hero-guide-data';
+import { HERO_GUIDES, HeroGuide } from '../hero-guides/hero-guide-data';
 
 interface FundamentalsGuideGroup {
   title: string;

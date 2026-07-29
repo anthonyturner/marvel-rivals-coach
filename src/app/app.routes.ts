@@ -29,21 +29,21 @@ export const routes: Routes = [
   {
     path: 'hero-guides',
     loadComponent: () =>
-      import('./hero-guides/hero-guides-page.component').then(
+      import('./guides/guide-library/hero-guides-page.component').then(
         (module) => module.HeroGuidesPageComponent,
       ),
   },
   {
     path: 'hero-guides/first-time',
     loadComponent: () =>
-      import('./hero-guides/first-time-guide-page.component').then(
+      import('./guides/beginner-guide/first-time-guide-page.component').then(
         (module) => module.FirstTimeGuidePageComponent,
       ),
   },
   {
     path: 'hero-guides/:heroId',
     loadComponent: () =>
-      import('./hero-guides/hero-guide-detail-page.component').then(
+      import('./guides/hero-guides/hero-guide-detail-page.component').then(
         (module) => module.HeroGuideDetailPageComponent,
       ),
   },
@@ -55,42 +55,42 @@ export const routes: Routes = [
   {
     path: 'techniques',
     loadComponent: () =>
-      import('./techniques/techniques-page.component').then(
+      import('./guides/techniques/techniques-page.component').then(
         (module) => module.TechniquesPageComponent,
       ),
   },
   {
     path: 'beginner-interactive-guide',
     loadComponent: () =>
-      import('./beginner-guide/beginner-guide-page.component').then(
+      import('./guides/beginner-guide/beginner-guide-page.component').then(
         (module) => module.BeginnerGuidePageComponent,
       ),
   },
   {
     path: 'build-theory',
     loadComponent: () =>
-      import('./build-theory/build-theory-page.component').then(
+      import('./guides/composition/build-theory/build-theory-page.component').then(
         (module) => module.BuildTheoryPageComponent,
       ),
   },
   {
     path: 'triple-support-counter',
     loadComponent: () =>
-      import('./triple-support/triple-support-guide-page.component').then(
+      import('./guides/composition/triple-support/triple-support-guide-page.component').then(
         (module) => module.TripleSupportGuidePageComponent,
       ),
   },
   {
     path: 'power-positions',
     loadComponent: () =>
-      import('./power-positions/power-positions-page.component').then(
+      import('./guides/positioning/power-positions/power-positions-page.component').then(
         (module) => module.PowerPositionsPageComponent,
       ),
   },
   {
     path: 'strategic-cover',
     loadComponent: () =>
-      import('./strategic-cover/strategic-cover-page.component').then(
+      import('./guides/positioning/strategic-cover/strategic-cover-page.component').then(
         (module) => module.StrategicCoverPageComponent,
       ),
   },
@@ -111,14 +111,14 @@ export const routes: Routes = [
   {
     path: 'strategist-guides',
     loadComponent: () =>
-      import('./strategist-guides/strategist-guides-page.component').then(
+      import('./guides/strategist-guides/strategist-guides-page.component').then(
         (module) => module.StrategistGuidesPageComponent,
       ),
   },
   {
     path: 'strategist-guides/:guideId',
     loadComponent: () =>
-      import('./strategist-guides/strategist-guide-detail-page.component').then(
+      import('./guides/strategist-guides/strategist-guide-detail-page.component').then(
         (module) => module.StrategistGuideDetailPageComponent,
       ),
   },
@@ -156,7 +156,7 @@ export const routes: Routes = [
   {
     path: 'win-rates/:season',
     loadComponent: () =>
-      import('./season-9-win-rates/season-9-win-rates-page.component').then(
+      import('./win-rate-reports/season-win-rates-page.component').then(
         (module) => module.SeasonWinRatesPageComponent,
       ),
   },

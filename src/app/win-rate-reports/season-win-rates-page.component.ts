@@ -9,8 +9,8 @@ import {
   type WinRateCoreRole,
   type WinRateReportSnapshot,
   type WinRateTrend,
-} from './season-9-win-rates.data';
-import { SeasonWinRatesService } from './season-9-win-rates.service';
+} from './season-9-week-1.data';
+import { SeasonWinRatesService } from './season-win-rates.service';
 
 type RoleFilter = WinRateCoreRole | 'All';
 type TrendFilter = WinRateTrend | 'All';
@@ -20,8 +20,8 @@ const CURRENT_SEASON = 9;
 @Component({
   selector: 'app-season-win-rates-page',
   imports: [RouterLink],
-  templateUrl: './season-9-win-rates-page.component.html',
-  styleUrl: './season-9-win-rates-page.component.css',
+  templateUrl: './season-win-rates-page.component.html',
+  styleUrl: './season-win-rates-page.component.css',
 })
 export class SeasonWinRatesPageComponent {
   private readonly reportService = inject(SeasonWinRatesService);
