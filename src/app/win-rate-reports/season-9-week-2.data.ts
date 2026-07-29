@@ -8,7 +8,7 @@ import {
   type WinRateMetaQuadrant,
   type WinRateReportSnapshot,
   type WinRateTrend,
-} from './season-9-win-rates.data';
+} from './season-9-week-1.data';
 
 const videoUrl = 'https://www.youtube.com/watch?v=IcHWCu1gHmg';
 
