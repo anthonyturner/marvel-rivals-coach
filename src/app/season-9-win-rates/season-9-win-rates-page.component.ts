@@ -1,31 +1,56 @@
-import { isPlatformBrowser } from '@angular/common';
-import { Component, DestroyRef, PLATFORM_ID, computed, inject, signal } from '@angular/core';
+import { Component, DestroyRef, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { RouterLink } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { map, switchMap, tap } from 'rxjs';
 
 import {
-  type Season9CoreRole,
-  type Season9ReportPayload,
-  type Season9Trend,
+  type CompetitiveRank,
+  type WinRateCoreRole,
+  type WinRateReportSnapshot,
+  type WinRateTrend,
 } from './season-9-win-rates.data';
-import { Season9WinRatesService } from './season-9-win-rates.service';
+import { SeasonWinRatesService } from './season-9-win-rates.service';
 
-type RoleFilter = Season9CoreRole | 'All';
-type TrendFilter = Season9Trend | 'All';
+type RoleFilter = WinRateCoreRole | 'All';
+type TrendFilter = WinRateTrend | 'All';
+
+const CURRENT_SEASON = 9;
 
 @Component({
-  selector: 'app-season-9-win-rates-page',
+  selector: 'app-season-win-rates-page',
   imports: [RouterLink],
   templateUrl: './season-9-win-rates-page.component.html',
   styleUrl: './season-9-win-rates-page.component.css',
 })
-export class Season9WinRatesPageComponent {
-  private readonly reportService = inject(Season9WinRatesService);
+export class SeasonWinRatesPageComponent {
+  private readonly reportService = inject(SeasonWinRatesService);
+  private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+  private readonly sanitizer = inject(DomSanitizer);
   private readonly destroyRef = inject(DestroyRef);
-  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
-  readonly videoUrl = 'https://www.youtube.com/watch?v=VB6OIA-ChmA';
-  readonly report = signal<Season9ReportPayload | null>(null);
+  readonly availableSeasons = Array.from(
+    { length: CURRENT_SEASON + 1 },
+    (_, index) => CURRENT_SEASON - index,
+  );
+  readonly season = signal(CURRENT_SEASON);
+  readonly reports = signal<readonly WinRateReportSnapshot[]>([]);
+  readonly selectedWeek = signal(1);
+  readonly report = computed(
+    () =>
+      this.reports().find((report) => report.week === this.selectedWeek()) ??
+      this.reports().at(-1) ??
+      null,
+  );
+  readonly availableWeeks = computed(() => this.reports().map((report) => report.week));
+  readonly videoEmbedUrl = computed(() => {
+    const videoId = this.report()?.videoId;
+
+    return videoId
+      ? this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${videoId}`)
+      : null;
+  });
   readonly metaQuadrants = computed(() => this.report()?.metaQuadrants ?? []);
   readonly roleLadder = computed(() => this.report()?.roleLadder ?? []);
   readonly oneTricks = computed(() => this.report()?.oneTricks ?? []);
@@ -61,12 +86,26 @@ export class Season9WinRatesPageComponent {
   });
 
   constructor() {
-    if (this.isBrowser) {
-      this.reportService
-        .getReport()
-        .pipe(takeUntilDestroyed(this.destroyRef))
-        .subscribe((report) => this.report.set(report));
-    }
+    this.route.paramMap
+      .pipe(
+        map((params) => this.parseSeason(params.get('season'))),
+        tap((season) => this.season.set(season)),
+        switchMap((season) => this.reportService.getReports(season)),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe((reports) => {
+        this.reports.set(reports);
+        this.selectedWeek.set(reports.at(-1)?.week ?? 1);
+      });
+  }
+
+  selectSeason(event: Event): void {
+    const season = Number((event.target as HTMLSelectElement).value);
+    void this.router.navigate(['/win-rates', season]);
+  }
+
+  selectWeek(event: Event): void {
+    this.selectedWeek.set(Number((event.target as HTMLSelectElement).value));
   }
 
   selectRole(role: RoleFilter): void {
@@ -81,8 +120,38 @@ export class Season9WinRatesPageComponent {
     this.searchTerm.set((event.target as HTMLInputElement).value);
   }
 
+  rankTone(percentage: number | null): string {
+    if (percentage === null) {
+      return 'unavailable';
+    }
+
+    if (percentage >= 55) {
+      return 'elite';
+    }
+
+    if (percentage >= 50) {
+      return 'positive';
+    }
+
+    if (percentage >= 45) {
+      return 'negative';
+    }
+
+    return 'critical';
+  }
+
+  rankIconUrl(rank: CompetitiveRank): string {
+    return `/images/ranks/${rank.toLowerCase()}.png`;
+  }
+
   onImageError(event: Event): void {
     const image = event.target as HTMLImageElement;
     image.src = '/images/heroes/default-hero.png';
+  }
+
+  private parseSeason(value: string | null): number {
+    const season = Number(value);
+
+    return Number.isInteger(season) && season >= 0 ? season : CURRENT_SEASON;
   }
 }
