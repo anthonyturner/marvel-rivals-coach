@@ -8,7 +8,7 @@ import type {
   MetricComparison,
   RankComparison,
   SnapshotTrend,
-} from './game-stats.model.js';
+} from './contracts/game-stats.model.js';
 
 const nodeProcess = process as typeof process & {
   loadEnvFile?: (path?: string) => void;

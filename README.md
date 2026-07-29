@@ -88,11 +88,25 @@ Seed JSON + external sources
         Angular pages
 ```
 
+Application code is organized by responsibility:
+
+```text
+src/app/
+  core/       # application shell, layout, and navigation
+  features/   # home, heroes, learning, insights, tools, community, and reference pages
+  shared/     # reusable utilities without feature ownership
+```
+
+Seed inputs live in `data/seeds`, outside the Angular application tree. Shared frontend and
+server-side response models live in `src/contracts`.
+
 Local development and production use the same `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN` configuration. The main implementation points are:
 
+- `data/seeds/` - source-controlled seed content
 - `scripts/sqlite-schema.sql` - database schema
 - `scripts/seed-sqlite.mjs` - local seed importer
 - `scripts/sync-*.mjs` - source-specific refresh jobs
+- `src/contracts/` - shared API response models
 - `src/content-database.ts` - server-side content queries
 - `src/server.ts` - Express API and SSR server
 - `api/` - Vercel serverless endpoints

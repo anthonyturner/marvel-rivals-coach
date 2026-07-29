@@ -5,8 +5,8 @@ import {
   heroBuildTypes,
   HeroBuildProfile,
   HeroBuildType,
-} from '../heroes/hero-build-profile';
-import { Hero, HeroRole } from '../heroes/hero.model';
+} from '../../heroes/hero-build-profile';
+import { Hero, HeroRole } from '../../heroes/hero.model';
 
 type CompArchetype = 'Dive/Pick' | 'Poke' | 'Brawl' | 'Balanced';
 type CoreHeroRole = Exclude<HeroRole, 'Multi-Role'>;

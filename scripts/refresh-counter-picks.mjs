@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { createTursoClient } from './turso-client.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const heroesPath = join(__dirname, '..', 'src', 'app', 'data', 'heroes.mock.json');
+const heroesPath = join(__dirname, '..', 'data', 'seeds', 'heroes.mock.json');
 
 const counterPicksByHero = {
   'Adam Warlock': ['Spider-Man', 'Black Panther', 'Psylocke', 'Magik', 'Hela'],
