@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
+import { PageHeaderComponent } from '../../shared/components/page-header/page-header.component';
 import { NavigationCategory } from './navigation-category.data';
 
 @Component({
   selector: 'app-navigation-category-page',
-  imports: [RouterLink],
+  imports: [PageHeaderComponent, RouterLink],
   templateUrl: './navigation-category-page.component.html',
   styleUrl: './navigation-category-page.component.css',
 })

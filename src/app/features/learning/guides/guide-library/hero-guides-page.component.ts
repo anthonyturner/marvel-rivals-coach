@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { PageHeaderComponent } from '../../../../shared/components/page-header/page-header.component';
 import { HERO_GUIDES, HeroGuide } from '../hero-guides/hero-guide-data';
 
 interface FundamentalsGuideGroup {
@@ -13,7 +14,7 @@ interface FundamentalsGuideGroup {
 
 @Component({
   selector: 'app-hero-guides-page',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, PageHeaderComponent, RouterLink],
   templateUrl: './hero-guides-page.component.html',
   styleUrl: './hero-guides-page.component.css',
 })
