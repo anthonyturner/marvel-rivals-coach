@@ -166,7 +166,7 @@ async function fetchText(url: string): Promise<string> {
   const response = await fetch(url, {
     headers: {
       accept: 'text/html,application/xhtml+xml',
-      'user-agent': 'marvel-rivals-coach-content-sync/1.0',
+      'user-agent': 'rivals-pulse-content-sync/1.0',
     },
   });
 

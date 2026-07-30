@@ -1,4 +1,4 @@
-# Marvel Rivals Coach
+# Rivals Pulse
 
 ## Mission
 
