@@ -407,7 +407,7 @@ async function getCurrentPlayers(appId: number, fallback: number): Promise<numbe
     const response = await fetch(`${steamCurrentPlayersUrl}?appid=${appId}`, {
       headers: {
         accept: 'application/json',
-        'user-agent': 'marvel-rivals-coach-game-stats/2.0',
+        'user-agent': 'rivals-pulse-game-stats/2.0',
       },
     });
 
