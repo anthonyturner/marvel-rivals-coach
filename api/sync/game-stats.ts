@@ -3,24 +3,33 @@ import type { IncomingMessage, ServerResponse } from 'http';
 import { syncGameStats } from '../../src/game-stats-sync.js';
 import { sendJson } from '../../src/vercel-api.js';
 
+const noStoreHeaders = {
+  'cache-control': 'private, no-store, max-age=0',
+};
+
 export default async function handler(req: IncomingMessage, res: ServerResponse) {
   if (req.method && req.method !== 'GET' && req.method !== 'POST') {
-    sendJson(res, 405, { error: 'Method not allowed' });
+    sendJson(res, 405, { error: 'Method not allowed' }, noStoreHeaders);
     return;
   }
 
   if (!isAuthorizedSyncRequest(req)) {
-    sendJson(res, 401, { error: 'Missing sync authorization' });
+    sendJson(res, 401, { error: 'Missing sync authorization' }, noStoreHeaders);
     return;
   }
 
   try {
-    sendJson(res, 200, await syncGameStats());
+    sendJson(res, 200, await syncGameStats(), noStoreHeaders);
   } catch (error) {
     console.error('Game stats sync failed', error);
-    sendJson(res, 500, {
-      error: error instanceof Error ? error.message : 'Failed to sync game stats',
-    });
+    sendJson(
+      res,
+      500,
+      {
+        error: error instanceof Error ? error.message : 'Failed to sync game stats',
+      },
+      noStoreHeaders,
+    );
   }
 }
 
