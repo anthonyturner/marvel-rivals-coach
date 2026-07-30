@@ -25,17 +25,18 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
 }
 
 function isAuthorizedSyncRequest(req: IncomingMessage): boolean {
-  if (req.headers['x-vercel-cron'] === '1') {
-    return true;
-  }
+  const syncSecrets = [
+    process.env['CRON_SECRET'],
+    process.env['SYNC_SECRET'],
+  ].filter((value): value is string => Boolean(value));
 
-  const syncSecret = process.env['SYNC_SECRET'];
-
-  if (!syncSecret) {
+  if (syncSecrets.length === 0) {
     return isLocalRequest(req);
   }
 
-  return req.headers.authorization === `Bearer ${syncSecret}`;
+  return syncSecrets.some(
+    (secret) => req.headers.authorization === `Bearer ${secret}`,
+  );
 }
 
 function isLocalRequest(req: IncomingMessage): boolean {

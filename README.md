@@ -126,10 +126,13 @@ Configure these project environment variables:
 ```text
 TURSO_DATABASE_URL
 TURSO_AUTH_TOKEN
+CRON_SECRET
 SYNC_SECRET
 ```
 
-`SYNC_SECRET` protects manual production sync endpoints. Scheduled jobs refresh home news and game statistics; deployments do not run the full database seed.
+`CRON_SECRET` authenticates scheduled Vercel cron requests. `SYNC_SECRET` protects manual
+production sync requests. Scheduled jobs refresh home news and game statistics; deployments do
+not run the full database seed.
 
 ## Contributing
 
