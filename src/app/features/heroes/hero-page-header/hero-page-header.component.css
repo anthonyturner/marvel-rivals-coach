@@ -104,7 +104,7 @@ h1 {
   border: 1px solid rgba(248, 211, 107, 0.26);
   border-radius: 8px;
   background: rgba(7, 11, 21, 0.46);
-  text-align: right;
+  text-align: center;
 }
 .header-stat span {
   display: block;

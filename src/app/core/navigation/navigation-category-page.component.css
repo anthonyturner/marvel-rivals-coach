@@ -9,7 +9,6 @@
 }
 
 .category-hero {
-  max-width: 760px;
   padding-bottom: 46px;
 }
 
@@ -23,7 +22,6 @@
 }
 
 h1 {
-  max-width: 720px;
   color: var(--text);
   font-size: 3.25rem;
   line-height: 1.04;

@@ -33,7 +33,6 @@ p {
 }
 
 h1 {
-  max-width: 850px;
   color: var(--text);
   font-size: clamp(2rem, 4vw, 3.2rem);
   line-height: 1.04;

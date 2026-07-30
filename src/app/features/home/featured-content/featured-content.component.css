@@ -10,6 +10,7 @@
   display: grid;
   gap: 20px;
   padding-top: 32px;
+  margin-top: 2rem;
 }
 
 .featured-heading {
@@ -81,11 +82,11 @@ h2 {
     background 180ms ease;
 }
 
-.slideshow-controls > button:first-child {
+.slideshow-controls>button:first-child {
   justify-self: start;
 }
 
-.slideshow-controls > button:last-child {
+.slideshow-controls>button:last-child {
   justify-self: end;
 }
 
@@ -140,7 +141,7 @@ h2 {
     grid-row: 1;
   }
 
-  .slideshow-controls > button {
+  .slideshow-controls>button {
     width: 100%;
   }
 }

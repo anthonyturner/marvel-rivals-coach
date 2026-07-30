@@ -9,6 +9,10 @@
   padding: 32px;
 }
 
+app-hero-grid {
+  margin-bottom: 1rem !important;
+}
+
 app-hero-page-header,
 app-hero-grid,
 app-hero-content {
