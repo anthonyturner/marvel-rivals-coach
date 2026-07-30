@@ -11,7 +11,7 @@
   "crons": [
     {
       "path": "/api/sync/home-news",
-      "schedule": "0 */6 * * *"
+      "schedule": "0 7 * * *"
     },
     {
       "path": "/api/sync/tier-list",
