@@ -18,6 +18,8 @@ When you want the developer agent to begin implementation, use a prompt like:
 
 > Implement issue #<issue-number>. Read the issue, create or use an implementation branch, implement the change, run relevant verification, and open a draft PR for my review.
 
+If the user says “finish the implementation,” treat it as a handoff request to review the current branch, commit the changes, push the branch, and open a draft PR to master.
+
 ### PM prompt template
 When a client request arrives, use a prompt like:
 

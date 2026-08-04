@@ -31,7 +31,7 @@ on:
       create_branch:
         description: 'Create a branch for this issue?'
         required: false
-        default: 'false'
+        default: 'true'
         type: choice
         options:
           - 'true'
@@ -222,7 +222,15 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           TITLE_SLUG=$(echo "${{ steps.create-issue.outputs.issue_title }}" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+|-+$//g')
-          BRANCH_NAME="issue-${{ steps.create-issue.outputs.issue_number }}-${TITLE_SLUG}"
+          ISSUE_TITLE="${{ steps.create-issue.outputs.issue_title }}"
+          if echo "$ISSUE_TITLE" | grep -qiE 'fix|bug|broken|error|issue'; then
+            PREFIX="bug"
+          elif echo "$ISSUE_TITLE" | grep -qiE 'chore|cleanup|refactor|docs|maintenance'; then
+            PREFIX="chore"
+          else
+            PREFIX="feature"
+          fi
+          BRANCH_NAME="${PREFIX}/issue-${{ steps.create-issue.outputs.issue_number }}-${TITLE_SLUG}"
           git checkout -B "$BRANCH_NAME"
           git push origin "$BRANCH_NAME"
           echo "BRANCH_NAME=$BRANCH_NAME" >> "$GITHUB_ENV"
