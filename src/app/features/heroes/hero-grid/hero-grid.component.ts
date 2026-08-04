@@ -24,9 +24,14 @@ export class HeroGridComponent {
   @Output() readonly searchChanged = new EventEmitter<string>();
   @Output() readonly gridModeSelected = new EventEmitter<HeroGridMode>();
   @Output() readonly heroSelected = new EventEmitter<string>();
+  @Output() readonly filtersReset = new EventEmitter<void>();
 
   updateSearch(event: Event): void {
     this.searchChanged.emit((event.target as HTMLInputElement).value);
+  }
+
+  resetFilters(): void {
+    this.filtersReset.emit();
   }
 
   heroRoleLabel(hero: Hero): HeroRole {
