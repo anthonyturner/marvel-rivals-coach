@@ -69,6 +69,11 @@
   font-weight: 800;
   cursor: pointer;
 }
+.clear-filters {
+  border-color: rgba(3, 159, 159, 0.22);
+  background: rgba(3, 159, 159, 0.08);
+  color: var(--accent-strong);
+}
 .role-tabs button.active,
 .role-tabs button:hover,
 .view-toggle button.active,

@@ -471,6 +471,14 @@ export class HeroesPageComponent implements OnInit {
     this.heroGridMode.set(mode);
   }
 
+  resetHeroFilters(): void {
+    this.selectedRole.set('All');
+    this.searchTerm.set('');
+    this.heroGridMode.set('thumbs');
+    this.selectedHeroId.set(this.filteredHeroes()[0]?.id ?? '');
+    this.closeHeroDetailModal();
+  }
+
   selectHero(heroId: string): void {
     this.selectedHeroId.set(heroId);
     const role = this.selectedRole();
