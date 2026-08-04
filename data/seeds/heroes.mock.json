@@ -17,11 +17,11 @@
       "Cosmic Cluster shares ammo with Quantum Magic."
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
+      "Peni Parker",
+      "Black Cat",
+      "Daredevil",
       "Magik",
-      "Hela"
+      "Human Torch"
     ],
     "synergies": [
       "Storm"
@@ -112,11 +112,11 @@
       "Spears of Ichor has a low attack speed and requires a more pinpoint accuracy."
     ],
     "counters": [
-      "Hela",
-      "Hawkeye",
-      "The Punisher",
-      "Black Widow",
-      "Namor"
+      "Peni Parker",
+      "Human Torch",
+      "Iron Man",
+      "Groot",
+      "Storm"
     ],
     "synergies": [
       "Strategists",
@@ -211,11 +211,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Namor",
-      "Scarlet Witch",
       "Peni Parker",
-      "Luna Snow",
-      "The Thing"
+      "Human Torch",
+      "Mantis",
+      "Groot",
+      "Magik"
     ],
     "synergies": [
       "Vanguards",
@@ -310,11 +310,11 @@
       "Relies on quick decision-making, timing, and accuracy to aim Black Panther in the direction of e..."
     ],
     "counters": [
-      "Namor",
-      "Scarlet Witch",
+      "Mantis",
       "Peni Parker",
-      "Luna Snow",
-      "The Thing"
+      "Groot",
+      "Black Cat",
+      "Daredevil"
     ],
     "synergies": [
       "Hulk",
@@ -408,11 +408,11 @@
       "Switching between her weapons can feel a bit counter-intuitive at first to deal with immediate t..."
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
-      "Venom",
-      "Magik"
+      "Peni Parker",
+      "Storm",
+      "Iron Man",
+      "Human Torch",
+      "Mantis"
     ],
     "synergies": [
       "Phoenix",
@@ -505,10 +505,10 @@
     ],
     "counters": [
       "Peni Parker",
-      "The Thing",
-      "Luna Snow",
+      "Magik",
+      "Daredevil",
       "Mantis",
-      "Scarlet Witch"
+      "Hulk"
     ],
     "synergies": [
       "Moon Knight"
@@ -599,11 +599,11 @@
       "Needs support timing"
     ],
     "counters": [
-      "Wolverine",
-      "Hela",
-      "Hawkeye",
-      "The Punisher",
-      "Mantis"
+      "Peni Parker",
+      "Mantis",
+      "Daredevil",
+      "Groot",
+      "Human Torch"
     ],
     "synergies": [
       "Wolverine",
@@ -696,11 +696,11 @@
       "Needs support timing"
     ],
     "counters": [
-      "Wolverine",
-      "Hela",
+      "Peni Parker",
+      "Groot",
       "Hawkeye",
-      "Namor",
-      "Mantis"
+      "Mantis",
+      "Storm"
     ],
     "synergies": [
       "Black Cat",
@@ -792,10 +792,10 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
-      "Hela",
+      "Peni Parker",
+      "Mantis",
+      "Black Cat",
+      "Storm",
       "Magik"
     ],
     "synergies": [
@@ -885,11 +885,10 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Namor",
-      "Scarlet Witch",
       "Peni Parker",
-      "Luna Snow",
-      "The Thing"
+      "Mantis",
+      "Black Cat",
+      "Magik"
     ],
     "synergies": [
       "Vanguards",
@@ -982,11 +981,11 @@
       "Needs cooldown discipline"
     ],
     "counters": [
-      "Namor",
-      "Scarlet Witch",
       "Peni Parker",
-      "Mantis",
-      "The Thing"
+      "Black Cat",
+      "Daredevil",
+      "Magik",
+      "Storm"
     ],
     "synergies": [
       "Flexible team comps",
@@ -1319,11 +1318,11 @@
       "Needs support timing"
     ],
     "counters": [
-      "Wolverine",
-      "Hela",
-      "Hawkeye",
-      "The Punisher",
-      "Doctor Strange"
+      "Peni Parker",
+      "Magik",
+      "Daredevil",
+      "Black Cat",
+      "Mantis"
     ],
     "synergies": [
       "Strategists",
@@ -1418,11 +1417,11 @@
       "Needs support timing"
     ],
     "counters": [
-      "Wolverine",
-      "Hela",
-      "Hawkeye",
-      "Magneto",
-      "Moon Knight"
+      "Peni Parker",
+      "Storm",
+      "Human Torch",
+      "Mantis",
+      "Black Cat"
     ],
     "synergies": [
       "Invisible Woman"
@@ -1513,11 +1512,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
-      "Magik",
-      "Venom"
+      "Peni Parker",
+      "Black Cat",
+      "Daredevil",
+      "Mantis",
+      "Storm"
     ],
     "synergies": [
       "Deadpool",
@@ -1609,11 +1608,11 @@
       "Needs support timing"
     ],
     "counters": [
-      "Wolverine",
-      "Hela",
-      "Hawkeye",
-      "The Punisher",
-      "Doctor Strange"
+      "Peni Parker",
+      "Daredevil",
+      "Black Cat",
+      "Magik",
+      "Human Torch"
     ],
     "synergies": [
       "Luna Snow",
@@ -1705,11 +1704,11 @@
       "Cajun Charge has a very long cooldown that prevents Big Easy Impact from being effectively cycle..."
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
-      "Hela",
-      "Moon Knight"
+      "Peni Parker",
+      "Mantis",
+      "Storm",
+      "Iron Man",
+      "Magik"
     ],
     "synergies": [
       "Vanguards",
@@ -1802,11 +1801,11 @@
       "Needs support timing"
     ],
     "counters": [
-      "Wolverine",
-      "Human Torch",
-      "The Punisher",
-      "Hela",
-      "Doctor Strange"
+      "Peni Parker",
+      "Magik",
+      "The Thing",
+      "Daredevil",
+      "Storm"
     ],
     "synergies": [
       "Mantis",
@@ -1896,11 +1895,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
-      "Magik",
-      "Venom"
+      "Peni Parker",
+      "Storm",
+      "Mantis",
+      "Ultron",
+      "Mister Fantastic"
     ],
     "synergies": [
       "Cloak & Dagger",
@@ -1988,11 +1987,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
-      "Captain America",
-      "Doctor Strange"
+      "Peni Parker",
+      "Human Torch",
+      "Iron Man",
+      "Storm",
+      "Mantis"
     ],
     "synergies": [
       "Venom",
@@ -2084,11 +2083,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Hela",
-      "Hawkeye",
-      "The Punisher",
-      "Black Widow",
-      "Namor"
+      "Peni Parker",
+      "Black Panther",
+      "Daredevil",
+      "Magik",
+      "Mantis"
     ],
     "synergies": [
       "Vanguards",
@@ -2177,11 +2176,11 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
-      "Magik",
-      "Hela"
+      "Peni Parker",
+      "Black Cat",
+      "Mantis",
+      "Storm",
+      "Daredevil"
     ],
     "synergies": [
       "Vanguards",
@@ -2274,11 +2273,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Namor",
-      "Scarlet Witch",
       "Peni Parker",
-      "Luna Snow",
-      "Mantis"
+      "Daredevil",
+      "Angela",
+      "Iron Man",
+      "Storm"
     ],
     "synergies": [
       "Luna Snow",
@@ -2370,11 +2369,11 @@
       "Has no defensive tools nor any self-sustain."
     ],
     "counters": [
-      "Namor",
-      "Hela",
-      "Hawkeye",
-      "The Punisher",
-      "Black Widow"
+      "Peni Parker",
+      "Daredevil",
+      "Black Cat",
+      "Black Panther",
+      "Mantis"
     ],
     "synergies": [
       "Vanguards",
@@ -2459,11 +2458,11 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
-      "Magik",
-      "Hela"
+      "Peni Parker",
+      "Daredevil",
+      "Mantis",
+      "Storm",
+      "Groot"
     ],
     "synergies": [
       "Groot",
@@ -2556,11 +2555,11 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
-      "Moon Knight",
-      "Scarlet Witch"
+      "Peni Parker",
+      "Storm",
+      "Black Cat",
+      "Magik",
+      "Human Torch"
     ],
     "synergies": [
       "Mantis",
@@ -2648,11 +2647,11 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
-      "Magik",
-      "Hela"
+      "Peni Parker",
+      "Storm",
+      "Mantis",
+      "Groot",
+      "Iron Man"
     ],
     "synergies": [
       "White Fox"
@@ -2743,11 +2742,9 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Namor",
-      "Scarlet Witch",
       "Peni Parker",
-      "Luna Snow",
-      "The Thing"
+      "Mantis",
+      "Daredevil"
     ],
     "synergies": [
       "Doctor Strange",
@@ -2839,11 +2836,11 @@
       "Unlike Doctor Strange, he can't hold his Metallic Curtain indefinitely."
     ],
     "counters": [
-      "Wolverine",
-      "Hela",
-      "Hawkeye",
-      "The Punisher",
-      "Doctor Strange"
+      "Peni Parker",
+      "Mantis",
+      "Storm",
+      "Iron Man",
+      "Groot"
     ],
     "synergies": [
       "Gambit",
@@ -2935,11 +2932,7 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
-      "Magik",
-      "Hela"
+      "Peni Parker"
     ],
     "synergies": [
       "Vanguards",
@@ -3028,11 +3021,11 @@
       "Cannot use other abilities while in his stretched state from Reflexive Rubber."
     ],
     "counters": [
+      "Black Cat",
       "Peni Parker",
-      "The Thing",
-      "Wolverine",
-      "Luna Snow",
-      "Mantis"
+      "Daredevil",
+      "Black Panther",
+      "Magik"
     ],
     "synergies": [
       "Rocket Raccoon",
@@ -3124,11 +3117,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
-      "Hela",
-      "Hawkeye"
+      "Peni Parker",
+      "Loki",
+      "Mantis",
+      "Mister Fantastic",
+      "Groot"
     ],
     "synergies": [
       "Vanguards",
@@ -3217,11 +3210,11 @@
       "Very vulnerable when Blessing of the Deep is on cooldown."
     ],
     "counters": [
-      "Hela",
-      "Hawkeye",
-      "The Punisher",
-      "Black Widow",
-      "Doctor Strange"
+      "Daredevil",
+      "Peni Parker",
+      "Black Cat",
+      "Magik",
+      "Black Panther"
     ],
     "synergies": [
       "Hela"
@@ -3312,11 +3305,9 @@
       "Very frail outside of her Cyber-Webs, as she no defensive options compared to other Vanguards."
     ],
     "counters": [
-      "Hela",
-      "Hawkeye",
-      "The Punisher",
-      "Human Torch",
-      "Doctor Strange"
+      "Daredevil",
+      "Black Panther",
+      "Black Cat"
     ],
     "synergies": [
       "Strategists",
@@ -3409,11 +3400,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
-      "Hela",
-      "Hawkeye"
+      "Peni Parker",
+      "Storm",
+      "Iron Man",
+      "Human Torch",
+      "Mantis"
     ],
     "synergies": [
       "Vanguards",
@@ -3506,11 +3497,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Namor",
-      "Scarlet Witch",
       "Peni Parker",
-      "Luna Snow",
-      "Mantis"
+      "Black Cat",
+      "Mantis",
+      "Magik",
+      "Groot"
     ],
     "synergies": [
       "Cloak & Dagger",
@@ -3602,11 +3593,11 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
+      "Peni Parker",
+      "Daredevil",
+      "Mantis",
       "Magik",
-      "Venom"
+      "Storm"
     ],
     "synergies": [
       "Groot",
@@ -3698,11 +3689,11 @@
       "Staying in Defensive Stance for too long will leave you vulnerable to long-range stuns such as W..."
     ],
     "counters": [
-      "Wolverine",
-      "Hela",
-      "Hawkeye",
-      "The Punisher",
-      "Mantis"
+      "Peni Parker",
+      "Storm",
+      "Mantis",
+      "Black Cat",
+      "Magik"
     ],
     "synergies": [
       "Gambit",
@@ -3796,11 +3787,11 @@
       "Very vulnerable if Mystic Projection is on cooldown."
     ],
     "counters": [
-      "Hela",
-      "Hawkeye",
-      "The Punisher",
-      "Black Widow",
-      "Doctor Strange"
+      "Black Panther",
+      "Storm",
+      "Daredevil",
+      "Peni Parker",
+      "Human Torch"
     ],
     "synergies": [
       "Doctor Strange",
@@ -3892,10 +3883,10 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Namor",
-      "Scarlet Witch",
       "Peni Parker",
-      "Luna Snow",
+      "Iron Man",
+      "Storm",
+      "Human Torch",
       "Mantis"
     ],
     "synergies": [
@@ -3987,11 +3978,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
-      "Hela",
-      "Hawkeye"
+      "Peni Parker",
+      "Groot",
+      "Mantis",
+      "Hawkeye",
+      "Daredevil"
     ],
     "synergies": [
       "Iron Man",
@@ -4085,11 +4076,11 @@
       "Can be interrupted during Blaster Barrage and Galactic Legend."
     ],
     "counters": [
-      "Hela",
-      "Hawkeye",
-      "The Punisher",
-      "Black Widow",
-      "Namor"
+      "Peni Parker",
+      "Iron Man",
+      "Storm",
+      "Daredevil",
+      "The Thing"
     ],
     "synergies": [
       "Rocket Raccoon",
@@ -4177,11 +4168,11 @@
       "Has no defensive or self-sustain tools outside of her Ultimate."
     ],
     "counters": [
-      "Hela",
-      "Hawkeye",
-      "The Punisher",
-      "Black Widow",
-      "Namor"
+      "Peni Parker",
+      "Black Cat",
+      "Daredevil",
+      "Magik",
+      "Mantis"
     ],
     "synergies": [
       "Vanguards",
@@ -4262,11 +4253,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
-      "Magik",
-      "Venom"
+      "Peni Parker",
+      "Groot",
+      "Devil Dinosaur",
+      "Iron Man",
+      "Human Torch"
     ],
     "synergies": [
       "Daredevil",
@@ -4358,11 +4349,11 @@
       "Needs support timing"
     ],
     "counters": [
-      "Wolverine",
-      "Hela",
-      "Hawkeye",
-      "The Punisher",
-      "Mantis"
+      "Black Cat",
+      "Black Panther",
+      "Peni Parker",
+      "Daredevil",
+      "Magik"
     ],
     "synergies": [
       "Wolverine",
@@ -4447,10 +4438,10 @@
       "Needs support timing"
     ],
     "counters": [
-      "Wolverine",
-      "Hela",
-      "Hawkeye",
-      "The Punisher",
+      "Peni Parker",
+      "Black Cat",
+      "Daredevil",
+      "Magik",
       "Mantis"
     ],
     "synergies": [
@@ -4538,11 +4529,11 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Spider-Man",
+      "Peni Parker",
       "Black Panther",
-      "Psylocke",
-      "Magik",
-      "Hela"
+      "Daredevil",
+      "Storm",
+      "Human Torch"
     ],
     "synergies": [
       "Iron Man",
@@ -4630,11 +4621,11 @@
       "Functions more as a sturdy melee Duelist than a Vanguard, having few options to protect his team..."
     ],
     "counters": [
-      "Wolverine",
-      "Namor",
       "Peni Parker",
-      "Scarlet Witch",
-      "Mantis"
+      "Groot",
+      "Mantis",
+      "Daredevil",
+      "Black Cat"
     ],
     "synergies": [
       "Strategists",
@@ -4727,11 +4718,11 @@
       "Struggles when isolated"
     ],
     "counters": [
-      "Spider-Man",
-      "Black Panther",
-      "Psylocke",
-      "Magik",
-      "Hela"
+      "Peni Parker",
+      "Mantis",
+      "Black Cat",
+      "Daredevil",
+      "Magik"
     ],
     "synergies": [
       "Black Cat",
@@ -4823,11 +4814,11 @@
       "Can struggle into heavy peel"
     ],
     "counters": [
-      "Namor",
-      "Scarlet Witch",
       "Peni Parker",
-      "Doctor Strange",
-      "Mantis"
+      "Daredevil",
+      "Black Cat",
+      "Mantis",
+      "Magik"
     ],
     "synergies": [
       "Captain America"
@@ -4915,10 +4906,10 @@
     ],
     "counters": [
       "Peni Parker",
-      "The Thing",
-      "Luna Snow",
-      "Mantis",
-      "Scarlet Witch"
+      "Venom",
+      "Groot",
+      "Hulk",
+      "Loki"
     ],
     "synergies": [
       "Phoenix",

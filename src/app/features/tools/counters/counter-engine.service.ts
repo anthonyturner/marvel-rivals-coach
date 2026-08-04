@@ -45,30 +45,43 @@ const threatProfiles: Record<Exclude<ThreatProfile, 'general' | 'tank'>, string[
 };
 
 const answerProfiles: Record<Exclude<AnswerProfile, 'general'>, string[]> = {
-  'anti-dive': ['Namor', 'Peni Parker', 'Scarlet Witch', 'The Thing'],
+  'anti-dive': ['Peni Parker', 'Mantis', 'The Thing', 'Groot', 'Ultron'],
   hitscan: ['Black Widow', 'Hawkeye', 'Hela', 'The Punisher'],
-  dive: ['Black Cat', 'Black Panther', 'Magik', 'Psylocke', 'Spider-Man', 'Venom'],
-  sustain: ['Luna Snow', 'Mantis', 'Invisible Woman', 'Rocket Raccoon', 'Cloak & Dagger'],
-  'tank-breaker': ['Wolverine', 'The Punisher', 'Hela'],
-  range: ['Doctor Strange', 'Magneto', 'Moon Knight', 'Human Torch'],
-  control: ['Doctor Strange', 'Mantis', 'Scarlet Witch', 'Peni Parker'],
+  dive: [
+    'Black Cat',
+    'Black Panther',
+    'Daredevil',
+    'Iron Fist',
+    'Magik',
+    'Psylocke',
+    'Spider-Man',
+    'Venom',
+  ],
+  sustain: ['Luna Snow', 'Invisible Woman', 'Rocket Raccoon', 'Cloak & Dagger'],
+  'tank-breaker': ['Wolverine', 'Hulk'],
+  range: ['Doctor Strange', 'Magneto', 'Moon Knight', 'Human Torch', 'Iron Man', 'Storm'],
+  control: ['Scarlet Witch', 'Loki'],
 };
 
+// Matchup-specific notes backed by Season 9 Diamond+ win-rate data
+// (see data/verification/counter-verification-2026-08-03.md).
 const specificCounterReasons: Record<string, string> = {
-  'Black Panther|Namor':
-    'Namor is one of the cleanest anti-dive answers: turret pressure keeps hitting Black Panther through his dash-in rhythm and makes resets much harder.',
-  'Black Panther|Scarlet Witch':
-    'Scarlet Witch can keep easy tracking damage on Black Panther while he moves through melee range, forcing him to disengage sooner.',
+  'Spider-Man|Peni Parker':
+    'Peni Parker is Spider-Man’s hardest counter in current data: mines and cyber-webs cover the backline he wants to dive, and every swing-in risks landing on a trap instead of a kill.',
   'Black Panther|Peni Parker':
     'Peni Parker makes the dive path expensive with traps, web zones, and setup control that Black Panther has to cross before reaching the backline.',
-  'Spider-Man|Namor':
-    'Namor turret pressure tracks Spider-Man during web entries and punishes him before he can finish the backline combo.',
-  'Iron Man|Namor':
-    'Namor can place pressure that keeps Iron Man from hovering freely, especially when turret angles cover his escape routes.',
-  'Venom|Wolverine':
-    'Wolverine is built to punish high-health frontliners, so Venom cannot rely on bonus health and extended brawls as freely.',
-  'Hulk|Wolverine':
-    'Wolverine threatens Hulk in extended close-range fights and cuts through the value Hulk wants from staying in the frontline.',
+  'Black Panther|Mantis':
+    'Mantis breaks Black Panther’s reset rhythm: sleep interrupts the dash chain mid-combo and gives her team a free window to delete him.',
+  'Wolverine|Hulk':
+    'Hulk wins the extended melee brawl — his health pool and sustain outlast Wolverine’s damage window, and current matchup data has Hulk ahead by a wide margin.',
+  'Wolverine|Venom':
+    'Venom’s bonus-health cycling outlasts Wolverine’s burst window, so Wolverine loses the very brawl he is trying to force.',
+  'Moon Knight|Loki':
+    'Loki wins this matchup by a huge margin in current data: clones and invisibility scatter Moon Knight’s ankh value, and Loki’s ultimate can turn Moon Knight’s own kit against him.',
+  'Mantis|Peni Parker':
+    'Peni Parker is currently the only hero with a winning matchup against Mantis: her nest and mine zones apply constant pressure that Mantis cannot sleep or out-heal.',
+  'Peni Parker|Daredevil':
+    'No hero has a winning matchup against Peni Parker in current high-rank data — Daredevil is the least unfavorable pick, staying mobile and fighting outside her web zones.',
 };
 
 @Injectable({ providedIn: 'root' })
@@ -143,12 +156,36 @@ export class CounterEngineService {
       return `${counter.name} punishes ${target.name}'s dive timing with area denial, tracking pressure, or peel before the engage can reset.`;
     }
 
+    if (targetProfile === 'dive' && counterProfile === 'range') {
+      return `${counter.name} keeps damage on ${target.name} from angles a diver cannot contest mid-engage, draining the health they need to finish combos.`;
+    }
+
     if (targetProfile === 'flyer' && counterProfile === 'hitscan') {
       return `${counter.name} can keep consistent sightline pressure on ${target.name}, forcing them lower, slower, or back to cover.`;
     }
 
     if (targetProfile === 'tank' && counterProfile === 'tank-breaker') {
       return `${counter.name} pressures ${target.name}'s health pool and makes extended frontline trades harder to survive.`;
+    }
+
+    if (targetProfile === 'tank' && counterProfile === 'dive') {
+      return `${counter.name} wins the extended brawl inside ${target.name}'s effective range, forcing cooldowns before the frontline can stabilize.`;
+    }
+
+    if (targetProfile === 'backline' && counterProfile === 'anti-dive') {
+      return `${counter.name} applies constant zone pressure that ${target.name} cannot out-heal or safely reposition around.`;
+    }
+
+    if (targetProfile === 'sniper' && counterProfile === 'range') {
+      return `${counter.name} attacks from vertical and off-angle positions that ${target.name} cannot hold while also watching the main sightline.`;
+    }
+
+    if (targetProfile === 'flyer' && counterProfile === 'range') {
+      return `${counter.name} contests ${target.name} in their own airspace, denying the free aerial angle their value depends on.`;
+    }
+
+    if (targetProfile === 'summon' && counterProfile === 'dive') {
+      return `${counter.name} engages before ${target.name}'s setup completes, fighting around the zone instead of feeding into it.`;
     }
 
     if (targetProfile === 'backline' && counterProfile === 'dive') {

@@ -13,10 +13,6 @@ interface MultiThreatAnswer {
   coveredThreats: Hero[];
 }
 
-const currentDiveCounterOverrides: Record<string, string[]> = {
-  Angela: ['The Thing', 'Thor', 'Devil Dinosaur', 'Mister Fantastic', 'Winter Soldier'],
-};
-
 @Component({
   selector: 'app-counters-page',
   imports: [CommonModule, RouterLink],
@@ -72,7 +68,7 @@ export class CountersPageComponent implements OnInit {
       .map((candidate) => ({
         hero: candidate,
         coveredThreats: threats.filter((threat) =>
-          (currentDiveCounterOverrides[threat.name] ?? threat.counters).some(
+          threat.counters.some(
             (counterName) => this.normalizeName(counterName) === this.normalizeName(candidate.name),
           ),
         ),

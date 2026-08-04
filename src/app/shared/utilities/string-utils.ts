@@ -1,21 +1,7 @@
-  export function escapeRegExp(value: string): string {
-    return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  }
+import { StringUtility } from './string-utility.js';
 
-  export function slugify(value: string): string {
-    return value
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, '');
-  }
+export { StringUtility };
 
-  export function heroImagePath(heroName: string): string {
-    const slug = heroName
-      .toLowerCase()
-      .replace(/&/g, 'and')
-      .replace(/['.]/g, '')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, '');
-
-    return `/images/heroes/${slug || 'default-hero'}.png`;
-  }
+export const escapeRegExp = StringUtility.escapeRegExp;
+export const slugify = StringUtility.slugify;
+export const heroImagePath = StringUtility.heroImagePath;

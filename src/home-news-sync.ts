@@ -1,5 +1,7 @@
 import { createClient } from '@tursodatabase/serverless/compat';
 
+import { StringUtility } from './app/shared/utilities/string-utility.js';
+
 export type NewsItem = {
   label: string;
   title: string;
@@ -81,6 +83,17 @@ const fallbackBattlePassSnapshot: BattlePassSnapshot = {
   latestHeroImageUrl: '/images/heroes/jubilee.png',
 };
 const fallbackThumbnail = '/images/site/heroes-banner.jpg';
+const {
+  cleanText,
+  extractByClass,
+  formatList,
+  parseAttributes,
+  truncate,
+} = StringUtility;
+const absoluteUrl = (value: string) => StringUtility.absoluteUrl(value, officialHomeSource.url);
+const firstImage = (html: string) => StringUtility.firstImage(html, officialHomeSource.url);
+const titleCaseName = StringUtility.titleCase;
+const slugifyHeroName = StringUtility.heroSlug;
 
 const nodeProcess = process as typeof process & {
   loadEnvFile?: (path?: string) => void;
@@ -216,13 +229,6 @@ function describePatchAddition(heading: string): string | undefined {
   if (/Battle Pass/i.test(heading)) return `the ${heading}`;
   if (/Event|Chrono-Rush|POP & WIN|Twitch Drops|Rank Rewards/i.test(heading)) return heading;
   return undefined;
-}
-
-function formatList(values: string[]): string {
-  if (values.length < 2) return values[0] ?? '';
-  if (values.length === 2) return `${values[0]} and ${values[1]}`;
-
-  return `${values.slice(0, -1).join(', ')}, and ${values.at(-1)}`;
 }
 
 function buildSeasonDashboardContent(
@@ -411,8 +417,9 @@ export function parseSeasonEvents(html: string): SeasonHighlight[] {
 
   while ((match = sectionPattern.exec(content))) {
     const title = cleanText(match[1]).replace(/^New Event:\s*/i, '');
-    const description = truncate(cleanText(match[2]), 240);
-    const searchable = `${title} ${description}`.toLowerCase();
+    const fullDescription = cleanText(match[2]);
+    const description = truncate(fullDescription, 240);
+    const searchable = `${title} ${fullDescription}`.toLowerCase();
     const score = eventScore(searchable);
 
     if (!title || !description || score === 0) {
@@ -435,10 +442,16 @@ export function parseSeasonEvents(html: string): SeasonHighlight[] {
 }
 
 function eventScore(value: string): number {
-  if (/new event|event missions|chrono-rush/.test(value)) return 100;
+  if (/new event|event missions|event period|during the event|chrono-rush/.test(value)) return 100;
   if (/battle pass/.test(value)) return 90;
-  if (/twitch drops|rank rewards|free rewards/.test(value)) return 80;
-  if (/pop & win|limited.time/.test(value)) return 60;
+  if (
+    /twitch drops|rank rewards|free rewards|exclusive rewards|unlock an exclusive|earn \d+ units/.test(
+      value,
+    )
+  ) {
+    return 80;
+  }
+  if (/pop & win|limited.time|limited time/.test(value)) return 60;
   return 0;
 }
 
@@ -446,13 +459,8 @@ function eventLabel(value: string): string {
   if (value.includes('battle pass')) return 'Battle Pass';
   if (value.includes('twitch drops')) return 'Twitch Drops';
   if (value.includes('rank reward')) return 'Rank reward';
+  if (/unlock an exclusive|earn \d+ units/.test(value)) return 'Event rewards';
   return 'Limited-time event';
-}
-
-function truncate(value: string, maxLength: number): string {
-  if (value.length <= maxLength) return value;
-
-  return `${value.slice(0, maxLength - 1).replace(/\s+\S*$/, '')}…`;
 }
 
 function toSeasonUpdate(item: NewsItem): SeasonUpdate {
@@ -608,76 +616,4 @@ function requireEnv(name: string): string {
   }
 
   return value;
-}
-
-function extractByClass(html: string, className: string): string {
-  const match = html.match(new RegExp(`<[^>]*class="${className}"[^>]*>([\\s\\S]*?)<\\/[^>]+>`, 'i'));
-
-  return match?.[1] ?? '';
-}
-
-function firstImage(html: string): string | undefined {
-  const match = html.match(/<img\b[^>]*\bsrc="([^"]+)"/i);
-
-  return match ? absoluteUrl(decodeHtml(match[1])) : undefined;
-}
-
-function parseAttributes(value: string): Record<string, string> {
-  const attrs: Record<string, string> = {};
-  const attrPattern = /([a-zA-Z0-9_-]+)="([^"]*)"/g;
-  let match: RegExpExecArray | null;
-
-  while ((match = attrPattern.exec(value))) {
-    attrs[match[1]] = decodeHtml(match[2]);
-  }
-
-  return attrs;
-}
-
-function absoluteUrl(value: string): string {
-  if (value.startsWith('//')) {
-    return `https:${value}`;
-  }
-
-  if (value.startsWith('/')) {
-    return `https://www.marvelrivals.com${value}`;
-  }
-
-  return value;
-}
-
-function cleanText(value: string): string {
-  return decodeHtml(value)
-    .replace(/<br\s*\/?>/gi, ' ')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-function decodeHtml(value: string): string {
-  return value
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&amp;/g, '&')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>');
-}
-
-function titleCaseName(value: string): string {
-  return cleanText(value)
-    .toLowerCase()
-    .split(/(\s+|-|&)/)
-    .map((part) => /^[a-z]/.test(part) ? part[0].toUpperCase() + part.slice(1) : part)
-    .join('')
-    .replace(/\bAnd\b/g, '&');
-}
-
-function slugifyHeroName(value: string): string {
-  return cleanText(value)
-    .toLowerCase()
-    .replace(/&/g, 'and')
-    .replace(/['.]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
 }
