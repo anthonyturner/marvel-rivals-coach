@@ -6,6 +6,23 @@ Use this file when assigning work to coding agents.
 
 Use [.github/agents/pm-agent.md](.github/agents/pm-agent.md) as the default product-manager agent for this repository.
 
+Use [.github/agents/developer-agent.md](.github/agents/developer-agent.md) when you want implementation work to begin for an approved issue.
+
+### Agent handoff
+- Use the PM agent for issue drafting, refinement, acceptance criteria, and clarifying questions.
+- Use the developer agent only after the issue is reviewed and you explicitly want implementation to begin.
+- Do not let the developer agent start work just because an issue exists.
+
+### Handoff prompt template
+When you want the developer agent to begin implementation, use a prompt like:
+
+> Implement issue #<issue-number>. Read the issue, create or use an implementation branch, implement the change, run relevant verification, and open a draft PR for my review.
+
+### PM prompt template
+When a client request arrives, use a prompt like:
+
+> Turn this client request into a small, testable GitHub issue for this repository. Use the repository's issue template and backlog style. Include title, summary, acceptance criteria, affected area, and any open questions. Do not propose implementation steps.
+
 1. Read the related issue, acceptance criteria, and `docs/agile/README.md`.
 2. Inspect the existing code before proposing changes.
 3. Keep the change scoped to the issue.
