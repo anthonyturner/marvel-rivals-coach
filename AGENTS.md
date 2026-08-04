@@ -59,7 +59,8 @@ npm.cmd run sync:glossary:terms -- glnm
 
 ## Automation Workflow
 
-- A starter workflow is available at [.github/workflows/issue-automation.yml](.github/workflows/issue-automation.yml) for creating a GitHub issue and optionally a branch from a prompt.
+- The main workflow at [.github/workflows/issue-automation.yml](.github/workflows/issue-automation.yml) can create a GitHub issue and optionally a branch from a prompt.
+- If you are acting as a client, paste a plain request such as “I want to improve the UI on the heroes screen” into the workflow’s request prompt field and the workflow will auto-fill the issue title, summary, user story, and acceptance criteria.
 - A second workflow at [.github/workflows/create-issue-branch.yml](.github/workflows/create-issue-branch.yml) can create a branch from an issue number or a title-derived slug.
 - A third workflow at [.github/workflows/create-pr-from-branch.yml](.github/workflows/create-pr-from-branch.yml) can open a draft PR from an existing branch.
 - A fourth workflow at [.github/workflows/mark-pr-ready-for-review.yml](.github/workflows/mark-pr-ready-for-review.yml) can promote that draft PR to ready-for-review when you are satisfied with it.

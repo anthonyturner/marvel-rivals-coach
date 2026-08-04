@@ -3,12 +3,15 @@ name: Issue Automation
 on:
   workflow_dispatch:
     inputs:
+      request_prompt:
+        description: 'Client request, feature idea, bug report, or improvement request. If provided, it will be used to fill the issue details automatically.'
+        required: false
       title:
-        description: 'Issue title'
-        required: true
+        description: 'Issue title (optional if request prompt is provided)'
+        required: false
       summary:
-        description: 'Summary or problem statement'
-        required: true
+        description: 'Summary or problem statement (optional if request prompt is provided)'
+        required: false
       user_story:
         description: 'User story or task description'
         required: false
@@ -45,6 +48,7 @@ jobs:
       - name: Create GitHub issue
         id: create-issue
         env:
+          REQUEST_PROMPT: ${{ github.event.inputs.request_prompt }}
           TITLE: ${{ github.event.inputs.title }}
           SUMMARY: ${{ github.event.inputs.summary }}
           USER_STORY: ${{ github.event.inputs.user_story }}
@@ -55,13 +59,119 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const title = process.env.TITLE;
-            const summary = process.env.SUMMARY;
-            const userStory = process.env.USER_STORY;
-            const acceptanceCriteria = process.env.ACCEPTANCE_CRITERIA;
-            const openQuestions = process.env.OPEN_QUESTIONS;
-            const risksNotes = process.env.RISKS_NOTES;
-            const labels = process.env.LABELS
+            function inferAffectedArea(prompt) {
+              const lowerPrompt = (prompt || '').toLowerCase();
+
+              if (/heroes?\s+(screen|page|list)|hero\s+(screen|page|list)|heroes?/i.test(lowerPrompt)) {
+                return 'Heroes screen';
+              }
+              if (/home(?:page|screen)|homepage|landing/i.test(lowerPrompt)) {
+                return 'Home page';
+              }
+              if (/api|data sync|content|sync/i.test(lowerPrompt)) {
+                return 'API / data sync';
+              }
+              if (/tier list|build|counter|playstyle/i.test(lowerPrompt)) {
+                return 'Tier list / build data';
+              }
+              if (/video|media/i.test(lowerPrompt)) {
+                return 'Video / media';
+              }
+              if (/glossary|term/i.test(lowerPrompt)) {
+                return 'Glossary';
+              }
+              if (/news/i.test(lowerPrompt)) {
+                return 'News / content';
+              }
+              if (/filter|search/i.test(lowerPrompt)) {
+                return 'Filtering / search experience';
+              }
+
+              return 'TBD';
+            }
+
+            function slugify(value) {
+              return (value || '')
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '')
+                .trim();
+            }
+
+            function deriveIssueDraft(prompt) {
+              const cleanedPrompt = (prompt || '')
+                .replace(/^(please|can you|could you|i want to|i'd like to|let's|make)\s+/i, '')
+                .replace(/^(improve|enhance|update|add|fix|create|redesign|refactor)\s+/i, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+
+              const lowerPrompt = (prompt || '').toLowerCase();
+              const isBug = /\b(bug|broken|error|fail|fails|doesn't work|does not work|regression|issue)\b/i.test(lowerPrompt);
+              const isEnhancement = /\b(improve|enhance|ui|ux|design|redesign|screen|layout|hero|heroes|page|homepage)\b/i.test(lowerPrompt);
+              const isChore = /\b(chore|maintenance|cleanup|refactor|docs|dependency|upgrade)\b/i.test(lowerPrompt);
+
+              let titlePrefix = 'Update';
+              if (isBug) titlePrefix = 'Fix';
+              else if (isChore) titlePrefix = 'Improve';
+              else if (/\b(add|create|new)\b/i.test(lowerPrompt)) titlePrefix = 'Add';
+              else if (isEnhancement) titlePrefix = 'Improve';
+
+              const titleBase = cleanedPrompt || 'requested change';
+              const title = `${titlePrefix} ${titleBase}`.trim();
+
+              const summary = cleanedPrompt
+                ? `Client requested: ${cleanedPrompt}`
+                : 'Client request captured for backlog triage.';
+
+              const userStory = cleanedPrompt
+                ? `As a user, I want ${cleanedPrompt.toLowerCase()} so that I can have a better experience.`
+                : 'As a user, I want the requested change so that I can have a better experience.';
+
+              const acceptanceCriteria = [
+                isBug
+                  ? '- The reported issue no longer reproduces in the relevant flow.'
+                  : '- The requested change is implemented in the relevant area.',
+                '- The experience remains usable across common screen sizes and states.',
+                '- The change is verified in the affected screen, route, or workflow.'
+              ].join('\n');
+
+              const openQuestions = cleanedPrompt
+                ? '- Which screen, route, or component should this target first?'
+                : '- None at this time.';
+
+              const risksNotes = cleanedPrompt
+                ? '- Scope may need refinement once the affected area is confirmed.'
+                : '- None at this time.';
+
+              const labels = ['needs-triage'];
+              if (isBug) labels.push('bug');
+              if (isEnhancement || /\b(ui|ux|design|layout|screen)\b/i.test(lowerPrompt)) labels.push('ui');
+              if (/\b(hero|heroes|home|page|screen)\b/i.test(lowerPrompt)) labels.push('frontend');
+              if (isEnhancement) labels.push('enhancement');
+
+              return {
+                title,
+                summary,
+                userStory,
+                acceptanceCriteria,
+                openQuestions,
+                risksNotes,
+                labels,
+                affectedArea: inferAffectedArea(prompt)
+              };
+            }
+
+            const requestPrompt = process.env.REQUEST_PROMPT || '';
+            const derived = deriveIssueDraft(requestPrompt);
+
+            const title = process.env.TITLE || derived.title;
+            const summary = process.env.SUMMARY || derived.summary;
+            const userStory = process.env.USER_STORY || derived.userStory;
+            const acceptanceCriteria = process.env.ACCEPTANCE_CRITERIA || derived.acceptanceCriteria;
+            const openQuestions = process.env.OPEN_QUESTIONS || derived.openQuestions;
+            const risksNotes = process.env.RISKS_NOTES || derived.risksNotes;
+            const affectedArea = derived.affectedArea;
+            const labels = (process.env.LABELS || derived.labels.join(','))
               .split(',')
               .map(label => label.trim())
               .filter(Boolean);
@@ -71,6 +181,9 @@ jobs:
               '',
               '## User Story',
               userStory ? userStory : '- TBD',
+              '',
+              '## Affected Area',
+              affectedArea ? affectedArea : '- TBD',
               '',
               '## Acceptance Criteria',
               acceptanceCriteria ? acceptanceCriteria : '- TBD',
@@ -94,6 +207,8 @@ jobs:
 
             core.setOutput('issue_number', response.data.number);
             core.setOutput('issue_url', response.data.html_url);
+            core.setOutput('issue_title', title);
+            core.setOutput('issue_slug', slugify(title));
 
       - name: Checkout repository
         if: ${{ github.event.inputs.create_branch == 'true' }}
@@ -106,7 +221,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          TITLE_SLUG=$(echo "${{ github.event.inputs.title }}" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+|-+$//g')
+          TITLE_SLUG=$(echo "${{ steps.create-issue.outputs.issue_title }}" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+|-+$//g')
           BRANCH_NAME="issue-${{ steps.create-issue.outputs.issue_number }}-${TITLE_SLUG}"
           git checkout -B "$BRANCH_NAME"
           git push origin "$BRANCH_NAME"
