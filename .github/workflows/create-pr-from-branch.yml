@@ -29,7 +29,17 @@ jobs:
           script: |
             const branch = context.payload.inputs?.branch_name || '${{ github.event.inputs.branch_name }}';
             const title = context.payload.inputs?.title || '${{ github.event.inputs.title }}' || 'Draft PR';
-            const body = context.payload.inputs?.body || '${{ github.event.inputs.body }}' || 'Draft PR created by workflow.';
+            let body = context.payload.inputs?.body || '${{ github.event.inputs.body }}' || 'Draft PR created by workflow.';
+
+            const issueMatch = branch.match(/(?:^|\/)issue-(\d+)(?:-|$)/i);
+            if (issueMatch) {
+              const issueNumber = issueMatch[1];
+              const hasClosingReference = /\b(?:close|closes|closed|fix|fixes|resolve|resolves|implement|implements)\b\s*#\d+/i.test(body);
+
+              if (!hasClosingReference) {
+                body = `${body}\n\nCloses #${issueNumber}`;
+              }
+            }
 
             const response = await github.rest.pulls.create({
               owner: context.repo.owner,

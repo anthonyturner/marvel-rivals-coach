@@ -29,7 +29,7 @@ jobs:
 
           if [ -n "${{ github.event.inputs.issue_number }}" ]; then
             ISSUE_NUMBER="${{ github.event.inputs.issue_number }}"
-            BRANCH_NAME="issue-${ISSUE_NUMBER}"
+            BRANCH_NAME="feature/issue-${ISSUE_NUMBER}"
           else
             TITLE="${{ github.event.inputs.title }}"
             SLUG=$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+|-+$//g')
