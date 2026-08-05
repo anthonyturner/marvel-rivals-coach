@@ -1,7 +1,7 @@
 # Turso Content Database
 
 The app uses one shared Turso/libSQL database for curated content and cached external API payloads.
-The mock JSON files under `src/app/data` are seed inputs only; runtime pages read from the Express API backed by Turso.
+The mock JSON files under `data/seeds` are seed inputs only; runtime pages read from the Express API backed by Turso.
 
 ## Connection
 
