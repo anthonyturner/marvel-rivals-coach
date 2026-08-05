@@ -20,6 +20,9 @@ export interface NewsItem {
   thumbnailUrl: string;
   thumbnailAlt: string;
   publishedAt?: string;
+  videoUrl?: string;
+  videoPosterUrl?: string;
+  videoTitle?: string;
 }
 
 export interface GuideSpotlight {

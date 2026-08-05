@@ -1,7 +1,9 @@
 import { isPlatformBrowser } from '@angular/common';
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
+  computed,
   ElementRef,
   HostListener,
   PLATFORM_ID,
@@ -10,10 +12,14 @@ import {
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
-import { map } from 'rxjs';
 
 import { FeaturedContentComponent } from './featured-content/featured-content.component';
 import { HomeContentService } from './home-content.service';
+import {
+  buildHomeHeroMedia,
+  buildSeasonHeroCopy,
+  buildSeasonUpdateSpotlight,
+} from './home-page-hero.utils';
 import { SeasonDashboardComponent } from './season-dashboard/season-dashboard.component';
 import { SeasonGlanceComponent } from './season-glance/season-glance.component';
 
@@ -29,6 +35,7 @@ const seasonLaunchPatchUrl = 'https://www.marvelrivals.com/20260708/41525_130695
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePageComponent implements AfterViewInit {
   @ViewChild('heroBanner') private heroBanner?: ElementRef<HTMLElement>;
@@ -37,16 +44,18 @@ export class HomePageComponent implements AfterViewInit {
   backgroundVideoForeground = false;
   backgroundVideoPoppedOut = false;
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-  readonly latestPatchUrl = toSignal(
-    inject(HomeContentService).getHomeContent().pipe(
-      map(
-        (content) =>
-          content.latestNews.find((item) => item.label === 'Patch Notes')?.sourceUrl ??
-          seasonLaunchPatchUrl,
-      ),
-    ),
-    { initialValue: seasonLaunchPatchUrl },
+  private readonly homeContentService = inject(HomeContentService);
+  readonly homeContent = toSignal(this.homeContentService.getHomeContent(), {
+    initialValue: this.homeContentService.fallbackContent,
+  });
+  readonly latestPatchUrl = computed(
+    () =>
+      this.homeContent().latestNews.find((item) => item.label === 'Patch Notes')?.sourceUrl ??
+      seasonLaunchPatchUrl,
   );
+  readonly heroMedia = computed(() => buildHomeHeroMedia(this.homeContent()));
+  readonly seasonHeroCopy = computed(() => buildSeasonHeroCopy(this.homeContent()));
+  readonly seasonUpdateSpotlight = computed(() => buildSeasonUpdateSpotlight(this.homeContent()));
 
   ngAfterViewInit(): void {
     if (this.isBrowser) {
