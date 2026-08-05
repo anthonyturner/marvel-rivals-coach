@@ -7,7 +7,7 @@
     [attr.aria-modal]="backgroundVideoForeground ? 'true' : null"
     [attr.aria-label]="
       backgroundVideoForeground
-        ? 'Developer Vision video player'
+        ? heroMedia().title + ' video player'
         : backgroundVideoPoppedOut
           ? 'Open the floating video player'
           : 'Play the background video in the foreground'
@@ -22,16 +22,16 @@
       autoplay
       [controls]="backgroundVideoForeground"
       [muted]="backgroundVideoMuted"
+      [src]="heroMedia().videoUrl"
       loop
       playsinline
       preload="metadata"
-      poster="/images/site/heroes-banner.jpg"
+      [poster]="heroMedia().posterUrl"
       tabindex="-1"
       (canplay)="startBackgroundVideo(backgroundVideo)"
       (click)="onForegroundVideoClick($event)"
       (volumechange)="syncBackgroundVideoSound(backgroundVideo)"
     >
-      <source src="/videos/home/dev-vision-vol-19.mp4" type="video/mp4" />
       Your browser does not support embedded video playback.
     </video>
 
@@ -60,8 +60,8 @@
 
   <header #heroBanner class="season-hero">
     <div class="hero-copy">
-      <p class="eyebrow">Marvel Rivals · Season 9</p>
-      <h1>Welcome to The Mystery of Thebes.</h1>
+      <p class="eyebrow">{{ seasonHeroCopy().eyebrow }}</p>
+      <h1>{{ seasonHeroCopy().title }}</h1>
       <p class="lede">
         Jubilee has arrived, the Team-Up system has been rebuilt, and a murder mystery now surrounds
         the fall of Apocalypse. Track the live season, its patches, and the heroes shaping the early
@@ -80,7 +80,34 @@
         <a routerLink="/hero-guides">Browse guides</a>
       </div>
     </div>
-    <app-season-glance />
+
+    <div class="hero-sidecar">
+      <app-season-glance />
+
+      @if (seasonUpdateSpotlight(); as spotlight) {
+        <section class="hero-spotlight" aria-labelledby="season-update-spotlight-title">
+          <div class="hero-spotlight-heading">
+            <p class="hero-spotlight-kicker">{{ spotlight.eyebrow }}</p>
+            <p class="hero-spotlight-date">{{ spotlight.date }}</p>
+          </div>
+
+          <h2 id="season-update-spotlight-title">{{ spotlight.title }}</h2>
+          <p class="hero-spotlight-description">{{ spotlight.description }}</p>
+
+          <div class="hero-spotlight-actions">
+            @if (spotlight.hasVideo) {
+              <button type="button" (click)="onBackgroundVideoSurfaceClick(backgroundVideo)">
+                Watch update video
+              </button>
+            }
+
+            <a [href]="spotlight.sourceUrl" target="_blank" rel="noopener noreferrer">
+              Read season update
+            </a>
+          </div>
+        </section>
+      }
+    </div>
   </header>
   <app-featured-content />
   <app-season-dashboard />

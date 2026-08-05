@@ -4,6 +4,9 @@ export interface SeasonUpdate {
   title: string;
   description: string;
   sourceUrl: string;
+  videoUrl?: string;
+  videoPosterUrl?: string;
+  videoTitle?: string;
 }
 
 export interface SeasonHighlight {

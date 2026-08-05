@@ -10,6 +10,9 @@ export type NewsItem = {
   thumbnailUrl: string;
   thumbnailAlt: string;
   publishedAt?: string;
+  videoUrl?: string;
+  videoPosterUrl?: string;
+  videoTitle?: string;
 };
 
 type SeasonUpdate = {
@@ -18,6 +21,9 @@ type SeasonUpdate = {
   title: string;
   description: string;
   sourceUrl: string;
+  videoUrl?: string;
+  videoPosterUrl?: string;
+  videoTitle?: string;
 };
 
 type SeasonHighlight = {
@@ -122,11 +128,24 @@ export async function syncHomeNews(): Promise<HomeNewsSyncResult> {
       .find((item) => item.label === 'Balance Update');
     const latestPatch = officialSnapshot.news
       .find((item) => item.label === 'Patch Notes');
+    const latestSeasonUpdate = officialSnapshot.news
+      .find((item) => item.label === 'Season Update');
     const latestPatchHtml = latestPatch ? await fetchText(latestPatch.sourceUrl) : undefined;
+    const latestSeasonUpdateHtml = latestSeasonUpdate
+      ? await fetchOptionalText(latestSeasonUpdate.sourceUrl)
+      : undefined;
+    const seasonUpdateVideo = latestSeasonUpdateHtml
+      ? extractArticleVideo(latestSeasonUpdateHtml)
+      : undefined;
     const enrichedNews = officialSnapshot.news.map((item) => (
-      latestPatchHtml && item.sourceUrl === latestPatch?.sourceUrl
-        ? { ...item, description: buildPatchDescription(item.description, latestPatchHtml) }
-        : item
+      item.sourceUrl === latestPatch?.sourceUrl && latestPatchHtml
+        ? {
+            ...item,
+            description: buildPatchDescription(item.description, latestPatchHtml),
+          }
+        : item.sourceUrl === latestSeasonUpdate?.sourceUrl && seasonUpdateVideo
+          ? { ...item, ...seasonUpdateVideo }
+          : item
     ));
     const latestNews = buildLatestNewsCards(enrichedNews);
     const seasonUpdates = enrichedNews.slice(0, 3).map(toSeasonUpdate);
@@ -188,6 +207,14 @@ async function fetchText(url: string): Promise<string> {
   }
 
   return response.text();
+}
+
+async function fetchOptionalText(url: string): Promise<string | undefined> {
+  try {
+    return await fetchText(url);
+  } catch {
+    return undefined;
+  }
 }
 
 function buildLatestNewsCards(officialNews: NewsItem[]): NewsItem[] {
@@ -441,6 +468,29 @@ export function parseSeasonEvents(html: string): SeasonHighlight[] {
     .map(({ label, title, description }) => ({ label, title, description }));
 }
 
+function extractArticleVideo(
+  html: string,
+): Pick<NewsItem, 'videoUrl' | 'videoPosterUrl' | 'videoTitle'> | undefined {
+  const match = html.match(/<div[^>]*class="[^"]*video_ctn[^"]*"([^>]*)>/i);
+
+  if (!match) {
+    return undefined;
+  }
+
+  const attrs = parseAttributes(match[1]);
+  const videoUrl = attrs['data-hdmovieurl'] ?? attrs['data-movieurl'];
+
+  if (!videoUrl) {
+    return undefined;
+  }
+
+  return {
+    videoUrl: absoluteUrl(videoUrl),
+    videoPosterUrl: absoluteUrl(attrs['data-startimg'] ?? fallbackThumbnail),
+    videoTitle: cleanText(attrs['data-name']) || undefined,
+  };
+}
+
 function eventScore(value: string): number {
   if (/new event|event missions|event period|during the event|chrono-rush/.test(value)) return 100;
   if (/battle pass/.test(value)) return 90;
@@ -470,6 +520,9 @@ function toSeasonUpdate(item: NewsItem): SeasonUpdate {
     title: item.title,
     description: item.description,
     sourceUrl: item.sourceUrl,
+    videoUrl: item.videoUrl,
+    videoPosterUrl: item.videoPosterUrl,
+    videoTitle: item.videoTitle,
   };
 }
 
